@@ -1,0 +1,69 @@
+#!/usr/bin/perl -w
+use strict;
+use Getopt::Long;
+use File::Basename;
+use File::Find;
+use FileHandle;
+
+&main;
+exit;
+
+sub usage () {
+  my $PROGNAME = "mirror";
+  print "Usage: $PROGNAME <src_dir> <dst_directories> ...\n";
+  print "  Creates softlinks for all the files in src_dir to each of the dst_directories\n";
+  exit 1;
+}
+
+sub check_sanity ($) {
+    my ($dir) = @_;
+        if( ($dir !~ /^\//) ) {
+                die "  Error: Given directory $dir dont seem to be absolute paths\n".
+                    "         Softlinks create havoc if not given absolute paths\n";
+        }
+
+}
+
+sub main {
+   my ($srcDir) = shift(@ARGV);
+   ($srcDir) || usage();
+   if( ! -d $srcDir ) {
+      die "$srcDir doesn't exist\n";
+   }
+   $srcDir =~ s/\/*$//;
+   check_sanity($srcDir);
+   
+   foreach my $dstDir (@ARGV) {
+     $dstDir =~ s/\/*$//;
+     check_sanity($dstDir);
+     print "mirroring $srcDir into $dstDir\n";
+     find sub { make_link($srcDir,$dstDir, $File::Find::name)}, "$srcDir";
+   }
+}
+
+sub tr_path($$$) {
+        my ($srcDir,$dstDir,$path) = @_;
+        $path =~ s|^$srcDir[\/]*||;
+        return "$dstDir/$path";
+}
+
+sub make_link($$$)  {
+        my ($srcDir,$dstDir,$file) = @_;
+
+        if( -d ) {
+                if( $file =~/\/CVS$/) {
+                        my $dstPath = tr_path($srcDir,$dstDir,$file);
+                        symlink $file, $dstPath;
+                } else {
+                        $file = tr_path($srcDir,$dstDir,$file);
+                        `mkdir -p $file`; # Looks like mkdir of perl doesn't support -p
+                }
+        } elsif( -f) {
+                my ($name, $path) = fileparse($file);
+                return if( $path =~ /\/CVS\// );
+                my $dstfile = tr_path($srcDir,$dstDir,$path)."/$name";
+                symlink $file, "$dstfile" || die "Unable to symlink $dstfile->$file\n";
+                #`ln -s $file $dstfile` || die "Unable to symlink $dstfile->$file\n";
+        }
+}
+
