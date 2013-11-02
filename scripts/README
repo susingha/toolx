@@ -5,6 +5,6 @@ mirror:
 =======
 This is the mirror script used in tejas. Use this to replicate a code checkout into a separate folder
 with only softlinks to the original code. Helps keep source files and compiled binaries in separate
-folder trees
+folder trees. Needs perl
 Example usage:
 > ./mirror $PWD/BR_8_0_1 $PWD/TJ1700_MIRROR
