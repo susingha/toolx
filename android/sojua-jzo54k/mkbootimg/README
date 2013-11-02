@@ -1,0 +1,30 @@
+just compile the .c file
+gcc *.c -o mkbootimg # would do
+run the mkbootimg
+
+
+----------------------------
+$ unmkbootimg boot.img 
+Kernel size 2419636
+Kernel address 0x20008000
+Ramdisk size 152656
+Ramdisk address 0x21000000
+Secondary size 0
+Secondary address 0x20f00000
+Kernel tags address 0x20000100
+Flash page size 2048
+Board name is ""
+Command line "no_console_suspend=1"
+Extracting kernel to file zImage ...
+Extracting root filesystem to file initramfs.cpio.gz ...
+All done.
+---------------
+To recompile this image, use:
+  mkbootimg --kernel zImage --ramdisk initramfs.cpio.gz --base 0x20000000
+            --cmdline 'no_console_suspend=1' -o new_boot.img
+---------------
+$ ls -l
+totalt 5044
+-rw-r--r-- 1 kuisma kuisma 2576384  9 sep 09.44 boot.img
+-rw-r--r-- 1 kuisma kuisma  152656  9 sep 09.44 initramfs.cpio.gz
+-rw-r--r-- 1 kuisma kuisma 2419636  9 sep 09.44 zImage
