@@ -1,3 +1,7 @@
+/* This is a Binary Search Tree implementation
+ * All displayed would be in sorted order
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -9,7 +13,6 @@ struct node
     struct node * rptr;
 };
 
-struct node * head = NULL;
 
 struct node * insert(struct node * nodeHead, int num)
 {
@@ -129,6 +132,8 @@ struct node * insertrec2(struct node * nodeHead, int num)
     }
 }
 
+// this function could be change to return the number of nodes displayed.
+// good excercise in a recursive scenario
 void displayrec(struct node * nodeHead)
 {
     // this is in inorder
@@ -175,6 +180,7 @@ void displayiter(struct node * nodeHead) // buggy
 #define rnd() (rand()%100)
 int main()
 {
+    struct node * head = NULL;
     displayrec(head);
     printf("\n\n");
     head = insertrec2(head, rnd());
