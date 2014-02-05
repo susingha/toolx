@@ -40,7 +40,7 @@ void resolveheap(int * array, int size, int index) {
 
     if(leftchildindex < size) { // i have a left child
 	resolveheap(array, size, leftchildindex);
-	// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], leftchildindex, array[leftchildindex]);
+// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], leftchildindex, array[leftchildindex]);
 	if(array[index] < array[leftchildindex]) {
 	    swap(array, index, leftchildindex);
 	}
@@ -48,7 +48,7 @@ void resolveheap(int * array, int size, int index) {
 
     if(rightchildindex < size) { // i have a right child
 	resolveheap(array, size, rightchildindex);
-	// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], rightchildindex, array[rightchildindex]);
+// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], rightchildindex, array[rightchildindex]);
 	if(array[index] < array[rightchildindex]) {
 	    swap(array, index, rightchildindex);
 	}
