@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 
 struct node
@@ -19,6 +20,7 @@ struct node * insert(struct node * nodeHead, int num)
     struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
     nodeNew->num = num;
     nodeNew->lptr = nodeNew->rptr = NULL;
+    // printf("\nsup:0 inserting %d", num);
 
     struct node * nodeThis = nodeHead;
     if(!nodeThis)
@@ -63,7 +65,7 @@ struct node * insert(struct node * nodeHead, int num)
     return nodeHead;
 }
 
-void insertrec(struct node ** nodeHead_, int num)
+void insertrec1(struct node ** nodeHead_, int num)
 {
     if(*(nodeHead_) == NULL)
     {
@@ -78,12 +80,12 @@ void insertrec(struct node ** nodeHead_, int num)
         if(num < nodeThis->num)
         {
             // go left and check for NULL
-            insertrec(&(nodeThis->lptr), num);
+            insertrec1(&(nodeThis->lptr), num);
         }
         else if(num >= nodeThis->num)
         {
             // go right and check for NULL
-            insertrec(&(nodeThis->rptr), num);
+            insertrec1(&(nodeThis->rptr), num);
         }
     }
 
@@ -132,49 +134,89 @@ struct node * insertrec2(struct node * nodeHead, int num)
     }
 }
 
+
 // this function could be change to return the number of nodes displayed.
 // good excercise in a recursive scenario
 void displayrec(struct node * nodeHead)
 {
     // this is in inorder
-    if(!nodeHead)
-    {
-        // printf("no nodes\n");
+    if(!nodeHead) {
         return;
     }
 
     struct node * nodeThis = nodeHead;
+
     displayrec(nodeThis->lptr);
-    printf("%d\n", nodeThis->num);
+    printf("%d, ", nodeThis->num);
+
     displayrec(nodeThis->rptr);
+
 }
 
-void displayiter(struct node * nodeHead) // buggy
-{
-    int * arr[100];
-    int top = -1;
-    // this is in inorder
-    while(nodeHead)
-    {
-        if(nodeHead != NULL)
-        {
-            // printf("here1\n");
-            // push nodeHead;
-            arr[++top] = (int *)nodeHead;
-            nodeHead = nodeHead->lptr;
 
-        }
-        // printf("here2\n");
-        if(nodeHead == NULL)
-        {
-            // printf("here3\n");
-            // pop nodeHead;
-            nodeHead = (struct node *)arr[top--];
-            printf("%d\n", nodeHead->num);
-            nodeHead = nodeHead->rptr;
-        }
+void delete(struct node * head, int find) {
+    int prev;
+    struct node * delnode = NULL, pred = NULL;
+    prev = displayiter(head, 63, delnode, pred);
+
+    // we are trying to delete 63.
+    // delnode points to 63 and pred points to predecessor of 63
+
+    if(delnode->lptr == NULL && delnode->rptr == NULL) {
+	// we need the parent pointer too and whether this is a left or right child
+
+    }
+}
+
+
+int displayiter(struct node * nodeHead, int find, struct node ** delnode, struct node ** pred)
+{
+    struct node * this = NULL;
+    struct node * arr[100];
+    signed int top = -1;
+    unsigned int new = 1; // new is a marker to understand after a continue whether to traverse left or right
+                          // new 1 means its a new traverse on a fresh subtree so go left, else go right
+    int prev = 0, found = 0;
+
+    // this is in inorder
+    this = nodeHead;
+    while(this) {
+	if(this->lptr && new) {
+	    arr[++top] = this;
+	    this = this->lptr;
+	    new = 1;
+	    continue;
+	} else {
+
+	    printf("%d, ", this->num);
+	    if(this->num != find && !found) {
+		prev = this->num;
+		*pred = this;
+	    } else {
+		found = 1;
+		*delnode = this;
+	    }
+
+	    if(this->rptr) {
+		this = this->rptr;
+		new = 1;
+		continue;
+	    } else {
+		this = arr[top--];
+		if(top > -2) { // just signifies that the last elem of the stack has been popped out
+		    new = 0;
+		    continue;
+		} else {
+		    break;
+		}
+	    }
+	}
     }
 
+    if(pred->num != prev || delnode->num != find) {
+	printf("\nsup: WARNING: something wrong. predecessor not computed properly");
+    }
+    return prev;
 }
 
 #define rnd() (rand()%100)
@@ -183,19 +225,21 @@ int main()
     struct node * head = NULL;
     displayrec(head);
     printf("\n\n");
+//    head = insert(head, 5);
+//    insert(head, 1);
+//    insert(head, 8);
     head = insertrec2(head, rnd());
     insert(head, rnd());
     insertrec2(head, rnd());
     insert(head, rnd());
     insert(head, rnd());
-    insertrec(&head, rnd());
+    insertrec1(&head, rnd());
     insert(head, rnd());
     insert(head, rnd());
     insert(head, rnd());
     insert(head, rnd());
-
     insertrec2(head, 7);
-    insertrec(&head, 5);
+    insertrec1(&head, 5);
     insertrec2(head, 6);
     insertrec2(head, rnd());
     insertrec2(head, rnd());
@@ -216,8 +260,11 @@ int main()
     insertrec2(head, rnd());
     insertrec2(head, rnd());
     insertrec2(head, rnd());
-    printf("--- display rec --- \n");
+    printf("\n--- display --- \n");
     displayrec(head);
+    printf("\n--- display --- \n");
+    displayiter(head, 5);
+    printf("\n");
 
     return 0;
 }
