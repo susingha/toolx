@@ -18,7 +18,7 @@ int main(void)
     unsigned int i = 0;
     char buf[BUFLEN_S];
     time_t start, now, next = 0;
-    long long int bytes = 0;
+    long long int bytes = 0, intervalbytes = 0;
 
 #ifdef TIMEDEBUG
     while(1) {
@@ -49,20 +49,22 @@ int main(void)
 	buf[BUFLEN_S-1] = '\0';
 	recvcount++;
 	bytes += BUFLEN_S;
+	intervalbytes += BUFLEN_S;
 
 	now = time(NULL);
 	if(now >= next) {
-	    next = now + 5;
+	    next = now + BW_INTERVAL;
 
 #if 1
-	    printf("Received packet from %s:%d\n%lld Bytes. bw = %.2f Bytes/s\n\n",
+	    printf("Received packet from %s:%d\n%lld Bytes. total bw = %.2f Bytes/s, current bw = %.2f Bytes/s\n\n",
 		    inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port),
-		    bytes, ((float)bytes/(float)(now - start)));
+		    bytes, ((float)bytes/(float)(now - start)), ((float)intervalbytes/(float)BW_INTERVAL));
 #else
 	    printf("Received packet from %s:%d\nrecvcount = %u. bw = %f Kbits/s\n\n",
 		    inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port),
 		    /*buf,*/ recvcount, (float)(recvcount * ((BUFLEN_S / 1024)) * 8)/(float)(now - start));
 #endif
+	    intervalbytes = 0;
 	}
 //	sleep(1);
 //  }

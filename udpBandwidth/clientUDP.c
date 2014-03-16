@@ -10,6 +10,7 @@
 #include "commons.h"
 #include "utils.h"
 
+// #define SRV_IP "172.24.245.113"
 #define SRV_IP "127.0.0.1"
 
 int main(void)

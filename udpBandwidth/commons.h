@@ -4,5 +4,6 @@
 #define BUFLEN_S 4096
 #define NPACK 10
 #define PORT 9930
+#define BW_INTERVAL 5
 
 #define SUP
