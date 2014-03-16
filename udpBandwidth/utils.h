@@ -1,0 +1,2 @@
+
+void diep(char *s);
