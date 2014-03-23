@@ -20,6 +20,7 @@ int main() {
     struct mov m;
     m.a = 56;
     int arr[] = {1,2,3,4,5};
+    int i = 4, j = 3;
 
     char * str1 = "ABC";
     char str2[] = "DEF";
@@ -30,10 +31,11 @@ int main() {
     printf("%u\n", mq);
     printf("size = %ld\n", ((unsigned long int)mq - (unsigned long int)mp));
 
-    printf("unsigned long = %d, struct = %d, union = %d, array = %d\n", (int) sizeof(unsigned long),
+    printf("unsigned long = %d, struct = %d, union = %d, array = %d, long long int = %d\n", (int) sizeof(unsigned long),
 	                                                              (int) sizeof(m),
 							              (int) sizeof(union uu),
-							              (int) sizeof(arr));
+							              (int) sizeof(arr),
+								      (int) sizeof(long long int));
 
     printf("%s \n%s \n", str1, str2);
     *str1 = 'X';
@@ -41,8 +43,10 @@ int main() {
     printf("%s \n%s \n", str1, str2);
 
 
+    printf("%f", (float)i/(float)j);
 
 
+    printf("\n\n");
     return 0;
 }
 
