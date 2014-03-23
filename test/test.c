@@ -21,16 +21,24 @@ int main() {
     m.a = 56;
     int arr[] = {1,2,3,4,5};
 
+    char * str1 = "ABC";
+    char str2[] = "DEF";
+
     struct mov * mp = NULL;
     struct mov * mq = mp + 1;
     printf("%u\n", mp);
     printf("%u\n", mq);
     printf("size = %ld\n", ((unsigned long int)mq - (unsigned long int)mp));
 
-    printf("unsigned long = %d, struct = %d, union = %d, array = %d", (int) sizeof(unsigned long),
+    printf("unsigned long = %d, struct = %d, union = %d, array = %d\n", (int) sizeof(unsigned long),
 	                                                              (int) sizeof(m),
 							              (int) sizeof(union uu),
 							              (int) sizeof(arr));
+
+    printf("%s \n%s \n", str1, str2);
+    *str1 = 'X';
+    *str2 = 'Y';
+    printf("%s \n%s \n", str1, str2);
 
 
 
