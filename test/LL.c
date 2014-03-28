@@ -64,13 +64,26 @@ struct node * reverse(struct node * headnode) {
 
     while(this) {
 	nextnode = this->next;
+//                    |	
+//        +-----------+
+//        |
 	this->next = prevnode;
+//                    |	
+//        +-----------+
+//        |
 	prevnode = this;
+//                    |	
+//        +-----------+
+//        |
 	this = nextnode;
     }
 
     headnode = prevnode;
     return headnode;
+}
+
+struct node * reverseprac(struct node * headnode) {
+    return NULL;
 }
 
 void deleteMatches(struct node ** head_p, int match) {
@@ -80,10 +93,7 @@ void deleteMatches(struct node ** head_p, int match) {
 
     while((*head_p)) {
 	val = (*head_p)->num;
-	// printf("%d, ", (*head_p)->num);
 	if(val == match) {
-	    // printf("match\n");
-	    // del this node and adjust pointers
 	    this = (*head_p);
 	    *head_p = this->next; // in case we are deleting a node, this step is already a next. skip nexting in this iteration
 	    free(this);
