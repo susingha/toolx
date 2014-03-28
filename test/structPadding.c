@@ -11,6 +11,9 @@ struct mov {
     int d;
 };
 
+struct new {
+};
+
 union uu {
     int a;
     char p1;
@@ -27,10 +30,11 @@ int main() {
     printf("%u\n", mq);
     printf("size = %ld\n", ((unsigned long int)mq - (unsigned long int)mp));
 
-    printf("unsigned long = %d, struct = %d, union = %d, array = %d", (int) sizeof(unsigned long),
+    printf("unsigned long = %d, struct = %d, union = %d, array = %d, new = %d\n", (int) sizeof(unsigned long),
 	                                                              (int) sizeof(m),
 							              (int) sizeof(union uu),
-							              (int) sizeof(arr));
+							              (int) sizeof(arr),
+								      (int) sizeof(struct new));
 
 
 

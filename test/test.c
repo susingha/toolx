@@ -22,6 +22,9 @@ int main() {
     int arr[] = {1,2,3,4,5};
     int i = 4, j = 3;
 
+    char * str1 = "ABC";
+    char str2[] = "DEF";
+
     struct mov * mp = NULL;
     struct mov * mq = mp + 1;
     printf("%u\n", mp);
@@ -33,6 +36,11 @@ int main() {
 							              (int) sizeof(union uu),
 							              (int) sizeof(arr),
 								      (int) sizeof(long long int));
+
+    printf("%s \n%s \n", str1, str2);
+    *str1 = 'X';
+    *str2 = 'Y';
+    printf("%s \n%s \n", str1, str2);
 
 
     printf("%f", (float)i/(float)j);
