@@ -13,14 +13,15 @@
 // #define SRV_IP "172.24.245.113"
 #define SRV_IP "127.0.0.1"
 
-int main(void)
+int main(int argc, char * argv[])
 {
     struct sockaddr_in si_other;
     int s, i, slen=sizeof(si_other);
     unsigned int sendcount = 0;
     char buf[BUFLEN_C];
+    int * head = (int *)buf;
     time_t now, next = 0;
-
+    char * srv_ip = argv[1];
 
     if ((s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
 	diep("socket");
@@ -28,7 +29,7 @@ int main(void)
     memset((char *) &si_other, 0, sizeof(si_other));
     si_other.sin_family = AF_INET;
     si_other.sin_port = htons(PORT);
-    if (inet_aton(SRV_IP, &si_other.sin_addr) == 0) {
+    if (inet_aton(srv_ip, &si_other.sin_addr) == 0) {
 	fprintf(stderr, "inet_aton() failed\n");
 	exit(1);
     }
@@ -38,6 +39,8 @@ int main(void)
     while(1) {
 	for (i = 0; i < NPACK; i++) {
 
+	    ++sendcount;
+
 	    now = time(NULL);
 	    if(now >= next) {
 		next = now + 5;
@@ -45,11 +48,11 @@ int main(void)
 	    }
 #ifdef SUP
 	    memset(buf, 'A' + i, BUFLEN_C);
+	    *head = sendcount;
 	    buf[BUFLEN_C-1] = '\0';
 #endif
 	    if (sendto(s, buf, BUFLEN_C, 0, (struct sockaddr *)&si_other, slen) == -1)
 		diep("sendto()");
-	    ++sendcount;
 	}
 //	getc(stdin);
     }

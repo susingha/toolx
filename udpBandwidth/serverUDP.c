@@ -17,8 +17,10 @@ int main(void)
     unsigned long bw = 0;
     unsigned int i = 0;
     char buf[BUFLEN_S];
+    int * head = (int *)buf;
     time_t start, now, next = 0;
     long long int bytes = 0, intervalbytes = 0;
+    unsigned int lost = 0;
 
 #ifdef TIMEDEBUG
     while(1) {
@@ -39,7 +41,12 @@ int main(void)
 	diep("bind");
 
     recvfrom(s, buf, BUFLEN_S, 0, (struct sockaddr *)&si_other, &slen);
-    printf("\nServer started receiving data\n\n");;
+	recvcount++;
+	bytes += BUFLEN_S;
+	intervalbytes += BUFLEN_S;
+	lost = (*head) - recvcount;
+    printf("\nServer started receiving data\n");
+    printf("head = %u, recvcount = %u, lost = %u\n\n", *head, recvcount, lost);
     start = now = time(NULL);
     next = now + 5;
     while(1) {
@@ -50,19 +57,20 @@ int main(void)
 	recvcount++;
 	bytes += BUFLEN_S;
 	intervalbytes += BUFLEN_S;
+	lost = (*head) - recvcount;
 
 	now = time(NULL);
 	if(now >= next) {
 	    next = now + BW_INTERVAL;
 
 #if 1
-	    printf("Received packet from %s:%d\n%lld Bytes. total bw = %.2f Bytes/s, current bw = %.2f Bytes/s\n\n",
+	    printf("Received packet from %s:%d\n%lld Bytes (%u Packets, lost: %u). Average bw = %.2f Bytes/s, Current bw = %.2f Bytes/s\n\n",
 		    inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port),
-		    bytes, ((float)bytes/(float)(now - start)), ((float)intervalbytes/(float)BW_INTERVAL));
+		    bytes, recvcount, lost, ((float)bytes/(float)(now - start)), ((float)intervalbytes/(float)BW_INTERVAL));
 #else
 	    printf("Received packet from %s:%d\nrecvcount = %u. bw = %f Kbits/s\n\n",
 		    inet_ntoa(si_other.sin_addr), ntohs(si_other.sin_port),
-		    /*buf,*/ recvcount, (float)(recvcount * ((BUFLEN_S / 1024)) * 8)/(float)(now - start));
+		    /*buf,*/ recvcount, lost, (float)(recvcount * ((BUFLEN_S / 1024)) * 8)/(float)(now - start));
 #endif
 	    intervalbytes = 0;
 	}

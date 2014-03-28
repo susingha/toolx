@@ -3,11 +3,23 @@
 #
 
 # CCFLAGS=-Wall
-CC=gcc
+# CC=gcc
 
-all:
-	$(CC) -o serverUDP $(CCFLAGS) serverUDP.c  utils.c
-	$(CC) -o clientUDP $(CCFLAGS) clientUDP.c  utils.c
+all: serverUDP clientUDP
+
+serverUDP: serverUDP.o utils.o
+	$(CC) $(LDFLAGS) serverUDP.o utils.o -o serverUDP
+clientUDP: clientUDP.o utils.o
+	$(CC) $(LDFLAGS) clientUDP.o utils.o -o clientUDP
+
+serverUDP.o:
+	$(CC) $(CCFLAGS) -c serverUDP.c
+clientUDP.o:
+	$(CC) $(CCFLAGS) -c clientUDP.c
+utils.o:
+	$(CC) $(CCFLAGS) -c utils.c
+
+
 
 clean:
 	rm -f serverUDP clientUDP *.o
