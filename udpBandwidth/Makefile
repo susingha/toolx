@@ -2,8 +2,8 @@
 # $Id: Makefile,v 1.18 2004/11/01 16:22:03 mkirchner Exp $
 #
 
-# CCFLAGS=-Wall
-# CC=gcc
+CCFLAGS=-MD
+CC=gcc
 
 all: serverUDP clientUDP
 
