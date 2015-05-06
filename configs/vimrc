@@ -1,0 +1,51 @@
+" Originally was using this at Tejas Networks. Fedora 12 2008 - 2011. Modified version ever since
+" Be sure to update vim when using this config file. Use, distribute, contribute however you want
+" I want to add comments on each line explaining functionality
+
+set ruler
+
+set backspace=2
+
+set nocompatible
+
+set shiftwidth=4
+
+set ai
+
+set sm
+
+set nu
+
+set ic
+
+set wrap
+
+set linebreak
+
+set wildmode=list:longest
+
+set textwidth=0
+
+set incsearch
+
+set hlsearch
+
+set bg=dark
+
+set cindent
+
+set nowrap
+
+" set lines=60 columns=150
+
+set guifont=-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-KOI8-R
+
+" set spell spelllang=en_us
+
+syntax on
+
+" restore last cursor position for individual files
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>

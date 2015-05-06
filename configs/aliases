@@ -1,0 +1,43 @@
+
+alias x="exit 0"
+alias vi=vim
+alias vr='vim -R'
+alias ..="cd .."
+alias ...="cd ../.."
+alias l="ls -l; pwd"
+alias l.='ls -d .* --color=tty'
+alias ls='ls --color=tty'
+alias ll='ls -l --color=tty'
+alias rl='ls -l > /tmp/l ; cat /tmp/l'
+alias sc="screen -x ci"
+
+
+cdo()
+{
+    a=$SF_PREFIX/../ims/
+    b=$SF_PREFIX/../ims/src/third-party/nse
+    c=$SF_PREFIX/../ims/src/libraries/daq-modules
+    d=$SF_PREFIX/../ims/src/binaries/sfrna/
+    e=$SF_PREFIX/
+
+    printf "\
+	1. $a\n\
+	2. $b\n\
+	3. $c\n\
+	4. $d\n\
+	5. $e\n"
+    printf "to ? [1]:"
+    
+    read -t 3 ch
+    case $ch in
+	1) cmd="cd $a";;
+	2) cmd="cd $b";;
+	3) cmd="cd $c";;
+	4) cmd="cd $d";;
+	5) cmd="cd $e";;
+	*) cmd="cd $a";;
+    esac
+
+    printf "\n$cmd\n"
+    $cmd
+}
