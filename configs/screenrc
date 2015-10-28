@@ -13,7 +13,7 @@
 
 # Reset the color to black at the end to ensure that the terminal color
 # remains black.
-hardstatus alwayslastline "%{kg}%-w %{kr}%n-%t %{kg}%+w %{07}"
+hardstatus alwayslastline "%{= KW}%{= Kw}%{-} %-w%{= bW}%n %t%{-}%+w %=%m/%d %c"
 terminfo xterm 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
 startup_message off
 set term=ansi 
@@ -34,8 +34,6 @@ bindkey ^[[1;5C next
 # bindkey ^[[1;2C next
 
 altscreen on
-hardstatus on
-hardstatus string "%w%=%m/%d %c"
 
 # allow the use of the Home/End keys
 # "\e[1~": beginning-of-line
