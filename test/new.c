@@ -1,1 +1,4 @@
 int i;
+
+int main () {
+}
