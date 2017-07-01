@@ -15,6 +15,7 @@ endif
 
 
 set ruler
+set rulerformat=%50(%f\ %5l,%-6(%c%V%)\ %P%)
 set backspace=2
 set nocompatible
 set shiftwidth=4
