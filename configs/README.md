@@ -1,4 +1,3 @@
 configs
 =======
-
-Config files, config scripts found here
+All these configs needs to go to the web through evernote / simplenote / onenote.
