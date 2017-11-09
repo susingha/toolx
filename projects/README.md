@@ -1,9 +1,3 @@
-0x_Projects
-===========
-
-Academic and Fun Projects
-Refer individual folder for detailed instructions and README
-
 List of Projects:
 =================
 
