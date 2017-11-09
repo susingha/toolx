@@ -1,0 +1,254 @@
+#!/usr/bin/python3
+
+""" Modifying multiplaxos implementation to accomodate Byzantining paxos by refinement.
+    This document demostrates the Paxos Consensus Algorithm via DistAlgo
+"""
+
+from random import randint
+
+NOPS = 10                       # Number of operations of the state machine
+operations = {i: (lambda state: (state+i,state+i)) for i in range(NOPS)}
+
+class Replica(DistProcess):
+    def setup(leaders, initial_state):
+        state, slot_num = initial_state, 1
+        proposals, decisions = set(), set()
+
+    def main():
+        await(False)
+
+    def propose(p):
+        if not {s for (s, p1) in decisions if p1 == p}:
+            maxs = max({0} |
+                       set(s for (s,p1) in proposals) |
+                       set(s for (s,p1) in decisions))
+            s1 = min(s for s in range(1, maxs + 1 + 1)
+                     if not (set(p1 for (s0, p1) in proposals if s0 == s) |
+                             set(p1 for (s0, p1) in decisions if s0 == s)))
+            proposals.add((s1, p))
+            send(Propose(s1, p), leaders)
+
+    def perform(s, p):
+        k, cid, op = p
+        send(Response(cid, s), k)
+
+    def OnRequest(p):
+        propose(p)
+
+    def OnDecision(s, p):
+        decisions.add((s,p))
+        perform(s, p)
+
+class Acceptor(DistProcess):
+    """ Acceptor process creation takes fake argument.
+	When it is True they do some abnormal behaviours. [TODO] """
+    def setup(fake):
+        ballot_num = (-1, -1)   # bottom
+        accepted = set()
+
+    def main():
+        await(False)
+
+    def OnP1a(lam, b):
+        if b > ballot_num:
+            ballot_num = b
+        send(P1b(self, ballot_num, accepted), lam) # accepted stores all the votes that has been cast
+
+    def OnP2a(lam, load):
+        b, s, p = load
+        """ Emulating fake """
+        if b >= ballot_num or fake:
+            ballot_num = b
+            accepted.add((b,s,p))
+        """ Emulating fake """
+        if not fake:
+            send(P2b(self, ballot_num, s), lam)
+        """ Acceptor voting for s in ballot ballot_num.
+            Acceptor cannot vote for different value in the same ballot """
+
+class Leader(DistProcess):
+    def setup(realacceptors, fakeacceptors, replicas):
+        acceptors = realacceptors | fakeacceptors
+        ballot_num = (0, self)
+        pvalues = set()
+        active = False
+        Phase2 = False
+        proposals = set()
+
+    def main():
+        spawn(Scout, [self, realacceptors, fakeacceptors, ballot_num])
+        await(False)
+
+    def OnPropose(s, p):
+        if not {p1 for (s1, p1) in proposals if s1 == s}:
+            """ if proposals doesnt have any item with this slot s.
+                i.e. all items in proposals will have unique slot numbers"""
+            proposals.add((s,p))
+            await(Phase2 == False)
+            if Phase2 == False and active == True:
+                s, p = proposals.pop()
+                if(len(pvalues)):
+                    s = safevalue(pvalues)
+                spawn(Commander, [self, realacceptors, fakeacceptors, replicas, (ballot_num, s, p)])
+                Phase2 = True
+
+    def OnAdopted(ballot_num_, pvals):
+        """ All values in pvals (the complete P1b response set from all acceptors) are always less than ballot_num_ """
+        pvalues |= pvals
+        if ballot_num_ == ballot_num:
+            active = True
+            if Phase2 == False and len(proposals) > 0:
+                s, p = proposals.pop()
+                if(len(pvalues)):
+                    s = safevalue(pvalues)
+                spawn(Commander, [self, realacceptors, fakeacceptors, replicas, (ballot_num, s, p)])
+                Phase2 = True
+
+    def safevalue(pvalues):
+        if(len(pvalues)):
+            safeval = [s1 for (b1, s1, p1) in pvalues if b1 == max(b for (b, s, p) in pvalues)]
+            if(len(safeval) > 1):
+                output("ALERT: More than one (%d) voted value for a ballot" % (len(safeval)))
+            return safeval[0]
+        else:
+            return -1
+
+    def OnPreempted(b, phase):
+        r1, lam1 = b
+        if b > ballot_num:
+            active = False
+            ballot_num = (r1+1, self)
+            spawn(Scout, [self, realacceptors, fakeacceptors, ballot_num])
+        if phase == 2:
+            Phase2 = False
+
+    def OnAckLeader(b):
+        r1, lam1 = b
+        if b == ballot_num:
+            active = False
+            ballot_num = (r1+1, self)
+            spawn(Scout, [self, realacceptors, fakeacceptors, ballot_num])
+        Phase2 = False
+
+    def circle_plus(x, y):
+        """ y = pmax(pvals) will have items with all unique slot numbers s.
+	    take an item from x = proposals. check if its slot is present in y.
+	    If the slot is not present in y, add this item from x to y.
+	    Add only those slots from x which doesnt happear in y to y. """
+        return y | {(s, p) for (s, p) in x
+                      if not {p1 for (s0, p1) in y if s0 == s}}
+
+    def pmax(pvals):
+        """ take an item (b,s,p) from pvals. Find all other items with the same slot s.
+	    pick only the one that has the highest b. Display it out but show only (s, p).
+	    Continue for all such unique slots. """
+        return {(s, p) for (b, s, p) in pvals
+                if all(b1 <= b for (b1, s0, p1) in pvals if s0 == s)}
+
+
+class Commander(DistProcess):
+    def setup(lam, realacceptors, fakeacceptors, replicas, load):
+        acceptors = realacceptors | fakeacceptors
+        waitfor = len(realacceptors)
+        """ Wait for replies from all the real acceptors for consensus """
+        b, s, p = load
+        done = False
+
+    def main():
+        send(P2a(self, (b, s, p)), acceptors)
+        await(done)
+
+    def OnP2b(a, b1, s1):
+        if (b1 == b):
+            waitfor -= 1
+            if waitfor == 0:
+                send(Decision(s, p), replicas)
+                send(AckLeader(b1), lam)
+                done = True
+        else:
+            send(Preempted(b1, 2), lam)
+            done = True
+
+
+class Scout(DistProcess):
+    def setup(lam, realacceptors, fakeacceptors, b):
+        acceptors = realacceptors | fakeacceptors
+        waitfor = len(realacceptors)
+        """ Wait for replies from all the real acceptors for consensus """
+        done = False
+
+    def main():
+        import time
+        import random
+        time.sleep(random.random())
+        send(P1a(self, b), acceptors)
+        await(done)
+
+    def OnP1b(a, b1, r):
+        if b1 == b:
+            waitfor -= 1
+            if waitfor == 0:
+                send(Adopted(b, r), lam)
+                done = True
+        else:
+            send(Preempted(b1, 1), lam)
+            done = True
+
+class Client(DistProcess):
+    def setup(replicas):
+        cid = 0
+        results = dict()
+        count = dict()
+
+    def main():
+        while (True):
+            count[cid] = 0
+            send(Request((self, cid, randint(0, NOPS-1))), replicas)
+            await(results.get(cid) != None and count.get(cid) == len(replicas))
+            output("Received result %d:%d" % (cid, results[cid]))
+            cid += 1
+
+    def OnResponse(cid, chosen):
+        if results.get(cid) == None:
+            results[cid] = chosen
+            count[cid] = 1
+        else:
+            if results[cid] != chosen:
+                output("ALERT: Replicas out of sync at cid(%d) : %d - %d " % (cid, results[cid], chosen))
+            else:
+                count[cid] += 1
+
+def main():
+    """ Adding separate sets for real and fake acceptors
+	Making eack process know about this differentiation in sets """
+    nacceptors = 20
+    """ this is N, forms byzacceptors """
+    nfakeacceptors = 2
+    """ this is f """
+    nrealacceptors = nacceptors - nfakeacceptors
+    """ forms byzquorum """
+    nreplicas = 10
+    nleaders = 5
+    nclients = 1
+    nops = 5
+
+    use_channel("tcp")
+
+    realacceptors = createprocs(Acceptor, nrealacceptors, (False,))
+    fakeacceptors = createprocs(Acceptor, nfakeacceptors, (True,))
+    acceptors = realacceptors | fakeacceptors
+    replicas = createprocs(Replica, nreplicas)
+    leaders = createprocs(Leader, nleaders, (realacceptors, fakeacceptors, replicas))
+    clients = createprocs(Client, nclients, (replicas,))
+    setupprocs(replicas, (leaders, 0))
+
+    startprocs(acceptors)
+    startprocs(replicas | leaders)
+    startprocs(clients)
+
+    for p in acceptors | replicas | leaders | clients: p.join()
+
+
+
+
+

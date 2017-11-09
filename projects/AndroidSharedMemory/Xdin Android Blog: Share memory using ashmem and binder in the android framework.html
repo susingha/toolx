@@ -1,0 +1,1589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html dir='ltr' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<!-- Syntax Highlighter settings. http://alexgorbatchev.com -->
+<!-- For some reason the files can't be loaded from our web site. Ideally, the code below should come from https://sites.google.com/site/androidenea/ instead of http://alexgorbatchev.com/pub/sh/current/ -->
+<!-- Make it work and switch back to our storage. -->
+<!-- First we add CSS styles -->
+<link href='http://alexgorbatchev.com/pub/sh/current/styles/shCore.css' rel='stylesheet' type='text/css'/>
+<link href='http://alexgorbatchev.com/pub/sh/current/styles/shCoreDefault.css' rel='stylesheet' type='text/css'/>
+<link href='http://alexgorbatchev.com/pub/sh/current/styles/shThemeDefault.css' rel='stylesheet' type='text/css'/>
+<!-- Second we add JS scripts -->
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shCore.js' type='text/javascript'></script>
+<!-- Then we add Brushes -->
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJava.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushJScript.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCSharp.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushXml.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushSql.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCss.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushCpp.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushBash.js' type='text/javascript'></script>
+<script src='http://alexgorbatchev.com/pub/sh/current/scripts/shBrushPlain.js' type='text/javascript'></script>
+<!-- At last we call SyntaxHighlighter -->
+<script language='javascript' type='text/javascript'> 
+    SyntaxHighlighter.config.bloggerMode = true;
+    SyntaxHighlighter.defaults['toolbar'] = false;
+    SyntaxHighlighter.all();
+</script>
+<head>
+<meta content='g4w+Klap+kVoWvkYt8WaNGHLm+ynbrRu4g1rLkNbrVc=' name='verify-v1'/>
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<script type="text/javascript">(function() { var b=window,e="jstiming",g="tick";(function(){function d(a){this.t={};this.tick=function(a,d,c){c=void 0!=c?c:(new Date).getTime();this.t[a]=[c,d]};this[g]("start",null,a)}var a=new d;b.jstiming={Timer:d,load:a};if(b.performance&&b.performance.timing){var a=b.performance.timing,c=b[e].load,f=a.navigationStart,a=a.responseStart;0<f&&a>=f&&(c[g]("_wtsrt",void 0,f),c[g]("wtsrt_","_wtsrt",a),c[g]("tbsd_","wtsrt_"))}try{a=null,b.chrome&&b.chrome.csi&&(a=Math.floor(b.chrome.csi().pageT),c&&0<f&&(c[g]("_tbnd",void 0,b.chrome.csi().startE),
+c[g]("tbnd_","_tbnd",f))),null==a&&b.gtbExternal&&(a=b.gtbExternal.pageT()),null==a&&b.external&&(a=b.external.pageT,c&&0<f&&(c[g]("_tbnd",void 0,b.external.startE),c[g]("tbnd_","_tbnd",f))),a&&(b[e].pt=a)}catch(l){}})();b.tickAboveFold=function(d){var a=0;if(d.offsetParent){do a+=d.offsetTop;while(d=d.offsetParent)}d=a;750>=d&&b[e].load[g]("aft")};var h=!1;function k(){h||(h=!0,b[e].load[g]("firstScrollTime"))}b.addEventListener?b.addEventListener("scroll",k,!1):b.attachEvent("onscroll",k);
+ })();</script>
+<meta content='blogger' name='generator'/>
+<link href='http://www.androidenea.com/favicon.ico' rel='icon' type='image/x-icon'/>
+<link href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html' rel='canonical'/>
+<link rel="alternate" type="application/atom+xml" title="Xdin Android Blog - Atom" href="http://www.androidenea.com/feeds/posts/default" />
+<link rel="alternate" type="application/rss+xml" title="Xdin Android Blog - RSS" href="http://www.androidenea.com/feeds/posts/default?alt=rss" />
+<link rel="service.post" type="application/atom+xml" title="Xdin Android Blog - Atom" href="http://www.blogger.com/feeds/254432337824511900/posts/default" />
+
+<link rel="alternate" type="application/atom+xml" title="Xdin Android Blog - Atom" href="http://www.androidenea.com/feeds/6718983655039983102/comments/default" />
+<!--[if IE]> <script> (function() { var html5 = ("abbr,article,aside,audio,canvas,datalist,details," + "figure,footer,header,hgroup,mark,menu,meter,nav,output," + "progress,section,time,video").split(','); for (var i = 0; i < html5.length; i++) { document.createElement(html5[i]); } try { document.execCommand('BackgroundImageCache', false, true); } catch(e) {} })(); </script> <![endif]-->
+<title>Xdin Android Blog: Share memory using ashmem and binder in the android framework</title>
+<link type='text/css' rel='stylesheet' href='//www.blogger.com/static/v1/widgets/3189209027-widget_css_bundle.css' />
+<link type='text/css' rel='stylesheet' href='//www.blogger.com/dyn-css/authorization.css?targetBlogID=254432337824511900&zx=8038e8b8-f50a-4096-813a-63c5c29000e0' />
+<style id='page-skin-1' type='text/css'><!--
+/*
+-----------------------------------------------
+Blogger Template Style
+Name:     Denim
+Designer: Darren Delaye
+URL:      www.DarrenDelaye.com
+Date:     11 Jul 2006
+-----------------------------------------------
+*/
+/* Variable definitions
+====================
+<Variable name="bgColor" description="Page Background Color"
+type="color" default="#efefef">
+<Variable name="textColor" description="Text Color"
+type="color" default="#333333">
+<Variable name="linkColor" description="Link Color"
+type="color" default="#336699">
+<Variable name="headerBgColor" description="Page Header Background Color"
+type="color" default="#336699">
+<Variable name="headerTextColor" description="Page Header Text Color"
+type="color" default="#ffffff">
+<Variable name="headerCornersColor" description="Page Header Corners Color"
+type="color" default="#528bc5">
+<Variable name="mainBgColor" description="Main Background Color"
+type="color" default="#ffffff">
+<Variable name="borderColor" description="Border Color"
+type="color" default="#cccccc">
+<Variable name="dateHeaderColor" description="Date Header Color"
+type="color" default="#999999">
+<Variable name="sidebarTitleBgColor" description="Sidebar Title Background Color"
+type="color" default="#ffd595">
+<Variable name="sidebarTitleTextColor" description="Sidebar Title Text Color"
+type="color" default="#333333">
+<Variable name="bodyFont" description="Text Font"
+type="font" default="normal normal 100% Verdana, Arial, Sans-serif;">
+<Variable name="headerFont" description="Page Header Font"
+type="font" default="normal normal 210% Verdana, Arial, Sans-serif;">
+<Variable name="startSide" description="Start side in blog language"
+type="automatic" default="left">
+<Variable name="endSide" description="End side in blog language"
+type="automatic" default="right">
+*/
+/* [SEWA] BEGIN: custom CSS */
+pre
+{
+border: 1px dashed grey;
+background-color: #F5F5F5;
+padding: 15px;
+}
+acronym
+{
+cursor:help;
+}
+/* END Custom CCSSS */
+body {
+background: #e6e6e6;
+margin: 0;
+padding: 0px;
+font: x-small Verdana, Arial;
+text-align: center;
+color: #333333;
+font-size/* */:/**/small;
+font-size: /**/small;
+}
+a:link {
+color: #940f04;
+}
+a:visited {
+color: #940f04;
+}
+a img {
+border-width: 0;
+}
+#outer-wrapper {
+font: normal normal 100% Verdana, Arial, Sans-serif;;
+}
+/* Header
+----------------------------------------------- */
+#header-wrapper {
+margin:0;
+padding: 0;
+background-color: #cccccc;
+text-align: left;
+}
+#header {
+width: 960px;
+margin: 0 auto;
+background-color: #ffffff;
+border: 1px solid #ffffff;
+color: #ffffff;
+padding: 0;
+font: normal normal 210% Verdana, Arial, Sans-serif;;
+}
+h1.title {
+padding-top: 38px;
+margin: 0 14px .1em;
+line-height: 1.2em;
+font-size: 100%;
+}
+h1.title a, h1.title a:visited {
+color: #ffffff;
+text-decoration: none;
+}
+#header .description {
+display: block;
+margin: 0 14px;
+padding: 0 0 40px;
+line-height: 1.4em;
+font-size: 50%;
+}
+/* Content
+----------------------------------------------- */
+.clear {
+clear: both;
+}
+#content-wrapper {
+width: 960px;
+margin: 0 auto;
+padding: 0 0 15px;
+text-align: left;
+background-color: #ffffff;
+border: 1px solid #cccccc;
+border-top: 0;
+}
+#main-wrapper {
+margin-left: 34px;
+width: 664px;
+float: left;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+#sidebar-wrapper {
+margin-right: 14px;
+width: 240px;
+float: right;
+background-color: #ffffff;
+display: inline;       /* fix for doubling margin in IE */
+word-wrap: break-word; /* fix for long text breaking sidebar float in IE */
+overflow: hidden;      /* fix for long non-text content breaking IE sidebar float */
+}
+/* Headings
+----------------------------------------------- */
+h2, h3 {
+margin: 0;
+}
+/* Posts
+----------------------------------------------- */
+.date-header {
+margin: 1.5em 0 0;
+font-weight: normal;
+color: #999999;
+font-size: 100%;
+}
+.post {
+margin: 0 0 1.5em;
+padding-bottom: 1.5em;
+}
+.post-title {
+margin: 0;
+padding: 0;
+font-size: 160%;
+font-weight: bold;
+line-height: 1.2em;
+}
+.post-title a, .post-title a:visited, .post-title strong {
+text-decoration: none;
+color: #333333;
+font-weight: bold;
+}
+.post div {
+margin: 0 0 .75em;
+line-height: 1.3em;
+}
+.post-footer {
+margin: -.25em 0 0;
+color: #333333;
+font-size: 87%;
+}
+.post-footer .span {
+margin-right: .3em;
+}
+.post img {
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.post blockquote {
+margin: 1em 20px;
+}
+.post blockquote p {
+margin: .75em 0;
+}
+/* Comments
+----------------------------------------------- */
+#comments h4 {
+margin: 1em 0;
+color: #999999;
+}
+#comments h4 strong {
+font-size: 110%;
+}
+#comments-block {
+margin: 1em 0 1.5em;
+line-height: 1.3em;
+}
+#comments-block dt {
+margin: .5em 0;
+}
+#comments-block dd {
+margin: .25em 0 0;
+}
+#comments-block dd.comment-footer {
+margin: -.25em 0 2em;
+line-height: 1.4em;
+font-size: 78%;
+}
+#comments-block dd p {
+margin: 0 0 .75em;
+}
+.deleted-comment {
+font-style:italic;
+color:gray;
+}
+.feed-links {
+clear: both;
+line-height: 2.5em;
+}
+#blog-pager-newer-link {
+float: left;
+}
+#blog-pager-older-link {
+float: right;
+}
+#blog-pager {
+text-align: center;
+}
+/* Sidebar Content
+----------------------------------------------- */
+.sidebar h2 {
+margin: 1.6em 0 .5em;
+padding: 4px 5px;
+background-color: #cccccc;
+font-size: 100%;
+color: #333333;
+}
+.sidebar ul {
+margin: 0;
+padding: 0;
+list-style: none;
+}
+.sidebar li {
+margin: 0;
+padding-top: 0;
+padding-right: 0;
+padding-bottom: .5em;
+padding-left: 15px;
+text-indent: -15px;
+line-height: 1.5em;
+}
+.sidebar {
+color: #333333;
+line-height:1.3em;
+}
+.sidebar .widget {
+margin-bottom: 1em;
+}
+.sidebar .widget-content {
+margin: 0 5px;
+}
+/* Profile
+----------------------------------------------- */
+.profile-img {
+float: left;
+margin-top: 0;
+margin-right: 5px;
+margin-bottom: 5px;
+margin-left: 0;
+padding: 4px;
+border: 1px solid #cccccc;
+}
+.profile-data {
+margin:0;
+text-transform:uppercase;
+letter-spacing:.1em;
+font-weight: bold;
+line-height: 1.6em;
+font-size: 78%;
+}
+.profile-datablock {
+margin:.5em 0 .5em;
+}
+.profile-textblock {
+margin: 0.5em 0;
+line-height: 1.6em;
+}
+/* Footer
+----------------------------------------------- */
+#footer {
+clear: both;
+text-align: center;
+color: #333333;
+}
+#footer .widget {
+margin:.5em;
+padding-top: 20px;
+font-size: 85%;
+line-height: 1.5em;
+text-align: left;
+}
+
+--></style>
+<script type="text/javascript">var a=navigator,b="userAgent",c="indexOf",f="&m=1",g="(^|&)m=",h="?",k="?m=1";function l(){var d=window.location.href,e=d.split(h);switch(e.length){case 1:return d+k;case 2:return 0<=e[1].search(g)?null:d+f;default:return null}}if(-1!=a[b][c]("Mobile")&&-1!=a[b][c]("WebKit")&&-1==a[b][c]("iPad")||-1!=a[b][c]("Opera Mini")||-1!=a[b][c]("IEMobile")){var m=l();m&&window.location.replace(m)};
+</script><script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('headEnd');
+</script></head>
+<body>
+<div class='navbar section' id='navbar'><div class='widget Navbar' id='Navbar1'><script type="text/javascript">
+    function setAttributeOnload(object, attribute, val) {
+      if(window.addEventListener) {
+        window.addEventListener('load',
+          function(){ object[attribute] = val; }, false);
+      } else {
+        window.attachEvent('onload', function(){ object[attribute] = val; });
+      }
+    }
+  </script>
+<div id="navbar-iframe-container"></div>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type="text/javascript">
+        gapi.load("iframes-styles-bubble", function() {
+          if (window.iframes && iframes.open) {
+            iframes.open(
+                '//www.blogger.com/navbar.g?targetBlogID\075254432337824511900\46blogName\75Xdin+Android+Blog\46publishMode\75PUBLISH_MODE_HOSTED\46navbarType\75SILVER\46layoutType\75LAYOUTS\46searchRoot\75http://www.androidenea.com/search\46blogLocale\75en\46v\0752\46homepageUrl\75http://www.androidenea.com/\46targetPostID\0756718983655039983102\46blogPostOrPageUrl\75http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html\46vt\0756580860158838567211',
+                {
+                  container: "navbar-iframe-container",
+                  id: "navbar-iframe"
+                },
+                {
+                });
+          }
+        });
+      </script><script type="text/javascript">
+(function() {
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = '//pagead2.googlesyndication.com/pagead/js/google_top_exp.js';
+var head = document.getElementsByTagName('head')[0];
+if (head) {
+head.appendChild(script);
+}})();
+</script>
+</div></div>
+<div id='outer-wrapper'><div id='wrap2'>
+<!-- skip links for text browsers -->
+<span id='skiplinks' style='display:none;'>
+<a href='#main'>skip to main </a> |
+      <a href='#sidebar'>skip to sidebar</a>
+</span>
+<div id='header-wrapper'>
+<div class='header section' id='header'><div class='widget Header' id='Header1'>
+<div id='header-inner'>
+<a href='http://www.androidenea.com/' style='display: block'>
+<img alt='Xdin Android Blog' height='152px; ' id='Header1_headerimg' src='http://1.bp.blogspot.com/-51RO6hA7Awc/T6u5y_dIRwI/AAAAAAAAAHA/F17nqaw6Nao/s960/Android_blog.jpg' style='display: block' width='960px; '/>
+</a>
+</div>
+</div></div>
+</div>
+<div id='content-wrapper'>
+<div id='crosscol-wrapper' style='text-align:center'>
+<div class='crosscol section' id='crosscol'></div>
+</div>
+<div id='main-wrapper'>
+<div class='main section' id='main'><div class='widget Blog' id='Blog1'>
+<div class='blog-posts hfeed'>
+<!-- google_ad_section_start(name=default) -->
+
+          <div class="date-outer">
+        
+<h2 class='date-header'><span>Monday, March 22, 2010</span></h2>
+
+          <div class="date-posts">
+        
+<div class='post-outer'>
+<div class='post hentry'>
+<a name='6718983655039983102'></a>
+<h3 class='post-title entry-title'>
+Share memory using ashmem and binder in the android framework
+</h3>
+<div class='post-header'>
+<div class='post-header-line-1'></div>
+</div>
+<div class='post-body entry-content' id='post-body-6718983655039983102'>
+To share memory between different processes in the android framework ashmem can be used. Ashmem is a android shared memory addon to the linux kernel. <br />
+Ashmem has reference counting so that if many processes use the same area the area will not be removed until all processes has released it, the memory is also virtual and not physically contiguous. If physically contiguous memory is needed like for hardware reasons pmem can be used, but it has no reference counting and is not part of standard Android kernel. <br />
+In this blog post we will concentrate only on ashmem.<br />
+<br />
+Ashmem is allocated via ashmem_create_region() that gives you an file descriptor then you use mmap() on it to get a memory area:<br />
+<br />
+<pre>int fd = ashmem_create_region("SharedRegionName", size); if(fd == 0) {
+  data = mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+  if(data != MAP_FAILED)
+  {
+    /* It works do your stuff*/
+  }
+}
+</pre><br />
+But this will not solve your problem on how to share the memory area. The first problem is that the memory pointer "data" in our example above is per process and can't be shared. The next problem is that for security reasons the name "SharedRegionName" in the example above are not shared between processes. The "other" process that want to access the same shared memory area can't use a ashmem_create_region() with the same name to get access to the same physical memory area. Instead the file descriptor (fd in the example above) needs to be used in a new mmap() in the "other" process. Here comes the third problem, the file descriptor are per process and can't be shared with the other process just like that. Bummer!<br />
+<br />
+The solution is to share the file descriptor with the binder since the binder has special functions that can be used to transfer file descriptors over it's interface. <br />
+To help you with ashmem handeling and file descriptor sharing the class MemoryHeapBase can be used. <br />
+<br />
+To transfer the MemoryHeapBase object you can use the asBinder() on the IMemoryHeap interface class on the server side to transfer the needed information to setup an new area on the client side mapped to the same physical memory.<br />
+<br />
+<pre>sp&lt;imemoryheap&gt; memHeap = ...
+reply-&gt;writeStrongBinder(memHeap-&gt;asBinder())
+</pre><br />
+On the client side the MemoryHeapBase class will take care of all the needed stuff for you and all you need to do in your binder wrapper class is something like this:<br />
+<br />
+<pre>sp&lt;imemoryheap&gt; memHeap;
+memHeap = interface_cast&lt;imemoryheap&gt; (reply.readStrongBinder());
+</pre><br />
+<br />
+Please remember that the mmap:ed memories virtual address is not equal to the physical address even more important that the virtual address is different to each process and might be different for every call to the<br />
+getBufferMemPointer() function even if the same ashmem region is used so be careful if you have stored your pointer somewhere and still operate on it.<br />
+<br />
+Here is a complete example setting up everything needed to get this working.<br />
+<br />
+Interface header: IEneaBuffer.h<br />
+<pre>/*
+ * IEneabuffer.h
+ *  Created on: 19 mars 2010  Author: Zingo Andersen
+ *  License: Public Domain (steal and use what you like)
+ *
+ * Buffer classes to handle the binder communication  */
+
+#ifndef IENEABUFFER_H_
+#define IENEABUFFER_H_
+
+#include &lt;utils/RefBase.h&gt;
+#include &lt;binder/IInterface.h&gt;
+#include &lt;binder/Parcel.h&gt;
+#include &lt;binder/IMemory.h&gt;
+#include &lt;utils/Timers.h&gt;
+
+namespace android {
+
+class IEneaBuffer: public IInterface
+{
+public:
+  DECLARE_META_INTERFACE(EneaBuffer);
+  virtual sp&lt;IMemoryHeap&gt;           getBuffer() = 0;
+};
+
+/* --- Server side --- */
+
+class BnEneaBuffer: public BnInterface&lt;IEneaBuffer&gt;
+{
+public:
+  virtual status_t    onTransact( uint32_t code,
+                                  const Parcel& data,
+                                  Parcel* reply,
+                                  uint32_t flags = 0);
+};
+
+}; // namespace android
+
+#endif /* IENEABUFFER_H_ */
+</pre><br />
+Interface class: IEneaBuffer.cpp<br />
+<pre>/*
+ * IEneaBuffer.cpp
+ *  Created on: 19 mars 2010  Author: Zingo Andersen
+ *  License: Public Domain (steal and use what you like)
+ *
+ * Buffer classes to handle the binder communication
+ */
+
+//#define LOG_TAG "IEneaBuffer"
+#include &lt;utils/Log.h&gt;
+#include &lt;stdint.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;binder/MemoryHeapBase.h&gt;
+#include &lt;IEneaBuffer.h&gt;
+
+namespace android {
+
+enum {
+    GET_BUFFER = IBinder::FIRST_CALL_TRANSACTION
+};
+
+/* --- Client side --- */
+class BpEneaBuffer: public BpInterface&lt;IEneaBuffer&gt;
+{
+public:
+  BpEneaBuffer(const sp&lt;IBinder&gt;& impl) : BpInterface&lt;IEneaBuffer&gt;(impl)
+    {
+    }
+
+  sp&lt;IMemoryHeap&gt; getBuffer()
+  {
+    Parcel data, reply;
+    sp&lt;IMemoryHeap&gt; memHeap = NULL;
+    data.writeInterfaceToken(IEneaBuffer::getInterfaceDescriptor());
+    // This will result in a call to the onTransact()
+    // method on the server in it's context (from it's binder threads)
+    remote()-&gt;transact(GET_BUFFER, data, &reply);
+    memHeap = interface_cast&lt;IMemoryHeap&gt; (reply.readStrongBinder());
+    return memHeap;
+  }
+};
+
+IMPLEMENT_META_INTERFACE(EneaBuffer, "android.vendor.IEneaBuffer");
+
+/* --- Server side --- */
+
+status_t BnEneaBuffer::onTransact(uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
+{
+  switch (code)
+  {
+    case GET_BUFFER:
+    {
+      CHECK_INTERFACE(IEneaBuffer, data, reply);
+      sp&lt;IMemoryHeap&gt; Data = getBuffer();
+      if (Data != NULL)
+      {
+        reply-&gt;writeStrongBinder(Data-&gt;asBinder());
+      }
+      return NO_ERROR;
+      break;
+    }
+    default:
+      return BBinder::onTransact(code, data, reply, flags);
+  }
+}
+
+}; // namespace android
+</pre><br />
+Then use it in your server class by inherit the server class with something like this:<br />
+<br />
+Server command: EneaBufferServer.cpp<br />
+<pre>/*
+ * EneaBufferServer.cpp
+ *  Created on: 19 mars 2010  Author: Zingo Andersen
+ *  License: Public Domain (steal and use what you like)
+ *
+ *  The Server will create a shared area that the client will then use
+ *  The server will initiate the first int in the area and print it's value every
+ *  5s. If you start the client in parallell it will try to change this value
+ *  (value=value+1).
+ */
+
+
+#include "IEneaBuffer.h"
+#include &lt;binder/MemoryHeapBase.h&gt;
+#include &lt;binder/IServiceManager.h&gt;
+#include &lt;binder/IPCThreadState.h&gt;
+
+namespace android {
+
+#define MEMORY_SIZE 10*1024  /* 10Kb shared memory*/
+
+class EneaBufferService : public BnEneaBuffer {
+public:
+  static void instantiate();
+  EneaBufferService();
+  virtual ~EneaBufferService();
+  virtual sp&lt;IMemoryHeap&gt; getBuffer();
+private:
+  sp&lt;MemoryHeapBase&gt; mMemHeap;
+};
+
+sp&lt;IMemoryHeap&gt; EneaBufferService::getBuffer()
+{
+  return mMemHeap;
+}
+
+void EneaBufferService::instantiate()
+{
+  status_t status;
+  status = defaultServiceManager()-&gt;addService(String16("vendor.enea.Buffer"), new EneaBufferService());
+}
+
+EneaBufferService::EneaBufferService()
+{
+  //The memory is allocated using a MemoryHeapBase, and thereby is using ashmem
+  mMemHeap = new MemoryHeapBase(MEMORY_SIZE);
+  unsigned int *base = (unsigned int *) mMemHeap-&gt;getBase();
+  *base=0xdeadcafe; //Initiate first value in buffer
+}
+
+EneaBufferService::~EneaBufferService()
+{
+  mMemHeap = 0;
+}
+
+
+static sp&lt;IMemoryHeap&gt; receiverMemBase;
+
+unsigned int * getBufferMemPointer(void)
+{
+  static sp&lt;IEneaBuffer&gt; eneaBuffer;
+
+  /* Get the buffer service */
+  if (eneaBuffer == NULL)
+  {
+    sp&lt;IServiceManager&gt; sm = defaultServiceManager();
+    sp&lt;IBinder&gt; binder;
+    binder = sm-&gt;getService(String16("vendor.enea.Buffer"));
+    if (binder != 0)
+    {
+      eneaBuffer = IEneaBuffer::asInterface(binder);
+    }
+  }
+  if (eneaBuffer == NULL)
+  {
+    LOGE("The buffer service is not published");
+    return (unsigned int *)-1; /* return an errorcode... */
+  }
+  else
+  {
+    receiverMemBase = eneaBuffer-&gt;getBuffer();
+    return (unsigned int *) receiverMemBase-&gt;getBase();
+  }
+}
+
+
+}
+
+using namespace android;
+
+int main(int argc, char** argv)
+{
+ unsigned int *base;
+
+    EneaBufferService::instantiate();
+
+    //Create binder threads for this "server"
+    ProcessState::self()-&gt;startThreadPool();
+    LOGD("Server is up and running");
+
+    base = getBufferMemPointer();
+
+
+    for(;;)
+    {
+     LOGD("EneaBufferServer base=%p Data=0x%x", base,*base);
+     sleep(5);
+    }
+    // wait for threads to stop
+    //   IPCThreadState::self()-&gt;joinThreadPool();
+    return 0;
+}
+
+
+</pre><br />
+You need add the following line to register the service in the file frameworks/base/cmds/servicemanager/service_manager.c<br />
+<br />
+<pre>{ AID_MEDIA, "vendor.enea.Buffer" },
+</pre><br />
+On the client process side you can use something like the code snippet below to get the memory pointer.<br />
+NOTE: MemoryHeapBase is based on strong pointer and will be "magical" ref counted and removed thats why the client put the object pointer in a static variable in the example below to keep it from being removed.<br />
+<br />
+<pre>/*
+ * EneaBufferClient.cpp
+ *  Created on: 19 mars 2010  Author: Zingo Andersen
+ *  License: Public Domain (steal and use what you like)
+ *
+ *  Get the shared memory buffer from the server and change the first int value
+ *  by adding one to it. The Server should be running in parallell pleas view
+ *  the logcat for the result
+ */
+
+
+#include "IEneaBuffer.h"
+#include &lt;binder/MemoryHeapBase.h&gt;
+#include &lt;binder/IServiceManager.h&gt;
+
+namespace android {
+static sp&lt;IMemoryHeap&gt; receiverMemBase;
+
+unsigned int * getBufferMemPointer(void)
+{
+  static sp&lt;IEneaBuffer&gt; eneaBuffer = 0;
+
+  /* Get the buffer service */
+  if (eneaBuffer == NULL)
+  {
+    sp&lt;IServiceManager&gt; sm = defaultServiceManager();
+    sp&lt;IBinder&gt; binder;
+    binder = sm-&gt;getService(String16("vendor.enea.Buffer"));
+    if (binder != 0)
+    {
+      eneaBuffer = IEneaBuffer::asInterface(binder);
+    }
+  }
+  if (eneaBuffer == NULL)
+  {
+    LOGE("The EneaBufferServer is not published");
+    return (unsigned int *)-1; /* return an errorcode... */
+  }
+  else
+  {
+    receiverMemBase = eneaBuffer-&gt;getBuffer();
+    return (unsigned int *) receiverMemBase-&gt;getBase();
+  }
+}
+
+}
+
+using namespace android;
+
+int main(int argc, char** argv)
+{
+ // base could be on same address as Servers base but this
+ // is purely by luck do NEVER rely on this. Linux memory
+ // management may put it wherever it likes.
+    unsigned int *base = getBufferMemPointer();
+    if(base != (unsigned int *)-1)
+    {
+     LOGD("EneaBufferClient base=%p Data=0x%x\n",base, *base);
+       *base = (*base)+1;
+       LOGD("EneaBufferClient base=%p Data=0x%x CHANGED\n",base, *base);
+        receiverMemBase = 0;
+    }
+    else
+    {
+     LOGE("Error shared memory not available\n");
+    }
+    return 0;
+}
+
+
+</pre><br />
+And my Android.mk file for this:<br />
+<pre># Ashmem shared buffer example
+# Created on: 19 mars 2010  Author: Zingo Andersen # License: Public Domain (steal and use what you like)
+
+LOCAL_PATH:= $(call my-dir)
+
+#
+# BufferServer
+#
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:=        \
+ IEneaBuffer.cpp      \
+ EneaBufferServer.cpp \
+   
+LOCAL_SHARED_LIBRARIES:= libcutils libutils libbinder
+
+LOCAL_MODULE:= EneaBufferServer
+
+LOCAL_CFLAGS+=-DLOG_TAG=\"EneaBufferServer\"
+
+LOCAL_PRELINK_MODULE:=false
+include $(BUILD_EXECUTABLE)
+
+#
+# BufferClient
+#
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES:=        \
+ IEneaBuffer.cpp      \
+ EneaBufferClient.cpp \
+   
+LOCAL_SHARED_LIBRARIES:= libcutils libutils libbinder
+
+LOCAL_MODULE:= EneaBufferClient
+
+LOCAL_CFLAGS+=-DLOG_TAG=\"EneaBufferClient\"
+
+LOCAL_PRELINK_MODULE:=false
+include $(BUILD_EXECUTABLE)
+
+</pre><br />
+/Rebecka &amp; Zingo
+<div style='clear: both;'></div>
+</div>
+<div class='post-footer'>
+<div class='post-footer-line post-footer-line-1'><span class='post-author vcard'>
+Upplagd av
+<span class='fn'>Xdin Android Team</span>
+</span>
+<span class='post-timestamp'>
+kl.
+<a class='timestamp-link' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html' rel='bookmark' title='permanent link'><abbr class='published' title='2010-03-22T10:34:00+01:00'>10:34 AM</abbr></a>
+</span>
+<span class='post-comment-link'>
+</span>
+<span class='post-icons'>
+<span class='item-action'>
+<a href='http://www.blogger.com/email-post.g?blogID=254432337824511900&postID=6718983655039983102' title='Email Post'>
+<img alt='' class='icon-action' height='13' src='http://img1.blogblog.com/img/icon18_email.gif' width='18'/>
+</a>
+</span>
+<span class='item-control blog-admin pid-592967016'>
+<a href='http://www.blogger.com/post-edit.g?blogID=254432337824511900&postID=6718983655039983102&from=pencil' title='Edit Post'>
+<img alt='' class='icon-action' height='18' src='http://img2.blogblog.com/img/icon18_edit_allbkg.gif' width='18'/>
+</a>
+</span>
+</span>
+<div class='post-share-buttons goog-inline-block'>
+<a class='goog-inline-block share-button sb-email' href='http://www.blogger.com/share-post.g?blogID=254432337824511900&postID=6718983655039983102&target=email' target='_blank' title='Email This'><span class='share-button-link-text'>Email This</span></a><a class='goog-inline-block share-button sb-blog' href='http://www.blogger.com/share-post.g?blogID=254432337824511900&postID=6718983655039983102&target=blog' onclick='window.open(this.href, "_blank", "height=270,width=475"); return false;' target='_blank' title='BlogThis!'><span class='share-button-link-text'>BlogThis!</span></a><a class='goog-inline-block share-button sb-twitter' href='http://www.blogger.com/share-post.g?blogID=254432337824511900&postID=6718983655039983102&target=twitter' target='_blank' title='Share to Twitter'><span class='share-button-link-text'>Share to Twitter</span></a><a class='goog-inline-block share-button sb-facebook' href='http://www.blogger.com/share-post.g?blogID=254432337824511900&postID=6718983655039983102&target=facebook' onclick='window.open(this.href, "_blank", "height=430,width=640"); return false;' target='_blank' title='Share to Facebook'><span class='share-button-link-text'>Share to Facebook</span></a><div class='goog-inline-block dummy-container'><g:plusone source='blogger:blog:plusone' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html' size='medium' width='300' annotation='inline'/></div>
+</div>
+</div>
+<div class='post-footer-line post-footer-line-2'><span class='post-labels'>
+</span>
+</div>
+<div class='post-footer-line post-footer-line-3'></div>
+</div>
+</div>
+<div class='comments' id='comments'>
+<a name='comments'></a>
+<h4>6 comments:</h4>
+<div class='comments-content'>
+<script async='async' src='//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js' type='text/javascript'></script>
+<script type='text/javascript'>
+    (function() {
+      var items = [{'id': '4104497882553467836', 'body': 'Hi Rebecka \46amp; Zingo,\74br /\76it seems that whenever you publish code snippets including the template sp, the type-name is mistakenly interpreted as a non-existing HTML-tag. I.e. the type-name will not be shown.\74br /\76\74br /\76You need to use \46amp; g t ; and \46amp; l t ; (without the spaces in-between) instead of \46gt; and \46lt; when publishing.\74br /\76\74br /\76Besides from that, thanks for your excellent work!\74br /\76\74br /\76/Michael', 'timestamp': '1286274626201', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751286274626201#c4104497882553467836', 'author': {'name': 'Michael Ambrus', 'avatarUrl': 'http://4.bp.blogspot.com/_f6oqXaow59s/Sl9S3FEKiNI/AAAAAAAAAUM/WlfhSNs76-0/S45/SailorMike_head.jpg', 'profileUrl': 'http://www.blogger.com/profile/02288336935393455040'}, 'displayTime': 'October 5, 2010 at 12:30 PM', 'deleteclass': 'item-control blog-admin pid-1120946621'}, {'id': '2649189211093845782', 'body': 'Fixed, thanx for the input, missed that the \46lt;pre\46gt; tag didn\46#39;t take care of this, sorry.', 'timestamp': '1291800955280', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751291800955280#c2649189211093845782', 'author': {'name': 'Enea Android Team', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/10157781734855979907'}, 'displayTime': 'December 8, 2010 at 10:35 AM', 'deleteclass': 'item-control blog-admin pid-592967016'}, {'id': '8813455188893479062', 'body': 'Hi members,\74br /\76      I am new android technology, can any one provide me detailed information regarding (ashmem, binder, alarm, power manager). what is the purpose of these driver in android kernel.\74br /\76\74br /\76Regards\74br /\76Kolanchinathan S\74br /\76kolanchi19@gmail.com', 'timestamp': '1313067136399', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751313067136399#c8813455188893479062', 'author': {'name': 'kolanchinathan', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/06438865748974816810'}, 'displayTime': 'August 11, 2011 at 2:52 PM', 'deleteclass': 'item-control blog-admin pid-1636312294'}, {'id': '903870610350693814', 'body': 'Hi, Thank you for the example code. I was able to get this compiled for android 2.3 but I am not sure what to do about registering the service with the service manager:\74br /\76{ AID_MEDIA, \46quot;vendor.enea.Buffer\46quot; },\74br /\76\74br /\76\74br /\76\74br /\76Will I need to recompile all the android source to make this change? \74br /\76\74br /\76\74br /\76When I try to start the server (without adding the service to service_manager) the status code returned in the instantiate method is -1.\74br /\76status \75 defaultServiceManager()-\46gt;addService(String16(\46quot;vendor.enea.Buffer\46quot;), new EneaBufferService());\74br /\76\74br /\76Thank you.', 'timestamp': '1323794056717', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751323794056717#c903870610350693814', 'author': {'name': 'Stable', 'avatarUrl': 'http://3.bp.blogspot.com/_1dwq9yZzL0A/SapUOM3yRPI/AAAAAAAAABI/k7ZENV3ptRA/S45/image015.jpg', 'profileUrl': 'http://www.blogger.com/profile/08437650226854290351'}, 'displayTime': 'December 13, 2011 at 5:34 PM', 'deleteclass': 'item-control blog-admin pid-868130226'}, {'id': '4294386358357796069', 'body': 'Hi, Rebecka \46amp; Zingo.\74br /\76It compliments for the optimal supplied guide. Taking cue from your example, I must develop an example that functions with Android. The problem is that I do not know like making and from where beginning. I have felt to speak about NDK and JNI but I do not know like creating the interface in Java. \74br /\76If give a hand to me, of I would be happy.\74br /\76Thanks\74br /\76PAX', 'timestamp': '1330356153813', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751330356153813#c4294386358357796069', 'author': {'name': 'amonra76', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/14217643262814066931'}, 'displayTime': 'February 27, 2012 at 4:22 PM', 'deleteclass': 'item-control blog-admin pid-1340766744'}, {'id': '4192017253539220223', 'body': 'an example of hooking this up with java would be nice, unless there\46#39;s an easier way to use ASHMEM in java that I haven\46#39;t been able to find yet. would be really handy for transfering large data blobs e.g. graphics. Also I\46#39;m looking at doing an xorg implemntation for gnu/linux on rooted devices that uses something like ASHMEM/IPC to transfer the virtual back buffer into something which is android gui capable, instead of the current nasty VNC/RDP methods which are slow and cumbersome (all those memory coppies, yuk!)', 'timestamp': '1362337658828', 'permalink': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment\0751362337658828#c4192017253539220223', 'author': {'name': 'Oliver Stieber', 'avatarUrl': 'http://img2.blogblog.com/img/b16-rounded.gif', 'profileUrl': 'http://www.blogger.com/profile/06798377465153362351'}, 'displayTime': 'March 3, 2013 at 8:07 PM', 'deleteclass': 'item-control blog-admin pid-1925444802'}];
+      var msgs = {'loadMore': 'Load more...', 'loading': 'Loading...', 'loaded': 'No more!', 'addComment': 'Add comment', 'reply': 'Reply', 'delete': 'Delete'};
+      var config = {'blogId': '254432337824511900', 'postId': '6718983655039983102', 'feed': 'http://www.androidenea.com/feeds/6718983655039983102/comments/default', 'authorName': 'Xdin Android Team', 'authorUrl': 'http://www.blogger.com/profile/10157781734855979907', 'baseUri': 'http://www.blogger.com', 'maxThreadDepth': 2};
+
+// <![CDATA[
+      var cursor = null;
+      if (items && items.length > 0) {
+        cursor = parseInt(items[items.length - 1].timestamp) + 1;
+      }
+
+      var bodyFromEntry = function(entry) {
+        if (entry.gd$extendedProperty) {
+          for (var k in entry.gd$extendedProperty) {
+            if (entry.gd$extendedProperty[k].name == 'blogger.contentRemoved') {
+              return '<span class="deleted-comment">' + entry.content.$t + '</span>';
+            }
+          }
+        }
+        return entry.content.$t;
+      }
+
+      var parse = function(data) {
+        cursor = null;
+        var comments = [];
+        if (data && data.feed && data.feed.entry) {
+          for (var i = 0, entry; entry = data.feed.entry[i]; i++) {
+            var comment = {};
+            // comment ID, parsed out of the original id format
+            var id = /blog-(\d+).post-(\d+)/.exec(entry.id.$t);
+            comment.id = id ? id[2] : null;
+            comment.body = bodyFromEntry(entry);
+            comment.timestamp = Date.parse(entry.published.$t) + '';
+            if (entry.author && entry.author.constructor === Array) {
+              var auth = entry.author[0];
+              if (auth) {
+                comment.author = {
+                  name: (auth.name ? auth.name.$t : undefined),
+                  profileUrl: (auth.uri ? auth.uri.$t : undefined),
+                  avatarUrl: (auth.gd$image ? auth.gd$image.src : undefined)
+                };
+              }
+            }
+            if (entry.link) {
+              if (entry.link[2]) {
+                comment.link = comment.permalink = entry.link[2].href;
+              }
+              if (entry.link[3]) {
+                var pid = /.*comments\/default\/(\d+)\?.*/.exec(entry.link[3].href);
+                if (pid && pid[1]) {
+                  comment.parentId = pid[1];
+                }
+              }
+            }
+            comment.deleteclass = 'item-control blog-admin';
+            if (entry.gd$extendedProperty) {
+              for (var k in entry.gd$extendedProperty) {
+                if (entry.gd$extendedProperty[k].name == 'blogger.itemClass') {
+                  comment.deleteclass += ' ' + entry.gd$extendedProperty[k].value;
+                } else if (entry.gd$extendedProperty[k].name == 'blogger.displayTime') {
+                  comment.displayTime = entry.gd$extendedProperty[k].value;
+                }
+              }
+            }
+            comments.push(comment);
+          }
+        }
+        return comments;
+      };
+
+      var paginator = function(callback) {
+        if (hasMore()) {
+          var url = config.feed + '?alt=json&v=2&orderby=published&reverse=false&max-results=50';
+          if (cursor) {
+            url += '&published-min=' + new Date(cursor).toISOString();
+          }
+          window.bloggercomments = function(data) {
+            var parsed = parse(data);
+            cursor = parsed.length < 50 ? null
+                : parseInt(parsed[parsed.length - 1].timestamp) + 1
+            callback(parsed);
+            window.bloggercomments = null;
+          }
+          url += '&callback=bloggercomments';
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        }
+      };
+      var hasMore = function() {
+        return !!cursor;
+      };
+      var getMeta = function(key, comment) {
+        if ('iswriter' == key) {
+          var matches = !!comment.author
+              && comment.author.name == config.authorName
+              && comment.author.profileUrl == config.authorUrl;
+          return matches ? 'true' : '';
+        } else if ('deletelink' == key) {
+          return config.baseUri + '/delete-comment.g?blogID='
+               + config.blogId + '&postID=' + comment.id;
+        } else if ('deleteclass' == key) {
+          return comment.deleteclass;
+        }
+        return '';
+      };
+
+      var replybox = null;
+      var replyUrlParts = null;
+      var replyParent = undefined;
+
+      var onReply = function(commentId, domId) {
+        if (replybox == null) {
+          // lazily cache replybox, and adjust to suit this style:
+          replybox = document.getElementById('comment-editor');
+          if (replybox != null) {
+            replybox.height = '250px';
+            replybox.style.display = 'block';
+            replyUrlParts = replybox.src.split('#');
+          }
+        }
+        if (replybox && (commentId !== replyParent)) {
+          document.getElementById(domId).insertBefore(replybox, null);
+          replybox.src = replyUrlParts[0]
+              + (commentId ? '&parentID=' + commentId : '')
+              + '#' + replyUrlParts[1];
+          replyParent = commentId;
+        }
+      };
+
+      var hash = (window.location.hash || '#').substring(1);
+      var startThread, targetComment;
+      if (/^comment-form_/.test(hash)) {
+        startThread = hash.substring('comment-form_'.length);
+      } else if (/^c[0-9]+$/.test(hash)) {
+        targetComment = hash.substring(1);
+      }
+
+      // Configure commenting API:
+      var configJso = {
+        'maxDepth': config.maxThreadDepth
+      };
+      var provider = {
+        'id': config.postId,
+        'data': items,
+        'loadNext': paginator,
+        'hasMore': hasMore,
+        'getMeta': getMeta,
+        'onReply': onReply,
+        'rendered': true,
+        'initComment': targetComment,
+        'initReplyThread': startThread,
+        'config': configJso,
+        'messages': msgs
+      };
+
+      var render = function() {
+        if (window.goog && window.goog.comments) {
+          var holder = document.getElementById('comment-holder');
+          window.goog.comments.render(holder, provider);
+        }
+      };
+
+      // render now, or queue to render when library loads:
+      if (window.goog && window.goog.comments) {
+        render();
+      } else {
+        window.goog = window.goog || {};
+        window.goog.comments = window.goog.comments || {};
+        window.goog.comments.loadQueue = window.goog.comments.loadQueue || [];
+        window.goog.comments.loadQueue.push(render);
+      }
+    })();
+// ]]>
+</script>
+<div id='comment-holder'>
+<div id='bc_0_7C' kind='c'><div id='bc_0_7CT'><div id='bc_0_6T' class='comment-thread' kind='r'  t='0' u='0'><ol id='bc_0_6TB'><li id='bc_0_0B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://4.bp.blogspot.com/_f6oqXaow59s/Sl9S3FEKiNI/AAAAAAAAAUM/WlfhSNs76-0/S45/SailorMike_head.jpg'></img></div><div id='c4104497882553467836' class='comment-block'><div id='bc_0_0M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/02288336935393455040'>Michael Ambrus</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1286274626201#c4104497882553467836'>October 5, 2010 at 12:30 PM</a></span></div><p id='bc_0_0MC' class='comment-content'>Hi Rebecka &amp; Zingo,<br />it seems that whenever you publish code snippets including the template sp, the type-name is mistakenly interpreted as a non-existing HTML-tag. I.e. the type-name will not be shown.<br /><br />You need to use &amp; g t ; and &amp; l t ; (without the spaces in-between) instead of &gt; and &lt; when publishing.<br /><br />Besides from that, thanks for your excellent work!<br /><br />/Michael</p><span id='bc_0_0MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-1120946621'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=4104497882553467836'>Delete</a></span></span></div><div id='bc_0_0BR' class='comment-replies'></div><div id='bc_0_0B_box' class='comment-replybox-single'></div></li><li id='bc_0_1B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://img2.blogblog.com/img/b36-rounded.png'></img></div><div id='c2649189211093845782' class='comment-block'><div id='bc_0_1M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/10157781734855979907'>Enea Android Team</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1291800955280#c2649189211093845782'>December 8, 2010 at 10:35 AM</a></span></div><p id='bc_0_1MC' class='comment-content'>Fixed, thanx for the input, missed that the &lt;pre&gt; tag didn&#39;t take care of this, sorry.</p><span id='bc_0_1MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-592967016'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=2649189211093845782'>Delete</a></span></span></div><div id='bc_0_1BR' class='comment-replies'></div><div id='bc_0_1B_box' class='comment-replybox-single'></div></li><li id='bc_0_2B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://img2.blogblog.com/img/b36-rounded.png'></img></div><div id='c8813455188893479062' class='comment-block'><div id='bc_0_2M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/06438865748974816810'>kolanchinathan</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1313067136399#c8813455188893479062'>August 11, 2011 at 2:52 PM</a></span></div><p id='bc_0_2MC' class='comment-content'>Hi members,<br />      I am new android technology, can any one provide me detailed information regarding (ashmem, binder, alarm, power manager). what is the purpose of these driver in android kernel.<br /><br />Regards<br />Kolanchinathan S<br />kolanchi19@gmail.com</p><span id='bc_0_2MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-1636312294'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=8813455188893479062'>Delete</a></span></span></div><div id='bc_0_2BR' class='comment-replies'></div><div id='bc_0_2B_box' class='comment-replybox-single'></div></li><li id='bc_0_3B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://3.bp.blogspot.com/_1dwq9yZzL0A/SapUOM3yRPI/AAAAAAAAABI/k7ZENV3ptRA/S45/image015.jpg'></img></div><div id='c903870610350693814' class='comment-block'><div id='bc_0_3M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/08437650226854290351'>Stable</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1323794056717#c903870610350693814'>December 13, 2011 at 5:34 PM</a></span></div><p id='bc_0_3MC' class='comment-content'>Hi, Thank you for the example code. I was able to get this compiled for android 2.3 but I am not sure what to do about registering the service with the service manager:<br />{ AID_MEDIA, &quot;vendor.enea.Buffer&quot; },<br /><br /><br /><br />Will I need to recompile all the android source to make this change? <br /><br /><br />When I try to start the server (without adding the service to service_manager) the status code returned in the instantiate method is -1.<br />status = defaultServiceManager()-&gt;addService(String16(&quot;vendor.enea.Buffer&quot;), new EneaBufferService());<br /><br />Thank you.</p><span id='bc_0_3MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-868130226'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=903870610350693814'>Delete</a></span></span></div><div id='bc_0_3BR' class='comment-replies'></div><div id='bc_0_3B_box' class='comment-replybox-single'></div></li><li id='bc_0_4B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://img2.blogblog.com/img/b36-rounded.png'></img></div><div id='c4294386358357796069' class='comment-block'><div id='bc_0_4M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/14217643262814066931'>amonra76</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1330356153813#c4294386358357796069'>February 27, 2012 at 4:22 PM</a></span></div><p id='bc_0_4MC' class='comment-content'>Hi, Rebecka &amp; Zingo.<br />It compliments for the optimal supplied guide. Taking cue from your example, I must develop an example that functions with Android. The problem is that I do not know like making and from where beginning. I have felt to speak about NDK and JNI but I do not know like creating the interface in Java. <br />If give a hand to me, of I would be happy.<br />Thanks<br />PAX</p><span id='bc_0_4MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-1340766744'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=4294386358357796069'>Delete</a></span></span></div><div id='bc_0_4BR' class='comment-replies'></div><div id='bc_0_4B_box' class='comment-replybox-single'></div></li><li id='bc_0_5B' class='comment' kind='b'><div class='avatar-image-container'><img src='http://img2.blogblog.com/img/b36-rounded.png'></img></div><div id='c4192017253539220223' class='comment-block'><div id='bc_0_5M' class='comment-header' kind='m'><cite class='user'><a rel='nofollow' href='http://www.blogger.com/profile/06798377465153362351'>Oliver Stieber</a></cite><span class='icon user'></span><span class='datetime secondary-text'><a rel='nofollow' href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html?showComment=1362337658828#c4192017253539220223'>March 3, 2013 at 8:07 PM</a></span></div><p id='bc_0_5MC' class='comment-content'>an example of hooking this up with java would be nice, unless there&#39;s an easier way to use ASHMEM in java that I haven&#39;t been able to find yet. would be really handy for transfering large data blobs e.g. graphics. Also I&#39;m looking at doing an xorg implemntation for gnu/linux on rooted devices that uses something like ASHMEM/IPC to transfer the virtual back buffer into something which is android gui capable, instead of the current nasty VNC/RDP methods which are slow and cumbersome (all those memory coppies, yuk!)</p><span id='bc_0_5MN' class='comment-actions secondary-text' kind='m'><a kind='i' href='javascript:;' target='_self' o='r'>Reply</a><span class='item-control blog-admin pid-1925444802'><a o='d' target='_self' href='http://www.blogger.com/delete-comment.g?blogID=254432337824511900&amp;postID=4192017253539220223'>Delete</a></span></span></div><div id='bc_0_5BR' class='comment-replies'></div><div id='bc_0_5B_box' class='comment-replybox-single'></div></li></ol><div id='bc_0_6I' class='continue' kind='ci'><a href='javascript:;' target='_self'>Add comment</a></div><div id='bc_0_6T_box' class='comment-replybox-thread'></div><div id='bc_0_6L' class='loadmore loaded' kind='rb'><a href='javascript:;' target='_self'>Load more...</a></div></div></div></div>
+</div>
+</div>
+<p class='comment-footer'>
+<div class='comment-form'>
+<a name='comment-form'></a>
+<p>
+</p>
+<a href='//www.blogger.com/comment-iframe.g?blogID=254432337824511900&postID=6718983655039983102' id='comment-editor-src'></a>
+<iframe allowtransparency='true' class='blogger-iframe-colorize blogger-comment-from-post' frameborder='0' height='410' id='comment-editor' name='comment-editor' src='' width='100%'></iframe>
+<script type="text/javascript" src="//www.blogger.com/static/v1/jsbin/2373033623-comment_from_post_iframe.js"></script>
+<script type='text/javascript'>
+      BLOG_CMT_createIframe('//www.blogger.com/rpc_relay.html', '03589119098323563973');
+    </script>
+</div>
+</p>
+<div id='backlinks-container'>
+<div id='Blog1_backlinks-container'>
+</div>
+</div>
+</div>
+</div>
+
+        </div></div>
+      
+<!-- google_ad_section_end -->
+</div>
+<div class='blog-pager' id='blog-pager'>
+<span id='blog-pager-newer-link'>
+<a class='blog-pager-newer-link' href='http://www.androidenea.com/2010/04/using-checkstyle-with-android-open.html' id='Blog1_blog-pager-newer-link' title='Newer Post'>Newer Post</a>
+</span>
+<span id='blog-pager-older-link'>
+<a class='blog-pager-older-link' href='http://www.androidenea.com/2010/02/everyone-wants-to-learn-more-about.html' id='Blog1_blog-pager-older-link' title='Older Post'>Older Post</a>
+</span>
+<a class='home-link' href='http://www.androidenea.com/'>Home</a>
+</div>
+<div class='clear'></div>
+<div class='post-feeds'>
+<div class='feed-links'>
+Subscribe to:
+<a class='feed-link' href='http://www.androidenea.com/feeds/6718983655039983102/comments/default' target='_blank' type='application/atom+xml'>Post Comments (Atom)</a>
+</div>
+</div>
+<script type="text/javascript">window.___gcfg = {'lang': 'en'};</script>
+</div></div>
+</div>
+<div id='sidebar-wrapper'>
+<div class='sidebar section' id='sidebar'><div class='widget Text' id='Text1'>
+<h2 class='title'>Blog for the Xdin Android team</h2>
+<div class='widget-content'>
+This blog is maintained by some of the people working in the Android Hub at Xdin (previously we were part of Enea). It is used to describe our work with the Android mobile technology platform, and to share some useful information with the community.<br/>We are involved in Android projects at the platform level and also provide training courses for people working on the device level with Android. For more info on the Xdin Android Hub please visit <a href="http://www.xdin.com/en/vad-vi-gor/hubs/android-mobile/">the Xdin web site</a>.<br/>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=Text&widgetId=Text1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("Text1"));' target='configText1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget BlogArchive' id='BlogArchive1'>
+<h2>Blog Archive</h2>
+<div class='widget-content'>
+<div class='ltr' id='ArchiveList'>
+<div id='BlogArchive1_ArchiveList'>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/search?updated-min=2013-01-01T00:00:00%2B01:00&amp;updated-max=2014-01-01T00:00:00%2B01:00&amp;max-results=1'>2013</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2013_01_01_archive.html'>January</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/search?updated-min=2012-01-01T00:00:00%2B01:00&amp;updated-max=2013-01-01T00:00:00%2B01:00&amp;max-results=2'>2012</a>
+<span class='post-count' dir='ltr'>(2)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2012_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2012_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/search?updated-min=2011-01-01T00:00:00%2B01:00&amp;updated-max=2012-01-01T00:00:00%2B01:00&amp;max-results=7'>2011</a>
+<span class='post-count' dir='ltr'>(7)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2011_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(4)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2011_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2011_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2011_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/search?updated-min=2010-01-01T00:00:00%2B01:00&amp;updated-max=2011-01-01T00:00:00%2B01:00&amp;max-results=10'>2010</a>
+<span class='post-count' dir='ltr'>(10)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_05_01_archive.html'>May</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate expanded'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(1)</span>
+<ul class='posts'>
+<li><a href='http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html'>Share memory using ashmem and binder in the androi...</a></li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2010_02_01_archive.html'>February</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/search?updated-min=2009-01-01T00:00:00%2B01:00&amp;updated-max=2010-01-01T00:00:00%2B01:00&amp;max-results=18'>2009</a>
+<span class='post-count' dir='ltr'>(18)</span>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_12_01_archive.html'>December</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_11_01_archive.html'>November</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_10_01_archive.html'>October</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_09_01_archive.html'>September</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_08_01_archive.html'>August</a>
+<span class='post-count' dir='ltr'>(2)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_07_01_archive.html'>July</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_06_01_archive.html'>June</a>
+<span class='post-count' dir='ltr'>(1)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_04_01_archive.html'>April</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+<ul class='hierarchy'>
+<li class='archivedate collapsed'>
+<a class='toggle'>
+<span class='zippy'></span>
+</a>
+<a class='post-count-link' href='http://www.androidenea.com/2009_03_01_archive.html'>March</a>
+<span class='post-count' dir='ltr'>(3)</span>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=BlogArchive&widgetId=BlogArchive1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("BlogArchive1"));' target='configBlogArchive1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Followers' id='Followers1'>
+<h2 class='title'>Followers</h2>
+<div class='widget-content'>
+<div id='Followers1-wrapper'>
+<div style='margin-right:2px;'>
+<script type="text/javascript">
+        if (!window.google || !google.friendconnect) {
+          document.write('<script type="text/javascript"' +
+              'src="http://www.google.com/friendconnect/script/friendconnect.js">' +
+              '</scr' + 'ipt>');
+        }
+      </script>
+<script type="text/javascript">
+      if (!window.registeredBloggerCallbacks) {
+        window.registeredBloggerCallbacks = true;
+
+        
+
+        
+        gadgets.rpc.register('requestReload', function() {
+          document.location.reload();
+        });
+
+        
+        gadgets.rpc.register('requestSignOut', function(siteId) {
+          
+          google.friendconnect.container.openSocialSiteId = siteId;
+          google.friendconnect.requestSignOut();
+        });
+      }
+    </script>
+<script type="text/javascript">
+    
+    function registerGetBlogUrls() {
+      gadgets.rpc.register('getBlogUrls', function() {
+        var holder = {};
+        
+          
+            
+            
+              holder.currentPost = "http://www.blogger.com/feeds/254432337824511900/posts/default/6718983655039983102";
+            
+            
+            
+              holder.currentComments = "http://www.blogger.com/feeds/254432337824511900/6718983655039983102/comments/default";
+            
+            holder.currentPostUrl = "";
+            holder.currentPostId = 6718983655039983102
+          
+          
+          
+            holder.postFeed = "http://www.blogger.com/feeds/254432337824511900/posts/default";
+          
+          
+          
+            holder.commentFeed = "http://www.blogger.com/feeds/254432337824511900/comments/default";
+          
+          holder.currentBlogUrl = "http://www.androidenea.com/";
+          holder.currentBlogId = "254432337824511900";
+        
+        return holder;
+      });
+    }
+  </script>
+<script type="text/javascript">
+  if (!window.registeredCommonBloggerCallbacks) {
+    window.registeredCommonBloggerCallbacks = true;
+
+    gadgets.rpc.register('resize_iframe', function(height) {
+      var el = document.getElementById(this['f']);
+      if (el) {
+        el.style.height = height + 'px';
+      }
+    });
+
+    
+    gadgets.rpc.register('set_pref', function() {});
+
+    registerGetBlogUrls();
+  }
+  </script>
+<div id="div-12ndxfan3ocl5" style="width: 100%; "></div>
+<script type="text/javascript">
+    var skin = {};
+    skin['FACE_SIZE'] = '32';
+    skin['HEIGHT'] = "260";
+    skin['TITLE'] = "Followers";
+    skin['BORDER_COLOR'] = "transparent";
+    skin['ENDCAP_BG_COLOR'] = "transparent";
+    skin['ENDCAP_TEXT_COLOR'] = "#333333";
+    skin['ENDCAP_LINK_COLOR'] = "#000000";
+    skin['ALTERNATE_BG_COLOR'] = "transparent";
+    
+    skin['CONTENT_BG_COLOR'] = "transparent";
+    skin['CONTENT_LINK_COLOR'] = "#000000";
+    skin['CONTENT_TEXT_COLOR'] = "#333333";
+    skin['CONTENT_SECONDARY_LINK_COLOR'] = "#FFFFFF";
+    skin['CONTENT_SECONDARY_TEXT_COLOR'] = "#000000";
+    skin['CONTENT_HEADLINE_COLOR'] = "#000000";
+    skin['FONT_FACE'] = "normal normal 100% Verdana, Arial, Sans-serif;";
+    google.friendconnect.container.setParentUrl("/");
+    google.friendconnect.container["renderMembersGadget"](
+    {id: "div-12ndxfan3ocl5",
+     height: 260,
+     
+     
+     
+     site: "03589119098323563973",
+     
+     locale: 'en' },
+     skin);
+  </script>
+</div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=Followers&widgetId=Followers1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("Followers1"));' target='configFollowers1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div><div class='widget Text' id='Text2'>
+<h2 class='title'>About Xdin</h2>
+<div class='widget-content'>
+<span lang="sv"><span><span style="font-size:12pt;"><span><span style="font-size:11pt;" lang="en-US">Through  the most committed engineering &amp; IT consultants we develop and deliver expertise for world-leading companies. <a href="http://xdin.com">Xdin</a> is a  fast-growing company with customers primarily within the energy,  telecom, manufacturing and automotive industries. We have over 1100  employees, with offices in Gothenburg, Stockholm, Linköping, Lund, Västerås in Sweden and Virginia Beach in the USA. Xdin is a part of Alten Group.</span></span></span></span></span><div><span lang="sv"><span><span style="font-size:12pt;"><span><span style="font-size:11pt;" lang="en-US"><br/></span></span></span></span></span></div><div><span lang="sv"><span><span style="font-size:12pt;"><span><span style="font-size:11pt;" lang="en-US"><br/></span></span></span></span></span></div>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=Text&widgetId=Text2&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("Text2"));' target='configText2' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div><div class='widget Profile' id='Profile1'>
+<h2>About Xdin Android</h2>
+<div class='widget-content'>
+<dl class='profile-datablock'>
+<dt class='profile-data'>
+<a class='profile-name-link g-profile' href='http://www.blogger.com/profile/10157781734855979907' rel='author' style='background-image: url(//www.blogger.com/img/logo-16.png);'>
+Xdin Android Team
+</a>
+</dt>
+<dd class='profile-textblock'>The team consists of Mattias, Robert, Zingo, Karin, Rebecka, Erik, Torkel,  and others at the Xdin Android Hub</dd>
+</dl>
+<a class='profile-link' href='http://www.blogger.com/profile/10157781734855979907' rel='author'>View my complete profile</a>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=Profile&widgetId=Profile1&action=editWidget&sectionId=sidebar' onclick='return _WidgetManager._PopupConfig(document.getElementById("Profile1"));' target='configProfile1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div>
+</div></div>
+</div>
+<!-- spacer for skins that want sidebar and main to be the same height-->
+<div class='clear'>&#160;</div>
+</div>
+<!-- end content-wrapper -->
+<div id='footer-wrapper'>
+<div class='footer section' id='footer'><div class='widget HTML' id='HTML1'>
+<div class='widget-content'>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-8167404-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+</div>
+<div class='clear'></div>
+<span class='widget-item-control'>
+<span class='item-control blog-admin'>
+<a class='quickedit' href='//www.blogger.com/rearrange?blogID=254432337824511900&widgetType=HTML&widgetId=HTML1&action=editWidget&sectionId=footer' onclick='return _WidgetManager._PopupConfig(document.getElementById("HTML1"));' target='configHTML1' title='Edit'>
+<img alt='' height='18' src='http://img1.blogblog.com/img/icon18_wrench_allbkg.png' width='18'/>
+</a>
+</span>
+</span>
+<div class='clear'></div>
+</div></div>
+</div>
+</div></div>
+<!-- end outer-wrapper -->
+<script type="text/javascript">
+if (window.jstiming) window.jstiming.load.tick('widgetJsBefore');
+</script><script type="text/javascript" src="//www.blogger.com/static/v1/widgets/3811003446-widgets.js"></script>
+<script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+<script type='text/javascript'>
+if (typeof(BLOG_attachCsiOnload) != 'undefined' && BLOG_attachCsiOnload != null) { window['blogger_templates_experiment_id'] = "templatesV1";window['blogger_blog_id'] = '254432337824511900';BLOG_attachCsiOnload('item_'); }_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d254432337824511900','//www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html','254432337824511900');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '254432337824511900', 'bloggerUrl': 'http://www.blogger.com', 'title': 'Xdin Android Blog', 'pageType': 'item', 'url': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html', 'canonicalUrl': 'http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html', 'canonicalHomepageUrl': 'http://www.androidenea.com/', 'homepageUrl': 'http://www.androidenea.com/', 'blogspotFaviconUrl': 'http://www.androidenea.com/favicon.ico', 'enabledCommentProfileImages': true, 'adultContent': false, 'disableAdSenseWidget': false, 'analyticsAccountNumber': '', 'searchLabel': '', 'searchQuery': '', 'pageName': 'Share memory using ashmem and binder in the android framework', 'pageTitle': 'Xdin Android Blog: Share memory using ashmem and binder in the android framework', 'encoding': 'UTF-8', 'locale': 'en', 'localeUnderscoreDelimited': 'en', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'languageDirection': 'ltr', 'feedLinks': '\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Xdin Android Blog - Atom\42 href\75\42http://www.androidenea.com/feeds/posts/default\42 /\76\n\74link rel\75\42alternate\42 type\75\42application/rss+xml\42 title\75\42Xdin Android Blog - RSS\42 href\75\42http://www.androidenea.com/feeds/posts/default?alt\75rss\42 /\76\n\74link rel\75\42service.post\42 type\75\42application/atom+xml\42 title\75\42Xdin Android Blog - Atom\42 href\75\42http://www.blogger.com/feeds/254432337824511900/posts/default\42 /\76\n\n\74link rel\75\42alternate\42 type\75\42application/atom+xml\42 title\75\42Xdin Android Blog - Atom\42 href\75\42http://www.androidenea.com/feeds/6718983655039983102/comments/default\42 /\76\n', 'meTag': '', 'openIdOpTag': '', 'imageSrcTag': '', 'latencyHeadScript': '\74script type\75\42text/javascript\42\76(function() { var b\75window,e\75\42jstiming\42,g\75\42tick\42;(function(){function d(a){this.t\75{};this.tick\75function(a,d,c){c\75void 0!\75c?c:(new Date).getTime();this.t[a]\75[c,d]};this[g](\42start\42,null,a)}var a\75new d;b.jstiming\75{Timer:d,load:a};if(b.performance\46\46b.performance.timing){var a\75b.performance.timing,c\75b[e].load,f\75a.navigationStart,a\75a.responseStart;0\74f\46\46a\76\75f\46\46(c[g](\42_wtsrt\42,void 0,f),c[g](\42wtsrt_\42,\42_wtsrt\42,a),c[g](\42tbsd_\42,\42wtsrt_\42))}try{a\75null,b.chrome\46\46b.chrome.csi\46\46(a\75Math.floor(b.chrome.csi().pageT),c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.chrome.csi().startE),\nc[g](\42tbnd_\42,\42_tbnd\42,f))),null\75\75a\46\46b.gtbExternal\46\46(a\75b.gtbExternal.pageT()),null\75\75a\46\46b.external\46\46(a\75b.external.pageT,c\46\0460\74f\46\46(c[g](\42_tbnd\42,void 0,b.external.startE),c[g](\42tbnd_\42,\42_tbnd\42,f))),a\46\46(b[e].pt\75a)}catch(l){}})();b.tickAboveFold\75function(d){var a\0750;if(d.offsetParent){do a+\75d.offsetTop;while(d\75d.offsetParent)}d\75a;750\76\75d\46\46b[e].load[g](\42aft\42)};var h\75!1;function k(){h||(h\75!0,b[e].load[g](\42firstScrollTime\42))}b.addEventListener?b.addEventListener(\42scroll\42,k,!1):b.attachEvent(\42onscroll\42,k);\n })();\74/script\076', 'mobileHeadScript': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/15de8d1bfc9ff1d1', 'plusOneApiSrc': 'https://apis.google.com/js/plusone.js', 'testHtml5CssSrc': '//www.blogger.com/static/v1/widgets/2412321170-css_bundle_html5.css', 'sf': 'n', 'tf': ''}}, {'name': 'skin', 'data': {'vars': {'textColor': '#333333', 'linkColor': '#940f04', 'borderColor': '#cccccc', 'headerTextColor': '#ffffff', 'mainBgColor': '#ffffff', 'sidebarTitleTextColor': '#333333', 'bgColor': '#e6e6e6', 'headerCornersColor': '#cccccc', 'headerFont': 'normal normal 210% Verdana, Arial, Sans-serif;', 'sidebarTitleBgColor': '#cccccc', 'bodyFont': 'normal normal 100% Verdana, Arial, Sans-serif;', 'dateHeaderColor': '#999999', 'endSide': 'right', 'startSide': 'left', 'headerBgColor': '#ffffff'}, 'override': ''}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '/?view\75classic'}, 'flipcard': {'name': 'flipcard', 'url': '/?view\75flipcard'}, 'magazine': {'name': 'magazine', 'url': '/?view\75magazine'}, 'mosaic': {'name': 'mosaic', 'url': '/?view\75mosaic'}, 'sidebar': {'name': 'sidebar', 'url': '/?view\75sidebar'}, 'snapshot': {'name': 'snapshot', 'url': '/?view\75snapshot'}, 'timeslide': {'name': 'timeslide', 'url': '/?view\75timeslide'}}}]);
+_WidgetManager._RegisterWidget('_HTMLView', new _WidgetInfo('HTML1', 'footer', null, document.getElementById('HTML1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_TextView', new _WidgetInfo('Text1', 'sidebar', null, document.getElementById('Text1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogArchiveView', new _WidgetInfo('BlogArchive1', 'sidebar', null, document.getElementById('BlogArchive1'), {'languageDirection': 'ltr'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_FollowersView', new _WidgetInfo('Followers1', 'sidebar', null, document.getElementById('Followers1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_TextView', new _WidgetInfo('Text2', 'sidebar', null, document.getElementById('Text2'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_ProfileView', new _WidgetInfo('Profile1', 'sidebar', null, document.getElementById('Profile1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_HeaderView', new _WidgetInfo('Header1', 'header', null, document.getElementById('Header1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_NavbarView', new _WidgetInfo('Navbar1', 'navbar', null, document.getElementById('Navbar1'), {}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_BlogView', new _WidgetInfo('Blog1', 'main', null, document.getElementById('Blog1'), {'cmtInteractionsEnabled': false, 'lightboxEnabled': true, 'lightboxModuleUrl': '//www.blogger.com/static/v1/jsbin/3145159868-lbx.js', 'lightboxCssUrl': '//www.blogger.com/static/v1/v-css/4138445517-lightbox_bundle.css'}, 'displayModeFull'));
+_WidgetManager._RegisterWidget('_PageListView', new _WidgetInfo('PageList1', 'null', null, document.getElementById('PageList1'), {'title': 'Pages', 'links': [{'href': 'http://www.androidenea.com/', 'title': 'Home', 'isCurrentPage': false}], 'mobile': false}, 'displayModeFull'));
+</script>
+</body>
+</html>

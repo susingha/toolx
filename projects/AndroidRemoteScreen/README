@@ -1,0 +1,34 @@
+Please refer to COMPILE_AND_RUN.sh for self explainatory instructions
+
+Troubleshooting:
+1. Make sure adb path is set properly in the COMPILE_AND_RUN.sh file
+2. Make sure adb client is up and running such that you are able to run commands over adb shell
+3. Make sure the android device is connected and adb devices shows the relevant entry.
+
+General Description:
+====================
+
+This is a utility to show your android phone display onto a computer in real time.
+The desktop utility also accepts user input and transfers them onto the phone.
+The phone reacts to the input
+Typical application of this utility would be when you want to project the android display for
+a presentation
+The Utility has a small delay in rendering the device screen onto the PC but that can be ignored.
+
+Input actions supported:
+========================
+- Click
+- Double click
+- Swipe
+- Power button
+- Volume Buttons
+
+
+Requirements and Technical details:
+===================================
+You need the phone connected to the PC via a USB cable.
+The USB debugging option should be enabled in the phone.
+The communication between the phone and the PC is via and hence needs to be enabled.
+The PC needs to be Java enabled.
+Sample jar file already compiled and included. please run the jar file
+

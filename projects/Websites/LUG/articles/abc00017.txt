@@ -1,0 +1,6 @@
+<?php
+$loggedin = 1;
+echo "hello hii";
+
+
+?>

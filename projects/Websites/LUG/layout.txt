@@ -1,0 +1,214 @@
+220.225.80.146
+149
+139
+140
+150
+135
+
+
+make the internal inaccessible from outside the network. check the ip address of client.
+________________________________________________
+
+make an interface to enter the existing members into the DB.. enter the regno as username and dob as password in mmddyy format
+this will update the username and internal tables;
+3 pages will B needed for 4thyr, 3rdyr, 2ndyr.
+[done]
+
+while logging in chek if username = regno, then redirect him to a page where he will B asked to change his username and fill in other details.. this page should submit to a php file which will update the usernames and internal tables.
+and link him back to his homapage.
+[done]
+________________________________________________
+add a page to change account details. username, regno, paid, admin, etc etc cannot be changed.. nickname/name can B changed, must B in login folder
+this page should submit to a php file which will update the usernames and internal/external tables and redirect to the home page;
+[done]
+
+add a page to view others' profiles. nothing should B able to changed.. just view, must B in the root folder;
+
+_________________________________________________
+add a confirmation check while deleting uploads.
+
+add an option to delete this paper in /paper.php at the end of the page.. if $loggedin >= 3
+
+add buttons(links) remove post, remove admin, in the admin login... it will need minor change in the corresponding files;
+
+_________________________________________________
+make the 'yr of join' dynamic in internal.html
+
+
+
+
+
+
+
+
+LINUX USERS' GROUP, NIT Durgapur
+_________________
+login
+register
+search site : (http://www.google.com/coop/cse/)
+_________________
+
+
+1)home
+2)about us
+	LUG NITDgp
+	why linux
+3)Whos who
+4)gallery
+5)contact us
+
+_________________
+
+
+1)news
+	LUG News
+	Linux News
+	Break your news
+	subscribe
+
+2)notice board
+
+3)activities
+	coming up
+	annual events
+	contribute an idea
+	
+4)downloads
+	linux
+	softwares
+	white papers
+	e books (update this)
+
+5)white papers [pdf]
+	view all papers
+	search papers
+	upload a paper
+
+6)Articles [txt]
+	whats New
+	view all Articles
+	write an Article
+	upload an Article
+
+7)forum
+	recent topics
+	view all topics
+	start a topic
+
+
+
+
+
+
+
+Internal Website
+xml
+ads by google
+Gtalk script
+feedback
+
+
+
+
+
+
+
+
+
+
+
+
+------------ DATABASES -------------
+
+
+echo "<br>";
+
+$sql="CREATE TABLE usernames
+(
+'username varchar(30) NOT NULL UNIQUE,	regno
+password varchar(20) NOT NULL,		dob(mmddyy)
+'member int(1),				1
+
+'name varchar(30),
+nickname varchar(10),
+'frm varchar(50),
+
+'''email varchar(30),
+'''phone varchar(15),
+
+'linux int(1),
+
+'regdate varchar(20),
+
+PRIMARY KEY(username)
+)";
+
+---------------------------------------------------------------
+
+$sql="CREATE TABLE external
+(
+username varchar(30) NOT NULL UNIQUE,
+'''dob varchar(20),
+
+'inst varchar(50),
+'spec varchar(50),
+'others varchar(50),
+
+PRIMARY KEY(username)
+)";
+
+---------------------------------------------------------------
+
+$sql="CREATE TABLE internal
+(
+username varchar(30) NOT NULL UNIQUE,	regno
+
+'dept varchar(30),
+'''roll varchar(10),
+'yrjoin varchar(4),
+
+'''regno varchar(8) NOT NULL UNIQUE,	regno
+'''paid int(1),				1
+'post varchar(20),			
+'''admin int(1),				0
+
+PRIMARY KEY(username)
+)";
+
+
+
+
+
+
+
+------------------------------------secret codes (for moderation)
+username
+registration no
+secret code
+matter : membership
+
+
+
+
+------------------------------------articles
+article no
+moderated(y/n)
+topic------------
+catch line-------
+submitted by(username)
+date of submittion
+filename
+format-----------
+rating
+
+
+------------------------------------papers
+paper no
+moderated(y/n)
+topic------------
+catch line-------
+submitted by(username)
+date of submission
+filename
+format-----------
+rating

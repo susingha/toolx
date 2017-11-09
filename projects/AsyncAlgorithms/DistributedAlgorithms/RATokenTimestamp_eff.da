@@ -1,0 +1,421 @@
+#!/usr/bin/python3
+
+# Author: Supratik Singha [October 2013]
+# Stony Brook University
+# susingha@cs.stonybrook.edu
+# supratik.dnit@gmail.com
+
+####### 1. R Timestamp code, Clear version ########
+
+class R_Timestamp(DistProcess):
+   def setup(s, mp):
+      request_flag = False
+      reqc = 0
+      deferred = []
+      nreqs_local = mp
+      done = []
+
+   def cs(task):
+
+      # to enter cs, enqueue and send request to all
+      --request
+      output("request cs")
+      request_flag = True
+      reqc = logical_clock()
+      send(Request(reqc, self), s)
+
+      await (all(any(c2 > reqc for c2 in received(Reply(c2, p2))) for p2 in s))
+
+      # critical section
+      task()
+      nreqs_local -= 1
+      work()
+
+      # to exit cs, dequeue and send release to all
+      --release
+      output("release cs")
+      send(Reply(logical_clock(), self), deferred)
+      deferred = []
+      request_flag = False
+
+      # quitting logic
+      if nreqs_local <= 0:
+        if len(done) == len(s):
+           send(Exit(self), done)
+           sys.exit(0)
+        else:
+           send(Done(self), s)
+           await(False)
+
+   def main():
+      def anounce():
+          output("In cs!")
+      while True:
+          cs(anounce)
+
+   # when receiving request from others, enque and reply
+   def OnRequest(req, srcid):
+      if ((request_flag == False) or (reqc > req or ( reqc == req and self < srcid))):
+          send(Reply(logical_clock(), self), _source)
+      else:
+          if all(p4 != srcid for p4 in deferred):
+              deferred.append(srcid)
+              deferred.sort()
+
+   def OnDone(srcid):
+      done.append(srcid)
+
+   def OnExit(srcid):
+      sys.exit(0)
+
+
+####### 2. R Token code, Clear version ########
+
+class R_Token(DistProcess):
+   def setup(s, mp):
+      request = []
+      token = []
+      token.append((self, -1))
+      for p0 in s:
+        token.append((p0, -1))
+      if len(s) == 0 or (self < min(s)):
+        token_present = True
+      else:
+        token_present = False
+      token_held = False
+      token_arrived = False
+      nreqs_local = mp
+      done = []
+
+   def cs(task):
+
+      # to enter cs, enqueue and send request to all
+      --request
+      output("request cs")
+      if (token_present == False):
+        reqc = logical_clock()
+        request.append((self, reqc))
+        send(Request(reqc, self), s)
+        await(token_arrived)
+        token_arrived = False
+        token_present = True
+      token_held = True
+
+      # critical section
+      task()
+      nreqs_local -= 1
+      work()
+
+      # to exit cs, dequeue and send release to all
+      --release
+      output("release cs")
+      for (cc1, pp1) in [(c1, p1) for (c1, p1) in token if c1 == self]:
+        token.remove((cc1,pp1))
+        token.append((cc1,logical_clock()))
+      token_held = False
+      for d2 in [c2 for (c2, p2) in request for (c3, p3) in token if (c2 == c3 and p2 >= p3)]:
+        if token_present == True:
+           token_present = False
+           send(Token(token), d2)
+
+      # quitting logic
+      if nreqs_local <= 0 and token_present == False:
+        send(Done(self), s)
+        await(False)
+      if nreqs_local <= 0 and len(done) == len(s):
+        send(Exit(self), done)
+        sys.exit(0)
+
+   def main():
+      def anounce():
+         output("In cs!")
+      while True:
+         cs(anounce)
+
+   # when receiving request from others, enque and reply
+   def OnRequest(req, srcid):
+      for (reqold) in [(reqoldt) for (srct, reqoldt) in request if srct == srcid]:
+         req = max(req, reqold)
+         request.remove((srcid, reqold))
+      request.append((srcid, req))
+
+      if (token_present == True and token_held == False):
+         for (cc4, pp4) in [(c4, p4) for (c4, p4) in token if c4 == self]:
+            token.remove((cc4, pp4))
+            token.append((cc4, logical_clock()))
+         for d5 in [c5 for (c5, p5) in request for (c6, p6) in token if (c5 == c6 and p5 >= p6)]:
+            if token_present == True:
+              token_present = False
+              send(Token(token), d5)
+
+   def OnToken(rtoken):
+      token = rtoken
+      token_arrived = True
+
+   def OnDone(srcid):
+      done.append(srcid)
+
+   def OnExit(srcid):
+      sys.exit(0)
+
+
+####### 3. R Timestamp code, Efficient version ########
+
+class R_Timestamp_eff(DistProcess):
+   def setup(s, mp):
+      request_flag = False
+      reqc = 0
+      deferred = []
+      nreqs_local = mp
+      reply_count = 0
+      earlier = []
+      done = []
+
+   def cs(task):
+
+      # to enter cs, enqueue and send request to all
+      --request
+      output("request cs")
+      request_flag = True
+      reqc = logical_clock()
+      send(Request(reqc, self), s)
+
+      await (reply_count == len(s))
+      reply_count = 0
+      earlier = []
+
+      # critical section
+      task()
+      nreqs_local -= 1
+      work()
+
+      # to exit cs, dequeue and send release to all
+      --release
+      output("release cs")
+      send(Reply(logical_clock(), self), deferred)
+      deferred = []
+      request_flag = False
+      if nreqs_local <= 0:
+        if len(done) == len(s):
+           send(Exit(self), done)
+           sys.exit(0)
+        else:
+           send(Done(self), s)
+           await(False)
+
+   def main():
+      def anounce():
+          output("In cs!")
+      while True:
+          cs(anounce)
+
+   # when receiving request from others, enque and reply
+   def OnRequest(req, srcid):
+      if ((request_flag == False) or (reqc > req or ( reqc == req and self < srcid))):
+          send(Reply(logical_clock(), self), _source)
+      else:
+          exists = False
+          for p4 in deferred:
+              if p4 == srcid:
+                  exists = True
+                  break
+          if exists == False:
+              deferred.append(srcid)
+
+   def OnReply(req, srcid):
+      if srcid not in earlier:
+         if req > reqc:
+            earlier.append(srcid)
+            reply_count += 1
+         
+   def OnDone(srcid):
+      done.append(srcid)
+
+   def OnExit(srcid):
+      sys.exit(0)
+
+####### 4. R Token code, Efficient version ########
+
+class R_Token_eff(DistProcess):
+   def setup(s, mp):
+      request = []
+      token = []
+      token.append((self, -1))
+      for p0 in s:
+        token.append((p0, -1))
+      if len(s) == 0 or (self < min(s)):
+        token_present = True
+      else:
+        token_present = False
+      token_held = False
+      token_arrived = False
+      nreqs_local = mp
+      done = []
+
+   def cs(task):
+
+      # to enter cs, enqueue and send request to all
+      --request
+      output("request cs")
+      if (token_present == False):
+        reqc = logical_clock()
+        request.append((self, reqc))
+        send(Request(reqc, self), s)
+        await(token_arrived)
+        token_arrived = False
+        token_present = True
+      token_held = True
+
+      # critical section
+      task()
+      nreqs_local -= 1
+      work()
+
+      # to exit cs, dequeue and send release to all
+      --release
+      output("release cs")
+      for (c1, p1) in token:
+        if c1 == self:
+           token.remove((c1,p1))
+           token.append((c1,logical_clock()))
+           break
+      token_held = False
+      for (c2, p2) in request:
+        for (c3, p3) in token:
+           if c2 == c3 and p2 >= p3 and token_present == True:
+              token_present = False
+              send(Token(token), c2)
+              break
+
+      # quitting logic
+      if nreqs_local <= 0 and token_present == False:
+        send(Done(self), s)
+        await(False)
+      if nreqs_local <= 0 and len(done) == len(s):
+        send(Exit(self), done)
+        sys.exit(0)
+
+   def main():
+      def anounce():
+         output("In cs!")
+      while True:
+         cs(anounce)
+
+   # when receiving request from others, enque and reply
+   def OnRequest(req, srcid):
+      for (src, reqold) in request:
+         if (srcid == src):
+            req = max(req, reqold)
+            request.remove((srcid, reqold))
+            break
+      request.append((srcid, req))
+
+      if (token_present == True and token_held == False):
+         for (c4,p4) in token:
+            if c4 == self:
+              token.remove((c4, p4))
+              token.append((c4, logical_clock()))
+              break
+         for (c5, p5) in request:
+            for (c6, p6) in token:
+              if c5 == c6 and p5 >= p6 and token_present == True:
+                token_present = False
+                send(Token(token), c5)
+                break
+
+   def OnToken(rtoken):
+      token = rtoken
+      token_arrived = True
+
+   def OnDone(srcid):
+      done.append(srcid)
+
+   def OnExit(srcid):
+      sys.exit(0)
+
+
+
+####### Drivers ###################
+
+def main():
+   nprocs = int(sys.argv[1]) if len(sys.argv) > 1 else 5
+   nreqs  = int(sys.argv[2]) if len(sys.argv) > 2 else 5
+   times  = int(sys.argv[3]) if len(sys.argv) > 3 else 1
+   step   = int(sys.argv[4]) if len(sys.argv) > 4 else 1
+   use_channel("tcp")
+
+####### 1. R Timestamp driver ########
+
+   print ("===================================================================")
+   print ("1. Running Ricart Agrawala Timestamp based algorithm, Clear version")
+   print ("===================================================================")
+   rmutex_stats = []
+   for i in range(0, times):
+      begin = time.time()
+      ps = createprocs(R_Timestamp, nprocs)
+      for p in ps: setupprocs({p}, [ps-{p}, nreqs + (i * step)])
+      startprocs(ps)
+      for p in ps: p.join()
+      end = time.time()
+      rmutex_stats.append((nreqs + (i * step), end - begin))
+
+####### 2. R Token driver ########
+
+   print ("===============================================================")
+   print ("2. Running Ricart Agrawala Token based algorithm, Clear version")
+   print ("===============================================================")
+   rtoken_stats = []
+   for i in range(0, times):
+      begin = time.time()
+      ps = createprocs(R_Token, nprocs)
+      for p in ps: setupprocs({p}, [ps-{p}, nreqs])
+      startprocs(ps)
+      for p in ps: p.join()
+      end = time.time()
+      rtoken_stats.append((nreqs + (i * step), end - begin))
+
+####### 3. R Timestamp Eff driver ########
+
+   print ("=======================================================================")
+   print ("3. Running Ricart Agrawala Timestamp based algorithm, Efficient version")
+   print ("=======================================================================")
+   rmutex_eff_stats = []
+   for i in range(0, times):
+      begin = time.time()
+      ps = createprocs(R_Timestamp_eff, nprocs)
+      for p in ps: setupprocs({p}, [ps-{p}, nreqs])
+      startprocs(ps)
+      for p in ps: p.join()
+      end = time.time()
+      rmutex_eff_stats.append((nreqs + (i * step), end - begin))
+
+####### 4. R Token Eff driver ########
+
+   print ("===================================================================")
+   print ("4. Running Ricart Agrawala Token based algorithm, Efficient version")
+   print ("===================================================================")
+   rtoken_eff_stats = []
+   for i in range(0, times):
+      begin = time.time()
+      ps = createprocs(R_Token_eff, nprocs)
+      for p in ps: setupprocs({p}, [ps-{p}, nreqs])
+      startprocs(ps)
+      for p in ps: p.join()
+      end = time.time()
+      rtoken_eff_stats.append((nreqs + (i * step), end - begin))
+
+
+   print ("============")
+   print ("Measurements")
+   print ("============")
+   print ("processes: %d, requests: %d, run times: %d, step: %d" % ( nprocs, nreqs, times, step))
+   print ("1. Ricart Agrawala Timestamp based algorithm")
+   print ("%25s | %10s | %15s" % ("Requests per process", "Clear(s)", "Efficient(s)"))
+   for i in range(0, len(rmutex_stats)):
+      print ("%25d | %10.2f | %15.2f" % (rmutex_stats[i][0], rmutex_stats[i][1], rmutex_eff_stats[i][1]))
+   print ("2. Ricart Agrawala Token based algorithm")
+   print ("%25s | %10s | %15s" % ("Requests per process", "Clear(s)", "Efficient(s)"))
+   for i in range(0, len(rtoken_stats)):
+      print ("%25d | %10.2f | %15.2f" % (rtoken_stats[i][0], rtoken_stats[i][1], rtoken_eff_stats[i][1]))
+
+   sys.exit(0) 

@@ -1,0 +1,25 @@
+http://www.androidenea.com/2010/03/share-memory-using-ashmem-and-binder-in.html
+
+Project Status: Not fully stable
+
+This Project is intended to create a shared memory in android using ashmem.
+we are trying to populate a shared memory from one app and read it from another app
+In android the shared memory implementation is different from linux kernel in the sense that
+the shared memory cannot be created using a global filename. But one app is responsible
+for creating a shared memory using the ashmem api available in the android framework, get a
+file descriptor for its region and transfer the file descriptor to the other app using 
+parcel file descriptor. The other app needs to retrieve this file desciptor in order to 
+access the shared memory.
+Ofcourse the file descriptor in the other app would be different than the one in the
+shared memory creator app.
+
+The whole excercise to be fully functionable needs a change in the android framework
+to register the service { AID_MEDIA, "vendor.enea.Buffer" },
+in frameworks/base/cmds/servicemanager/service_manager.c
+
+This is native code and hence is not platform independent.
+An improved version of the implementation has been decided upon which shall deal with
+java code to parcel the file descriptor onto the other app and would be relatively
+platform independent.
+
+

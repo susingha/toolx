@@ -1,0 +1,123 @@
+This is the buildsystem for the OpenWrt Linux distribution.
+
+Please use "make menuconfig" to configure your appreciated
+configuration for the toolchain and firmware.
+
+You need to have installed gcc, binutils, bzip2, flex, python, perl
+make, find, grep, diff, unzip, gawk, getopt, libz-dev and libc headers.
+
+Run "./scripts/feeds update -a" to get all the latest package definitions
+defined in feeds.conf / feeds.conf.default respectively
+and "./scripts/feeds install -a" to install symlinks of all of them into
+package/feeds/.
+
+Use "make menuconfig" to configure your image.
+
+Simply running "make" will build your firmware.
+It will download all sources, build the cross-compile toolchain, 
+the kernel and all choosen applications.
+
+You can use "scripts/flashing/flash.sh" for remotely updating your embedded
+system via tftp.
+
+The OpenWrt system is documented in docs/. You will need a LaTeX distribution
+and the tex4ht package to build the documentation. Type "make -C docs/" to build it.
+
+To build your own firmware you need to have access to a Linux, BSD or MacOSX system
+(case-sensitive filesystem required). Cygwin will not be supported because of
+the lack of case sensitiveness in the file system.
+
+
+Sunshine!
+	Your OpenWrt Project
+	http://openwrt.org
+
+
+Debug:
+make
+make V=s # to see everything happening in make
+
+
+ath9k and other drivers found at:
+=================================
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/root-ixp4xx/lib/modules/3.10.13/ath5k.ko
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/root-ixp4xx/lib/modules/3.10.13/ath9k.ko
+
+vtun driver found at:
+=====================
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/linux-3.10.13/drivers/net/tun.ko
+needs openssl-devel to compile
+was enabled from menuconfig as well as ./script/feeds install vtun
+
+madwifi driver found at:
+========================
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/madwifi-trunk-r3314/ath/ath_pci.ko
+
+bonding driver found at:
+========================
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/linux-3.10.13/drivers/net/bonding/bonding.ko
+
+KDIR:
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/compat-wireless-2013-06-27/
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/linux-3.10.13/   <----
+./build_dir/target-armeb_xscale_uClibc-0.9.33.2/linux-ixp4xx_generic/compat-wireless-2013-06-27/
+
+./bin/ixp4xx/openwrt-avila-zImage
+./bin/ixp4xx/openwrt-ixp4xx-generic-squashfs.img
+
+tftpboot:
+=========
+http://www.df.lth.se/~triad/krad/tftpserver.html
+systemctl enable xinetd.service
+systemctl start xinetd.service
+chmod a+w /var/lib/tftpboot
+iptables -A INPUT -m state --state NEW -m udp -p udp --dport 69 -j ACCEPT
+systemctl restart iptables.service
+cd /var/lib/tftpboot/
+
+flashing:
+=========
+http://www.wiligear.com/wiki/index.php/Gateworks_AVILA_2348-2_Install_Guide
+https://forum.openwrt.org/viewtopic.php?id=17669
+ip_address -l 192.168.1.20 -h 192.168.1.21                     # RJ45 port on the left
+fis init -f
+load -r -b %{FREEMEMLO} openwrt-avila-zImage
+fis create linux
+load -r -b %{FREEMEMLO} openwrt-ixp4xx-generic-squashfs.img
+fis create rootfs
+fconfig boot_script fis load linux; exec
+
+opkg packages:
+==============
+http://downloads.openwrt.org/snapshots/trunk/ixp4xx/packages/
+opkg install <url>
+
+udpbandwidth package:
+=====================
+ref: http://manoftoday.wordpress.com/2007/10/11/writing-and-compiling-a-simple-program-for-openwrt/
+enable udpbandwidth in .config to enable compile 
+code: ./package/udpbandwidth/
+bins: ./build_dir/target-armeb_xscale_uClibc-0.9.33.2/udpbandwidth
+
+
+links:
+http://groups.yahoo.com/neo/groups/lpc3000/conversations/topics/239 [list of all the menuconfig options]
+https://forum.openwrt.org/viewtopic.php?id=20689 [how to install extra package]
+https://forum.openwrt.org/viewtopic.php?id=34600 [how to create / test bonding interface. someone made things work]
+http://www.symantec.com/business/support/index?page=content&id=HOWTO64302 [iperf examples]
+	./iperf -s -u -p 12345
+	./iperf -c 10.12.240.32 -u -p 12345 -t 30 -b 250M # 250MB of UDP data ??
+	./iperf -s -p 45678
+	./iperf -c 10.12.240.32 -p 45678 -t 30            # One TCP connection. cannot specify data ??
+	./iperf -s -p 45678
+	./iperf -c 10.12.240.32 -p 45678 -t 30 -P 8       # 8 TCP connections
+
+
+
+
+
+
+
+
+
+
