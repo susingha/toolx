@@ -1,0 +1,26 @@
+<h1>Upload your submission</h1>
+<h2>
+Please upload in any archive format preferably <i>zip, tar, gz, z, bz, bz2</i>
+</h2>
+
+
+<form enctype="multipart/form-data" action="uploader.php" method="POST">
+
+<input type="text" name="topic" size="20" maxlength="30">&nbsp;Topic <i>(30 chars)</i><br>
+
+<input type="hidden" name="MAX_FILE_SIZE0" value="10000000" />
+
+<input name="upload" type="file" size="20" />
+
+<select name="event" title="specify the event">
+
+<option selected value="0">choose</option>
+<option value="1">Ankur(project)</option>
+<option value="2">Anusandhan(paper)</option>
+<option value="3">BrainMesh(webdesign)</option>
+
+</select>
+
+
+
+</form>				

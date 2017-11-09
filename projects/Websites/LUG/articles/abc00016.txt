@@ -1,0 +1,5 @@
+<?php
+$loggedin = 1;
+echo "done";
+
+?>

@@ -1,0 +1,134 @@
+root@OpenWrt:~# iperf -c 1.1.1.7 -u -b 250M -t 3600 -i 30
+------------------------------------------------------------
+Client connecting to 1.1.1.7, UDP port 5001
+Sending 1470 byte datagrams
+UDP buffer size:  160 KByte (default)
+------------------------------------------------------------
+[  3] local 1.1.1.5 port 45081 connected with 1.1.1.7 port 5001
+[ ID] Interval       Transfer     Bandwidth
+[  3]  0.0-30.0 sec  18.8 MBytes  5.25 Mbits/sec
+[  3] 30.0-60.0 sec  10.1 MBytes  2.83 Mbits/sec
+[  3] 60.0-90.0 sec  10.4 MBytes  2.92 Mbits/sec
+[  3] 90.0-120.0 sec  10.5 MBytes  2.95 Mbits/sec
+[  3] 120.0-150.0 sec  10.7 MBytes  2.99 Mbits/sec
+[  3] 150.0-180.0 sec  10.6 MBytes  2.96 Mbits/sec
+[  3] 180.0-210.0 sec  10.7 MBytes  2.99 Mbits/sec
+[  3] 210.0-240.0 sec  11.2 MBytes  3.13 Mbits/sec
+[  3] 240.0-270.0 sec  11.3 MBytes  3.17 Mbits/sec
+[  3] 270.0-300.0 sec  11.7 MBytes  3.28 Mbits/sec
+[  3] 300.0-330.0 sec  11.5 MBytes  3.21 Mbits/sec
+[  3] 330.0-360.0 sec  9.71 MBytes  2.72 Mbits/sec
+[  3] 360.0-390.0 sec  9.39 MBytes  2.63 Mbits/sec
+[  3] 390.0-420.0 sec  9.72 MBytes  2.72 Mbits/sec
+[  3] 420.0-450.0 sec  9.42 MBytes  2.64 Mbits/sec
+[  3] 450.0-480.0 sec  9.59 MBytes  2.68 Mbits/sec
+[  3] 480.0-510.0 sec  9.55 MBytes  2.67 Mbits/sec
+[  3] 510.0-540.0 sec  9.44 MBytes  2.64 Mbits/sec
+[  3] 540.0-570.0 sec  9.44 MBytes  2.64 Mbits/sec
+[  3] 570.0-600.0 sec  9.31 MBytes  2.60 Mbits/sec
+[  3] 600.0-630.0 sec  9.22 MBytes  2.58 Mbits/sec
+[  3] 630.0-660.0 sec  9.41 MBytes  2.63 Mbits/sec
+[  3] 660.0-690.0 sec  9.41 MBytes  2.63 Mbits/sec
+[  3] 690.0-720.0 sec  9.43 MBytes  2.64 Mbits/sec
+[  3] 720.0-750.0 sec  9.20 MBytes  2.57 Mbits/sec
+[  3] 750.0-780.0 sec  9.13 MBytes  2.55 Mbits/sec
+[  3] 780.0-810.0 sec  9.24 MBytes  2.58 Mbits/sec
+[  3] 810.0-840.0 sec  9.35 MBytes  2.61 Mbits/sec
+[  3] 840.0-870.0 sec  9.28 MBytes  2.60 Mbits/sec
+[  3] 870.0-900.0 sec  8.98 MBytes  2.51 Mbits/sec
+[  3] 900.0-930.0 sec  9.21 MBytes  2.57 Mbits/sec
+[  3] 930.0-960.0 sec  9.14 MBytes  2.55 Mbits/sec
+[  3] 960.0-990.0 sec  9.24 MBytes  2.58 Mbits/sec
+[  3] 990.0-1020.0 sec  9.15 MBytes  2.56 Mbits/sec
+[  3] 1020.0-1050.0 sec  9.25 MBytes  2.59 Mbits/sec
+[  3] 1050.0-1080.0 sec  9.21 MBytes  2.58 Mbits/sec
+[  3] 1080.0-1110.0 sec  9.04 MBytes  2.53 Mbits/sec
+[  3] 1110.0-1140.0 sec  9.09 MBytes  2.54 Mbits/sec
+[  3] 1140.0-1170.0 sec  8.72 MBytes  2.44 Mbits/sec
+[  3] 1170.0-1200.0 sec  9.28 MBytes  2.59 Mbits/sec
+[  3] 1200.0-1230.0 sec  9.21 MBytes  2.58 Mbits/sec
+[  3] 1230.0-1260.0 sec  9.35 MBytes  2.62 Mbits/sec
+[  3] 1260.0-1290.0 sec  9.63 MBytes  2.69 Mbits/sec
+[  3] 1290.0-1320.0 sec  9.38 MBytes  2.62 Mbits/sec
+[  3] 1320.0-1350.0 sec  10.2 MBytes  2.85 Mbits/sec
+[  3] 1350.0-1380.0 sec  9.94 MBytes  2.78 Mbits/sec
+[  3] 1380.0-1410.0 sec  9.67 MBytes  2.70 Mbits/sec
+[  3] 1410.0-1440.0 sec  9.88 MBytes  2.76 Mbits/sec
+[  3] 1440.0-1470.0 sec  10.1 MBytes  2.81 Mbits/sec
+[  3] 1470.0-1500.0 sec  9.37 MBytes  2.62 Mbits/sec
+[  3] 1500.0-1530.0 sec  8.87 MBytes  2.48 Mbits/sec
+[  3] 1530.0-1560.0 sec  9.08 MBytes  2.54 Mbits/sec
+[  3] 1560.0-1590.0 sec  8.97 MBytes  2.51 Mbits/sec
+[  3] 1590.0-1620.0 sec  9.22 MBytes  2.58 Mbits/sec
+[  3] 1620.0-1650.0 sec  9.04 MBytes  2.53 Mbits/sec
+[  3] 1650.0-1680.0 sec  9.05 MBytes  2.53 Mbits/sec
+[  3] 1680.0-1710.0 sec  9.30 MBytes  2.60 Mbits/sec
+[  3] 1710.0-1740.0 sec  9.29 MBytes  2.60 Mbits/sec
+[  3] 1740.0-1770.0 sec  9.25 MBytes  2.59 Mbits/sec
+[  3] 1770.0-1800.0 sec  10.4 MBytes  2.91 Mbits/sec
+[  3] 1800.0-1830.0 sec  10.4 MBytes  2.91 Mbits/sec
+[  3] 1830.0-1860.0 sec  10.3 MBytes  2.88 Mbits/sec
+[  3] 1860.0-1890.0 sec  10.4 MBytes  2.91 Mbits/sec
+[  3] 1890.0-1920.0 sec  10.5 MBytes  2.94 Mbits/sec
+[  3] 1920.0-1950.0 sec  10.5 MBytes  2.93 Mbits/sec
+[  3] 1950.0-1980.0 sec  10.5 MBytes  2.93 Mbits/sec
+[  3] 1980.0-2010.0 sec  10.3 MBytes  2.89 Mbits/sec
+[  3] 2010.0-2040.0 sec  10.6 MBytes  2.96 Mbits/sec
+[  3] 2040.0-2070.0 sec  10.3 MBytes  2.87 Mbits/sec
+[  3] 2070.0-2100.0 sec  10.2 MBytes  2.86 Mbits/sec
+[  3] 2100.0-2130.0 sec  10.3 MBytes  2.87 Mbits/sec
+[  3] 2130.0-2160.0 sec  10.3 MBytes  2.87 Mbits/sec
+[  3] 2160.0-2190.0 sec  11.0 MBytes  3.07 Mbits/sec
+[  3] 2190.0-2220.0 sec  10.6 MBytes  2.96 Mbits/sec
+[  3] 2220.0-2250.0 sec  10.3 MBytes  2.87 Mbits/sec
+[  3] 2250.0-2280.0 sec  10.2 MBytes  2.85 Mbits/sec
+[  3] 2280.0-2310.0 sec  10.0 MBytes  2.80 Mbits/sec
+[  3] 2310.0-2340.0 sec  10.1 MBytes  2.81 Mbits/sec
+[  3] 2340.0-2370.0 sec  10.0 MBytes  2.80 Mbits/sec
+[  3] 2370.0-2400.0 sec  10.2 MBytes  2.86 Mbits/sec
+[  3] 2400.0-2430.0 sec  10.2 MBytes  2.86 Mbits/sec
+[  3] 2430.0-2460.0 sec  10.4 MBytes  2.92 Mbits/sec
+[  3] 2460.0-2490.0 sec  10.5 MBytes  2.95 Mbits/sec
+[  3] 2490.0-2520.0 sec  10.7 MBytes  2.99 Mbits/sec
+[  3] 2520.0-2550.0 sec  10.6 MBytes  2.96 Mbits/sec
+[  3] 2550.0-2580.0 sec  10.8 MBytes  3.01 Mbits/sec
+[  3] 2580.0-2610.0 sec  11.0 MBytes  3.07 Mbits/sec
+[  3] 2610.0-2640.0 sec  10.7 MBytes  3.00 Mbits/sec
+[  3] 2640.0-2670.0 sec  10.6 MBytes  2.97 Mbits/sec
+[  3] 2670.0-2700.0 sec  10.8 MBytes  3.01 Mbits/sec
+[  3] 2700.0-2730.0 sec  11.1 MBytes  3.11 Mbits/sec
+[  3] 2730.0-2760.0 sec  11.3 MBytes  3.17 Mbits/sec
+[  3] 2760.0-2790.0 sec  10.8 MBytes  3.02 Mbits/sec
+[  3] 2790.0-2820.0 sec  10.9 MBytes  3.05 Mbits/sec
+[  3] 2820.0-2850.0 sec  11.0 MBytes  3.07 Mbits/sec
+[  3] 2850.0-2880.0 sec  10.7 MBytes  3.01 Mbits/sec
+[  3] 2880.0-2910.0 sec  10.8 MBytes  3.01 Mbits/sec
+[  3] 2910.0-2940.0 sec  10.9 MBytes  3.06 Mbits/sec
+[  3] 2940.0-2970.0 sec  11.0 MBytes  3.07 Mbits/sec
+[  3] 2970.0-3000.0 sec  10.8 MBytes  3.03 Mbits/sec
+[  3] 3000.0-3030.0 sec  11.0 MBytes  3.06 Mbits/sec
+[  3] 3030.0-3060.0 sec  10.9 MBytes  3.04 Mbits/sec
+[  3] 3060.0-3090.0 sec  11.0 MBytes  3.09 Mbits/sec
+[  3] 3090.0-3120.0 sec  11.2 MBytes  3.13 Mbits/sec
+[  3] 3120.0-3150.0 sec  11.4 MBytes  3.19 Mbits/sec
+[  3] 3150.0-3180.0 sec  11.3 MBytes  3.16 Mbits/sec
+[  3] 3180.0-3210.0 sec  11.4 MBytes  3.19 Mbits/sec
+[  3] 3210.0-3240.0 sec  11.6 MBytes  3.23 Mbits/sec
+[  3] 3240.0-3270.0 sec  11.4 MBytes  3.18 Mbits/sec
+[  3] 3270.0-3300.0 sec  11.6 MBytes  3.23 Mbits/sec
+[  3] 3300.0-3330.0 sec  11.6 MBytes  3.25 Mbits/sec
+[  3] 3330.0-3360.0 sec  11.4 MBytes  3.20 Mbits/sec
+[  3] 3360.0-3390.0 sec  11.5 MBytes  3.22 Mbits/sec
+[  3] 3390.0-3420.0 sec  11.6 MBytes  3.23 Mbits/sec
+[  3] 3420.0-3450.0 sec  11.5 MBytes  3.22 Mbits/sec
+[  3] 3450.0-3480.0 sec  11.7 MBytes  3.28 Mbits/sec
+[  3] 3480.0-3510.0 sec  11.8 MBytes  3.30 Mbits/sec
+[  3] 3510.0-3540.0 sec  11.7 MBytes  3.28 Mbits/sec
+[  3] 3540.0-3570.0 sec  11.7 MBytes  3.28 Mbits/sec
+[  3] 3570.0-3600.0 sec  11.7 MBytes  3.28 Mbits/sec
+[  3]  0.0-3600.0 sec  1.21 GBytes  2.88 Mbits/sec
+[  3] Sent 883012 datagrams
+[  3] Server Report:
+[  3]  0.0-3600.2 sec  1.20 GBytes  2.86 Mbits/sec   4.816 ms 6672/883013 (0.76%)
+root@OpenWrt:~# 
+

@@ -1,0 +1,161 @@
+<html>
+
+<head>
+
+<title> Whos Who</title>
+<link rel="stylesheet" type="text/css" href="style.css"></link>
+<script type="text/javascript" src="ajaxscrpt.js"></script>
+
+</head>
+<body>
+<style type="text/css">
+/*
+    li {
+        background-color: #880000;
+        color: #fff;
+        h: expression(onmouseover=new Function("this.style.backgroundColor='#00AA00'; this.style.color='#000';"),
+                       onmouseout=new Function("this.style.backgroundColor='#880000'; this.style.color='#fff';"));
+    }
+    li:hover {
+        background-color: #00AA00;
+        color: #000;
+    }
+*/
+</style>
+<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href=".">Home</a> : Whos Who</h3><br>
+<h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Whos Who</h2><br>
+
+<table border="0" cellspacing="0" cellpadding="5" width="100%">
+
+<tr>
+<td width="50%" align="center">
+<font size ="4">&nbsp;Kushal Lakhotia</font>
+</td>
+
+<td width="50%" align="center">
+<font size ="4">&nbsp;Anant Goenka</center></font>
+</td>
+</tr>
+
+<tr>
+<td width="50%" align="center">
+<b><h3>&nbsp;President</h3></b>
+</td>
+
+<td width="50%" align="center">
+<b><h3>&nbsp;Vice-President</h3></b>
+</td>
+</tr>
+
+</table>
+
+<table border="0" cellspacing="10" cellpadding="5" width="100%">
+
+<tr>
+<ul type="disc">
+<td valign="top" width="25%">
+<h3><b>Management Committee&nbsp;<a onmouseover="toggletxtarea1();" id="toggler1">+ show</a></b></h3><br>
+
+<div id="textarea1" class="hide">
+<font size="2">
+<li>&nbsp;Sandeep Narayanan</li>
+<li>&nbsp;Saurav Gupta</li>
+<li>&nbsp;Deba Pratim Saha</li>
+<li>&nbsp;Debopam Dhar Chowdhury</li>
+<li>&nbsp;Tithi Mukherjee</li>
+<li>&nbsp;Mayank Daga</li>
+<li>&nbsp;Atesh Koul</li>
+<li>&nbsp;Aditi Sinha</li>
+<li>&nbsp;Anuradha Singh</li>
+<li>&nbsp;Arjun Lath</li>
+<li>&nbsp;Sorabh Hamirwasia</li>
+<li>&nbsp;Swarnadeep Banerjee</li>
+</font>
+
+</div>
+
+</td>
+
+<td valign="top" width="25%">
+<h3><b>Creative Committee&nbsp;<a onmouseover="toggletxtarea2();" id="toggler2">+ show</a></b></h3><br>
+
+<div id="textarea2" class="hide">
+<font size="2">
+<li onmouseover="backgroundColor='#666'">&nbsp;Debopam Basu</li>
+<li>&nbsp;Shakya Sen</li>
+<li>&nbsp;Devlina Mukherjee</li>
+<li>&nbsp;Minushree Misra</li>
+<li>&nbsp;Rahul Jha</li>
+<li>&nbsp;Shreyank Gupta</li>
+<li>&nbsp;Arijit Mukherjee</li>
+</font>
+</div>
+
+</td>
+
+
+<td valign="top" width="25%">
+
+
+
+<h3><b>Technical Committee&nbsp;<a onmouseover="toggletxtarea3();" id="toggler3" >+ show</a></b></h3><br>
+
+<div id="textarea3" class="hide">
+<font size="2">
+<li>&nbsp;Supratik Singha</li>
+<li>&nbsp;Suman Deb Roy</li>
+<li>&nbsp;Siddhartha Sarkar</li>
+<li>&nbsp;Makarand Hazarika</li>
+<li>&nbsp;Bibek Paudel</li>
+<li>&nbsp;Saurabh Thakur</li>
+<li>&nbsp;Souvik Ray</li>
+<li>&nbsp;Rajat Kansal</li>
+<li>&nbsp;Adarsh Chowdhury</li>
+<li>&nbsp;Sayan Chackraborti</li>
+
+</font>
+</div>
+
+</td>
+
+
+<td valign="top" width="25%">
+<h3><b>Executive Committee&nbsp;<a onmouseover="toggletxtarea4();" id="toggler4">+ show</a></b></h3><br>
+
+<div id="textarea4" class="hide">
+<font size="2">
+<li>&nbsp;Abhishek Agarwal</li>
+<li>&nbsp;Kumarjit Sen</li>
+<li>&nbsp;Shankar Tudu</li>
+<li>&nbsp;Vivek Nabhi</li>
+<li>&nbsp;Md. Afzal Khan</li>
+<li>&nbsp;Shreya Chauhan</li>
+<li>&nbsp;Pradyumna Shee</li>
+<li>&nbsp;Nisha Kujur</li>
+<li>&nbsp;Amit Kumar Daga</li>
+<li>&nbsp;Sweta Singh</li>
+<li>&nbsp;Sayed Asad Ali</li>
+<li>&nbsp;Shweta Venaik</li>
+<li>&nbsp;Kaushik Kumar Nundy</li>
+<li>&nbsp;Nivedita Mukherjee</li>
+<li>&nbsp;Sucharita Rajendran</li>
+<li>&nbsp;Manish Agarwal</li>
+<li>&nbsp;Abhishek Gupta</li>
+<li>&nbsp;Tania Roy Choudhry</li>
+<li>&nbsp;Debleena Banerjee</li>
+<li>&nbsp;Sanaa Agarwal</li>
+<li>&nbsp;Anima Chowdhary</li>
+<li>&nbsp;Kunal Chhajer</li>
+</font>
+</div>
+
+
+</td>
+
+</tr>
+
+</table>
+
+</body>
+
+</html>

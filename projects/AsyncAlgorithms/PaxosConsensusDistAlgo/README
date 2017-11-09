@@ -1,0 +1,44 @@
+This project includes two contributions as follows:
+
+1. Byzantine Paxos implementation in DistAlgo
+   Leslie Lamport, Microsoft Research June 2011, June 2012
+	FILES:
+	vrpaxos-distalgo-bolin_con.da   - implements the basic consensus Paxos algorithm
+	vrpaxos-distalgo-bolin_byz.da   - implements the Byzantined Paxos algorithm (f acceptors failure)
+	vrpaxos-distalgo-bolin_pcon.da  - implements the pcon Paxos algorithm
+	vrpaxos-distalgo-bolin_bpcon.da - implements the Byzantined Paxos pcon algorithm
+2. Optimized version of MultiPaxos in DistAlgo
+   Robbert van Renesse, Department of Computer Science, Cornell University
+	FILES:
+	vrpaxos-distalgo-bolin.da       - The basic multi paxos algorithm by Bo Lin
+	vrpaxos-distalgo-optim-opt.da   - implements the Optimized version of the basic multi paxos algorithm
+	optimizationNotes.txt           - The optimzation technique adopted and steps taken
+
+
+RUN:
+All algorithms are implemented in DistAlgo (a python module to handle message passing in distributed systems)
+Follow instructions in DistAlgo package for running the algorithms
+recommended version: python3
+
+OUTPUTS:
+The implementations run the algorithms in a simulated environment where each processor is simulated by 
+a different process and the communication among the processors are simulated by message passing among
+processes. The outputs prints a message whenever a request gets sent and prints a received message when
+a consensus is achieved on a message after receiving them from all contributors (acceptors)
+When a consensus is not achieved and when a error condition is met, an assert message is printed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

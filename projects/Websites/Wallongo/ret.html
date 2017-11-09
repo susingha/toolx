@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style type="text/css">
+        #map_canvas { height:400px; width:900px }
+    </style>
+
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript">
+    var initialLocation;
+    var siberia = new google.maps.LatLng(60, 105);
+    var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
+    var browserSupportFlag =  new Boolean();
+
+    function initialize() {
+        var myOptions = {
+            zoom: 15,
+            disableDoubleClickZoom: true,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+        var marker;
+
+        myListener = google.maps.event.addListener(map, 'dblclick', function(event) { // dblclick
+            placeMarker(event.latLng);
+        });
+/*
+        google.maps.event.addListener(map, 'drag', function(event) {
+            placeMarker(event.latLng);
+        });
+*/
+
+        // Try W3C Geolocation (Preferred)
+        if(navigator.geolocation) {
+            browserSupportFlag = true;
+            navigator.geolocation.getCurrentPosition(function(position) {
+                initialLocation = new google.maps.LatLng(position.coords.latitude,position.coords.longitude);
+                map.setCenter(initialLocation);
+            }, function() {
+                handleNoGeolocation(browserSupportFlag);
+            });
+            // Try Google Gears Geolocation
+        } else if (google.gears) {
+            browserSupportFlag = true;
+            var geo = google.gears.factory.create('beta.geolocation');
+            geo.getCurrentPosition(function(position) {
+                initialLocation = new google.maps.LatLng(position.latitude,position.longitude);
+                map.setCenter(initialLocation);
+            }, function() {
+                handleNoGeoLocation(browserSupportFlag);
+            });
+            // Browser doesn't support Geolocation
+        } else {
+            browserSupportFlag = false;
+            handleNoGeolocation(browserSupportFlag);
+        }
+
+        function handleNoGeolocation(errorFlag) {
+            if (errorFlag === true) {
+                alert("Geolocation service failed.");
+                initialLocation = newyork;
+            } else {
+                alert("Your browser doesn't support geolocation. We've placed you in Siberia.");
+                initialLocation = siberia;
+            }
+        }
+
+        function placeMarker(location) {
+            if (marker) {
+                marker.setPosition(location);
+            } else {
+               marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    draggable: true
+                });
+                google.maps.event.addListener(marker, "drag", function (mEvent) {
+                    populateInputs(mEvent.latLng);
+                });
+            }
+            populateInputs(location);
+        }
+
+        function populateInputs(pos) {
+            document.getElementById("t1").value=pos.lat();
+            document.getElementById("t2").value=pos.lng();
+            document.getElementById("t3").value=document.getElementById("username").value;
+            /*
+            if(document.getElementById("r1").checked=="checked")
+                document.getElementById("t4").value=document.getElementById("r1").value;
+            else if(document.getElementById("r2").checked=="checked")
+                document.getElementById("t4").value=document.getElementById("r2").value;
+            else
+                document.getElementById("t4").value=document.getElementById("r3").value;
+            */
+            /* 
+            for(var i=0; i<radios.length; i++) {
+                if(radios[i].checked) {
+                    document.getElementById("t4").value=radios[i].value;
+                }
+            }
+	    */
+	var username = document.getElementById("username").value;
+	var poster_heading = document.getElementById("poster_heading").value;
+	var poster_body = document.getElementById("poster_body").value;
+	var location = document.getElementById("location").value;
+	var latitude = pos.lat();
+	var longitude = pos.lng();
+        var radios = document.getElementsByName("option");
+
+	    var onClickLabel = "Creating Label";
+
+	    function show2(link, div, n)
+	    {
+		    // alert(link + div);
+		    var req = createRequestObject();
+		    req.open("GET", link, true);
+		    req.onreadystatechange = function()
+		    {
+			    if(req.readyState == 4)
+			    {
+				    onClickLabel = req.responseText;
+			    }
+		    }
+
+		    req.send(null);        
+	    }
+
+	    function displayLocation(latitude,longitude)
+	    { 
+		    var request = new XMLHttpRequest();
+		    var method = 'GET'; 
+		    var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true'; 
+		    var async=true;
+		    request.open(method, url, async); 
+		    // alert("request opened");
+		    request.onreadystatechange = function()
+		    { 
+			// alert("inside onreadystatechange");
+			    if(request.readyState == 4 && request.status == 200)
+			    { 
+				    // alert("response okay");
+				    var data = JSON.parse(request.responseText); 
+				    var address = data.results[0]; 
+				    // alert(request.responseText);
+				    onClickLabel = address.formatted_address; // request.responseText; 
+			    } 
+		    }; 
+		    request.send(); 
+		    // alert("request sent");
+	    };
+
+
+	    var successCallback = function(position)
+	    { 
+		    var x = latitude; var y = longitude; 
+		    displayLocation(x,y); 
+	    };
+
+
+
+	    var errorCallback = function(error)
+	    { 
+		    var errorMessage = 'Unknown error'; 
+		    switch(error.code) 
+		    { 
+			    case 1: errorMessage = 'Permission denied'; break; 
+			    case 2: errorMessage = 'Position unavailable'; break; 
+			    case 3: errorMessage = 'Timeout'; break; 
+		    } 
+		    onClickLabel = errorMessage; 
+	    };
+
+	    var options = { enableHighAccuracy: true, timeout: 1000, maximumAge: 0 };
+
+
+	if(radios[0].checked)
+	{
+		navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
+		alert(onClickLabel);
+
+		if(onClickLabel != "Creating Label")
+		{
+			location = onClickLabel;
+		}
+
+		pin_up_poster_at_location(username, poster_heading, poster_body, location, latitude, longitude);
+	}
+	else if(radios[1].checked)
+	{
+		view_posters_near_location(username, latitude, longitude);
+	} 
+	else if(radios[2].checked)
+	{
+		take_down_poster_at_location(username, poster_heading, location);
+	}
+        } //end of populateInputs
+
+	function pin_up_poster_at_location(in_user, in_heading, in_body, in_location, in_latitude, in_longitude) {
+	    show('pin_up_poster_at_location.php?in_u='+in_user+"&in_h="+in_heading+"&in_b="+in_body+"&in_l="+in_location+"&in_la="+in_latitude+"&in_lo="+in_longitude, 'queryResp', 2);
+            document.getElementById('containerResp').style.display='block';
+	}
+	function view_posters_near_location(in_user, in_latitude, in_longitude) {
+	    show('view_posters_near_location.php?in_u='+in_user+"&in_la="+in_latitude+"&in_lo="+in_longitude, 'queryResp', 2);
+            document.getElementById('containerResp').style.display='block';
+	}
+	function take_down_poster_at_location(in_user, in_heading, in_location) {
+	    show('take_down_poster_at_location.php?in_u='+in_user+"&in_h="+in_heading+"&in_l="+in_location, '', 0);
+	}
+    }
+
+    </script>
+    <script type="text/javascript" src="ajaxcalls.js"></script>
+</head>
+
+<body onload="initialize()">
+ <img src = "FinalLogo.jpg" height="70" width="250"/>
+ <bgcolor="black"></bgcolor>
+    
+<form action="">
+Username : <input type="label" id="username">&nbsp;
+<!--Location name : --><input type="label" id="location" style="display:none;"><br>
+Poster heading : <input type="label" id="poster_heading">&nbsp;
+Poster body : <input type="label" id="poster_body"><br>
+<br>Select Action : &nbsp;&nbsp;
+<input type="radio" name="option" value="Create" id="r1">Pin Up A New Poster&nbsp;&nbsp;
+<input type="radio" name="option" value="View" id="r2">View Nearby Posters&nbsp;&nbsp;
+<input type="radio" name="option" value="Delete"id="r3" style="display:none;">
+</form>
+
+    <div id="map_canvas"></div>
+<div style="display:none;">
+    <input type="label" id="t1">
+    <input type="label" id="t2">
+    <input type="label" id="t3">
+    <input type="label" id="t4">
+</div>
+
+    <br><br>
+
+    <div id="containerResp" style="width:800px;border:2px solid;border-radius:25px;display:none;">
+
+    <center>
+    <div id="queryResp">
+    NOW
+    </div>
+    </center>
+
+    </div>
+
+</body>
+</html>

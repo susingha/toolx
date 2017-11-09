@@ -1,0 +1,66 @@
+Optimizations
+1. Leader keeps a declined_slot_map to track which slots have been decided. For P1a request, leader includes the first available slot which doesn’t have a decision.
+    - Upon active, leader doesn’t need to start commanders for slots that have decisions
+    - it doesn’t need to maintain proposals for these slots
+
+Design:
+	In the Commander: when its declining (pre-empting) a P2b response, send the slot and command as well. So the Leader comes to know which slot got declined and records it in its declined_slot_map.
+	In the Leader: when receiving a decline (preempted), catch the declined slot and insert it into its declined_slot_map.
+	               when spawning commander run a check on the declined_slot_map. spawn the commander only if the slot number is present in the declined_slot_map.
+		       when receiving proposals, insert this (s,c) into the proposals list only if the slot is present in the declined_slot_map meaning this slot has not yet been decided upon and needs to be decided.
+	In the Commander: when a decision gets made, remove this slot from the declined_slot_map just before sending out the decision packet to all the replicas
+
+
+2. requests maintained by Replicas should contain only those requests for slot# higher than slot_num
+
+Design:
+	While updating (s',c) in the proposals list in propose(),  check if s' is higher than slot_num. update if s' is higher
+	While updating (s',c) in the decisions list in decision(), check if s' is higher than slot_num. update if s' is higher
+	While incrementing slot_num in perform(), remove all (s',c) from proposals and decisions list for which s' is less than slot_num
+
+3. Acceptors maintain only recent accepted pval for each slot return only these pvals in P1b message to Scout
+
+Design:
+	In Acceptor: Maintain a recently_accepted_queue and with a queue size of say 'q'.
+		On receiving P2a, after updating accepted list, insert the {(b,s,c)} which is the latest accepted pvalue, to the recently_accepted_queue and remove the oldest entry from the end of this queue.
+		On receiving P1a, while sending P1b back to the leader instead of sending accepted list, send the recently_accepted_queue.
+	In Scout: On receiving P1b, check whether pvalues list is getting properly maintained or not. we may have to tweak the 'q' according to the workload in the algorithm.
+
+4. Try out different co-location variations and check the performance difference (in a truly distributed environment)
+    - say leader, replicas
+    - client, leader
+    - replicas, acceptors 
+
+Design:
+	Need to understand co-location deeper.
+
+5. Garbage collection
+    - Replicas let leader know when a command is performed, then leaders can notify acceptors to release corresponding state. State of acceptor contains slot_num. When state is released, all pvals lower than this slot_num should be deleted.
+    - This slot_num should be sent to all leaders in P1b message so that other leaders don’t think that for those slot_num acceptors haven’t accepted any pvals
+    - Make Replicas 2f+1   
+
+Design:
+	In Replica: In perform(), right after sending response to k, send slot_num_executed message to all Leaders.
+	In Leaders: On receiving slot_num_executed, it forwards this message to Acceptors along with the P1b message.
+	In Acceptors: On receiving P1b, extract the slot_num_executed, run through accepted list and delete all entries of {(b,s,c)} for which s < slot_num_executed.
+	Making Replicas 2f+1 should be done in the distAlgo framework code while creating Replicas.
+
+6. Keep state of acceptors and leaders on disk so that on crash, they can recover from disk.
+
+Design:
+	Write all local variables to persistent storage whenever thay are updated. read back from persistent storage when they are created new.
+
+7. Failure detection: to associate a time_out with each ballot for a leader. When ballot gets pre-empted, next ballot uses time_out that is X 2 (multipled by 2). 
+
+Design:
+	In Leader: Maintain ballot_time_out = 1 (or some other initial unit of time).
+		   On receiving preempted, before spawning a new scout, raise multiply ballot_time_out by 2.
+		   This ballot_time_out should be passon whenever ballot is passed around.
+	In Commander: Handle ballot_time_out accordingly to fail the request
+	In Scout:     Handle ballot_time_out accordingly to fail the request
+
+
+
+
+
+

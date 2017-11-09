@@ -1,0 +1,95 @@
+Considering ath0 to ath0 as a separate link and ath1 to ath1 as separate link.
+Both are on distant channel numbers 1 (ath0) and 11 (ath1)
+
+
+ifenslaved ath1 ath0:
+=====================
+ath0  <--- 2         60 <---  ath0     (58  packets lost)
+      ---> 207        4 --->           (203 packets lost)
+ath1  <--- 60        60 <---  ath1
+      ---> 207      207 --->
+
+ifenslaved ath0 ath1:
+=====================
+ath0  <--- 311   ??   307 <---  ath0
+      ---> 298        301 --->
+ath1  <--- 7          306 <---  ath1   (299 packets lost)
+      ---> 298          6 --->         (292 packets lost)
+
+ifenslaved tap1 tap2: vtunnel over ath0 and ath1
+=====================
+bond  <--- 34829          34829 <---  bond
+      ---> 31690          31690 --->
+
+ath0  <--- 34431          34432 <---  ath0   (1  packet lost)
+      ---> 32954          32861 --->         (93 packets lost)
+ath1  <--- 31848          32324 <---  ath1   (476 packets lost)
+      ---> 32771          32508 --->         (263 packets lost)
+tap1  <--- 17414          17414 <---  tap1
+      ---> 15845          15845 --->
+tap2  <--- 17415          17415 <---  tap2
+      ---> 15845          15845 ---> 
+
+
+UDP Measurements:
+tap1 to tap1:
+22790144 Bytes. Average bw = 455802.88 Bytes/s, Current bw = 459571.19 Bytes/s
+tap2 to tap2:
+3973120 Bytes. Average bw = 397312.00 Bytes/s, Current bw = 425164.81 Bytes/s
+bond0 to bond0: try1:
+1200128 Bytes. Average bw = 171446.86 Bytes/s, Current bw = 240025.59 Bytes/s
+1204224 Bytes. Average bw = 60211.20 Bytes/s, Current bw = 819.20 Bytes/s
+1314816 Bytes. Average bw = 52592.64 Bytes/s, Current bw = 22118.40 Bytes/s
+bond0 to bond0: try2: (vtund server cannot be made UDP server)
+143360 Bytes. Average bw = 15928.89 Bytes/s, Current bw = 28672.00 Bytes/s
+
+
+
+
+
+Monitored the number of packets sent and received by the bond0 interface. These counters are
+the sum of the corresponding counters of the individual ath0 and ath1 interface.
+Only that not both the interfaces are getting bonded equally. The interface mentioned first in
+ifenslave gets bonded properly and almost 95% of the traffic succeeds RX / TX through that interface.
+
+Its not as if the bonding tries to send 95% of traffic through ath1.
+The bonding driver 'pushes' same amount of traffic through both the interfaces,
+but only ath1 is able to RX / TX the packets and not ath0. Why !!
+
+Is it that both interfaces won't work together properly ?
+=========================================================
+1. Try pinging from both sides simultaneously on separate links and track packet loss.
+	Not at all. tried with huge packet size (65507 bytes). no packet loss in 120 pings.
+	300 to 350 ms delay on an average on ath0 link
+	350 to 500 ms delay on an average on ath1 link
+2. Try iperf from both sides simultaneously on separate links and track bandwidth.
+	Not really. Each link gives reasonably lesser bandwidth than individual performance
+	But not drastically less than the other. About 0.2 Mbps less than individual performance
+	ath0 to ath0 (with ath1 running too) [  3]  0.0-360.7 sec  99.1 MBytes  2.31 Mbits/sec
+	ath0 to ath0 (with ath1 not running) [  3]  0.0-360.4 sec   117 MBytes  2.71 Mbits/sec
+	ath1 to ath1 (with ath0 running too) [  3]  0.0-360.5 sec   103 MBytes  2.40 Mbits/sec
+	ath1 to ath1 (with ath0 not running) [  3]  0.0-360.5 sec   107 MBytes  2.48 Mbits/sec
+3. Try scp from both side simultaneously on separate links and track bandwidth
+	Laters
+
+
+
+Tunneling observations:
+=======================
+bond0 ppushes 50-50 traffic on both sides
+bond0 TX = tap1 TX + tap2 TX != ath0 TX + ath0 TX
+bond0 RX = tap1 RX + tap2 RX != ath1 RX + ath1 RX
+
+the inequality with ath0 and ath1 counters may be because the tunnelling might be
+doing some internal retransmission for the TCP. the vtunnel is after all a TCP connection
+
+tap TX and RX counters are consistent on both sides
+TX on one side = RX on other side, in both directions
+
+Packet loss in the 2nd inf ath1 to ath1 is more.
+TODO: try ifenslave tap2 tap2 and check if behaviour reverses.
+      i.e. we get more packet loss on ath0 than ath1
+
+
+
+

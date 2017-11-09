@@ -1,0 +1,517 @@
+
+Server started receiving data
+head = 1, recvcount = 1, lost = 0
+
+Received packet from 2.1.1.8:55044
+1925120 Bytes (470 Packets, lost: 3138). Average bw = 385024.00 Bytes/s, Current bw = 385024.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+4194304 Bytes (1024 Packets, lost: 3139). Average bw = 419430.41 Bytes/s, Current bw = 453836.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+6479872 Bytes (1582 Packets, lost: 3139). Average bw = 431991.47 Bytes/s, Current bw = 457113.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+8740864 Bytes (2134 Packets, lost: 3139). Average bw = 437043.19 Bytes/s, Current bw = 452198.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+10977280 Bytes (2680 Packets, lost: 3139). Average bw = 439091.19 Bytes/s, Current bw = 447283.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+13238272 Bytes (3232 Packets, lost: 3139). Average bw = 441275.72 Bytes/s, Current bw = 452198.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+15511552 Bytes (3787 Packets, lost: 3139). Average bw = 443187.19 Bytes/s, Current bw = 454656.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+17793024 Bytes (4344 Packets, lost: 3139). Average bw = 444825.59 Bytes/s, Current bw = 456294.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+20078592 Bytes (4902 Packets, lost: 3139). Average bw = 446190.94 Bytes/s, Current bw = 457113.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+22339584 Bytes (5454 Packets, lost: 3139). Average bw = 446791.69 Bytes/s, Current bw = 452198.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+24641536 Bytes (6016 Packets, lost: 3139). Average bw = 448027.94 Bytes/s, Current bw = 460390.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+26927104 Bytes (6574 Packets, lost: 3139). Average bw = 448785.06 Bytes/s, Current bw = 457113.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+29192192 Bytes (7127 Packets, lost: 3139). Average bw = 449110.66 Bytes/s, Current bw = 453017.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+31444992 Bytes (7677 Packets, lost: 3139). Average bw = 449214.16 Bytes/s, Current bw = 450560.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+33726464 Bytes (8234 Packets, lost: 3139). Average bw = 449686.19 Bytes/s, Current bw = 456294.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+35762176 Bytes (8731 Packets, lost: 3139). Average bw = 447027.19 Bytes/s, Current bw = 407142.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+37773312 Bytes (9222 Packets, lost: 3139). Average bw = 444391.91 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+39747584 Bytes (9704 Packets, lost: 3139). Average bw = 441639.81 Bytes/s, Current bw = 394854.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+41766912 Bytes (10197 Packets, lost: 3139). Average bw = 439651.72 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+43757568 Bytes (10683 Packets, lost: 3139). Average bw = 437575.69 Bytes/s, Current bw = 398131.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+45776896 Bytes (11176 Packets, lost: 3139). Average bw = 435970.44 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+47742976 Bytes (11656 Packets, lost: 3139). Average bw = 434027.06 Bytes/s, Current bw = 393216.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+49750016 Bytes (12146 Packets, lost: 3139). Average bw = 432608.84 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+51744768 Bytes (12633 Packets, lost: 3139). Average bw = 431206.41 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+53723136 Bytes (13116 Packets, lost: 3139). Average bw = 429785.09 Bytes/s, Current bw = 395673.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+55664640 Bytes (13590 Packets, lost: 3139). Average bw = 428189.53 Bytes/s, Current bw = 388300.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+57651200 Bytes (14075 Packets, lost: 3139). Average bw = 427045.94 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+59670528 Bytes (14568 Packets, lost: 3139). Average bw = 426218.06 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+61698048 Bytes (15063 Packets, lost: 3139). Average bw = 425503.78 Bytes/s, Current bw = 405504.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+63684608 Bytes (15548 Packets, lost: 3139). Average bw = 424564.06 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+65691648 Bytes (16038 Packets, lost: 3139). Average bw = 423817.09 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+67698688 Bytes (16528 Packets, lost: 3139). Average bw = 423116.81 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+69726208 Bytes (17023 Packets, lost: 3139). Average bw = 422583.09 Bytes/s, Current bw = 405504.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+71700480 Bytes (17505 Packets, lost: 3139). Average bw = 421767.53 Bytes/s, Current bw = 394854.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+73699328 Bytes (17993 Packets, lost: 3139). Average bw = 421139.03 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+75722752 Bytes (18487 Packets, lost: 3139). Average bw = 420681.97 Bytes/s, Current bw = 404684.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+77729792 Bytes (18977 Packets, lost: 3139). Average bw = 420161.03 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+79728640 Bytes (19465 Packets, lost: 3139). Average bw = 419624.41 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+81735680 Bytes (19955 Packets, lost: 3139). Average bw = 419157.34 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+83722240 Bytes (20440 Packets, lost: 3139). Average bw = 418611.19 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+85733376 Bytes (20931 Packets, lost: 3139). Average bw = 418211.59 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+87744512 Bytes (21422 Packets, lost: 3139). Average bw = 417831.00 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+89735168 Bytes (21908 Packets, lost: 3139). Average bw = 417372.88 Bytes/s, Current bw = 398131.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+91754496 Bytes (22401 Packets, lost: 3139). Average bw = 417065.91 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+93765632 Bytes (22892 Packets, lost: 3139). Average bw = 416736.16 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+95764480 Bytes (23380 Packets, lost: 3139). Average bw = 416367.31 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+97751040 Bytes (23865 Packets, lost: 3139). Average bw = 415961.88 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+99758080 Bytes (24355 Packets, lost: 3139). Average bw = 415658.66 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+101761024 Bytes (24844 Packets, lost: 3139). Average bw = 415351.13 Bytes/s, Current bw = 400588.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+103772160 Bytes (25335 Packets, lost: 3139). Average bw = 415088.63 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+105771008 Bytes (25823 Packets, lost: 3139). Average bw = 414788.28 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+107782144 Bytes (26314 Packets, lost: 3139). Average bw = 414546.72 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+109768704 Bytes (26799 Packets, lost: 3139). Average bw = 414221.53 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+111763456 Bytes (27286 Packets, lost: 3139). Average bw = 413938.72 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+113741824 Bytes (27769 Packets, lost: 3139). Average bw = 413606.63 Bytes/s, Current bw = 395673.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+115724288 Bytes (28253 Packets, lost: 3139). Average bw = 413301.03 Bytes/s, Current bw = 396492.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+117719040 Bytes (28740 Packets, lost: 3139). Average bw = 413049.25 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+119713792 Bytes (29227 Packets, lost: 3139). Average bw = 412806.19 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+121733120 Bytes (29720 Packets, lost: 3139). Average bw = 412654.66 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+123748352 Bytes (30212 Packets, lost: 3139). Average bw = 412494.50 Bytes/s, Current bw = 403046.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+125763584 Bytes (30704 Packets, lost: 3139). Average bw = 412339.63 Bytes/s, Current bw = 403046.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+127787008 Bytes (31198 Packets, lost: 3139). Average bw = 412216.16 Bytes/s, Current bw = 404684.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+129814528 Bytes (31693 Packets, lost: 3139). Average bw = 412109.63 Bytes/s, Current bw = 405504.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+131850240 Bytes (32190 Packets, lost: 3139). Average bw = 412032.00 Bytes/s, Current bw = 407142.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+133865472 Bytes (32682 Packets, lost: 3139). Average bw = 411893.75 Bytes/s, Current bw = 403046.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+135901184 Bytes (33179 Packets, lost: 3139). Average bw = 411821.78 Bytes/s, Current bw = 407142.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+137912320 Bytes (33670 Packets, lost: 3139). Average bw = 411678.56 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+139915264 Bytes (34159 Packets, lost: 3139). Average bw = 411515.47 Bytes/s, Current bw = 400588.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+141926400 Bytes (34650 Packets, lost: 3139). Average bw = 411380.88 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+143933440 Bytes (35140 Packets, lost: 3139). Average bw = 411238.41 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+145928192 Bytes (35627 Packets, lost: 3139). Average bw = 411065.34 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+147935232 Bytes (36117 Packets, lost: 3139). Average bw = 410931.19 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+149946368 Bytes (36608 Packets, lost: 3139). Average bw = 410811.97 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+151965696 Bytes (37101 Packets, lost: 3139). Average bw = 410718.09 Bytes/s, Current bw = 403865.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+153956352 Bytes (37587 Packets, lost: 3139). Average bw = 410550.28 Bytes/s, Current bw = 398131.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+155971584 Bytes (38079 Packets, lost: 3139). Average bw = 410451.53 Bytes/s, Current bw = 403046.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+157962240 Bytes (38565 Packets, lost: 3139). Average bw = 410291.53 Bytes/s, Current bw = 398131.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+159997952 Bytes (39062 Packets, lost: 3139). Average bw = 410251.16 Bytes/s, Current bw = 407142.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+161992704 Bytes (39549 Packets, lost: 3139). Average bw = 410108.13 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+163999744 Bytes (40039 Packets, lost: 3139). Average bw = 409999.38 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+165974016 Bytes (40521 Packets, lost: 3139). Average bw = 409812.38 Bytes/s, Current bw = 394854.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+167985152 Bytes (41012 Packets, lost: 3139). Average bw = 409719.88 Bytes/s, Current bw = 402227.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+169959424 Bytes (41494 Packets, lost: 3139). Average bw = 409540.78 Bytes/s, Current bw = 394854.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+171937792 Bytes (41977 Packets, lost: 3139). Average bw = 409375.69 Bytes/s, Current bw = 395673.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+173924352 Bytes (42462 Packets, lost: 3139). Average bw = 409233.78 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+175923200 Bytes (42950 Packets, lost: 3139). Average bw = 409123.72 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+177909760 Bytes (43435 Packets, lost: 3139). Average bw = 408987.97 Bytes/s, Current bw = 397312.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+179879936 Bytes (43916 Packets, lost: 3139). Average bw = 408818.03 Bytes/s, Current bw = 394035.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+181882880 Bytes (44405 Packets, lost: 3139). Average bw = 408725.56 Bytes/s, Current bw = 400588.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+183889920 Bytes (44895 Packets, lost: 3139). Average bw = 408644.28 Bytes/s, Current bw = 401408.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+185884672 Bytes (45382 Packets, lost: 3139). Average bw = 408537.75 Bytes/s, Current bw = 398950.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+187867136 Bytes (45866 Packets, lost: 3139). Average bw = 408406.81 Bytes/s, Current bw = 396492.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+189833216 Bytes (46346 Packets, lost: 3139). Average bw = 408243.47 Bytes/s, Current bw = 393216.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+191791104 Bytes (46824 Packets, lost: 3139). Average bw = 408066.19 Bytes/s, Current bw = 391577.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+193748992 Bytes (47302 Packets, lost: 3139). Average bw = 407892.63 Bytes/s, Current bw = 391577.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+195719168 Bytes (47783 Packets, lost: 3139). Average bw = 407748.28 Bytes/s, Current bw = 394035.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+197582848 Bytes (48238 Packets, lost: 3139). Average bw = 407387.31 Bytes/s, Current bw = 372736.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+199450624 Bytes (48694 Packets, lost: 3139). Average bw = 407042.09 Bytes/s, Current bw = 373555.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+201428992 Bytes (49177 Packets, lost: 3139). Average bw = 406927.25 Bytes/s, Current bw = 395673.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+203411456 Bytes (49661 Packets, lost: 3139). Average bw = 406822.91 Bytes/s, Current bw = 396492.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+205410304 Bytes (50149 Packets, lost: 3139). Average bw = 406753.06 Bytes/s, Current bw = 399769.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+207646720 Bytes (50695 Packets, lost: 3139). Average bw = 407150.44 Bytes/s, Current bw = 447283.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+209903616 Bytes (51246 Packets, lost: 3139). Average bw = 407579.84 Bytes/s, Current bw = 451379.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+212160512 Bytes (51797 Packets, lost: 3139). Average bw = 408001.00 Bytes/s, Current bw = 451379.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+214409216 Bytes (52346 Packets, lost: 3139). Average bw = 408398.50 Bytes/s, Current bw = 449740.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+216682496 Bytes (52901 Packets, lost: 3139). Average bw = 408834.91 Bytes/s, Current bw = 454656.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+218853376 Bytes (53431 Packets, lost: 3139). Average bw = 409071.72 Bytes/s, Current bw = 434176.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+221110272 Bytes (53982 Packets, lost: 3139). Average bw = 409463.47 Bytes/s, Current bw = 451379.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+223350784 Bytes (54529 Packets, lost: 3139). Average bw = 409817.94 Bytes/s, Current bw = 448102.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+225587200 Bytes (55075 Packets, lost: 3139). Average bw = 410158.53 Bytes/s, Current bw = 447283.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+227831808 Bytes (55623 Packets, lost: 3139). Average bw = 410507.75 Bytes/s, Current bw = 448921.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+230076416 Bytes (56171 Packets, lost: 3139). Average bw = 410850.75 Bytes/s, Current bw = 448921.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+232321024 Bytes (56719 Packets, lost: 3139). Average bw = 411187.66 Bytes/s, Current bw = 448921.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+234545152 Bytes (57262 Packets, lost: 3139). Average bw = 411482.72 Bytes/s, Current bw = 444825.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+236732416 Bytes (57796 Packets, lost: 3139). Average bw = 411708.56 Bytes/s, Current bw = 437452.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+238997504 Bytes (58349 Packets, lost: 3139). Average bw = 412064.66 Bytes/s, Current bw = 453017.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+241238016 Bytes (58896 Packets, lost: 3139). Average bw = 412372.69 Bytes/s, Current bw = 448102.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+243490816 Bytes (59446 Packets, lost: 3139). Average bw = 412696.31 Bytes/s, Current bw = 450560.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+245694464 Bytes (59984 Packets, lost: 3139). Average bw = 412931.88 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+247963648 Bytes (60538 Packets, lost: 3139). Average bw = 413272.75 Bytes/s, Current bw = 453836.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+250204160 Bytes (61085 Packets, lost: 3139). Average bw = 413560.59 Bytes/s, Current bw = 448102.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+252440576 Bytes (61631 Packets, lost: 3139). Average bw = 413837.00 Bytes/s, Current bw = 447283.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+254664704 Bytes (62174 Packets, lost: 3139). Average bw = 414088.94 Bytes/s, Current bw = 444825.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+256917504 Bytes (62724 Packets, lost: 3139). Average bw = 414383.06 Bytes/s, Current bw = 450560.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+259158016 Bytes (63271 Packets, lost: 3139). Average bw = 414652.81 Bytes/s, Current bw = 448102.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+261378048 Bytes (63813 Packets, lost: 3139). Average bw = 414885.78 Bytes/s, Current bw = 444006.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+263610368 Bytes (64358 Packets, lost: 3139). Average bw = 415134.44 Bytes/s, Current bw = 446464.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+265859072 Bytes (64907 Packets, lost: 3139). Average bw = 415404.81 Bytes/s, Current bw = 449740.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+268111872 Bytes (65457 Packets, lost: 3139). Average bw = 415677.31 Bytes/s, Current bw = 450560.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+270327808 Bytes (65998 Packets, lost: 3139). Average bw = 415888.94 Bytes/s, Current bw = 443187.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+272502784 Bytes (66529 Packets, lost: 3139). Average bw = 416034.78 Bytes/s, Current bw = 434995.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+274722816 Bytes (67071 Packets, lost: 3139). Average bw = 416246.69 Bytes/s, Current bw = 444006.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+276926464 Bytes (67609 Packets, lost: 3139). Average bw = 416430.78 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+279121920 Bytes (68145 Packets, lost: 3139). Average bw = 416599.88 Bytes/s, Current bw = 439091.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+281333760 Bytes (68685 Packets, lost: 3139). Average bw = 416790.75 Bytes/s, Current bw = 442368.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+283541504 Bytes (69224 Packets, lost: 3139). Average bw = 416972.81 Bytes/s, Current bw = 441548.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+285736960 Bytes (69760 Packets, lost: 3139). Average bw = 417134.25 Bytes/s, Current bw = 439091.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+287936512 Bytes (70297 Packets, lost: 3139). Average bw = 417299.28 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+290156544 Bytes (70839 Packets, lost: 3139). Average bw = 417491.44 Bytes/s, Current bw = 444006.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+292376576 Bytes (71381 Packets, lost: 3139). Average bw = 417680.81 Bytes/s, Current bw = 444006.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+294604800 Bytes (71925 Packets, lost: 3139). Average bw = 417879.16 Bytes/s, Current bw = 445644.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+296816640 Bytes (72465 Packets, lost: 3139). Average bw = 418051.59 Bytes/s, Current bw = 442368.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+299016192 Bytes (73002 Packets, lost: 3139). Average bw = 418204.47 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+301223936 Bytes (73541 Packets, lost: 3139). Average bw = 418366.56 Bytes/s, Current bw = 441548.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+303435776 Bytes (74081 Packets, lost: 3139). Average bw = 418532.09 Bytes/s, Current bw = 442368.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+305635328 Bytes (74618 Packets, lost: 3139). Average bw = 418678.53 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+307843072 Bytes (75157 Packets, lost: 3139). Average bw = 418834.13 Bytes/s, Current bw = 441548.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+310059008 Bytes (75698 Packets, lost: 3139). Average bw = 418998.66 Bytes/s, Current bw = 443187.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+312258560 Bytes (76235 Packets, lost: 3139). Average bw = 419139.00 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+314458112 Bytes (76772 Packets, lost: 3139). Average bw = 419277.47 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+316661760 Bytes (77310 Packets, lost: 3139). Average bw = 419419.56 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+318861312 Bytes (77847 Packets, lost: 3139). Average bw = 419554.34 Bytes/s, Current bw = 439910.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+321064960 Bytes (78385 Packets, lost: 3139). Average bw = 419692.75 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+323272704 Bytes (78924 Packets, lost: 3139). Average bw = 419834.69 Bytes/s, Current bw = 441548.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+325447680 Bytes (79455 Packets, lost: 3139). Average bw = 419932.50 Bytes/s, Current bw = 434995.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+327630848 Bytes (79988 Packets, lost: 3139). Average bw = 420039.56 Bytes/s, Current bw = 436633.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+329809920 Bytes (80520 Packets, lost: 3139). Average bw = 420140.03 Bytes/s, Current bw = 435814.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+331997184 Bytes (81054 Packets, lost: 3139). Average bw = 420249.59 Bytes/s, Current bw = 437452.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+334200832 Bytes (81592 Packets, lost: 3139). Average bw = 420378.41 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+336396288 Bytes (82128 Packets, lost: 3139). Average bw = 420495.38 Bytes/s, Current bw = 439091.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+338608128 Bytes (82668 Packets, lost: 3139). Average bw = 420631.22 Bytes/s, Current bw = 442368.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+340787200 Bytes (83200 Packets, lost: 3139). Average bw = 420724.94 Bytes/s, Current bw = 435814.41 Bytes/s
+
+Received packet from 2.1.1.8:55044
+342990848 Bytes (83738 Packets, lost: 3139). Average bw = 420847.66 Bytes/s, Current bw = 440729.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+345145344 Bytes (84264 Packets, lost: 3139). Average bw = 420908.97 Bytes/s, Current bw = 430899.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+347316224 Bytes (84794 Packets, lost: 3139). Average bw = 420989.38 Bytes/s, Current bw = 434176.00 Bytes/s
+
+Received packet from 2.1.1.8:55044
+349478912 Bytes (85322 Packets, lost: 3139). Average bw = 421058.94 Bytes/s, Current bw = 432537.59 Bytes/s
+
+Received packet from 2.1.1.8:55044
+351612928 Bytes (85843 Packets, lost: 3139). Average bw = 421093.31 Bytes/s, Current bw = 426803.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+353759232 Bytes (86367 Packets, lost: 3139). Average bw = 421141.94 Bytes/s, Current bw = 429260.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+355852288 Bytes (86878 Packets, lost: 3139). Average bw = 421126.97 Bytes/s, Current bw = 418611.19 Bytes/s
+
+Received packet from 2.1.1.8:55044
+357978112 Bytes (87397 Packets, lost: 3139). Average bw = 421150.72 Bytes/s, Current bw = 425164.81 Bytes/s
+
+Received packet from 2.1.1.8:55044
+360124416 Bytes (87921 Packets, lost: 3139). Average bw = 421198.16 Bytes/s, Current bw = 429260.81 Bytes/s
+
