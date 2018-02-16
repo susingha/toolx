@@ -3,16 +3,22 @@
 " I want to add comments on each line explaining functionality
 
 " ------------- < cscope> -------------------
-
 let AUTOLOADCSCOPE = $HOME . "/.autoload_cscope.vim"
 if filereadable(AUTOLOADCSCOPE)
 	exec 'source ' . AUTOLOADCSCOPE
 else
 	echo AUTOLOADCSCOPE . " not found, or unreadable"
 endif
-
 " ------------- </cscope> -------------------
 
+" execute pathogen#infect()
+
+" Persistent Folding " select and zf to fold
+" au BufWinLeave ?* mkview
+" au BufWinEnter ?* silent loadview
+
+" set colorcolumn=80
+" set fdo-=search
 
 set ruler
 set rulerformat=%50(%f\ %5l,%-6(%c%V%)\ %P%)
