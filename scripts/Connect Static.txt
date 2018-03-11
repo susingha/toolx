@@ -1,0 +1,3 @@
+netsh int ip set address "Wireless Network Connection" static 172.22.106.80 255.255.254.0 172.22.106.1 1
+netsh int ip set dns     "Wireless Network Connection" static 172.16.0.1 primary
+netsh int ip set dns     "Wireless Network Connection" static  10.10.0.1 secondary
