@@ -1,0 +1,2 @@
+netsh int ip set address "Wireless Network Connection" dhcp
+netsh int ip set dns "Wireless Network Connection" dhcp 
