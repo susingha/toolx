@@ -1,14 +1,14 @@
-/* This is a Binary Search Tree implementation
- * All displayed would be in sorted order
- */
+
+// This is a Binary Search Tree implementation
+// All displayed would be in sorted order
+
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 
-struct node
-{
+struct node {
     int num;
     struct node * lptr;
     struct node * rptr;
@@ -20,111 +20,80 @@ struct node * insert(struct node * nodeHead, int num)
     struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
     nodeNew->num = num;
     nodeNew->lptr = nodeNew->rptr = NULL;
-    // printf("\nsup:0 inserting %d", num);
 
     struct node * nodeThis = nodeHead;
-    if(!nodeThis)
-    {
+    if(!nodeThis) {
         // this is the first node
         return nodeNew;
-    }
-    else
-    {
+    } else {
         // first node exists. go to the required place and fix it there
-        do
-        {
-            if(num < nodeThis->num)
-            {
+        do {
+            if(num < nodeThis->num) {
                 // go left and check for NULL
-                if(nodeThis->lptr)
-                {
+                if(nodeThis->lptr) {
                     nodeThis = nodeThis->lptr;
-                }
-                else
-                {
+                } else {
                     nodeThis->lptr = nodeNew;
                     break;
                 }
-            }
-            else if(num >= nodeThis->num)
-            {
+            } else if(num >= nodeThis->num) {
                 // go right and check for NULL
-                if(nodeThis->rptr)
-                {
+                if(nodeThis->rptr) {
                     nodeThis = nodeThis->rptr;
-                }
-                else
-                {
+                } else {
                     nodeThis->rptr = nodeNew;
                     break;
                 }
             }
-        }
-        while (1);
+        } while (1);
     }
     return nodeHead;
 }
 
-void insertrec1(struct node ** nodeHead_, int num)
+void
+insertrec1(struct node ** nodeHead_, int num)
 {
-    if(*(nodeHead_) == NULL)
-    {
+    if(*(nodeHead_) == NULL) {
         struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
         nodeNew->num = num;
         nodeNew->lptr = nodeNew->rptr = NULL;
         *(nodeHead_) = nodeNew;
-    }
-    else
-    {
+    } else {
         struct node * nodeThis = *(nodeHead_);
-        if(num < nodeThis->num)
-        {
+        if(num < nodeThis->num) {
             // go left and check for NULL
             insertrec1(&(nodeThis->lptr), num);
         }
-        else if(num >= nodeThis->num)
-        {
+        else if(num >= nodeThis->num) {
             // go right and check for NULL
             insertrec1(&(nodeThis->rptr), num);
         }
     }
-
 }
 
-struct node * insertrec2(struct node * nodeHead, int num)
+struct node *
+insertrec2(struct node * nodeHead, int num)
 {
-    if(!nodeHead)
-    {
+    if(!nodeHead) {
         struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
         nodeNew->num = num;
         nodeNew->lptr = nodeNew->rptr = NULL;
         return nodeNew;
-    }
-    else
-    {
+    } else {
         struct node * nodeThis = nodeHead;
-        if(num < nodeThis->num)
-        {
-            if(nodeThis->lptr)
-            {
+        if(num < nodeThis->num) {
+            if(nodeThis->lptr) {
                 insertrec2(nodeThis->lptr, num);
-            }
-            else
-            {
+            } else {
                 struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
                 nodeNew->num = num;
                 nodeNew->lptr = nodeNew->rptr = NULL;
                 nodeThis->lptr = nodeNew;
             }
-        }
-        else if(num >= nodeThis->num)
-        {
-            if(nodeThis->rptr)
-            {
+        } else if(num >= nodeThis->num) {
+            if(nodeThis->rptr) {
                 insertrec2(nodeThis->rptr, num);
-            }
-            else
-            {
+            } else {
                 struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
                 nodeNew->num = num;
                 nodeNew->lptr = nodeNew->rptr = NULL;
@@ -150,7 +119,6 @@ void displayrec(struct node * nodeHead)
     printf("%d, ", nodeThis->num);
 
     displayrec(nodeThis->rptr);
-
 }
 
 
@@ -164,7 +132,6 @@ void delete(struct node * head, int find) {
 
     if(delnode->lptr == NULL && delnode->rptr == NULL) {
 	// we need the parent pointer too and whether this is a left or right child
-
     }
 }
 
@@ -187,7 +154,6 @@ int displayiter(struct node * nodeHead, int find, struct node ** delnode, struct
 	    new = 1;
 	    continue;
 	} else {
-
 	    printf("%d, ", this->num);
 	    if(this->num != find && !found) {
 		prev = this->num;
@@ -225,9 +191,11 @@ int main()
     struct node * head = NULL;
     displayrec(head);
     printf("\n\n");
-//    head = insert(head, 5);
-//    insert(head, 1);
-//    insert(head, 8);
+#if 0
+    head = insert(head, 5);
+    insert(head, 1);
+    insert(head, 8);
+#endif
     head = insertrec2(head, rnd());
     insert(head, rnd());
     insertrec2(head, rnd());

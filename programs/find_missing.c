@@ -3,6 +3,10 @@
 #include <unistd.h>
 
 
+// There are consecutive numbers in an array in sorted order.
+// But one number is missing.
+// Find the missing number. Do it better than O(n)
+
 int find(int * arr, int len) {
 
     int low = 0;
