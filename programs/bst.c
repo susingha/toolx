@@ -2,6 +2,7 @@
 // This is a Binary Search Tree implementation
 // All displayed would be in sorted order
 
+// #warning: please compile along with tree.c
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -22,6 +23,7 @@ struct node {
 struct node *
 insertiter(struct node * nodeHead, int num)
 {
+    printf("inserting %d\n", num);
     struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
     nodeNew->num = num;
     nodeNew->lptr = nodeNew->rptr = NULL;
@@ -58,6 +60,7 @@ void
 insertrec1(struct node ** nodeHead_, int num)
 {
     if(*(nodeHead_) == NULL) {
+        printf("inserting %d\n", num);
         struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
         nodeNew->num = num;
         nodeNew->lptr = nodeNew->rptr = NULL;
@@ -135,6 +138,9 @@ void displayrec(struct node * nodeHead, int outer)
     displayrec(nodeThis->lptr, FALSE);
     printf("%d, ", nodeThis->num);
     displayrec(nodeThis->rptr, FALSE);
+
+    if(outer)
+        printf("\n");
 }
 
 
@@ -155,71 +161,60 @@ void deleteiter(struct node * head, int find) {
 #endif
 
 
-// Core Idea: Use a stack push and go left, pop and go right
-// Needs work. Unused
-#ifdef UNUSED
-int displayiter(struct node * nodeHead, int find, struct node ** delnode, struct node ** pred)
+
+// Core Idea: Use a stack
+// push, if left, go left
+// pop,  if right, go right
+// exit when stack is empty
+int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, struct node ** pred */)
 {
-    struct node * this = NULL;
+    // INIT STACK
     struct node * arr[100];
-    signed int top = -1;
+    unsigned int top = 0;
+    arr[top] = NULL;
+
+    struct node *this = NULL;
     unsigned int new = 1; // new is a marker to understand after a continue whether to traverse left or right
                           // new 1 means its a new traverse on a fresh subtree so go left, else go right
     int prev = 0, found = 0;
+    int done = FALSE;
 
     // this is in inorder
     this = nodeHead;
 
-    while (this) {
-        if (this->lptr) {
-            push(this);
+    while (!done) {
+        if (this) {
+
+            // PUSH
+            top++;
+            arr[top] = this;
+
+            this = this->lptr;
+            continue;
+        } else {
+            
+            // POP
+            this = arr[top];
+            if (top) top--;
+
+            if (this) {
+                printf("%d, ", this->num);
+                this = this->rptr;
+            } else {
+                done = TRUE;
+            }
         }
-
     }
-
-    while(this) {
-	if(this->lptr && new) {
-	    arr[++top] = this;
-	    this = this->lptr;
-	    new = 1;
-	    continue;
-	} else {
-	    printf("%d, ", this->num);
-	    if(this->num != find && !found) {
-		prev = this->num;
-		*pred = this;
-	    } else {
-		found = 1;
-		*delnode = this;
-	    }
-
-	    if(this->rptr) {
-		this = this->rptr;
-		new = 1;
-		continue;
-	    } else {
-		this = arr[top--];
-		if(top > -2) { // just signifies that the last elem of the stack has been popped out
-		    new = 0;
-		    continue;
-		} else {
-		    break;
-		}
-	    }
-	}
-    }
-
-    if(pred->num != prev || delnode->num != find) {
-	printf("\nsup: WARNING: something wrong. predecessor not computed properly");
-    }
-    return prev;
+    printf("\n");
+    return 0;
 }
-#endif
 
 #define rnd() (rand()%100)
 int main()
 {
     struct node * head = NULL;
+//  srand(time(NULL));
+
     displayrec(head, TRUE);
 #if 0
     head = insertiter(head, 5);
@@ -243,25 +238,9 @@ int main()
     insertrec2(head, rnd());
     insertrec2(head, rnd());
     insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-    insertrec2(head, rnd());
-
+    print_t(head);
     displayrec(head, TRUE);
-#if 0
     displayiter(head, 5);
-#endif
 
     printf("\n");
     return 0;
