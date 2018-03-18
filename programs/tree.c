@@ -68,7 +68,7 @@ int _print_t(struct node *tree, int is_left, int offset, int depth, char s[20][2
 
 
 
-void print_t(struct node *tree)
+void draw_tree(struct node *tree)
 {
     int i;
     char s[20][255];

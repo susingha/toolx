@@ -23,7 +23,6 @@ struct node {
 struct node *
 insertiter(struct node * nodeHead, int num)
 {
-    printf("inserting %d\n", num);
     struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
     nodeNew->num = num;
     nodeNew->lptr = nodeNew->rptr = NULL;
@@ -60,7 +59,6 @@ void
 insertrec1(struct node ** nodeHead_, int num)
 {
     if(*(nodeHead_) == NULL) {
-        printf("inserting %d\n", num);
         struct node * nodeNew = (struct node *)malloc(sizeof(struct node));
         nodeNew->num = num;
         nodeNew->lptr = nodeNew->rptr = NULL;
@@ -166,6 +164,9 @@ void deleteiter(struct node * head, int find) {
 // push, if left, go left
 // pop,  if right, go right
 // exit when stack is empty
+
+#define PUSH(x) arr[++top] = x;
+#define POP() arr[top]; if (top) top--;
 int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, struct node ** pred */)
 {
     // INIT STACK
@@ -182,29 +183,54 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
     // this is in inorder
     this = nodeHead;
 
+#define VERSION_2
+#if defined(VERSION_1)
+    printf("Using v1 tree iteration\n");
     while (!done) {
         if (this) {
-
-            // PUSH
-            top++;
-            arr[top] = this;
-
+            PUSH(this);
             this = this->lptr;
             continue;
-        } else {
-            
-            // POP
-            this = arr[top];
-            if (top) top--;
+        }
 
-            if (this) {
-                printf("%d, ", this->num);
-                this = this->rptr;
-            } else {
-                done = TRUE;
-            }
+        this = POP();
+
+        if (this) {
+            printf("%d, ", this->num);
+            this = this->rptr;
+        } else {
+            done = TRUE;
         }
     }
+#elif defined(VERSION_2)
+    printf("Using v2 tree iteration\n");
+    while (!done) {
+        if (this) {
+            if (this->lptr) {
+                PUSH(this);
+                this = this->lptr;
+                continue;
+            }
+
+            printf("%d, ", this->num);
+            this = this->rptr;
+            continue;
+        }
+
+        this = POP();
+
+        if (!this) {
+            done = TRUE;
+            continue;
+        } else {
+            printf("%d, ", this->num);
+            this = this->rptr;
+        }
+    }
+#elif defined(VERSION_3)
+    printf("Using v3 tree iteration: write yourself\n");
+#endif
+
     printf("\n");
     return 0;
 }
@@ -238,9 +264,9 @@ int main()
     insertrec2(head, rnd());
     insertrec2(head, rnd());
     insertrec2(head, rnd());
-    print_t(head);
     displayrec(head, TRUE);
     displayiter(head, 5);
+    draw_tree(head);
 
     printf("\n");
     return 0;
