@@ -7,6 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
 #define TRUE 1
 #define FALSE 0
@@ -17,6 +18,8 @@ struct node {
     struct node * lptr;
     struct node * rptr;
 };
+
+#include "draw_tree.h"
 
 
 // Traverses a binary search tree and inserts at a leaf position
