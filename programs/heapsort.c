@@ -44,7 +44,7 @@ void resolveheap(int * array, int size, int index) {
 	if(array[index] < array[leftchildindex]) {
 	    swap(array, index, leftchildindex);
 	}
-    } // else return; is not needed
+    } // else return;
 
     if(rightchildindex < size) { // i have a right child
 	resolveheap(array, size, rightchildindex);
@@ -52,7 +52,7 @@ void resolveheap(int * array, int size, int index) {
 	if(array[index] < array[rightchildindex]) {
 	    swap(array, index, rightchildindex);
 	}
-    } // else return; is not needed
+    } // else return;
 
 }
 

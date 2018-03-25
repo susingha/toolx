@@ -119,29 +119,6 @@ insertrec2(struct node * nodeHead, int num)
 }
 
 
-// Inorder Traversal and display
-// this function could be change to return the number of nodes displayed.
-// good excercise in a recursive scenario
-void displayrec(struct node * nodeHead, int outer)
-{
-    struct node *nodeThis;
-
-    if(!nodeHead)
-        return;
-
-    if(outer)
-        printf("--- Display ---\n");
-
-    nodeThis = nodeHead;
-    displayrec(nodeThis->lptr, FALSE);
-    printf("%d, ", nodeThis->num);
-    displayrec(nodeThis->rptr, FALSE);
-
-    if(outer)
-        printf("\n");
-}
-
-
 // Needs work. Unused
 #ifdef UNUSED
 void deleteiter(struct node * head, int find) {
@@ -159,12 +136,34 @@ void deleteiter(struct node * head, int find) {
 #endif
 
 
+// Inorder Traversal and display
+// this function could be change to return the number of nodes displayed.
+// good excercise in a recursive scenario
+void displayrec(struct node * nodeHead, int outer)
+{
+    struct node *nodeThis;
+
+    if(!nodeHead)
+        return;
+
+    if(outer) {
+        printf("Using tree recursion inorder\n");
+    }
+
+    nodeThis = nodeHead;
+    displayrec(nodeThis->lptr, FALSE);
+    printf("%d, ", nodeThis->num);
+    displayrec(nodeThis->rptr, FALSE);
+
+    if(outer)
+        printf("\n");
+}
+
 
 // Core Idea: Use a stack
 // push, if left, go left
 // pop,  if right, go right
 // exit when stack is empty
-
 #define PUSH(x) arr[++top] = x;
 #define POP() arr[top]; if (top) top--;
 int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, struct node ** pred */)
@@ -185,7 +184,7 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
 
 #define VERSION_2
 #if defined(VERSION_1)
-    printf("Using v1 tree iteration\n");
+    printf("Using tree iteration v1\n");
     while (!done) {
         if (this) {
             PUSH(this);
@@ -203,7 +202,7 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
         }
     }
 #elif defined(VERSION_2)
-    printf("Using v2 tree iteration\n");
+    printf("Using tree iteration v2\n");
     while (!done) {
         if (this) {
             if (this->lptr) {
@@ -228,7 +227,7 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
         }
     }
 #elif defined(VERSION_3)
-    printf("Using v3 tree iteration: write yourself\n");
+    printf("Using tree iteration v3: write yourself\n");
 #endif
 
     printf("\n");
@@ -239,7 +238,7 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
 int main()
 {
     struct node * head = NULL;
-//  srand(time(NULL));
+    srand(time(NULL));
 
     displayrec(head, TRUE);
 #if 0
