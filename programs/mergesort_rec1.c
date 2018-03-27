@@ -8,7 +8,12 @@
 #define ONE (1)
 #define TWO (2)
 
-// Prints the array and checks for sprtedness
+/*
+ * Uses two arrays and keeps switching between them.
+ * can handle merges from two different arrays
+ */
+
+// Prints the array and checks for sortedness
 int printarray(int * array) {
     int i;
     int sorted = 1;
@@ -83,7 +88,7 @@ int merge(int A[TWO][ARR_SIZE], int lh, int rh, int low1, int high1, int low2, i
 
 // Mergesort in O(n) space using 2 arrays.
 // returns and integer to identify which array to find the sorted array in
-int mergesort (int A[TWO][ARR_SIZE], int h, int low, int high) {
+int mergesort_rec (int A[TWO][ARR_SIZE], int h, int low, int high) {
     int div;
     int lh, rh;
 
@@ -97,8 +102,8 @@ int mergesort (int A[TWO][ARR_SIZE], int h, int low, int high) {
     }
 
     div = (low + high)/2;
-    lh = mergesort(A, h, low, div);
-    rh = mergesort(A, h, div+1, high);
+    lh = mergesort_rec(A, h, low, div);
+    rh = mergesort_rec(A, h, div+1, high);
 
     return merge(A, lh, rh, low, div, div+1, high);
 }
@@ -132,7 +137,7 @@ int main() {
     }
 
     printarray(array[ZERO]);
-    i = mergesort(array, ZERO, 0, ARR_SIZE - 1);
+    i = mergesort_rec(array, ZERO, 0, ARR_SIZE - 1);
     return printarray(array[i]);
 
 }
