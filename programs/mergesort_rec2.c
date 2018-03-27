@@ -8,7 +8,12 @@
 #define ONE (1)
 #define TWO (2)
 
-// Prints the array and checks for sprtedness
+/*
+ * Uses a better approach with a recursive switch
+ * as found in wikipedia
+ */
+
+// Prints the array and checks for sortedness
 int printarray(int * array) {
     int i;
     int sorted = 1;
@@ -68,7 +73,7 @@ void merge(int A[], int low1, int high1, int low2, int high2, int B[]) {
 
 // Mergesort in O(n) space using 2 arrays.
 // returns and integer to identify which array to find the sorted array in
-void mergesort (int A[], int h, int low, int high, int B[]) {
+void mergesort_rec (int A[], int h, int low, int high, int B[]) {
     int div;
 
     if (low > high) {
@@ -81,8 +86,8 @@ void mergesort (int A[], int h, int low, int high, int B[]) {
     }
 
     div = (low + high)/2;
-    mergesort(B, h, low, div, A);
-    mergesort(B, h, div+1, high, A);
+    mergesort_rec(B, h, low, div, A);
+    mergesort_rec(B, h, div+1, high, A);
 
     merge(A, low, div, div+1, high, B);
 }
@@ -117,7 +122,7 @@ int main() {
     }
 
     printarray(array1);
-    mergesort(array1, ZERO, 0, ARR_SIZE - 1, array2);
+    mergesort_rec(array1, ZERO, 0, ARR_SIZE - 1, array2);
     return printarray(array2);
 
 }
