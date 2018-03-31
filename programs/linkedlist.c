@@ -104,14 +104,17 @@ void deleteMatches(struct node ** head_p, int match) {
     return;
 }
 
+#define RANDOM
 #ifdef RANDOM
 #define rnd() (rand()%100)
 #else
 #define rnd() (dataset[dataindex++])
 #endif
 
+
 int main() {
     struct node * head = NULL;
+    srand(time(NULL));
 
     printf("\n\n");
     head = insert(head,rnd());
@@ -135,10 +138,10 @@ int main() {
     displayrec(head, FORWARD); printf("\n");
     displayrec(head, BACKWARD); printf("\n");
 
-    head = reverse(head);
+    head = reverse2(head);
 
-    displayrec(head, BACKWARD); printf("\n");
     displayrec(head, FORWARD); printf("\n");
+    displayrec(head, BACKWARD); printf("\n");
 
 
     deleteMatches(&head, 83);
