@@ -34,6 +34,14 @@ int find(int * arr, int len) {
 }
 
 
+
+
+
+
+
+
+
+
 int main () {
     int arr[5][5] = {{4,5,6,7,8},   // no missing
 	             {4,6,7,8,9},   //  5 missing
