@@ -1,40 +1,65 @@
 #include <stdio.h>
 #include <string.h>
 
-int count;
 int main() {
     char str[100];
     int len = 0;
- // strcpy(str, "eowr");
+    int count;
+#if 0
+    strcpy(str, "eowr");
+#else
     printf("Input your string: ");
     scanf("%s", str);
+#endif
     len = strlen(str);
     printf("string: %s length = %d\n\n", str, len);
 
-    rotate(str, len - 1);
+    count = rotate(str, len, str, 0);
 
     printf("length = %d, total = %d\n", len, count);
 
     return 0;
 }
 
-int rotate(char * substr, int index) {
 
-    int i = 0, j = 0;
-    char last;
-    for(j = 0; j <= index; ++j) {
+rotate(char * A, int len, char * str, int count) {
+    char c;
+    int i, j;
 
-	// rotate the string
-	last = substr[index];
-	for(i = index; i > 0; --i)
-	    substr[i] = substr[i-1];
-	substr[0] = last;
-	if(index == 1) {
-	    printf("permutation = %s\n", substr);
-	    ++count;
-	}
-	rotate(substr, index - 1);
+    if (len == 1) {
+        printf("%3d. %s\n", ++count, str);
+        return count;
     }
+    
+    for (j = 0; j < len; ++j) {
 
-    return 0;
+        // Rotate once
+        c = A[0];
+        for (i = 0; i < len-1; ++i) {
+            A[i] = A[i+1];
+        }
+        A[i] = c;
+
+        count = rotate(A + 1, len - 1, str, count);
+    }
+    return count;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
