@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
+int perm(char * A, int len, char * str, int count);
+
 int main() {
     char str[100];
     int len = 0;
@@ -14,7 +16,7 @@ int main() {
     len = strlen(str);
     printf("string: %s length = %d\n\n", str, len);
 
-    count = rotate(str, len, str, 0);
+    count = perm(str, len, str, 0);
 
     printf("length = %d, total = %d\n", len, count);
 
@@ -22,9 +24,23 @@ int main() {
 }
 
 
-rotate(char * A, int len, char * str, int count) {
+
+void rotate(char * str, int len)
+{
     char c;
-    int i, j;
+    int i;
+    // Rotate once
+    c = str[0];
+    for (i = 0; i < len-1; ++i) {
+	str[i] = str[i+1];
+    }
+    str[i] = c;
+}
+
+
+int perm(char * A, int len, char * str, int count)
+{
+    int j;
 
     if (len == 1) {
         printf("%3d. %s\n", ++count, str);
@@ -32,15 +48,8 @@ rotate(char * A, int len, char * str, int count) {
     }
     
     for (j = 0; j < len; ++j) {
-
-        // Rotate once
-        c = A[0];
-        for (i = 0; i < len-1; ++i) {
-            A[i] = A[i+1];
-        }
-        A[i] = c;
-
-        count = rotate(A + 1, len - 1, str, count);
+	rotate(A, len);
+        count = perm(A + 1, len - 1, str, count);
     }
     return count;
 }
