@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <string.h>
 
-int perm(char * A, int len, char * str, int count);
+int perm_rec(char * A, int len, char * str, int count);
+int perm_itr(char * A, int len);
 
 int main() {
     char str[100];
@@ -16,14 +17,19 @@ int main() {
     len = strlen(str);
     printf("string: %s length = %d\n\n", str, len);
 
-    count = perm(str, len, str, 0);
+    printf("recursive:\n");
+    count = perm_rec(str, len, str, 0);
+    printf("length = %d, total = %d\n\n", len, count);
 
+    printf("iterative:\n");
+    count = perm_itr(str, len);
     printf("length = %d, total = %d\n", len, count);
 
     return 0;
 }
 
 
+/* Recursive */
 
 void rotate(char * str, int len)
 {
@@ -37,8 +43,7 @@ void rotate(char * str, int len)
     str[i] = c;
 }
 
-
-int perm(char * A, int len, char * str, int count)
+int perm_rec(char * A, int len, char * str, int count)
 {
     int j;
 
@@ -48,15 +53,62 @@ int perm(char * A, int len, char * str, int count)
     }
     
     for (j = 0; j < len; ++j) {
+        count = perm_rec(A + 1, len - 1, str, count);
 	rotate(A, len);
-        count = perm(A + 1, len - 1, str, count);
     }
     return count;
 }
 
 
+void assert(int i, int j) {
+    if (i != j) {
+	printf("assert fail: %d != %d\n", i, j);
+    }
+}
 
+#define TRUE 1
+#define FALSE 0
 
+/* Iterative */
+
+int perm_itr(char * A, int len)
+{
+    int done = FALSE;
+    int curr = len;
+    int i, j = 0;
+
+    int rcount[len+1];
+
+    for (i = 0; i < len + 1; i++) {
+	rcount[i] = 0;
+    }
+
+    while (!done) {
+	if (curr > 1) {
+	    if (rcount[curr] < curr) {
+		rcount[curr]++;
+		rotate(A + (len - curr), curr);
+		curr--;
+		rcount[curr] = 0;
+	    } else {
+		assert(rcount[curr], curr);
+		if (curr == len)
+		    done = TRUE;
+		else
+		    curr = curr + 1;
+
+	    }
+	} else {
+	    assert(curr, 1);
+	    j++;
+	    printf("%3d. %s\n", j, A);
+	    curr = curr + 1;
+	}
+    }
+
+    return j;
+
+}
 
 
 
