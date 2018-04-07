@@ -65,6 +65,33 @@ int readnb(FILE * fp, void * buff_n, unsigned int n) {
 }
 
 
+#if 0
+int readnb() { // pseudo
+
+    do {
+        read = read4k(buf);
+        if (read < rem) {
+            // it was able to read less then what we want.
+            // we want all read bytes
+            memcpy(wptr, buf, read);
+            wptr += read;
+            copied += read;
+            rem =- read;
+
+        } else if (read >= rem) {
+            // it read more than what we want.
+            // we want only rem part of read bytes
+            memcpy(wptr, buf, rem)
+            wptr += rem;
+            copied += rem;
+            rem = 0;
+            break;
+        }
+    } while (read);
+}
+#endif
+
+
 int main (int argc, char *argv[]) {
     char * filename = NULL;
     int bytes = 0, bytesread = 0;
