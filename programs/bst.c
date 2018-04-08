@@ -139,6 +139,41 @@ void deleteiter(struct node * head, int find) {
 #endif
 
 
+
+// returns the lowest common ancestor of two nodes in the tree
+struct node * lca(struct node * head, int i, int j) {
+    struct node *left = NULL, *right = NULL, *self = NULL;
+
+    if (!head) {
+        return NULL;
+    }
+
+    if (head->lptr) {
+        left = lca(head->lptr, i, j);
+    }
+
+    if (head->num == i || head->num == j) {
+        self = head;
+    }
+
+    if (head->rptr) {
+        right = lca(head->rptr, i, j);
+    }
+
+    if (self)
+        return self;
+    if (left && right)
+        return head;
+    if (left)
+        return left;
+    if (right)
+        return right;
+
+    return NULL;
+}
+
+
+
 // Inorder Traversal and display
 // this function could be change to return the number of nodes displayed.
 // good excercise in a recursive scenario
@@ -240,8 +275,9 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
 #define rnd() (rand()%100)
 int main()
 {
-    struct node * head = NULL;
-    srand(time(NULL));
+    struct node * head = NULL, *tmp;
+    int i, j, k = -1;
+    // srand(time(NULL));
 
     displayrec(head, TRUE);
 #if 0
@@ -270,9 +306,23 @@ int main()
     displayiter(head, 5);
     draw_tree(head);
 
+    while (1) {
+        printf("i: ");
+        scanf("%d", &i);
+        printf("j: ");
+        scanf("%d", &j);
+
+        tmp = lca(head, i, j);
+        if (tmp) k = tmp->num;
+        printf("lca of %d and %d is %d\n", i, j, k);
+    }
+
     printf("\n");
     return 0;
 }
+
+
+
 
 // Try to recreate a tree from an inorder and preorder traversal
 // http://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
