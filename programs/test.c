@@ -1,86 +1,55 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void display(int arr[], int size) {
-    int i = 0;
-    for (i = 0; i < size; ++i) {
-	printf("%2d, ", arr[i]);
+int find(int arr[], int size) {
+    int b = 0;
+    int e = size - 1;
+    int m = (b+e)/2;
+
+
+
+    if (arr[b] + e == arr[b + e])
+	return -1;
+
+    if (size == 2) {
+	return arr[b] + 1;
     }
-    printf("\n");
+
+    if (arr[b] + m == arr[b + m]) {
+	// go right
+	return find(&arr[m], e-b+1);
+    } else {
+	// go left
+	return find(&arr[b], m-b+1);
+    }
+
+    return 0;
+
 }
 
 
-void merge(int arr1[], int len1,
-           int arr2[], int len2,
-           int arr3[]) {
 
-    int i = 0, j = 0, k = 0;
-
-    while (i < len1 && j < len2) {
-
-	if (arr1[i] < arr2[j] || arr1[i] == arr2[j]) {
-	    arr3[k] = arr1[i];
-	    i++;
-	    k++;
-	} else {
-	    arr3[k] = arr2[j];
-	    j++;
-	    k++;
-	}
-    }
-
-    while (i < len1) {
-	arr3[k] = arr1[i];
-	i++;
-	k++;
-    }
-
-    while (j < len2) {
-	arr3[k] = arr2[j];
-	j++;
-	k++;
-    }
-}
-
-void msort(int arr1[], int b, int e, int arr2[]) {
-    int m;
-
-    if (b >= e) {
-	return;
-    }
-
-    m = (b + e)/2;
-    msort(arr2, b,   m, arr1);
-    msort(arr2, m+1, e, arr1);
-
-    merge(&arr1[b],   m-b+1,
-	  &arr1[m+1], e-(m+1)+1,
-	  &arr2[b]);
-}
-
-#define MAX 20
-int array1[MAX];
-int array2[MAX];
-
+#define MAX 6
 int main () {
-    int i = 0;
-    int num = 0;
-    srand(22);
-    for (i = 0; i < MAX; ++i) {
-	num = rand()%100;
-	array1[i] = num;
-	array2[i] = num;
-    }
+    int arr[5][MAX] = {{4,5,6,7,8,9 },   // no missing
+	              {4,6,7,8,9,10},   //  5 missing
+	              {4,5,7,8,9,10},   //  6 missing
+	              {4,5,6,8,9,10},   //  7 missing
+	              {3,4,5,6,7,9}};   //  8 missing
 
-    display(array1, MAX);
-    display(array2, MAX);
+    int m = 99999;
 
-    msort(array1, 0, MAX-1, array2);
-//  display(array1, MAX);
-    display(array2, MAX);
+    m = find(arr[0], MAX);
+    printf("sup: missing = %d\n", m);
+    m = find(arr[1], MAX);
+    printf("sup: missing = %d\n", m);
+    m = find(arr[2], MAX);
+    printf("sup: missing = %d\n", m);
+    m = find(arr[3], MAX);
+    printf("sup: missing = %d\n", m);
+    m = find(arr[4], MAX);
+    printf("sup: missing = %d\n", m);
 
+    return 0;
 }
-
-
-
 
