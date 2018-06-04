@@ -1,4 +1,4 @@
-import random;
+import random
 
 def merge(array1, b1, len1, array2, b2, len2, final, f1):
 
@@ -45,10 +45,8 @@ def msort(array1, b, e, array2):
 
 print "Merge two sorted arrays" # merge two sorted arrays
 
-random.seed(100);
-
-arr1 = []; MAX1 = 10;
-arr2 = []; MAX2 = 7;
+arr1 = []; MAX1 = random.randint(0, 5);
+arr2 = []; MAX2 = random.randint(0, 5);
 final = [];
 
 for i in range(MAX1):
@@ -80,7 +78,7 @@ print
 print "Mergesort an array" # Mergesort an aray
 array1 = []
 array2 = []
-MAX = 20
+MAX = random.randint(0, 10)
 
 for i in range(MAX):
     num = random.randint(1, 100);
@@ -93,4 +91,7 @@ msort(array1, 0, MAX-1, array2)
 print array2
 print "Checking sortedness"
 print sorted(array2)
+
+
+
 
