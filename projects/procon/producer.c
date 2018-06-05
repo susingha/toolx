@@ -1,41 +1,38 @@
 #include <stdio.h>
-#include "../types_global.h"
+#include <string.h>
+#include "types_global.h"
 #include "sharedmem.h"
 #include "sh_sync.h"
 
-char source_arr[] = "the create_ras is called for any type of RAS message irrespective of whether its a RRQ or an SCI. This may lead to GK being recorded as EP ip address and v.v. add this exception as a special case";
-char get_next() {
-    static int i = 0;
-    return source_arr[i++];
-}
+char srcfile[] = "srcfile.txt";
 
-int write(char packet, char * s) {
-    if(!queue_full(s)) {
-	s[get_end(s)] = packet;
-	inc_end(s);
-	return TRUE;
-    } else {
-	return FALSE;
-    }
+char produce(FILE *fp) {
+    return fgetc(fp);
 }
-
 
 int main() {
-    char packet = '\0';
-    char * s = NULL;
-    s = get_sharedmem(SHKEY, SHMSZ);
-    if (s) {
-	printf("producer: shared memory was obtained at %p\n", s);
+    FILE * fp = NULL;
+    char c;
+    int offset = -1;
+    shbuf_t * s = NULL;
+
+    // init the producer
+    if ((fp = fopen(srcfile, "r")) == NULL) {
+	perror("fopen");
+	return -1;
     }
 
-    printf("Write: ");
-    do {
-	packet = get_next();
-	while(!write(packet, s)); // sup:edit
-	printf("%c", packet);
-    } while(packet != '\0');
+    // init the shared memory
+    s = (shbuf_t *)get_sharedmem(SHMKEY, SHMSIZE);
+    if (s) printf("producer: shared memory was obtained at %p\n", s);
 
-    printf("\n");
+
+    // start producing
+    printf("Starting write:\n");
+    while ((c = produce(fp)) != EOF) {
+	printf("%c", c);
+    }
+
     return 0;
 }
 

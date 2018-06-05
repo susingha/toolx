@@ -1,23 +1,31 @@
 #include <stdio.h>
+#include <string.h>
 #include "sharedmem.h"
 #include "sh_sync.h"
 
 
+char dstfile[] = "dstfile.txt";
 
-
-
-
+char consume(char c, FILE *fp) {
+    return fputc(c, fp);
+}
 
 int main() {
-    int begin = 0, end = 0;
+    FILE * fp = NULL;
+    char string[1024];
     char * s = NULL;
-    s = get_sharedmem(SHKEY, SHMSZ);
-    if (s) {
-	printf("consumer: shared memory was obtained at %p\n", s);
+
+    // init the consumer
+    if ((fp = fopen(dstfile, "w")) == NULL) {
+	perror("fopen");
+	return -1;
     }
 
+    // init the shared memory
+    s = get_sharedmem(SHMKEY, SHMSIZE);
+    if (s) printf("consumer: shared memory was obtained at %p\n", s);
 
-
+    // start consuming
 
 
     return 0;
