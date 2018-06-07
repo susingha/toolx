@@ -1,5 +1,5 @@
 #include "sharedmem.h"
-#include "sh_sync.h"
+#include "shbuf.h"
 
 #define ZERO 0
 
