@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##### Mac #####
+##### Remove Shared Memory #####
 l=`ipcs -m | grep "$USER"| cut -f2 -d' '`
 for s in $l
 do
@@ -8,12 +8,12 @@ do
     ipcrm -m $s 
 done
 
-##### Linux #####
-l=`ipcs -m | grep "$USER"| cut -f3 -d' '`
+##### Remove Semaphores #####
+l=`ipcs -s | grep "$USER"| cut -f2 -d' '`
 for s in $l
 do
     echo $s
-    ipcrm shm $s 
+    ipcrm -s $s 
 done
 
-ipcs -m
+ipcs -a
