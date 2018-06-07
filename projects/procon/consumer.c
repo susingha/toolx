@@ -8,6 +8,8 @@
 #include "shbuf.h"
 
 char dstfile[] = "dstfile.txt";
+extern int f;
+extern int e;
 
 char consume(char c, FILE *fp) {
     return fputc(c, fp);
@@ -15,7 +17,7 @@ char consume(char c, FILE *fp) {
 
 int main() {
     FILE * fp = NULL;
-    char c;
+    char c = 0;
     char string[1024];
     shbuf_t * s = NULL;
 
@@ -28,7 +30,8 @@ int main() {
     // init the shared memory
     s = (shbuf_t *) get_sharedmem(SHMKEY, SHMSIZE);
     if (s) printf("consumer: shared memory was obtained at %p\n", s);
-
+    memset(s, 0, sizeof(shbuf_t));
+    buf_init(s);
 
     // init the shmem semaphore
     sem_t *bufferfull = sem_open(BUFFERFULL_SNAME, STARTUP_SFLAGS, STARTUP_SPERMS, 0);
@@ -46,24 +49,33 @@ int main() {
     // start consuming
     printf("Starting read:\n");
 
-    int i = 30; // sup:remove
-    while (i--) {
+#define FILE
+    while (TRUE) {
 
-	printf(" sup: %d\n", __LINE__);
+
+
 	sem_wait(bufferfull);
-	printf("  sup: %d\n", __LINE__);
 	sem_wait(buffermutx);
 
-	printf("   reading at offset %d\n", i);
+#ifdef FILE
+	c = remove_item(s);
+#endif
 
 	sem_post(buffermutx);
-	printf("    sup: %d\n", __LINE__);
 	sem_post(bufferempt);
-	printf("     sup: %d\n", __LINE__);
+
+#ifdef FILE
+	if (c == EOF)
+	    break;
+	else
+	    consume(c, fp);
+#endif
     }
 
-    sleep(5);
+    // cleanup open files
+    fclose(fp);
 
+    sleep(5);
 
     // cleanup semaphores
     sem_close(startsem1); sem_unlink(STARTUP_SNAME1);
@@ -72,36 +84,8 @@ int main() {
     sem_close(bufferfull); sem_unlink(BUFFERFULL_SNAME);
     sem_close(bufferempt); sem_unlink(BUFFEREMPT_SNAME);
 
-    // cleanup open files
-    fclose(fp);
-
+    printf("\nQueue empty: %u times\n", e);
     return 0;
 }
 
 
-
-
-
-
-#ifdef SUP
-
-read()
-{
- 
-    s = shm;
-
-    for (s = shm; *s != NULL; s++)
-        putchar(*s);
-    putchar('\n');
- 
-    /*
-     * Finally, change the first character of the 
-     * segment to '*', indicating we have read 
-     * the segment.
-     */
-    *shm = '*';
- 
-    exit(0);
-}
-
-#endif

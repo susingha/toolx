@@ -8,6 +8,8 @@
 #include "shbuf.h"
 
 char srcfile[] = "srcfile.txt";
+extern int f;
+extern int e;
 
 char produce(FILE *fp) {
     return fgetc(fp);
@@ -15,7 +17,7 @@ char produce(FILE *fp) {
 
 int main() {
     FILE * fp = NULL;
-    char c;
+    char c = 0;
     int offset = -1;
     shbuf_t * s = NULL;
 
@@ -28,6 +30,8 @@ int main() {
     // init the shared memory
     s = (shbuf_t *) get_sharedmem(SHMKEY, SHMSIZE);
     if (s) printf("producer: shared memory was obtained at %p\n", s);
+    memset(s, 0, sizeof(shbuf_t));
+    buf_init(s);
 
     // init the shmem semaphore
     sem_t *bufferfull = sem_open(BUFFERFULL_SNAME, STARTUP_SFLAGS, STARTUP_SPERMS, 0);
@@ -45,24 +49,31 @@ int main() {
     // start producing
     printf("Starting write:\n");
 
-    int i = 30; // sup:remove
-    while (i--) {
+#define FILE
+    while (TRUE) {
 
-	printf(" sup: %d\n", __LINE__);
+	c = produce(fp);
+
 	sem_wait(bufferempt);
-	printf("  sup: %d\n", __LINE__);
 	sem_wait(buffermutx);
 
-	printf("   writing at offset %d\n", i);
+#ifdef FILE
+	insert_item(s, c);
+#endif
 
 	sem_post(buffermutx);
-	printf("    sup: %d\n", __LINE__);
 	sem_post(bufferfull);
-	printf("     sup: %d\n", __LINE__);
+
+#ifdef FILE
+	if (c == EOF)
+	    break;
+#endif
     }
 
-    sleep(5);
+    // cleanup open files
+    fclose(fp);
 
+    sleep(5);
 
     // cleanup semaphores
     sem_close(startsem1); sem_unlink(STARTUP_SNAME1);
@@ -71,35 +82,8 @@ int main() {
     sem_close(bufferfull); sem_unlink(BUFFERFULL_SNAME);
     sem_close(bufferempt); sem_unlink(BUFFEREMPT_SNAME);
 
-    // cleanup open files
-    fclose(fp);
-
+    printf("\nQueue full: %u times\n", f);
     return 0;
 }
 
 
-
-#ifdef SUP
-
-write()
-{
-
-    s = shm;
-
-    for (c = 'a'; c <= 'z'; c++)
-	*s++ = c;
-    *s = NULL;
-
-    /*
-     * Finally, we wait until the other process 
-     * changes the first character of our memory
-     * to '*', indicating that it has read what 
-     * we put there.
-     */
-    while (*shm != '*')
-	sleep(1);
-
-    exit(0);
-}
-
-#endif

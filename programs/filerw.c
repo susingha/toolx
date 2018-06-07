@@ -45,6 +45,9 @@ int main (int argc, char *argv[]) {
 	}
     }
 
+    c = EOF;
+    printf("\nsup: EOF is %d, %u, %x\n", c, c, c);
+
     fclose(fp1);
     fclose(fp2);
     printf("Copied %d bytes from %s to %s\n", bytes, filename1, filename2);

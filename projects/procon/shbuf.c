@@ -1,15 +1,44 @@
+#include <stdio.h>
 #include "sharedmem.h"
 #include "shbuf.h"
 
 #define ZERO 0
 
-#if 0
-#define BEGIN_LOC_INDEX ZERO                                // 0
-#define END_LOC_INDEX (BEGIN_LOC_INDEX + 1)                 // 1
-#define COUNT_LOC_INDEX (END_LOC_INDEX + 1)                 // 2
-#define QUEUE_LOC_INDEX (COUNT_LOC_INDEX + 1)               // 3
-#define QUEUE_LENGTH (SHMSZ - QUEUE_LOC_INDEX)             // 27 - 3 = 24
-#endif
+int f = 0;
+int e = 0;
+
+int buf_init(shbuf_t * s) {
+    s->begin = 0;
+    s->end = SHMBUFSiZE-1;
+    s->count = 0;
+    return 0;
+}
+
+void insert_item(shbuf_t * s, char c) {
+    inc_end(s);
+    s->buf[get_end(s)] = c;
+
+    if (queue_full(s)) {
+	printf("\nqueue is full\n");
+	f++;
+    } else {
+	printf("%u, ", get_count(s));
+    }
+}
+char remove_item(shbuf_t * s) {
+    char c = s->buf[get_begin(s)];
+    s->buf[get_begin(s)] = 0;
+    inc_begin(s);
+
+    if (queue_empty(s)) {
+	printf("\nqueue is empty\n");
+	e++;
+    } else {
+	printf("%u, ", get_count(s));
+    }
+
+    return c;
+}
 
 
 char * get_queue(shbuf_t * s) {
