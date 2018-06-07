@@ -27,3 +27,8 @@ unsigned int inc_begin(shbuf_t * s);
 unsigned int inc_end(shbuf_t * s);
 int queue_full(shbuf_t * s);
 int queue_empty(shbuf_t * s);
+
+int buf_init(shbuf_t * s);
+void insert_item(shbuf_t * s, char c);
+char remove_item(shbuf_t * s);
+
