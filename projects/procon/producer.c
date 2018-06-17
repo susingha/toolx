@@ -18,7 +18,6 @@ char produce(FILE *fp) {
 int main() {
     FILE * fp = NULL;
     char c = 0;
-    int offset = -1;
     shbuf_t * s = NULL;
 
     // init the producer
@@ -27,13 +26,14 @@ int main() {
 	return -1;
     }
 
-    // init the shared memory
+    // get a shared memory
     s = (shbuf_t *) get_sharedmem(SHMKEY, SHMSIZE);
     if (s) printf("producer: shared memory was obtained at %p\n", s);
+    // init the shared memory
     memset(s, 0, sizeof(shbuf_t));
     buf_init(s);
 
-    // init the shmem semaphore
+    // init the fulla and empty semaphores
     sem_t *bufferfull = sem_open(BUFFERFULL_SNAME, STARTUP_SFLAGS, STARTUP_SPERMS, 0);
     sem_t *bufferempt = sem_open(BUFFEREMPT_SNAME, STARTUP_SFLAGS, STARTUP_SPERMS, SHMBUFSiZE);
     // init the mutex in the form of semaphore
