@@ -161,7 +161,7 @@ int main ()
     ptr = addressat(address);
     printf("i = %u\n", *(unsigned int *)ptr);
 
-    hexDump("Testing", ptr, 4);
+    hexDump("Testing", ptr, 40);
 }
 
 
