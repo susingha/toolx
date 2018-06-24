@@ -1,54 +1,103 @@
 
-// NEEDS FIXING
+// Implement a dictionary using trie.
 
-// This was asked in dremio
-
-man, many, dog
-
-"mandog"  : true
-"manxdog" : false
-"manydogs": false
-"manydog" : true
-
-manyd
-
-man many yd
-
-a b c d ..  m[0] .. . z
-            a[0]
-            n[1]
-            y[1]
-            
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
 
+#define TRUE 1
+#define FALSE 0
+#define MAXWORDLEN 1024
 
-struct {
+
+struct node {
     char c;
-    boolean end;
-    struct node * child;
-} node;
-    0                       14
-arr0[NULL, {NULL}, {NULL}, ,,,,  {m, 1, arr1},             ]
-trie_init() {
+    char end;
+    struct node *child[26];
+};
+
+struct node * newnode(char c)
+{
+    struct node * new = (struct node *) calloc(1, sizeof(struct node));
+    new->c = c;
+    return new;
 }
 
-boolean match (char * str) {
-    len = strlen(str);
+int ascix(char c)
+{
+    return (c - 'a');
+}
 
-    arr = arr + i;
-    for (i = 0; i < len; ++i) {
-        if ((arr)[ascii(str[i])] is not NULL)) {
-            arr = (arr[ascii(str[i])].child)
-        } else {
-            if (arr == arr0 || str[i+1] == '\n') {
-                return false;
-            }
-            arr = arr0;
-        }
 
-    return true;
+int print_rec(struct node * this, char arr[], int i)
+{
+    int j, num = 0;
 
+    if (!arr) {
+	arr = calloc(sizeof (char), MAXWORDLEN);
+	i = -1;
     }
-    
 
+    if (this->c != '\0')
+	arr[i] = this->c;
+
+    if (this->end == TRUE) {
+	arr[i+1] = '\0';
+	printf("%s\n", arr);
+	num++;
+    }
+
+    for (j = 0; j < 26; ++j) {
+	if (this->child[j]) {
+	    num += print_rec(this->child[j], arr, i+1);
+	}
+    }
+
+    return num;
 }
+
+void insert_itr(struct node * head, char word[])
+{
+    int i;
+    int len = strlen(word);
+    struct node * this = head;
+    struct node * new = NULL;
+    char c;
+
+    for (i = 0; i < len; ++i) {
+	c = word[i]; // printf("%c", c);
+
+	if (this->child[ascix(c)] == NULL)
+	    this->child[ascix(c)] = newnode(c);
+
+	this = this->child[ascix(c)];
+
+	this->c = c;
+	if (i + 1 == len) // end char
+	    this->end = TRUE;
+    }
+}
+
+int main () {
+    struct node * head = newnode('\0');
+    char word[MAXWORDLEN];
+    char done = 0;
+    int num;
+
+    while (!done) {
+	num++;
+	scanf("%s", word);
+	printf("%3d. Adding: %s\n", num, word);
+	insert_itr(head, word);
+
+	if (strcmp(word, "ok") == 0)
+	    done = 1;
+    }
+    printf("Added %d words to Dictionary\n", num);
+
+    num = print_rec(head, NULL, 0);
+    printf("Found %d words in Dictionary\n", num);
+}
+
+
