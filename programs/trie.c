@@ -30,39 +30,37 @@ int ascix(char c)
 }
 
 
-int print_rec(struct node * this, char arr[], int i)
+int print_rec(struct node * heads[], char arr[], int i)
 {
     int j, num = 0;
+    struct node * this = NULL;
 
     if (!arr) {
 	arr = calloc(sizeof (char), MAXWORDLEN);
-	i = -1;
-    }
-
-    if (this->c != '\0')
-	arr[i] = this->c;
-
-    if (this->end == TRUE) {
-	arr[i+1] = '\0';
-	printf("%s\n", arr);
-	num++;
     }
 
     for (j = 0; j < 26; ++j) {
-	if (this->child[j]) {
-	    num += print_rec(this->child[j], arr, i+1);
+	this = heads[j];
+	if (this) {
+
+	    arr[i] = this->c;
+	    if (this->end) {
+		arr[i+1] = '\0';
+		printf("%s\n", arr);
+		num++;
+	    }
+	    num += print_rec(this->child, arr, i+1);
 	}
     }
 
     return num;
 }
 
-void insert_itr(struct node * head, char word[])
+void insert_itr(struct node * heads[], char word[])
 {
     int i;
     int len = strlen(word);
-    struct node * this = head;
-    struct node * new = NULL;
+    struct node * this = NULL;
     char c;
 
     for (i = 0; i < len; ++i) {
@@ -79,35 +77,39 @@ void insert_itr(struct node * head, char word[])
 	    exit(1);
 	}
 
-	if (this->child[ascix(c)] == NULL)
-	    this->child[ascix(c)] = newnode(c);
+	if (heads[ascix(c)] == NULL)
+	    heads[ascix(c)] = newnode(c);
 
-	this = this->child[ascix(c)];
-
+	this = heads[ascix(c)];
 	this->c = c;
 	if (i + 1 == len) // end char
 	    this->end = TRUE;
+
+	heads = this->child;
     }
 }
 
 int main () {
-    struct node * head = newnode('\0');
     char word[MAXWORDLEN];
     char done = 0;
-    int num;
+    int num, i;
+
+    struct node * heads[26];
+    for (i = 0; i < 26; ++i)
+	heads[i] = NULL;
 
     while (!done) {
 	num++;
 	scanf("%s", word);
 	printf("%3d. Adding: %s\n", num, word);
-	insert_itr(head, word);
+	insert_itr(heads, word);
 
 	if (strcmp(word, "ok") == 0)
 	    done = 1;
     }
     printf("Added %d words to Dictionary\n", num);
 
-    num = print_rec(head, NULL, 0);
+    num = print_rec(heads, NULL, 0);
     printf("Found %d words in Dictionary\n", num);
 }
 
