@@ -68,6 +68,17 @@ void insert_itr(struct node * head, char word[])
     for (i = 0; i < len; ++i) {
 	c = word[i]; // printf("%c", c);
 
+	if (!('a' <= c && c <= 'z')) {
+	    printf("Cannot insert %c\n", c);
+	    printf("Ensure words are:\n"
+		   "between a to z in lower case\n"
+		   "lower case\n"
+		   "no spaces\n"
+		   "no numbers\n"
+		   "no capitals\n");
+	    exit(1);
+	}
+
 	if (this->child[ascix(c)] == NULL)
 	    this->child[ascix(c)] = newnode(c);
 
