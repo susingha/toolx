@@ -32,7 +32,7 @@ offer
 can
 various
 fact
-Mr
+mr
 tree
 truth
 else
@@ -391,7 +391,7 @@ house
 think
 any
 through
-TV
+tv
 if
 patient
 where
@@ -427,7 +427,7 @@ exactly
 could
 future
 skill
-Democrat
+democrat
 yourself
 whatever
 present
@@ -510,7 +510,7 @@ his
 report
 government
 go
-Republican
+republican
 ball
 miss
 early
@@ -524,7 +524,7 @@ ready
 here
 thought
 goal
-Congress
+congress
 hard
 issue
 toward
@@ -629,7 +629,6 @@ account
 industry
 send
 tend
-I
 scientist
 resource
 my
@@ -642,7 +641,6 @@ already
 day
 fear
 kitchen
-n't
 memory
 system
 total
@@ -736,7 +734,7 @@ would
 support
 white
 majority
-American
+american
 from
 mouth
 important
@@ -857,7 +855,7 @@ commercial
 usually
 possible
 coach
-PM
+pm
 discussion
 car
 religious
@@ -874,7 +872,7 @@ seat
 site
 small
 education
-Mrs
+mrs
 music
 still
 firm
