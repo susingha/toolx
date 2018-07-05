@@ -1,102 +1,142 @@
 #include <stdio.h>
-
-
-#include <stdio.h>
 #include <stdlib.h>
-
-/*
-    * This stores the total number of books in each shelf.
-     */
-int* total_number_of_books;
-
-/*
-    * This stores the total number of pages in each book of each shelf.
-     * The rows represent the shelves and the columns represent the books.
-      */
-int** total_number_of_pages;
-
-int main () {
-
-    int bookcount;
-    int total_number_of_shelves;
-    // scanf("%d", &total_number_of_shelves);
-    total_number_of_shelves  = 9; // 99788;
-
-
-    int total_number_of_queries;
-    // scanf("%d", &total_number_of_queries);
-    total_number_of_queries  = 9; // 99568;
-
-    printf("l:%d\n", __LINE__);
-    total_number_of_pages = (int (*)[1100]) calloc (sizeof(int), total_number_of_shelves * 1100);
-    printf("l:%d, total_number_of_pages = %p\n", __LINE__, total_number_of_pages);
-    total_number_of_books = (int *) calloc (sizeof(int), total_number_of_shelves);
-    printf("l:%d, total_number_of_books = %p\n", __LINE__, total_number_of_books);
-
-
-    while (total_number_of_queries--) {
-    printf("l:%d\n", __LINE__);
-        int type_of_query;
-    printf("l:%d\n", __LINE__);
-        scanf("%d", &type_of_query);
-    printf("l:%d\n", __LINE__);
-
-        if (type_of_query == 1) {
-    printf("l:%d\n", __LINE__);
-            /*
-             * Process the query of first type here.
-             */
-            int x, y;
-    printf("l:%d\n", __LINE__);
-            scanf("%d %d", &x, &y);
-    printf("l:%d\n", __LINE__);
-
-
-#if 0
-            bookcount = total_number_of_books[x];
-            *(*((int *)total_number_of_pages + x) + bookcount) = y;
-            *(total_number_of_books + x) = bookcount + 1;
-#else
-
-	     bookcount = total_number_of_books[x];
-    printf("l:%d, x = %d, y = %d, bookcount = %d\n", __LINE__, x, y, bookcount);
-            total_number_of_pages[x][bookcount] = y;
-    printf("l:%d\n", __LINE__);
-            total_number_of_books[x] = bookcount+1;
-    printf("l:%d\n", __LINE__);
-#endif
-
-	}
-    }
+#include <string.h>
+#include <time.h>
 
 
 
-    printf("l:%d\n", __LINE__);
-    if (total_number_of_books) {
-    printf("l:%d\n", __LINE__);
-        free(total_number_of_books);
-    }
+
+int ascix(char c) {
+    return c - 'a';
+}
+
+void swap(int i, int j, char **arr) {
+    char * tmp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = tmp;
+}
+
+
+
+int lexicographic_sort(const char* a, const char* b) {
+    return strcmp(a, b);
+}
+
+int lexicographic_sort_reverse(const char* a, const char* b) {
+    return strcmp(b, a);
+}
+
+int sort_by_number_of_distinct_characters(const char* a, const char* b) {
+    int len = 0;
+    int i;
+    char hash[26];
+    int counta = 0, countb = 0;
     
-    printf("l:%d\n", __LINE__);
-    for (int i = 0; i < total_number_of_shelves; i++) {
-    printf("l:%d\n", __LINE__);
-        if (*(total_number_of_pages + i)) {
-    printf("l:%d\n", __LINE__);
-            free(*(total_number_of_pages + i));
+    memset(hash, 0, sizeof(hash));
+    len = strlen(a);
+    for (i = 0; i < len; ++i) {
+        if (hash[ascix(a[i])] == 0) {
+            hash[ascix(a[i])] = 1;
+            counta++;
         }
-    printf("l:%d\n", __LINE__);
-    }
-    printf("l:%d\n", __LINE__);
-    
-    if (total_number_of_pages) {
-    printf("l:%d\n", __LINE__);
-        free(total_number_of_pages);
     }
     
-    printf("l:%d\n", __LINE__);
+    memset(hash, 0, sizeof(hash));
+    len = strlen(b);
+    for (i = 0; i < len; ++i) {
+        if (hash[ascix(b[i])] == 0) {
+            hash[ascix(b[i])] = 1;
+            countb++;
+        }
+    }
+    
+    if (counta == countb)
+	return strcmp(a, b);
 
+    return counta - countb;
+}
+
+
+int sort_by_length(const char* a, const char* b) {
+    int diff = strlen(a) - strlen(b);
+    
+    if (!diff) {
+        return strcmp(a, b);
+    }
+    
+    return diff;
+}
+
+void string_sort(char** arr,const int len, int (*cmp_func)(const char* a, const char* b)){
+    
+    int i, j, mini = 0;
+    /* selection sort */
+    for (i = 0; i < len; i++) {
+        mini = i;
+        for (j = i; j < len; ++j) {
+            if (cmp_func(arr[mini], arr[j]) >= 0) {
+                mini = j;
+            }
+        }
+        swap (mini, i, arr);
+    }
+}
+
+#define rnd() (rand()%100)
+
+int main() 
+{
+    unsigned int i, n;
+    char** arr;
+    void * ptr;
+
+
+    srand(time(NULL));
+    for (i = 0; i < 20; ++i) {
+	n = rnd();
+	// printf("n = %u\n", n);
+	ptr = malloc(n);
+	printf("ptr = %p, rem  4 = %lu, "
+		         "rem  8 = %lu, "
+		         "rem 16 = %lu, "
+			 "rem 32 = %lu\n",
+		ptr, (uintptr_t)ptr %  4,
+		     (uintptr_t)ptr %  8,
+		     (uintptr_t)ptr % 16,
+		     (uintptr_t)ptr % 32);
+    }
 
     return 0;
 
+
+    scanf("%d", &n);
+  
+    arr = (char**)malloc(n * sizeof(char*));
+  
+    for(int i = 0; i < n; i++){
+        *(arr + i) = malloc(1024 * sizeof(char));
+        scanf("%s", *(arr + i));
+        *(arr + i) = realloc(*(arr + i), strlen(*(arr + i)) + 1);
+    }
+  
+    string_sort(arr, n, lexicographic_sort);
+    for(int i = 0; i < n; i++)
+        printf("%s\n", arr[i]);
+    printf("\n");
+
+    string_sort(arr, n, lexicographic_sort_reverse);
+    for(int i = 0; i < n; i++)
+        printf("%s\n", arr[i]); 
+    printf("\n");
+
+    string_sort(arr, n, sort_by_length);
+    for(int i = 0; i < n; i++)
+        printf("%s\n", arr[i]);    
+    printf("\n");
+
+    string_sort(arr, n, sort_by_number_of_distinct_characters);
+    for(int i = 0; i < n; i++)
+        printf("%s\n", arr[i]); 
+    printf("\n");
 
 }
