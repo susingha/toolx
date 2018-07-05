@@ -1,5 +1,11 @@
 
-// Implement a dictionary using trie.
+/*
+ * Dictionary using trie.
+ * pending to implement:
+ * insert recursive
+ * lookup iterative and recursive
+ * delete recursive
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -29,6 +35,8 @@ int ascix(char c)
     return (c - 'a');
 }
 
+int lookup_rec(struct node * heads[]), char arr[] {
+}
 
 int print_rec(struct node * heads[], char arr[], int i)
 {
@@ -111,6 +119,17 @@ int main () {
 
     num = print_rec(heads, NULL, 0);
     printf("Found %d words in Dictionary\n", num);
+
+    while (!done) {
+	printf("Enter word to lookup: ");
+	scanf("%s", word);
+	printf("%3d. Finding: %s\n", num, word);
+	lookup_rec(heads, word);
+
+	if (strcmp(word, "ok") == 0)
+	    done = 1;
+    }
+
 }
 
 
