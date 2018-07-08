@@ -2,8 +2,7 @@
 /*
  * Dictionary using trie.
  * pending to implement:
- * insert recursive
- * lookup iterative and recursive
+ * lookup recursive
  * delete recursive
  */
 
@@ -20,7 +19,7 @@
 struct node {
     char c;
     char end;
-    struct node *child[26];
+    struct node * child[26];
 };
 
 struct node * newnode(char c)
@@ -35,7 +34,29 @@ int ascix(char c)
     return (c - 'a');
 }
 
-int lookup_rec(struct node * heads[]), char arr[] {
+int lookup_itr(struct node * heads[], char arr[] )
+{
+    struct node * this = NULL;
+    int i = 0;
+    int len = strlen(arr);
+    char c;
+    
+    for (i = 0; i < len; ++i) {
+	c = arr[i];
+	this = heads[ascix(c)];
+
+	if (this && this->c == c) {
+	    // c is present
+	    if (i+1 == len && this->end == FALSE) // last char
+		return FALSE;
+
+	    heads = this->child;
+	} else {
+	    return FALSE;
+	}
+    }
+
+    return TRUE;;
 }
 
 int print_rec(struct node * heads[], char arr[], int i)
@@ -64,6 +85,30 @@ int print_rec(struct node * heads[], char arr[], int i)
     return num;
 }
 
+void insert_rec(struct node * heads[], char word[])
+{
+    struct node * new = NULL;
+    struct node * this = NULL;
+    char c = word[0];
+    char n = word[1];
+
+    if (c == '\0') {
+	return;
+    }
+
+    if (heads[ascix(c)] == NULL)
+	heads[ascix(c)] = newnode(c);
+
+    this = heads[ascix(c)];
+    this->c = c;      // Not needed, done in newnode()
+    if (n == '\0') {  // last char
+	this->end = TRUE;
+	return;
+    }
+
+    insert_rec(this->child, &word[1]);
+}
+
 void insert_itr(struct node * heads[], char word[])
 {
     int i;
@@ -89,8 +134,8 @@ void insert_itr(struct node * heads[], char word[])
 	    heads[ascix(c)] = newnode(c);
 
 	this = heads[ascix(c)];
-	this->c = c;
-	if (i + 1 == len) // end char
+	this->c = c;      // Not needed, done in newnode()
+	if (i + 1 == len) // last char
 	    this->end = TRUE;
 
 	heads = this->child;
@@ -106,11 +151,16 @@ int main () {
     for (i = 0; i < 26; ++i)
 	heads[i] = NULL;
 
+    done = 0;
     while (!done) {
 	num++;
 	scanf("%s", word);
 	printf("%3d. Adding: %s\n", num, word);
+#if 0
+	insert_rec(heads, word);
+#else
 	insert_itr(heads, word);
+#endif
 
 	if (strcmp(word, "ok") == 0)
 	    done = 1;
@@ -120,16 +170,20 @@ int main () {
     num = print_rec(heads, NULL, 0);
     printf("Found %d words in Dictionary\n", num);
 
+    done = 0;
     while (!done) {
 	printf("Enter word to lookup: ");
 	scanf("%s", word);
-	printf("%3d. Finding: %s\n", num, word);
-	lookup_rec(heads, word);
+	printf("Finding: %10s", word);
+	if (lookup_itr(heads, word)) {
+	    printf(" - found\n");
+	} else {
+	    printf(" - NOT found\n");
+	}
 
 	if (strcmp(word, "ok") == 0)
 	    done = 1;
     }
-
 }
 
 

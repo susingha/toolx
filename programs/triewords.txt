@@ -996,4 +996,10 @@ individual
 similar
 mention
 ok
+west
+western
+westal
+wester
+we
+ok
 
