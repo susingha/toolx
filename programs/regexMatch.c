@@ -2,79 +2,82 @@
 #include<stdlib.h>
 #include<string.h>
 
-//query and match contains the entire line
+// Not a regex match program but more of a wild card match program with * and ?
 
-int compare(char query[], char match[], int i, int j)
+#define TRUE 1
+#define FALSE 0
+
+int ischar(char c) {
+    if ('a' <= c && c <= 'z')
+	return TRUE;
+    if ('A' <= c && c <= 'Z')
+	return TRUE;
+    if ('0' <= c && c <= '9')
+	return TRUE;
+    return FALSE;
+}
+
+int charmatch(char c_regex, char c_string) {
+
+    if (ischar(c_regex) &&
+	ischar(c_string) && c_regex == c_string)
+	return TRUE;
+
+    if (c_regex == '?' && ischar(c_string))
+	return TRUE;
+
+    return FALSE;
+}
+
+int compare(char regex[], char string[])
 {
-   int k= 0;
-   int l= 0;
-   int flag;
-    //compare
-    while(k < (i -1))
-    {
-	printf("\nquery[%d] is %c ", k, query[k]);
-	while(query[k] != match[l])
-	{
-	    printf("\nmatch[%d] is %c ", l, match[l]);
-	    if(l == i)
-		   break;
-	    else
-	    {
-		l++;
-		flag = 0;
-	    }
-	}
-	l++;
-	printf("\n query[%d] %c matches match[%d] %c", k, query[k], l, match[l]);
-	flag = 1;
-	printf("\n flag = %d", flag);
-	if (k = 0 && match[l-1] != '\0')
-	{
-	    if (l == j)
-		break;
-	    else
-	    {
-		flag = 0;
-	    }
-	}
-	l++;
-	k++;
-    }
-    return flag;
+    int lenr = strlen(regex);
+    int lens = strlen(string);
+    int match = FALSE;
+    i = 0;
 
+    char r = regex[0];
+    cahr s = string[0];
+
+    // base case
+    if (r == '\0' && s == '\0')
+	return TRUE;
+    if (r == '\0')
+	return FALSE;
+    if (s == '\0')
+	return FALSE;
+
+    if (r == '*') {
+	ri = findNextr();
+	r = regex[ri];
+
+	while(!match) {
+
+	    ci = findNextMatch(string, r);
+	    c = string[ci];
+
+	    match = compare();
+	}
+    }
+
+    if (charmatch(r, s)) {
+	return compare(&regex[1], &string[1]);
+    }
+
+    return FALSE;
 }
 
 
 void main()
 {
-/*  FILE *ifp, *ofp;
-    char *mode = "r";
-    char outputFilename[] = "out.list";
+    char regex[1024];
+    char string[1024];
 
-    ifp = fopen("in.list", mode);
+    strcpy(regex, "*cat"); strcpy(string, "this cat"):
 
-    if (ifp == NULL) {
-	fprintf(stderr, "Can't open input file in.list!\n");
-	exit(1);
+    if (compare(regex, string)) {
+	printf("regex: %20s : %20s => Match\n");
+    } else {
+	printf("regex: %20s : %20s => NO match\n");
     }
-
-    ofp = fopen(outputFilename, "w");
-
-    if (ofp == NULL) {
-	fprintf(stderr, "Can't open output file %s!\n",
-		outputFilename);
-	exit(1);
-    }
-*/
-
-    char a[]="cat";
-    char b[]="this cat";
-    int flag= 0;
-    flag = compare(a, b, sizeof(a), sizeof(b));
-    if (flag == 1)
-    {
-	printf ("\ntrue\n");
-    }
-    else
-	printf("\nfalse\n");
 }
