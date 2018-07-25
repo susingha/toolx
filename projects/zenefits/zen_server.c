@@ -29,6 +29,7 @@ int main( int argc, char *argv[] ) {
 
     // First call to socket() function
     printf("sockfd = socket(AF_INET, SOCK_STREAM, 0)\n");
+
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
 
     if (sockfd < 0) {
@@ -58,7 +59,8 @@ int main( int argc, char *argv[] ) {
      * for the incoming connection
      */
 
-    printf("listen(sockfd, MAX_CONN)\n");
+    printf("listen(sockfd, MAX_CONN) on %d\n", SERVERPORT);
+
     listen(sockfd, 5);
     clilen = sizeof(cli_addr);
 
@@ -68,7 +70,9 @@ int main( int argc, char *argv[] ) {
     zen_trie_init();
 
     while (1) {
-        printf("newsockfd = accept(sockfd, &client_addr)\n");
+	if (debug || debugnetwork)
+	    printf("newsockfd = accept(sockfd, &client_addr)\n");
+
         newsockfd = accept(sockfd, (struct sockaddr *) &cli_addr, &clilen);
 
         if (newsockfd < 0) {
@@ -76,7 +80,8 @@ int main( int argc, char *argv[] ) {
             continue;
         }
 
-        printf("New incoming connection\n");
+	if (debug || debugnetwork)
+	    printf("New incoming connection\n");
 
         // Create child process
         pid = fork();
