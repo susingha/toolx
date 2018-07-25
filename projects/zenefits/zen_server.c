@@ -9,16 +9,18 @@
 
 #include <string.h>
 
+#include "zen_types.h"
+#include "zen_server.h"
+#include "zen_trie.h"
+
 int doprocessing (int sock);
 int register_handle_sigchld();
 int sockfd_global = 0, newsockfd_global = 0;
 
-#define SERVERPORT 5001
 
 int main( int argc, char *argv[] ) {
     int sockfd, newsockfd, portno;
     unsigned int clilen;
-    char buffer[256];
     struct sockaddr_in serv_addr, cli_addr;
     int n, pid;
 
@@ -59,6 +61,11 @@ int main( int argc, char *argv[] ) {
     printf("listen(sockfd, MAX_CONN)\n");
     listen(sockfd, 5);
     clilen = sizeof(cli_addr);
+
+    /* Before we start accepting requests
+     * Initialize the trie
+     */
+    zen_trie_init();
 
     while (1) {
         printf("newsockfd = accept(sockfd, &client_addr)\n");
@@ -101,31 +108,40 @@ int main( int argc, char *argv[] ) {
     }
 }
 
-
 int doprocessing (int sock) {
     int n;
-    char buffer[256];
-    bzero(buffer,256);
+    char query[QUERY_MAX_BUFFER];
+    bzero(query, QUERY_MAX_BUFFER);
 
+#if 0
     n = write(sock,"> ",2);
     if (n < 0) {
         perror("ERROR writing to socket");
         exit(1);
     }
+#endif
 
-    n = read(sock,buffer,255);
+    // Read request string
+    n = read(sock, query, QUERY_MAX_BUFFER - 1);
     if (n < 0) {
         perror("ERROR reading from socket");
         exit(1);
     }
 
-    printf("pid:%d Message: %s\n",getpid(), buffer);
+    if (debug) printf("pid:%d Message: %s/(%d, %lu)\n", getpid(), query, n, strlen(query));
 
+    // Serve results:
+#if 1
+    zen_write_results(query, n, sock);
+#else
+    n = write(sock, "result >\n", 9);
+#endif
 
-    if (buffer[0] == 'X')
-        return 0;
-    else 
-        return 1;
+    if (debugnetwork) {
+	printf("sleep 2 before conn close\n");
+	sleep (2);
+    }
+    return 0;
 }
 
 void handle_sigchld(int sig) {
@@ -170,3 +186,7 @@ int register_handle_sigchld()
     return 0;
 }
 
+int zen_get_write_socket()
+{
+    return newsockfd_global;
+}
