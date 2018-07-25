@@ -254,17 +254,25 @@ int zen_trie_init() {
 }
 
 char err_bad_query[] = "Bad Query";
+char err_small_query[] = "Query too small";
 
 int serve_results(char query[], int n, int sock)
 {
     struct node ** heads = NULL;
     // we can assume that all n bytes in query is within buffer
 
+    if (n < 3) {
+	write(sock, err_small_query, strlen(err_small_query));
+	printf("%s\n", err_small_query);
+	return -1;
+    }
+
     if (!sanitize(query, n)) {
 	write(sock, err_bad_query, strlen(err_bad_query));
 	printf("%s\n", err_bad_query);
 	return -1;
     }
+
 
     heads = trie_get_heads();
     if (!heads)
