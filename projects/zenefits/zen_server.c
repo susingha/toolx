@@ -154,7 +154,8 @@ int doprocessing (int sock) {
 void handle_sigchld(int sig) {
     int status;
 
-    printf("\n");
+    if (debug || debugnetwork)
+	printf("\n");
 
     if (sig == SIGCHLD) {
 	wait(&status);
@@ -162,7 +163,8 @@ void handle_sigchld(int sig) {
 
     if (sig == SIGINT) {
 	
-	printf("releasing server port\n");
+	if (debug || debugnetwork)
+	    printf("releasing server port\n");
 
 	if (newsockfd_global) {
 	    shutdown(newsockfd_global, SHUT_RDWR);
