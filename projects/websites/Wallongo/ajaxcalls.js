@@ -1,44 +1,40 @@
 
 function createRequestObject()
-{ var xmlhttp = false;
-        try
-        {xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-        }
-        catch (e)
-         {try
-                {
-                        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                  }
-                catch (E)
-                {
-                        xmlhttp = false;
-                }
-         }
-        if (!xmlhttp && typeof XMLHttpRequest!='undefined')
-        {
-                xmlhttp = new XMLHttpRequest();
-        }
-        return xmlhttp;
+{
+    var xmlhttp = false;
+
+    try {
+	xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+	try {
+	    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} catch (E) {
+	    xmlhttp = false;
+	}
+    }
+
+    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+	xmlhttp = new XMLHttpRequest();
+    }
+
+    return xmlhttp;
 }
 
 function show(link, div, n)
 {
-	// alert(link + div);
-	var req = createRequestObject();
-	req.open("GET", link, true);
-	req.onreadystatechange = function()
-	{
-		if(req.readyState == 4)
-		{
-			var response = req.responseText;
-			if(n) {
-				document.getElementById(div).innerHTML = response;
-			}
-
-		}
+    alert(link + div);
+    var req = createRequestObject();
+    req.open("GET", link, true);
+    req.onreadystatechange = function() {
+	if(req.readyState == 4) {
+	    var response = req.responseText;
+	    if(n) {
+		document.getElementById(div).innerHTML = response;
+	    }
 	}
+    }
 
-	req.send(null);        
+    req.send(null);        
 }
 
 
