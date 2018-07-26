@@ -1,0 +1,176 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="en-us" http-equiv="Content-Language" />
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>Untitled 1</title>
+<style type="text/css">
+.auto-style1 {
+    text-align: center;
+}
+.auto-style-table1 {
+    width: 880px;
+}
+.text-style1 {
+    font-size: 100%;
+    padding-left: 8px;
+    letter-spacing: 2px;
+}
+.link-style1 {
+    color: hotpink;
+    font-size: 100%;
+    padding-left: 8px;
+    letter-spacing: 2px;
+}
+</style>
+
+<script type="text/javascript">
+function sup_popup ()
+{
+	alert("sometext");
+}
+
+function createRequestObject()
+{
+    var xmlhttp = false;
+
+    try {
+        xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+    } catch (e) {
+        try {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        } catch (E) {
+            xmlhttp = false;
+        }
+    }
+
+    if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+        xmlhttp = new XMLHttpRequest();
+    }
+
+    return xmlhttp;
+}
+
+function show(link, div, n)
+{
+    // alert(link + div);
+    var req = createRequestObject();
+    req.open("GET", link, true);
+    req.onreadystatechange = function() {
+        if(req.readyState == 4) {
+            var response = req.responseText;
+            if(n) {
+		// alert(response)
+                document.getElementById(div).innerHTML = response;
+            }
+        }
+    }
+
+    req.send(null);
+}
+
+function shownull(div)
+{
+    document.getElementById(div).innerHTML = '';
+}
+
+function sanitize(query)
+{
+    var str = String(query);
+    if (str.length < 3)
+	return false;
+
+    var patt = new RegExp("^[0-9a-z\-.]+$");
+    var res = patt.test(query);
+    return res;
+}
+
+function get_results(query)
+{
+    var querystr = String(query).toLowerCase();
+
+    if (sanitize(querystr) == true) {
+	show("cgi-bin/domainserver?query="+querystr, "zenresults", 2);
+    } else {
+	shownull("zenresults");
+    }
+}
+
+function gethref(domain) {
+    var a = document.createElement('a');
+    var linkText = document.createTextNode(domain);
+    
+    a.class = "link-style1"; // not working, so add the style below
+    a.style = "font-size: 100%; letter-spacing: 2px;";
+    a.appendChild(linkText);
+    a.title = domain;
+    a.href = "http://" + domain;
+
+    return a;
+}
+
+function insertrow(tbl, data)
+{
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+
+    td.class = "auto-style-table1"; // not working, so add the style below
+    td.style = "width: 880px; height: 30px";
+    td.appendChild(data);
+    tr.appendChild(td);
+    tbl.appendChild(tr);
+}
+
+function filltable()
+{
+    var tbl = document.getElementById("restable");
+    var a = gethref("domain.com");
+
+    insertrow(tbl, a);
+
+}
+
+function purgetable()
+{
+    var tbl = document.getElementById("restable");
+    while (tbl.firstChild) {
+	    tbl.removeChild(tbl.firstChild);
+    }
+}
+
+</script>
+
+</head>
+
+<body>
+<br>
+<div class="auto-style1">
+	<label id="Label1" style="font-family: Arial">Domain Search</label>
+</div>
+<br>
+<form onsubmit="get_results(document.getElementById('querytext').value)"
+      onkeyup="get_results(document.getElementById('querytext').value)"
+      action="javascript:void(0)">
+	<div class="auto-style1">
+	<input class="text-style1" style="width: 80%; height: 30px" name="query" type="text" id="querytext" placeholder="type a domain"/>
+	</div>
+</form>
+
+<table style="width: 80%" align="center" id="restable" border=1px>
+<!--
+	<tr>
+		<td class="auto-style-table1">&nbsp;</td>
+	</tr>
+/-->
+</table>
+
+<input name="Button1" type="button" value="add table row" onclick="filltable()"/>
+<br>
+<input name="Button2" type="button" value="delete row" onclick="purgetable()"/>
+	
+<pre id="zenresults">
+</pre>
+
+</body>
+</html>
