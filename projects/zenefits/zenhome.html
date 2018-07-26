@@ -5,12 +5,12 @@
 <meta content="en-us" http-equiv="Content-Language" />
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 <title>Untitled 1</title>
+
 <style type="text/css">
 .auto-style1 {
-    text-align: center;
-}
-.auto-style-table1 {
-    width: 880px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .text-style1 {
     font-size: 100%;
@@ -26,6 +26,14 @@
 </style>
 
 <script type="text/javascript">
+
+var cwidth  = document.documentElement.clientWidth;
+var cheight = document.documentElement.clientHeight;
+
+function geteasywidth() {
+    return (cwidth * (0.8));
+}
+
 function sup_popup ()
 {
 	alert("sometext");
@@ -62,7 +70,8 @@ function show(link, div, n)
             var response = req.responseText;
             if(n) {
 		// alert(response)
-                document.getElementById(div).innerHTML = response;
+                // document.getElementById(div).innerHTML = response;
+		render_results(response);
             }
         }
     }
@@ -72,7 +81,51 @@ function show(link, div, n)
 
 function shownull(div)
 {
-    document.getElementById(div).innerHTML = '';
+    purgetable();
+}
+
+function render_results(response)
+{
+    purgetable();
+    var lines = response.split('\n');
+    for(var i = 0; i < lines.length - 1; i++){
+	filltable(lines[i]);
+    }
+}
+
+var tablerows = 0;
+var rowselect = -1;
+var rowselectprev = -2;
+var selectmin = -1;
+var selectmax = -1;
+
+function resetrowselectors() {
+    tablerows = 0;
+    rowselect = -1;
+    rowselectprev = -2;
+    selectmin = -1;
+    selectmax = -1;
+}
+
+function changehighlight(tbl, rowselectprev, row)
+{
+    if (rowselectprev >= 0) {
+	var td_unselect = tbl.childNodes[rowselectprev].firstChild;
+	td_unselect.bgColor = "#FFFFFF";
+    }
+
+    if (row >= 0) {
+	var td_select = tbl.childNodes[row].firstChild;
+	td_select.bgColor = "#EDEDFC";
+    }
+}
+
+function openlink (tbl, row)
+{
+    if(row > -1) {
+	var a = tbl.childNodes[row].firstChild.firstChild;
+	window.open(a.href);
+    }
 }
 
 function sanitize(query)
@@ -88,6 +141,39 @@ function sanitize(query)
 
 function get_results(query)
 {
+    var tbl = document.getElementById("restable");
+    var key = event.which || event.keyCode;
+
+    if (tbl == null)
+	return;
+
+    if (key == 38 || key == 40) { // Nav key event
+	// Highlight a row
+
+	if (tbl.childNodes.length == 0) {
+	    return;
+	}
+
+	selectmax = tbl.childNodes.length - 1;
+
+	rowselectprev = rowselect;
+	if (key == 40 && (rowselect + 1) <= selectmax) {
+	    rowselect++;
+	} else if (key == 38 && (rowselect - 1) >= selectmin) {
+	    rowselect--;
+	} else {
+	    return;
+	}
+
+	changehighlight(tbl, rowselectprev, rowselect);
+	return;
+    }
+
+    if ((key == 13 || key == undefined) && rowselect > -1) { // pressing enter
+	openlink(tbl, rowselect);
+	return;
+    }
+
     var querystr = String(query).toLowerCase();
 
     if (sanitize(querystr) == true) {
@@ -95,14 +181,19 @@ function get_results(query)
     } else {
 	shownull("zenresults");
     }
+
+
+
+
+
 }
+
 
 function gethref(domain) {
     var a = document.createElement('a');
     var linkText = document.createTextNode(domain);
     
-    a.class = "link-style1"; // not working, so add the style below
-    a.style = "font-size: 100%; letter-spacing: 2px;";
+    a.style = "font-size: 100%; padding-left: 8px; letter-spacing: 2px;";
     a.appendChild(linkText);
     a.title = domain;
     a.href = "http://" + domain;
@@ -115,19 +206,19 @@ function insertrow(tbl, data)
     var tr = document.createElement("tr");
     var td = document.createElement("td");
 
-    td.class = "auto-style-table1"; // not working, so add the style below
-    td.style = "width: 880px; height: 30px";
+    td.style = "height: 25px";
     td.appendChild(data);
     tr.appendChild(td);
     tbl.appendChild(tr);
 }
 
-function filltable()
+function filltable(domain)
 {
     var tbl = document.getElementById("restable");
-    var a = gethref("domain.com");
+    var a = gethref(domain);
 
     insertrow(tbl, a);
+    tablerows++;
 
 }
 
@@ -136,7 +227,10 @@ function purgetable()
     var tbl = document.getElementById("restable");
     while (tbl.firstChild) {
 	    tbl.removeChild(tbl.firstChild);
+	    tablerows--;
     }
+
+    resetrowselectors();
 }
 
 </script>
@@ -144,33 +238,31 @@ function purgetable()
 </head>
 
 <body>
-<br>
+
+<pre id="zenresults">
+</pre>
+
+<br> <br> <br>
+
 <div class="auto-style1">
 	<label id="Label1" style="font-family: Arial">Domain Search</label>
 </div>
 <br>
 <form onsubmit="get_results(document.getElementById('querytext').value)"
-      onkeyup="get_results(document.getElementById('querytext').value)"
-      action="javascript:void(0)">
-	<div class="auto-style1">
-	<input class="text-style1" style="width: 80%; height: 30px" name="query" type="text" id="querytext" placeholder="type a domain"/>
-	</div>
+      onkeyup="get_results(document.getElementById('querytext').value)" action="javascript:void(0)">
+
+    <div class="auto-style1">
+
+	<input class="text-style1" style="width: 100%; height: 30px" name="query" type="text" id="querytext" placeholder="type a domain" autocomplete="off"/>
+	<br> <br>
+	<table style="width: 101%;" id="restable">
+	</table>
+
+    </div>
+
 </form>
 
-<table style="width: 80%" align="center" id="restable" border=1px>
-<!--
-	<tr>
-		<td class="auto-style-table1">&nbsp;</td>
-	</tr>
-/-->
-</table>
-
-<input name="Button1" type="button" value="add table row" onclick="filltable()"/>
-<br>
-<input name="Button2" type="button" value="delete row" onclick="purgetable()"/>
-	
-<pre id="zenresults">
-</pre>
+<br> <br>
 
 </body>
 </html>
