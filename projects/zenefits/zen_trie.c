@@ -46,7 +46,7 @@ struct node ** trie_get_heads()
 
 int print_rec(struct node * heads[], char arr[], int i, int forceprint)
 {
-    int j, num = 0, strlen = 0;
+    int j, num = 0, wlen = 0;
     struct node * this = NULL;
 
     if (i > MAXWORDLENSAFE)
@@ -64,11 +64,11 @@ int print_rec(struct node * heads[], char arr[], int i, int forceprint)
 	    if (this->end) {
 		arr[i+1] = '\n';
 		arr[i+2] = '\0';
-		strlen = i + 2;
+		wlen = i + 2;
 		if (forceprint) {
 		    if (debug || runverbose || debugnetwork)
 			printf("%s\n", arr);
-		    zen_sock_write(arr, strlen);
+		    zen_sock_write(arr, wlen);
 		}
 		num++;
 	    }
@@ -90,6 +90,7 @@ int lookup_itr(struct node * heads[], char arr[])
     struct node * this = NULL;
     int i = 0;
     int len = strlen(arr);
+    int wlen = 0;
     char c;
     
     char matches[MAXWORDLEN];
@@ -104,6 +105,14 @@ int lookup_itr(struct node * heads[], char arr[])
 
 	    if (i+1 == len) {                           // last char
 
+		if (this->end) {
+		    arr[i+1] = '\n';
+		    arr[i+2] = '\0';
+		    wlen = i + 2;
+		    if (debug || runverbose || debugnetwork)
+			printf("%s\n", arr);
+		    zen_sock_write(arr, wlen);
+		}
 		matchcount = print_rec(this->child, matches, i+1, 1);
 		if (debug)
 		    printf("Found %u matches\n", matchcount);
