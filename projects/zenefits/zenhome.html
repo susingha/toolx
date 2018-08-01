@@ -109,6 +109,12 @@ function resetrowselectors() {
     selectmax = -1;
 }
 
+function updatequery(tbl, row) {
+    var txt = document.getElementById('querytext');
+    var val = tbl.childNodes[row].firstChild.firstChild.title;
+    txt.value = val;
+}
+
 function changehighlight(tbl, rowselectprev, row)
 {
     if (rowselectprev >= 0) {
@@ -141,7 +147,7 @@ function sanitize(query)
     return res;
 }
 
-function get_results(query)
+function moveselector()
 {
     var tbl = document.getElementById("restable");
     var key = event.which || event.keyCode;
@@ -168,6 +174,8 @@ function get_results(query)
 	}
 
 	changehighlight(tbl, rowselectprev, rowselect);
+	updatequery(tbl, rowselect);
+	rowselectprev = rowselect;
 	return;
     }
 
@@ -175,7 +183,28 @@ function get_results(query)
 	openlink(tbl, rowselect);
 	return;
     }
+}
 
+function get_page() {
+    var tbl = document.getElementById("restable");
+    var key = event.which || event.keyCode;
+
+    if (tbl == null)
+	return;
+
+    if (key == 13 || key == undefined) {  // pressing enter
+	if (rowselect > -1) {             // a table entry is selected
+	    openlink(tbl, rowselect);
+	    return;
+	} else if (rowselect == -1 && tbl.firstChild) {  // no table entry is seleted. cursor in text box. the text matches a domain
+	    openlink(tbl, 0);
+	    return;
+	}
+    }
+}
+
+function get_results(query)
+{
     var querystr = String(query).toLowerCase();
 
     if (sanitize(querystr) == true) {
@@ -183,13 +212,13 @@ function get_results(query)
     } else {
 	shownull("zenresults");
     }
-
-
-
-
-
 }
 
+function hoverresult(tbl, row) {
+    rowselect = row;
+    changehighlight(tbl, rowselectprev, rowselect);
+    rowselectprev = row;
+}
 
 function gethref(domain) {
     var a = document.createElement('a');
@@ -207,9 +236,12 @@ function insertrow(tbl, data)
 {
     var tr = document.createElement("tr");
     var td = document.createElement("td");
+    var rownum = tbl.childElementCount;
 
     td.style = "height: 25px";
     td.appendChild(data);
+    td.addEventListener('mouseover', () => hoverresult(tbl, rownum));
+
     tr.appendChild(td);
     tbl.appendChild(tr);
 }
@@ -250,8 +282,9 @@ function purgetable()
 	<label id="Label1" style="font-family: Arial">Domain Search</label>
 </div>
 <br>
-<form onsubmit="get_results(document.getElementById('querytext').value)"
-      onkeyup="get_results(document.getElementById('querytext').value)" action="javascript:void(0)">
+<form onsubmit="get_page()"
+      oninput="get_results(document.getElementById('querytext').value)" 
+      onkeyup="moveselector()"  action="javascript:void(0)">
 
     <div class="auto-style1">
 
