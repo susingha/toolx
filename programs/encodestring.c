@@ -3,6 +3,8 @@
 #include <unistd.h>
 
 
+/* Print the character and the number of times it appeared */
+
 char *str[] = {"aaaaabbbccccddeefgh",
                "abcddddeeeffghijjjk",
                "abcefghijlkmnopqrst",
@@ -23,6 +25,7 @@ int main () {
 	printf("%s\n", str[row]);
 	i = 0;
 	count = 1;
+
 	while(str[row][i] != '\0') {
 
 	    if(str[row][i] != str[row][i+1]) {
@@ -33,6 +36,7 @@ int main () {
 	    }
 	    i++;
 	}
+
 	printf("\n\n");
     }
     return 0;

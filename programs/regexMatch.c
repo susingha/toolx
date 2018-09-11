@@ -3,6 +3,7 @@
 #include<string.h>
 
 // Not a regex match program but more of a wild card match program with * and ?
+// Does not compile. Needs some functions to be implemented
 
 #define TRUE 1
 #define FALSE 0
@@ -34,10 +35,11 @@ int compare(char regex[], char string[])
     int lenr = strlen(regex);
     int lens = strlen(string);
     int match = FALSE;
-    i = 0;
+    int i = 0, ri = 0, ci = 0;
 
     char r = regex[0];
-    cahr s = string[0];
+    char s = string[0];
+    char c;
 
     // base case
     if (r == '\0' && s == '\0')
@@ -68,16 +70,18 @@ int compare(char regex[], char string[])
 }
 
 
-void main()
+int main()
 {
     char regex[1024];
     char string[1024];
 
-    strcpy(regex, "*cat"); strcpy(string, "this cat"):
+    strcpy(regex, "*cat"); strcpy(string, "this cat");
 
     if (compare(regex, string)) {
-	printf("regex: %20s : %20s => Match\n");
+	printf("regex: %20s : %20s => Match\n", regex, string);
     } else {
-	printf("regex: %20s : %20s => NO match\n");
+	printf("regex: %20s : %20s => NO match\n", regex, string);
     }
+
+    return 0;
 }
