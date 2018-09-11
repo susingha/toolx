@@ -4,9 +4,11 @@
 #include <stdlib.h>
 #include <getopt.h>
 
-/** Program to calculate the area and perimeter of 
- * a rectangle using command line arguments
+/*
+ * Program to calculate the area and perimeter of a
+ * rectangle using command line arguments
  */
+
 void print_usage() {
     printf("Usage: rectangle [ap] -l num -b num\n");
 }
