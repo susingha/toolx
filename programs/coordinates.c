@@ -1,6 +1,8 @@
 /*
- * README: We require a sample input file for this program:
- * SampleInput.txt
+ * README: Start from coordinates 0,0 and follow the directions
+ *         as given in input.txt and print the final coordinates
+ *
+ * input.txt
  * ===============
  * Move 2
  * Turn right
@@ -19,6 +21,8 @@
  * Move 1
  * Move 0
  *
+ * Answer should be 13, -8
+ *
  */
 
 #include <stdio.h>
@@ -30,7 +34,7 @@ int main() {
     signed int posx = 0;
     signed int posy = 0;
 
-    signed int xincr = 0;
+    signed int xincr = 0; // initially facing north
     signed int yincr = 1;
     signed int txincr = 0;
     signed int tyincr = 0;
@@ -38,47 +42,49 @@ int main() {
     signed int steps = 0;
     char dummy[20];
 
-    FILE * fd = fopen("SampleInput.txt", "r");
+    FILE * fd = fopen("input.txt", "r");
 
     while(!feof(fd)) {
 	fgets(line, sizeof(line), fd);
 	printf("%s", line);
 
 
-	if(line[0] = 'M') {
+	if(line[0] == 'M') {
 	    sscanf(line, "%s %d", dummy, &steps);
 	    posx += xincr * steps;
 	    posy += yincr * steps;
+
 	} else if (line[0] == 'T') {
 
 	    txincr = xincr;
 	    tyincr = yincr;
-	    if(line[5] == 'r') {
-		if(xincr == 0)
-		    xincr = 1;
-		if(yincr == 0)
-		    yincr = -1;
 
+	    if (line[5] == 'r') { // right turn
 
-	    } else if(line[5] == 'l') {
-		if(xincr == 0)
-		    xincr = -1;
-		if(yincr == 0)
-		    yincr = 1;
-
+		if (yincr) {
+		    xincr = yincr;
+		    yincr = 0;
+		} else
+		if (xincr) {
+		    yincr = 0 - xincr;
+		    xincr = 0;
+		}
 	    }
 
-	    if(txincr)
-		xincr = 0;
-	    if(tyincr)
-		yincr = 0;
+	    if (line[5] == 'l') { // left turn
+		if (yincr) {
+		    xincr = 0 - yincr;
+		    yincr = 0;
+		} else
+		if (xincr) {
+		    yincr = xincr;
+		    xincr = 0;
+		}
+	    }
 	}
-
-
-
     }
 
-    printf("%d,%d", posx, posy);
+    printf("%d,%d\n", posx, posy);
     return 0;
 }
 
