@@ -9,6 +9,9 @@
 #include <sys/types.h>
 #endif
 
+#define TRUE  1
+#define FALSE 0
+#define ENDS  ('\0')
 
 int main (int argc, char *argv[])
 {
