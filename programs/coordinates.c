@@ -42,7 +42,7 @@ int main() {
     signed int steps = 0;
     char dummy[20];
 
-    FILE * fd = fopen("input.txt", "r");
+    FILE * fd = fopen("coordinates_input.txt", "r");
 
     while(!feof(fd)) {
 	fgets(line, sizeof(line), fd);
