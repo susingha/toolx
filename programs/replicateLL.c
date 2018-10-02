@@ -47,7 +47,7 @@ void printlist (struct node * head) {
     struct node * this = head;
 
     while (this) {
-	printf("%d [%d] -> ", this->num, this->rand->num);
+	printf("%2d [%2d] -> ", this->num, this->rand->num);
 	this = this->next;
     }
     printf("|-\n");

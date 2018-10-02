@@ -3,7 +3,13 @@
 #include <unistd.h>
 #include <string.h>
 
+
+/* Implement function readnb using given function read4k */
+
 #define BUF_4K 128 // 4098
+#define TRUE  1
+#define FALSE 0
+#define ENDS  ('\0')
 
 unsigned int read4k(FILE * fp, void * buf4k_p) {
     if(!fp)
@@ -18,7 +24,8 @@ int min(int a, int b) {
     return a < b?a:b;
 }
 
-int readnb(FILE * fp, void * buff_n, unsigned int n) {
+
+int readnb_1(FILE * fp, void * buff_n, unsigned int n) {
 
     int valid = 0, read = 0;
     int unreadbuf = n, readbuf = 0;
@@ -60,43 +67,50 @@ int readnb(FILE * fp, void * buff_n, unsigned int n) {
 	}
     } while (1);
 
-    *(char *)(buff_n + readbuf) = '\n';
+    *(char *)(buff_n + readbuf) = ENDS;
     return readbuf;
 }
 
+int readnb_2(FILE * fp, void * buff_n, unsigned int n) {
 
-#if 0
-int readnb() { // pseudo
+    void * buf4k_p = (void *)malloc(BUF_4K);
 
-    do {
-        read = read4k(buf);
-        if (read < rem) {
-            // it was able to read less then what we want.
-            // we want all read bytes
-            memcpy(wptr, buf, read);
-            wptr += read;
-            copied += read;
-            rem =- read;
+    int times = n / BUF_4K;
+    int remdr = n % BUF_4K;
 
-        } else if (read >= rem) {
-            // it read more than what we want.
-            // we want only rem part of read bytes
-            memcpy(wptr, buf, rem)
-            wptr += rem;
-            copied += rem;
-            rem = 0;
-            break;
-        }
-    } while (read);
+    int i = 0;
+    int widx = 0, read = 0;
+    int eof = FALSE;
+
+    for (i = 0; i < times; ++i) {
+	read = read4k(fp, buf4k_p);
+	memcpy(buff_n + widx, buf4k_p, read);
+	widx += read;
+
+	if (read < BUF_4K) {
+	    eof = TRUE;
+	    break;
+	}
+    }
+
+    if (!eof) {
+	read = read4k(fp, buf4k_p);
+	memcpy(buff_n + widx, buf4k_p, min(read, remdr));
+	widx += min(read, remdr);
+    }
+
+    *(char *)(buff_n + widx) = ENDS;
+    return widx;
 }
-#endif
 
 
 int main (int argc, char *argv[]) {
     char * filename = NULL;
-    int bytes = 0, bytesread = 0;
+    int    bytes = 0, bytesread1 = 0, bytesread2 = 0;
     FILE * fp = NULL;
-    void * buffn = NULL;
+    void * buffn1 = NULL;
+    void * buffn2 = NULL;
+    char arr[] = "abcdefgh";
 
     if (argc > 2) {
 	filename = argv[1];
@@ -108,18 +122,27 @@ int main (int argc, char *argv[]) {
     }
 
     fp = fopen(filename, "r");
-    buffn = (void *)malloc(bytes);
+    buffn1 = (void *)malloc(bytes + 1);
+    buffn2 = (void *)malloc(bytes + 1);
 
     if (!fp) {
 	printf("Could not open file: %s\n", filename);
 	return 1;
     }
 
-    bytesread = readnb(fp, buffn, bytes);
+    bytesread1 = readnb_1(fp, buffn1, bytes); rewind(fp); // old
+    bytesread2 = readnb_2(fp, buffn2, bytes);             // new
+
     fclose(fp);
 
-    printf("Read %d bytes from %s\n", bytesread, filename);
-    printf("%s\n", (char *)buffn);
+    printf("%s\n", (char *) buffn1);
+    printf("%s\n", (char *) buffn2);
 
-    return 0;
+    printf("Read %d, bytes from %s\n", bytesread1, filename);
+    printf("Read %d, bytes from %s\n", bytesread2, filename);
+    if (bytesread1 != bytesread2) {
+	printf("Read wrong bytes: %d, %d\n", bytesread1, bytesread2);
+    }
+
+   return 0;
 }
