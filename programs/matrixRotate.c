@@ -1,9 +1,15 @@
+
+/*
+ * Rotate a matrix by 90 degrees in place
+ * ofcourse the matrix would have to be square
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
 #define rnd() (rand()%100)
-#define ARRMAX 23
+#define ARRMAX 4 // 23
 #define ZERO   0
 #define LIMT   (ARRMAX - 1)
 #define FOUR   4
@@ -23,7 +29,14 @@ void printMatrix() {
 	    printf("%3d,", arr[i][j]);
 	printf("\n");
     }
+    printf("\n");
 }
+
+
+/*
+ * Method 1. Sweep each element along the circumference
+ *           Like a clock arm. More efficient than method 2
+ */
 
 void rotate90 (int x, int y, int *i, int *j) {
     int oi = x;
@@ -43,18 +56,12 @@ void get_final(int rotations, int row1, int col1, int *row2p, int *col2p) {
     }
 }
 
-
-
-
-int main() {
+void rotateclockarm() {
 
     int save = 0, move = 0;
     int i = 0, j = 0, k = 0;
     int begin = 0, end = 0;
     int row1 = 0, col1 = 0, row2 = 0, col2 = 0;
-
-    initMatrix();
-    printMatrix();
 
     for (i = 0; i < (ARRMAX)/2; ++i) {
 	begin = ZERO + i;
@@ -76,8 +83,65 @@ int main() {
 	}
 	if(debug) printf("\n");
     }
+}
 
-    printf("\n\n");
+
+/*
+ * Method 2. By spinning the matrix on a diagnonal (transpose)
+ *           then spinning the matrix on a vertical axis
+ *           simpler to understand but costlier than Method 1
+ */
+
+void transwap(int row, int col) {
+    int tmp = arr[row][col];
+    arr[row][col] = arr[col][row];
+    arr[col][row] = tmp;
+
+}
+
+void horswap(int row, int col) {
+    int tmp = arr[row][col];
+    arr[row][col] = arr[row][ARRMAX-1-col];
+    arr[row][ARRMAX-1-col] = tmp;
+}
+
+void spindiagaxis() { // transpose
+    int i, j;
+    for (i = 0; i < ARRMAX; ++i) {
+	for (j = i; j < ARRMAX; ++j ) {
+	    transwap(i, j);
+	}
+    }
+}
+
+void spinvertaxis() {
+    int i, j;
+    for (i = 0; i < ARRMAX; ++i) {
+	for (j = 0; j < ARRMAX/2; ++j ) {
+	    horswap(i, j);
+	}
+    }
+}
+
+void rotatespinaxis() {
+    spindiagaxis();
+    if (debug) printMatrix();
+
+    spinvertaxis();
+    if (debug) printMatrix();
+
+}
+
+int main() {
+    initMatrix();
+    printMatrix();
+
+    printf("Using Method 1\n");
+    rotateclockarm();
+    printMatrix();
+
+    printf("Using Method 2\n");
+    rotatespinaxis();
     printMatrix();
 
     return 0;
