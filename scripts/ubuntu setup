@@ -1,10 +1,12 @@
 apt-get install openssl-server
 ifconfig
 
-apt-get install git
-apt-get install vim
-apt-get install screen
-apt-get install apache2
+sudo ls
+sudo apt-get install -y git
+sudo apt-get install -y vim
+sudo apt-get install -y screen
+sudo apt-get install -y apache2
+sudo apt-get install -y wireshark
 
 mkdir checkout
 cd !$
