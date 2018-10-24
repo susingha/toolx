@@ -1,6 +1,13 @@
+apt-get install openssl-server
+ifconfig
+
+apt-get install git
 apt-get install vim
 apt-get install screen
-apt-get install git
-apt-get install openssl-server
 apt-get install apache2
-git clone 
+
+mkdir checkout
+cd !$
+git clone https://github.com/susingha/toolx.git
+cp toolx/configs/screenrc ~/.screenrc
+cp toolx/configs/vimrc    ~/.vimrc
