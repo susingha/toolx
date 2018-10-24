@@ -1,0 +1,6 @@
+apt-get install vim
+apt-get install screen
+apt-get install git
+apt-get install openssl-server
+apt-get install apache2
+git clone 
