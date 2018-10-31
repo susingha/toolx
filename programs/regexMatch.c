@@ -15,73 +15,91 @@ int ischar(char c) {
 	return TRUE;
     if ('0' <= c && c <= '9')
 	return TRUE;
-    return FALSE;
-}
-
-int charmatch(char c_regex, char c_string) {
-
-    if (ischar(c_regex) &&
-	ischar(c_string) && c_regex == c_string)
+    if (c == '\0')
 	return TRUE;
-
-    if (c_regex == '?' && ischar(c_string))
+    if (c == '?')
+	return TRUE;
+    if (c == '*')
 	return TRUE;
 
     return FALSE;
 }
 
+int findNext(char c, char str[]) {
+    int i;
+    for (i = 0; str[i] != c && str[i] != '\0'; ++i);
+
+    if (str[i] == c) {
+	printf("sup: found %c at index %d\n", c, i);
+	return i;
+    }
+
+    return -1;
+}
+
+int same (char regex[], char string[], int i) {
+
+    if (!ischar(string[i]))
+	return FALSE;
+
+    if (!ischar(regex[i]))
+	return FALSE;
+
+    if (regex[i] == string[i] ||
+	regex[i] == '?')
+	return TRUE;
+    return FALSE;
+}
 int compare(char regex[], char string[])
 {
-    int lenr = strlen(regex);
-    int lens = strlen(string);
-    int match = FALSE;
-    int i = 0, ri = 0, ci = 0;
+    int i, j, nextc, match;
+    printf("compare: %s and %s\n", regex, string);
 
-    char r = regex[0];
-    char s = string[0];
-    char c;
-
-    // base case
-    if (r == '\0' && s == '\0')
-	return TRUE;
-    if (r == '\0')
-	return FALSE;
-    if (s == '\0')
-	return FALSE;
-
-    if (r == '*') {
-	ri = findNextr();
-	r = regex[ri];
-
-	while(!match) {
-
-	    ci = findNextMatch(string, r);
-	    c = string[ci];
-
-	    match = compare();
-	}
+    for (i = 0; same(regex, string, i); ++i) {
+	if (string[i] == '\0') return TRUE;
     }
 
-    if (charmatch(r, s)) {
-	return compare(&regex[1], &string[1]);
+    if (regex[i] == '\0')
+	return FALSE;
+    if (string[i] == '\0')
+	return FALSE;
+
+    nextc = -1;
+    match = FALSE;
+
+    if (regex[i] == '*') {
+	j = i;
+
+	do {
+	    nextc = findNext(regex[i+1], &string[j]); // returns -1 if not found
+
+	    if (nextc >= 0) {
+		match = compare(&regex[i+1], &string[nextc]);
+		j = nextc + 1;
+	    }
+
+	} while (nextc >= 0 && match == FALSE);
+
+	    
+    } else {
+	return FALSE;
     }
 
-    return FALSE;
+    return match;
 }
 
-
-int main()
-{
-    char regex[1024];
-    char string[1024];
-
-    strcpy(regex, "*cat"); strcpy(string, "this cat");
+void showmatch(char regex[], char string[]) {
 
     if (compare(regex, string)) {
 	printf("regex: %20s : %20s => Match\n", regex, string);
     } else {
 	printf("regex: %20s : %20s => NO match\n", regex, string);
     }
+}
+
+int main()
+{
+    showmatch("*cat", "this catscat");
 
     return 0;
 }
