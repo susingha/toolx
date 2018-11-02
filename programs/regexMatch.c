@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include <unistd.h>
 #include<string.h>
 
 // Not a regex match program but more of a wild card match program with * and ?
@@ -30,7 +31,7 @@ int findNext(char c, char str[]) {
     for (i = 0; str[i] != c && str[i] != '\0'; ++i);
 
     if (str[i] == c) {
-	printf("sup: found %c at index %d\n", c, i);
+	printf("sup: found next %c at index %d\n", c, i);
 	return i;
     }
 
@@ -53,9 +54,12 @@ int same (char regex[], char string[], int i) {
 int compare(char regex[], char string[])
 {
     int i, j, nextc, match;
-    printf("compare: %s and %s\n", regex, string);
+
+    sleep(1);
+    printf("compare: '%s' and '%s'\n", regex, string);
 
     for (i = 0; same(regex, string, i); ++i) {
+	printf("sup: %c at index %d is match\n", string[i], i);
 	if (string[i] == '\0') return TRUE;
     }
 
