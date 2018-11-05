@@ -32,7 +32,7 @@ int comRest(int arr[], int idx, int n, int runsum, int fullsum, int stridx) {
     if (idx == n) {
 	if (runsum == fullsum) {
 	    strbuild[stridx] = ENDS;
-	    // printf("%s= %d\n", strbuild, runsum);
+	    printf("%s= %d\n", strbuild, runsum);
 	    return TRUE;
 	}
 
@@ -65,6 +65,12 @@ int main (int argc, char *argv[])
 {
     int c, res;
     int total = 50;
+
+    if (argc == 1) {
+	printf("Specify number of elements for the array\n");
+	return -1;
+    }
+
     int arrlen = atoi(argv[1]);
     int * arr = getarr(arrlen);
 
