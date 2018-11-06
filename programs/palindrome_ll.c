@@ -4,29 +4,9 @@
 
 /* Test if a string represented in the form of a linked list is a palindrome */
 
-#if 0
-#include <string.h>
-#include <stdint.h>
-#include <sys/types.h>
-#endif
-
 #define TRUE  1
 #define FALSE 0
 #define ENDS  ('\0')
-
-#define MEASURE_RUNTIME
-#ifdef MEASURE_RUNTIME
-#include <time.h>
-clock_t ts;
-#endif
-
-#define RANDOM
-#ifdef RANDOM
-#define rnd() (rand()%100)
-#else
-#define rnd() (dataset[dataindex++])
-#endif
-
 
 struct node {
     char c;
@@ -76,19 +56,45 @@ void freell(struct node * head)
     }
 }
 
-int testPalindrome(struct node * head,
-	           struct node * this,
-		   int i)
+/* curr pointer is the left  probe moving from left to right. this is global
+ * this pointer is the right probe moving from right to left as the recursion returns
+ */
+struct node * curr = NULL;
+int recurse(struct node * this)
 {
-    int i
+    int ret = TRUE;
+
+    if (!this || !curr)
+	return FALSE;
 
     if (this->next)
-	testPalindrome(this->next);
-	
+	ret = recurse(this->next);
+
+    if (ret == FALSE)
+	return FALSE;
+
+    if (this->c == curr->c) {
+	curr = curr->next;
+	return TRUE;
+    }
+
+    return FALSE;
+}
 
 
+void testPalindrome(char str[])
+{
+    struct node * strll = NULL;
+    
+    strll = createll(str);
 
-    return 0;
+    curr = strll;
+    if (recurse(strll))
+	printf("%s is a palindrome\n", str);
+    else
+	printf("%s is NOT a palindrome\n", str);
+
+    freell(strll);
 }
 
 int main (int argc, char *argv[])
@@ -99,12 +105,16 @@ int main (int argc, char *argv[])
     }
     printf("(%d)\n", argc);
 
-    struct node * strll = NULL;
-    
-    strll = createll("abcdefgh");
-    printll(head);
-    testPalindrome(strll);
-    freell(strll);
+    testPalindrome("");
+    testPalindrome("a");
+    testPalindrome("ab");
+    testPalindrome("aa");
+    testPalindrome("aba");
+    testPalindrome("abba");
+    testPalindrome("adam");
+    testPalindrome("adad");
+    testPalindrome("abacus");
+    testPalindrome("abaaba");
 
     return 0;
 }
