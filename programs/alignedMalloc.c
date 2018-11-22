@@ -1,12 +1,22 @@
 
 // Write an aligned malloc and free function
 // Th ptr returned must be on the alignment boundary
+// Assumption: aligned_malloc() and aligned_free() must work with the same alignment value per allocation
 
 #include <stdio.h>
 #include <stdlib.h>
 
+#define GET (0)
+void alignment(size_t align)
+{
+    static size_t alignmentval;
+    if (align)
+	alignmentval = align;
+    return alignmentval;
+}
+
 void *
-aligned_malloc(size_t size, size_t align) {
+mallocaligned(size_t size, size_t align) {
 
     unsigned long long int i;
 
@@ -33,7 +43,7 @@ aligned_malloc(size_t size, size_t align) {
 }
 
 void
-aligned_free(void * freeptr) {
+freealigned(void * freeptr) {
     void * ceil = freeptr - sizeof(size_t);
     size_t padding = *(size_t *)ceil;
     void * ptr = freeptr - sizeof(size_t) - padding;
@@ -59,7 +69,10 @@ int main() {
     size = 8; align = 128;
     ptr = aligned_malloc(size, align);
     aligned_free(ptr);
-    if ((size_t)ptr % align) printf("WARNING: alignment not ok: size: %lu, align: %lu\n", size, align);
+    if ((size_t)ptr % align)
+	printf("WARNING: alignment not ok: size: %lu, align: %lu\n", ptr, size, align);
+    else
+	printf("OK: alignment is correct: %p, size: %lu, align: %lu\n", ptr, size, align);
 
 #if 0
     size = 81; align = 12;

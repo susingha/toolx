@@ -3,12 +3,22 @@ import pickle
 import time
 import sys
 
+### used on dev pc ###
+wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
+norecsruntime = 50
+waitdef = 3  # seconds
+
+### used on deployment server ###
+wedriverurl = "C:/Users/supratik/bin/chromedriver.exe"
+norecsruntime = 100
+waitdef = 60 # seconds
+
 print (sys.version)
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
 options.binary_location = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-driver = webdriver.Chrome("C:/Users/Marlinspike/bin/chromedriver.exe")
+driver = webdriver.Chrome("C:/Users/supratik/bin/chromedriver.exe")
 
 driver.get('https://www.youtube.com')
 
@@ -25,7 +35,6 @@ if x == 'x' or x == 'X' or x == 'q' or x == 'Q':
 totaldest = 0
 totalrecs = 0
 norecs = 0
-waitdef = 3 # seconds
 wait = waitdef
 while True:
     print "About to remove more recommendations in", wait, "seconds"
@@ -43,13 +52,13 @@ while True:
         print "No recommendations found"
         norecs += 1
         wait += 1
-        if norecs >= 50:       # <--- change the runtime here
+        if norecs >= norecsruntime:
             break
     else:
         norecs = 0
         wait = waitdef
 
-    print "Removing", totalrecs, " recommendations"
+    print totaldest, " recommendations removed. Removing", totalrecs, "more."
     for i in xrange(totalrecs):
         destroyrec[i].click()
         totaldest += 1
@@ -58,5 +67,4 @@ while True:
 driver.close()
 print "Removed", totaldest, "recommendations"
 print "Congarts, you have defeated Youtube and Google"
-
 
