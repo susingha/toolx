@@ -3,6 +3,8 @@ import pickle
 import time
 import sys
 
+### script hosted at: https://github.com/susingha/toolx/blob/master/scripts/autochrome.py
+
 ### used on dev pc ###
 wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 norecsruntime = 50
