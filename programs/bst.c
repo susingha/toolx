@@ -123,6 +123,7 @@ insertrec2(struct node * nodeHead, int num)
 
 
 // Needs work. Unused
+
 #ifdef UNUSED
 void deleteiter(struct node * head, int find) {
     int prev;
@@ -177,6 +178,7 @@ struct node * lca(struct node * head, int i, int j) {
 // Inorder Traversal and display
 // this function could be change to return the number of nodes displayed.
 // good excercise in a recursive scenario
+
 void displayrec(struct node * nodeHead, int outer)
 {
     struct node *nodeThis;
@@ -202,8 +204,10 @@ void displayrec(struct node * nodeHead, int outer)
 // push, if left, go left
 // pop,  if right, go right
 // exit when stack is empty
+
 #define PUSH(x) arr[++top] = x;
 #define POP() arr[top]; if (top) top--;
+
 int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, struct node ** pred */)
 {
     // INIT STACK
@@ -277,7 +281,9 @@ int main()
 {
     struct node * head = NULL, *tmp;
     int i, j, k = -1;
-    // srand(time(NULL));
+#if 0
+    srand(time(NULL));
+#endif
 
     displayrec(head, TRUE);
 #if 0
