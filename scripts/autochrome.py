@@ -20,7 +20,7 @@ options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
 options.binary_location = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-driver = webdriver.Chrome("C:/Users/supratik/bin/chromedriver.exe")
+driver = webdriver.Chrome(wedriverurl)
 
 driver.get('https://www.youtube.com')
 
