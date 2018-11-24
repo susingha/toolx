@@ -13,7 +13,9 @@
  * you could climb any number from a set of positive integers X?
  * For example, if X = {1, 3, 5}, you could climb 1, 3, or 5 steps at a time.
  * Generalize your function to take in X.
-*/
+ *
+ * TODO: Add Dynamic Programming to the recursion
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
