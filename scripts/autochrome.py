@@ -6,6 +6,7 @@ import datetime
 
 ### script hosted at: https://github.com/susingha/toolx/blob/master/scripts/autochrome.py
 
+
 ### used on dev pc ###
 wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 norecsruntime = 50
@@ -15,7 +16,6 @@ waitdef = 3  # seconds
 wedriverurl = "C:/Users/supratik/bin/chromedriver.exe"
 norecsruntime = 1000
 waitdef = 60 # seconds
-
 
 
 print (sys.version)
@@ -83,6 +83,7 @@ while True:
         wait = waitdef
 
     print totaldest, " recommendations removed. Removing", totalrecs, "more."
+    driver.execute_script("window.scrollTo(0, 0)")
     for i in xrange(totalrecs):
         destroyrec[i].click()
         totaldest += 1
@@ -94,3 +95,15 @@ print "Congarts, you have defeated Youtube and Google"
 print
 print "Current date and time:"
 print str(datetime.datetime.now())
+
+import sendmail
+msg = "\r\n".join([
+  "From: notuberecs@gmail.com",
+  "To: supratik.dnit@gmail.com",
+  "Subject: Removed %d recommendations" % totaldest,
+  "",
+  "Removed %d recommendations" % totaldest,
+  "Congarts, you have defeated Youtube and Google",
+  ])
+
+sendmail.sendamail('supratik.dnit@gmail.com', msg)
