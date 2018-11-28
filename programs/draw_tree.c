@@ -2,13 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// #warning: please compile with bst.c
-
-struct node {
-    int num;
-    struct node * lptr;
-    struct node * rptr;
-};
+#include "draw_tree.h"
 
 #define COMPACT
 int _print_t(struct node *tree, int is_left, int offset, int depth, char s[20][255])
