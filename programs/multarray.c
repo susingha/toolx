@@ -17,64 +17,35 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <time.h>
+#include "template.h"
 
-#if 0
-#include <string.h>
-#include <stdint.h>
-#include <sys/types.h>
-#endif
 
-#define TRUE  1
-#define FALSE 0
-#define ENDS  ('\0')
 
-#ifdef MEASURE_RUNTIME
-clock_t _ts_;
-#endif
-
-#define RANDOM
-#ifdef RANDOM
-#define rnd() (rand()%10)
-#else
-#define rnd() (dataset[dataindex++])
-#endif
-
-int * getarr(int n) {
-    int * arr = calloc(n, sizeof(int));
-    srand(time(NULL));
-    while (n--) {
-	arr[n] = n+1;
-    }
-    printf("\n");
-    return arr;
-}
-
-void showarr(int arr[], int n) {
-    int i;
-    for (i = 0; i < n; ++i) {
-	printf("%d, ", arr[i]);
-    }
+void getarr(int arr[], int n)
+{
+    while (n--) arr[n] = getrandom();
     printf("\n");
 }
+
+void showarr(int arr[], int n)
+{
+    int i = 0;
+    while (n--) printf("%d, ", arr[i++]);
+    printf("\n");
+}
+
+
+
+int arr1[1024];
+int arr2[1024];
+int len = 5;
 
 int main (int argc, char *argv[])
 {
-    int _c_;
-    for (_c_ = 0; _c_ < argc; ++_c_) {
-	printf("%s ", argv[_c_]);
-    }
-    printf("(%d)\n", argc);
 
-
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock();
-    unsigned int _i_ = 0, _j_;
-#endif
-
-
-    int len = 5, product = 1;;
-    int * arr1 = getarr(len);
-    int * arr2 = getarr(len);
+    int product = 1;;
+    getarr(arr1, len);
+    getarr(arr2, len);
 
     showarr(arr1, len);
 
@@ -97,15 +68,6 @@ int main (int argc, char *argv[])
 
     showarr(arr2, len);
 
-    free(arr2);
-    free(arr1);
-
-
-
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock() - _ts_;
-    printf("Counted %u to %u in %f seconds\n", _j_, _i_, ((double)_ts_) / CLOCKS_PER_SEC); 
-#endif
     return 0;
 }
 

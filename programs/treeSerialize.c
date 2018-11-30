@@ -1,9 +1,3 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <time.h>
-
-
 /*
  * Given the root to a binary tree,
  * implement serialize(root), 
@@ -14,53 +8,26 @@
  * assert deserialize(serialize(node)).left.left.val == 'left.left'
  */
 
-#if 0
-#include <string.h>
-#include <stdint.h>
-#include <sys/types.h>
-#endif
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <time.h>
 
-#define TRUE  1
-#define FALSE 0
-#define ENDS  ('\0')
-
-#define MEASURE_RUNTIME
-#ifdef MEASURE_RUNTIME
-clock_t _ts_;
-#endif
-
-#define RANDOM
-#ifdef RANDOM
-#define rnd() (rand()%100)
-#else
-#define rnd() (dataset[dataindex++])
-#endif
-
-
+#include "template.h"
 #include "draw_tree.h"
 
-int * getarr(int n) {
-    int * arr = calloc(n, sizeof(int));
-#if 0
-    unsigned int kk = time(NULL);
-    printf("sup: kk = %u\n", kk);
-#endif
-    srand(1543402321);
-    while (n--) {
-	arr[n] = rnd();
-    }
-    printf("\n");
-    return arr;
-}
-
-void shoarr(int arr[], int n) {
-    int i;
-    for (i = 0; i < n; ++i) {
-	printf("%d, ", arr[i]);
-    }
+void getarr(int arr[], int n)
+{
+    while (n--) arr[n] = getrandom();
     printf("\n");
 }
 
+void showarr(int arr[], int n)
+{
+    int i = 0;
+    while (n--) printf("%d, ", arr[i++]);
+    printf("\n");
+}
 
 void
 insertrec1(struct node ** nodeHead_, int num)
@@ -82,12 +49,6 @@ insertrec1(struct node ** nodeHead_, int num)
         }
     }
 }
-
-
-void freetree(struct node * head)
-{
-}
-
 
 #define XOPEN  ((char)200)
 #define XCOMMA ((char)201)
@@ -223,24 +184,15 @@ void printIterative(struct node * head)
     }
 }
 
+int arr[1024];
+int len = 10;
+
 int main (int argc, char *argv[])
 {
-    int _c_;
-    for (_c_ = 0; _c_ < argc; ++_c_) {
-	printf("%s ", argv[_c_]);
-    }
-    printf("(%d)\n", argc);
-
-
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock();
-    unsigned int _i_ = 0, _j_;
-#endif
-
-    int len = 10, i;
-    int * arr = getarr(len);
+    int i;
+    getarr(arr, len);
     printf("Input\n");
-    shoarr(arr, len);
+    showarr(arr, len);
     printf("\n\n");
 
 
@@ -251,12 +203,12 @@ int main (int argc, char *argv[])
 
     printf("Inorder\n");
     printInorder(head);
-    shoarr(inorder, inindex);
+    showarr(inorder, inindex);
     printf("\n\n");
 
     printf("Preorder\n");
     printProrder(head);
-    shoarr(prorder, prindex);
+    showarr(prorder, prindex);
     printf("\n\n");
 
     printf("Iterative Inorder\n");
@@ -296,12 +248,12 @@ int main (int argc, char *argv[])
 
     printf("Inorder Deserialized\n");
     printInorder(headnew);
-    shoarr(inorder, inindex);
+    showarr(inorder, inindex);
     printf("\n\n");
 
     printf("Preorder Deserialized\n");
     printProrder(headnew);
-    shoarr(prorder, prindex);
+    showarr(prorder, prindex);
     printf("\n\n");
 
     printf("Iterative Inorder Deserialized\n");
@@ -309,15 +261,6 @@ int main (int argc, char *argv[])
     printf("\n\n");
 
     draw_tree(headnew);
-
-    freetree(headnew);
-    freetree(head);
-    free(arr);
-
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock() - _ts_;
-    printf("Counted %u to %u in %f seconds\n", _j_, _i_, ((double)_ts_) / CLOCKS_PER_SEC); 
-#endif
 
     return 0;
 }
