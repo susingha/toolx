@@ -36,21 +36,36 @@ void printargs(int argc, char *argv[])
 
 clock_t _tsall_ = 0;
 clock_t _tscur_ = 0;
+int trackonstate = FALSE;
 
 void trackon()
 {
+    if (trackonstate)
+	return;
+
     _tscur_ = clock();
+    trackonstate = TRUE;
 }
 
 void trackoff()
 {
+    if (!trackonstate)
+	return;
+
+    trackonstate = FALSE;
     _tscur_ = clock() - _tscur_;
     _tsall_ += _tscur_;
 }
 
 void trackprint()
 {
+    int trackerwason = trackonstate;
+    trackoff();
+
     printf("Runtime: %f seconds\n", ((double)_tsall_) / CLOCKS_PER_SEC); 
+
+    if (trackerwason)
+    trackon();
 }
 
 

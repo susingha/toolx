@@ -38,7 +38,7 @@ int main (int argc, char *argv[])
 
     trackon();
 
-    getarr(len);
+    getarr(arr, len);
     showarr(arr, len);
 
     trackoff(); trackprint();
