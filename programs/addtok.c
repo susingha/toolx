@@ -5,52 +5,24 @@
  * For example, given [10, 15, 3, 7] and k of 17,
  * return true since 10 + 7 is 17.
  * 
- * TODO: Can you do this in one pass?i
+ * TODO: Can you do this in one pass?
  */
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include "template.h"
 
-#if 0
-#include <string.h>
-#include <stdint.h>
-#include <sys/types.h>
-#endif
 
-#define TRUE  1
-#define FALSE 0
-#define ENDS  ('\0')
-
-#include <time.h>
-#ifdef MEASURE_RUNTIME
-clock_t ts;
-#endif
-
-#define RANDOM
-#ifdef RANDOM
-#define rnd() (rand()%100)
-#else
-#define rnd() (dataset[dataindex++])
-#endif
-
-int * getarr(int n)
+void getarr(int arr[], int n)
 {
-    int * arr = calloc(n, sizeof(int));
-    srand(time(NULL));
-    while (n--) {
-	arr[n] = rnd();
-	printf("%d, ", arr[n]);
-    }
-    printf("\n");
-    return arr;
+    while (n--) arr[n] = getrandom();
 }
 
-void shoarr(int arr[], int n)
+void showarr(int arr[], int n)
 {
-    while (n--) {
-	printf("%d, ", arr[n]);
-    }
+    int i = 0;
+    while (n--) printf("%d, ", arr[i++]);
     printf("\n");
 }
 
@@ -65,7 +37,7 @@ void swap(int arr[], int a, int b)
 void quicksort(int arr[], int len)
 {
     int hold = 0, probe = 1;
-    int pivi = rnd() % len;
+    int pivi = rand() % len;
     int piv  = arr[pivi];
 
     swap(arr, 0, pivi);
@@ -110,35 +82,27 @@ int addtok(int sum, int arr[], int len)
     return ret;
 }
 
+int arr[1024];
+int len = 40;
 
 int main (int argc, char *argv[])
 {
-    int c;
-    for (c = 0; c < argc; ++c) {
-	printf("%s ", argv[c]);
-    }
-    printf("(%d)\n", argc);
-
-#ifdef MEASURE_RUNTIME
-    ts = clock();
-    unsigned int i = 0, j;
-    j = --i;
-    while(--i);
-    ts = clock() - ts;
-    printf("Counted %u to %u in %f seconds\n", j, i, ((double)ts) / CLOCKS_PER_SEC); 
-#endif
-
-    int len = 40;
-    int * arr = getarr(len);
+    getarr(arr, len);
     int sum = rand()%150;
     printf("sum: %d\n", sum);
 
+    trackon();
     quicksort(arr, len);
-    shoarr(arr, len);
+    trackoff();
 
+    showarr(arr, len);
+
+    trackon();
     addtok(sum, arr, len);
+    trackoff();
 
-    free(arr);
+    trackprint();
+
     return 0;
 }
 

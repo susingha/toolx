@@ -20,36 +20,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-
-#if 0
-#include <string.h>
-#include <stdint.h>
-#include <sys/types.h>
-#endif
-
-#define TRUE  1
-#define FALSE 0
-#define ENDS  ('\0')
-
-#define MEASURE_RUNTIME
-#ifdef MEASURE_RUNTIME
-#include <time.h>
-clock_t _ts_;
-#endif
-
-#define RANDOM
-#ifdef RANDOM
-#define rnd() (rand()%100)
-#else
-#define rnd() (dataset[dataindex++])
-#endif
-
+#include "template.h"
 
 struct node {
     int         * steps;
     struct node * stepslist;
 };
-
 
 #define FULLSUM (4)
 
@@ -104,11 +80,6 @@ void printseries(int localprevsum, int resultsj, int stepsbeg)
 
 int main (int argc, char *argv[])
 {
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock();
-    unsigned int _i_ = 0, _j_;
-#endif
-
     int i = 0;
     printf("sum = %d\n", sum);
     for (i = 0; i < stepslen; ++i) {
@@ -116,13 +87,12 @@ int main (int argc, char *argv[])
     }
     printf("\n========================\n");
 
+    trackon();
     printseries(0, 0, 0);
+    trackoff();
     printf("Total answers: %d\n", totalresults);
 
-#ifdef MEASURE_RUNTIME
-    _ts_ = clock() - _ts_;
-    printf("Counted %u to %u in %f seconds\n", _j_, _i_, ((double)_ts_) / CLOCKS_PER_SEC); 
-#endif
+    trackprint();
     return 0;
 }
 
