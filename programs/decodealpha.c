@@ -21,27 +21,6 @@
 #include <sys/types.h>
 #endif
 
-
-struct node {
-    int num;
-    char c;
-    struct node *next, *prev; // used for linkedlist
-    struct node *lptr, *rptr; // used for tree
-};
-
-void getarr(int arr[], int n)
-{
-    while (n--) arr[n] = getrandom();
-}
-
-void showarr(int arr[], int n)
-{
-    int i = 0;
-    while (n--) printf("%d, ", arr[i++]);
-    printf("\n");
-}
-
-
 char charat(int i)
 {
     return 'a' + i - 1;
@@ -49,6 +28,10 @@ char charat(int i)
 
 char * strin;
 int strln, maxidx;
+
+#define INVALID (-1)
+int usecache = FALSE;
+int dyncache[1024];
 
 int getnum (int idx1, int idx2)
 {
@@ -64,11 +47,19 @@ int countdecodes (int idx)
     int groupOneCount = 0;
     int groupTwoCount = 0;
 
+    if (usecache == TRUE && dyncache[idx] != INVALID) return dyncache[idx];
+
+#if 0
+    load(655350);
+#endif
+
     if (idx > maxidx) {
+	dyncache[idx] = 0;
 	return 0;
     }
 
     if (idx == maxidx) {
+	dyncache[idx] = 1;
 	return 1;
     }
 
@@ -80,6 +71,7 @@ int countdecodes (int idx)
 
     num = getnum(idx, idx+1);
     if (num < 1 || 26 < num) {
+	dyncache[idx] = groupOneCount;
 	return groupOneCount;
     }
 
@@ -89,12 +81,14 @@ int countdecodes (int idx)
 	groupTwoCount = 1;
     }
 
+    dyncache[idx] = groupOneCount + groupTwoCount;
     return groupOneCount + groupTwoCount;
 }
 
 
 int main (int argc, char *argv[])
 {
+    int i;
     printargs(argc, argv);
 
     if (argc < 2) {
@@ -107,9 +101,15 @@ int main (int argc, char *argv[])
     maxidx = strln - 1;
 
     trackon();
-
     printf("Possible strings: %d\n", countdecodes(0));
+    trackoff(); trackprint();
 
+
+    for (i = 0; i < 1024; ++i) dyncache[i] = INVALID;
+    usecache = TRUE;
+
+    trackon();
+    printf("Possible strings: %d (dp)\n", countdecodes(0));
     trackoff(); trackprint();
 
     return 0;

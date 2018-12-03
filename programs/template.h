@@ -32,6 +32,11 @@ void printargs(int argc, char *argv[])
 }
 
 
+void load(unsigned int i)
+{
+    while(--i);
+}
+
 // Run Time Tracking
 
 clock_t _tsall_ = 0;
@@ -43,6 +48,7 @@ void trackon()
     if (trackonstate)
 	return;
 
+    _tsall_ = 0;
     _tscur_ = clock();
     trackonstate = TRUE;
 }
