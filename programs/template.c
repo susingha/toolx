@@ -29,6 +29,7 @@ void showarr(int arr[], int n)
     printf("\n");
 }
 
+
 int arr[1024];
 int len = 10;
 
@@ -40,6 +41,7 @@ int main (int argc, char *argv[])
 
     getarr(arr, len);
     showarr(arr, len);
+    load(0);
 
     trackoff(); trackprint();
 
