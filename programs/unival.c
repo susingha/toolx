@@ -5,7 +5,6 @@
  * Given the root to a binary tree,
  * count the number of unival subtrees.
  * 
- * UNTESTED
  */
 
 #include <stdio.h>
