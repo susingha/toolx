@@ -7,9 +7,21 @@ alias ...="cd ../.."
 alias l="ls -l; pwd"
 alias l.='ls -d .* --color=tty'
 alias ls='ls --color=tty'
-alias ll='ls -l --color=tty'
+alias ll='ls -nrt --color=tty'
 alias rl='ls -l > /tmp/l ; cat /tmp/l'
 alias sc="screen -x ci"
+
+function genscope() { # Generates cscope
+
+find . -name '*.cpp' > cscope.files
+find . -name '*.cc' >> cscope.files
+find . -name '*.c'  >> cscope.files
+find . -name '*.h'  >> cscope.files
+find . -name '*.regc'  >> cscope.files
+find . -name '*.regh'  >> cscope.files
+cscope -bR
+
+}
 
 
 cdo()
