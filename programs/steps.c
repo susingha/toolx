@@ -78,6 +78,21 @@ void printseries(int localprevsum, int resultsj, int stepsbeg)
     return;
 }
 
+int countWays(int n) 
+{ 
+    int DP[n + 1]; 
+  
+    // base cases 
+    DP[0] = DP[1] = DP[2] = 1; 
+    DP[3] = 2; 
+  
+    // iterate for all values from 4 to n 
+    for (int i = 4; i <= n; i++)  
+        DP[i] = DP[i - 1] + DP[i - 3] + DP[i - 4]; 
+      
+    return DP[n]; 
+} 
+
 int main (int argc, char *argv[])
 {
     int i = 0;
@@ -88,9 +103,15 @@ int main (int argc, char *argv[])
     printf("\n========================\n");
 
     trackon();
+#if 0
     printseries(0, 0, 0);
     trackoff();
     printf("Total answers: %d\n", totalresults);
+#endif
+
+
+    printf("Total answers: %d\n", countWays(10));
+    printf("Total answers: %d\n", countWays(0));
 
     trackprint();
     return 0;
