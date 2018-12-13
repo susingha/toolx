@@ -9,6 +9,8 @@
 #define RANDMAX (100)
 #define RANDINIT (time(NULL)) // can be 0 also
 
+int randmax = RANDMAX;
+
 int getrandom()
 {
     static int randinit = FALSE;
@@ -16,11 +18,13 @@ int getrandom()
 	srand(RANDINIT);
 	randinit = TRUE;
     }
-    return rand()%RANDMAX;
+    return rand()%randmax;
 }
 
 
 // Arguments
+
+#define printsize(x) printf(#x": %lu\n", sizeof(x));
 
 void printargs(int argc, char *argv[])
 {
@@ -29,6 +33,16 @@ void printargs(int argc, char *argv[])
 	printf("%s ", argv[c]);
     }
     printf("(%d)\n", argc);
+#if 0
+    printsize(char);
+    printsize(short int);
+    printsize(int);
+    printsize(long);
+    printsize(long int);
+    printsize(long long int);
+    printsize(double);
+    printsize(long double);
+#endif
 }
 
 
