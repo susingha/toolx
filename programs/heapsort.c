@@ -3,30 +3,43 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define ARR_SIZE (50)
+#define ARR_SIZE (10)
 
 
 void printarray(int * array) {
     int i;
+    int sorted = 1;
+    int prev = -1;
     for(i = 0; i < ARR_SIZE; ++i) {
-	printf("%d, ", array[i]);
+        printf("%d, ", array[i]);
+        if (array[i] < prev) {
+            sorted = 0;
+        }
+        prev = array[i];
     }
-    printf("\n");
+    if (sorted) {
+        printf("\nok\n");
+        return;
+    } else {
+        printf("\nNOT sorted\n");
+        return;
+    }
 
     return;
 }
 
 int getleftchild(int rootindex) {
-    return (2 * (rootindex + 1)) - 1;
+    return (2 * rootindex) + 1;
 }
 int getrightchild(int rootindex) {
-    return (2 * (rootindex + 1));
+    return (2 * rootindex) + 2;
 }
 int getparent(int childindex) {
-    return ((childindex + 1) / 2) - 1;
+    return (childindex - 1)/2;
 }
 
-void swap(int * array, int index1, int index2) {
+void swap(int * array, int index1, int index2)
+{
     int t = array[index1];
     array[index1] = array[index2];
     array[index2] = t;
@@ -34,47 +47,49 @@ void swap(int * array, int index1, int index2) {
     return;
 }
 
-void resolveheap(int * array, int size, int index) {
-    int leftchildindex = getleftchild(index);
-    int rightchildindex = getrightchild(index);
+void maxheapify(int * array, int size, int i)
+{
+    int max = i;
+    int leftchildindex = getleftchild(i);
+    int rightchildindex = getrightchild(i);
 
-    if(leftchildindex < size) { // i have a left child
-	resolveheap(array, size, leftchildindex);
-// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], leftchildindex, array[leftchildindex]);
-	if(array[index] < array[leftchildindex]) {
-	    swap(array, index, leftchildindex);
-	}
-    } // else return;
+    if (leftchildindex < size) { // have a left child
+	if (array[leftchildindex] > array[max])
+	    max = leftchildindex;
+    }
 
-    if(rightchildindex < size) { // i have a right child
-	resolveheap(array, size, rightchildindex);
-// printf("\n array[%d] = %d, array[%d] = %d", index, array[index], rightchildindex, array[rightchildindex]);
-	if(array[index] < array[rightchildindex]) {
-	    swap(array, index, rightchildindex);
-	}
-    } // else return;
+    if (rightchildindex < size) { // have a right child
+	if (array[rightchildindex] > array[max])
+	    max = rightchildindex;
+    }
 
+    if (max != i) {
+	swap(array, i, max);
+	maxheapify(array, size, max);
+    }
 }
-
-
-
-
-
 
 int main() {
     int array[ARR_SIZE]; // indices: 0 to 49
     int i;
 
-    srand(time(NULL));
+    srand(0 /*time(NULL)*/);
 
-    for(i = 0; i < ARR_SIZE; ++i) {
+    for(i = 0; i < ARR_SIZE; ++i)
 	array[i] = rand()%100;
-    }
 
     printarray(array);
+
+    for(i = ARR_SIZE-1; i >= 0; --i)
+	maxheapify(array, ARR_SIZE, i);
+
+    printarray(array);
+
     for(i = 0; i < ARR_SIZE; ++i) {
-	resolveheap(array + i, ARR_SIZE - i, 0);
+	maxheapify(array, ARR_SIZE-i, 0);
+	swap(array, 0, ARR_SIZE-1-i);
     }
+
     printarray(array);
 
     return 0;
