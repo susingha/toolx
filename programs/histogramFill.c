@@ -32,6 +32,8 @@
  *     07 11 21 07 11 03 16 18 09 07 13 24 16 11 07 02 04 14 09 04
  *
  *    Total: 116
+ * this is O(n) time and O(n) space solution
+ * histogramFill.py has a O(n) time and O(1) space better solution
  */
 
 
