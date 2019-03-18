@@ -10,6 +10,8 @@ alias ls='ls --color=tty'
 alias ll='ls -nrt --color=tty'
 alias rl='ls -l > /tmp/l ; cat /tmp/l'
 alias sc="screen -x ci"
+alias csc="cscope -dp5"
+alias p4o="p4 opened | cut -d '#' -f 1"
 
 function genscope() { # Generates cscope
 
