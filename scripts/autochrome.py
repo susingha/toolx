@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 from selenium import webdriver
 import pickle
 import time
@@ -8,29 +10,42 @@ import datetime
 
 
 ### used on dev pc ###
+chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 norecsruntime = 50
 waitdef = 3  # seconds
 
-### used on deployment server ###
+### used on deployment server windows ###
+chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 wedriverurl = "C:/Users/supratik/bin/chromedriver.exe"
 norecsruntime = 1000
 waitdef = 60 # seconds
 
+### used on deployment server ubuntu ###
+chromebin = "/usr/bin/google-chrome-stable"
+wedriverurl = "/home/susingha/bin/chromedriver"
+norecsruntime = 1000
+waitdef = 60 # seconds
 
 print (sys.version)
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
-options.binary_location = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+options.binary_location = chromebin
 driver = webdriver.Chrome(wedriverurl)
 
 driver.get('https://www.youtube.com')
 
-print "Loading cookies"
-for cookie in pickle.load(open("QuoraCookies.pkl", "rb")):
-    driver.add_cookie(cookie)
+open("QuoraCookies.pkl", "ab").close()
 
+print "Loading cookies"
+try:
+    for cookie in pickle.load(open("QuoraCookies.pkl", "rb")):
+        driver.add_cookie(cookie)
+except:
+    print "No Cookies found"
+
+    
 driver.refresh()
 print "Make sure browser is logged into desired account. If not, login manually using username and password"
 x = raw_input("Press Enter to save cookies. x to exit: ")
