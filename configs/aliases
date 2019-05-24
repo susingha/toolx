@@ -15,6 +15,8 @@ alias p4o="p4 opened | cut -d '#' -f 1"
 
 function genscope() { # Generates cscope
 
+rm cscope.files cscope.out
+
 find . -name '*.cpp' > cscope.files
 find . -name '*.cc' >> cscope.files
 find . -name '*.c'  >> cscope.files
