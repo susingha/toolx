@@ -1,9 +1,12 @@
 print "do nothing"
 
 arr = range(5)
+print arr
 arr.insert(5, 5)
+print arr
 arr.insert(100, 6)
 print arr
+
 
 print
 for i in range(len(arr)):
@@ -177,7 +180,7 @@ c = '5'
 n = int(c)
 print n, n+1
 
-
+print
 arr = "abcd"
 print range(len(arr) - 1, -1, -1)
 
@@ -206,3 +209,7 @@ ar2 = ar1[:]
 ar2.sort()
 print ar2
 print ar1
+
+print
+n = 16
+print bin(n), hex(n),

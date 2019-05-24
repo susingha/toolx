@@ -33,6 +33,7 @@ def lookup (s):
 
 lookup (0)
 prev = 0
+print sol
 for i in sol[::-1]:
     print str[prev:i+1],
     prev = i+1
