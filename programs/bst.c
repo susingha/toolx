@@ -12,12 +12,13 @@
 #define TRUE 1
 #define FALSE 0
 
-
+#if 0
 struct node {
     int num;
     struct node * lptr;
     struct node * rptr;
 };
+#endif
 
 #include "draw_tree.h"
 
@@ -119,6 +120,8 @@ insertrec2(struct node * nodeHead, int num)
             }
         }
     }
+
+    return nodeHead;
 }
 
 
@@ -224,7 +227,7 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
     // this is in inorder
     this = nodeHead;
 
-#define VERSION_2
+#define VERSION_3
 #if defined(VERSION_1)
     printf("Using tree iteration v1\n");
     while (!done) {
@@ -270,6 +273,28 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
     }
 #elif defined(VERSION_3)
     printf("Using tree iteration v3: write yourself\n");
+
+    this = nodeHead;
+    while (TRUE) {
+	while (this) {
+	    PUSH(this);
+	    this = this->lptr;
+	}
+
+	this = POP();
+	if (!this) break;
+
+	printf("%d, ", this->num);
+
+	if (this->rptr) {
+	    this = this->rptr;
+	    continue;
+	} else {
+	    this = NULL;
+	    continue;
+	}
+    }
+
 #endif
 
     printf("\n");
