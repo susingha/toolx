@@ -41,6 +41,7 @@ int main (int argc, char *argv[])
 
     getarr(arr, len);
     showarr(arr, len);
+    loadmem();
     loadcpu(0);
 
     trackoff(); trackprint();
