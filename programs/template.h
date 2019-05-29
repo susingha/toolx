@@ -1,4 +1,5 @@
 #include <time.h>
+#include <unistd.h>
 
 #define TRUE  1
 #define FALSE 0
@@ -33,6 +34,7 @@ void printargs(int argc, char *argv[])
 	printf("%s ", argv[c]);
     }
     printf("(%d)\n", argc);
+    printf("pid: %u\n", getpid());
 #if 0
     printsize(char);
     printsize(short int);
@@ -46,9 +48,9 @@ void printargs(int argc, char *argv[])
 }
 
 
-void load(unsigned int i)
+void loadcpu(unsigned int i)
 {
-    while(--i);
+    while (1) while(--i);
 }
 
 // Run Time Tracking
