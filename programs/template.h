@@ -30,12 +30,12 @@ int getrandom()
 void printargs(int argc, char *argv[])
 {
     int c;
+    printf("pid: %u ", getpid());
     for (c = 0; c < argc; ++c) {
 	printf("%s ", argv[c]);
     }
     printf("(%d)\n", argc);
-    printf("pid: %u\n", getpid());
-#if 0
+#if 1
     printsize(char);
     printsize(short int);
     printsize(int);
@@ -51,6 +51,23 @@ void printargs(int argc, char *argv[])
 void loadcpu(unsigned int i)
 {
     while (1) while(--i);
+}
+
+void loadmem()
+{
+    unsigned long int nbytes = 1;
+    unsigned long int tbytes = 0;
+    void * ptr = NULL;
+
+    do {
+	nbytes = nbytes + nbytes;
+	ptr = (void *)malloc(nbytes);
+	printf("malloc %lu bytes at %p\n", nbytes, ptr);
+	if (ptr) tbytes += nbytes;
+	sleep(1);
+    } while (ptr);
+
+    printf("malloc fail for %lu bytes. total %lu allocated\n", nbytes, tbytes);
 }
 
 // Run Time Tracking
