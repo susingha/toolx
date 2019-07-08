@@ -3,6 +3,9 @@ print arr
 arr.insert(5, 5)
 print arr
 arr.insert(100, 6)
+arr.insert(100, 6)
+print arr
+print "popping", arr.pop()
 print arr
 
 
@@ -57,6 +60,13 @@ arr.remove(min(arr))
 print arr
 arr.remove(min(arr))
 print arr
+arr.remove(min(arr))
+print arr
+if arr == None:
+    print "arr is None"
+if not arr:
+    print "arr is not"
+
 
 arr = range(10)
 for i in range(len(arr)):
