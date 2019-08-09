@@ -41,37 +41,69 @@ def display(head):
     if head.right:
         display(head.right)
 
-def maxn(head, max):
-    this = head
-    prev2 = None
-    prev1 = None
+stack = []
+def display_itr(head):
+    while True:
+        while head:
+            stack.append(head)
+            head = head.left
 
+        if stack:
+            head = stack.pop()
+        else:
+            head = None
+
+        if head == None:
+            return
+
+        print head.val,
+        head = head.right
+
+def display_morris(this):
     while this:
-        prev2 = prev1
-        prev1 = this
-        this = this.right
+        if this.left:
+            left = this.left
 
-    if max == 1:
-        if prev1:
-            return prev1.val
+            temp = left
+            while temp.right:
+                temp = temp.right
+            pred = temp
+
+            pred.right = this
+            this.left = None
+
+            this = left
         else:
-            return None
+            print this.val,
+            this = this.right
 
-    if max == 2:
-        if prev1:
-            if prev1.left:
-                return maxn(prev1.left, 1)
-            else:
-                if prev2:
-                    return prev2.val
-                else:
-                    return None
-        else:
-            return None
 
+
+def inord(this, nth, vis):
+    ret = None
+
+    if this.right:
+        ret = inord(this.right, nth, vis)
+        if ret:
+            return ret
+
+    vis[0] += 1
+    if vis[0] == nth:
+        return this
+
+    if this.left:
+        ret = inord(this.left, nth, vis)
+        if ret:
+            return ret
+
+    return ret
+
+def nthlargest(root, nth):
+    vis = [0]
+    node = inord(root, nth, vis)
+    if node:
+        return node.val
     return None
-
-
 
 
 head = None
@@ -82,9 +114,16 @@ for i in xrange(lenarr):
     arr.append(random.randint(1, 100))
     head = insert(head, arr[i])
 
-display(head)
+
 
 print
-print maxn(head, 2)
+print nthlargest(head, 3)
 arr.sort()
-print arr[-2]
+print arr[-3]
+
+print
+display(head)
+print
+display_itr(head)
+print
+display_morris(head)
