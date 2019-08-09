@@ -1,6 +1,6 @@
+# maximum sum subsequence
 
 arr = [8, 1, -2, 3, 4]
-
 arr = [2, 3, 4, -100, 1000]
 arr = [8, -1, 3, 4]
 arr = [8, 1, -2, 1, -3, 3, 4]
