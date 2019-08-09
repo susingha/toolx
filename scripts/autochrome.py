@@ -36,11 +36,11 @@ driver = webdriver.Chrome(wedriverurl)
 
 driver.get('https://www.youtube.com')
 
-open("QuoraCookies.pkl", "ab").close()
+open("cookiesforyoutube.pkl", "ab").close()
 
 print "Loading cookies"
 try:
-    for cookie in pickle.load(open("QuoraCookies.pkl", "rb")):
+    for cookie in pickle.load(open("cookiesforyoutube.pkl", "rb")):
         driver.add_cookie(cookie)
 except:
     print "No Cookies found"
@@ -69,7 +69,7 @@ while True:
     time.sleep(wait)
 
     print "Saving cookies"
-    pickle.dump(driver.get_cookies() , open("QuoraCookies.pkl","wb"))
+    pickle.dump(driver.get_cookies() , open("cookiesforyoutube.pkl","wb"))
 
     print "Scroll page to bottom"
     scroll = True
