@@ -8,6 +8,7 @@
 #include <sys/types.h> 
 #include <unistd.h> 
 
+#define ONE 1
 
 int main() 
 { 

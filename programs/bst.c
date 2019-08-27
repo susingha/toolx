@@ -227,8 +227,10 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
     // this is in inorder
     this = nodeHead;
 
+    
 #define VERSION_3
 #if defined(VERSION_1)
+
     printf("Using tree iteration v1\n");
     while (!done) {
         if (this) {
@@ -246,6 +248,8 @@ int displayiter(struct node * nodeHead, int find /*, struct node ** delnode, str
             done = TRUE;
         }
     }
+    return 0;
+
 #elif defined(VERSION_2)
     printf("Using tree iteration v2\n");
     while (!done) {
