@@ -60,65 +60,67 @@ wait = waitdef
 scrollpause = 3
 scrollerjs = "document.body.scrollHeight || document.documentElement.scrollHeight"
 
-while True:
+try:
+    while True:
+        print "Current date and time:"
+        print str(datetime.datetime.now())
+        print
+        print "About to remove more recommendations in", wait, "seconds"
+        driver.refresh()
+        time.sleep(wait)
+
+        print "Saving cookies"
+        pickle.dump(driver.get_cookies() , open("cookiesforyoutube.pkl","wb"))
+
+        print "Scroll page to bottom"
+        scroll = True
+        lastheight = driver.execute_script("return " + scrollerjs)
+        while scroll:
+            driver.execute_script("window.scrollTo(0, " + scrollerjs + ")")
+            time.sleep(scrollpause)
+
+            newheight = driver.execute_script("return " + scrollerjs)
+            if (newheight == lastheight):
+                scroll = False
+            lastheight = newheight
+
+        print "Finding recommendations"
+        destroyrec = driver.find_elements_by_xpath("//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Not interested']")
+        totalrecs = len(destroyrec)
+
+        if totalrecs == 0:
+            print "No recommendations found"
+            norecs += 1
+            wait += 5
+            if norecs >= norecsruntime:
+                break
+        else:
+            norecs = 0
+            wait = waitdef
+
+        print totaldest, " recommendations removed. Removing", totalrecs, "more."
+        driver.execute_script("window.scrollTo(0, 0)")
+        for i in xrange(totalrecs):
+            destroyrec[i].click()
+            totaldest += 1
+            time.sleep(1)
+
+finally:
+    driver.close()
+    print "Removed", totaldest, "recommendations"
+    print "Congarts, you have defeated Youtube and Google"
+    print
     print "Current date and time:"
     print str(datetime.datetime.now())
-    print
-    print "About to remove more recommendations in", wait, "seconds"
-    driver.refresh()
-    time.sleep(wait)
 
-    print "Saving cookies"
-    pickle.dump(driver.get_cookies() , open("cookiesforyoutube.pkl","wb"))
+    import sendmail
+    msg = "\r\n".join([
+      "From: notuberecs@gmail.com",
+      "To: supratik.dnit@gmail.com",
+      "Subject: Removed %d recommendations" % totaldest,
+      "",
+      "Removed %d recommendations" % totaldest,
+      "Congarts, you have defeated Youtube and Google",
+      ])
 
-    print "Scroll page to bottom"
-    scroll = True
-    lastheight = driver.execute_script("return " + scrollerjs)
-    while scroll:
-        driver.execute_script("window.scrollTo(0, " + scrollerjs + ")")
-        time.sleep(scrollpause)
-
-        newheight = driver.execute_script("return " + scrollerjs)
-        if (newheight == lastheight):
-            scroll = False
-        lastheight = newheight
-
-    print "Finding recommendations"
-    destroyrec = driver.find_elements_by_xpath("//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Not interested']")
-    totalrecs = len(destroyrec)
-
-    if totalrecs == 0:
-        print "No recommendations found"
-        norecs += 1
-        wait += 5
-        if norecs >= norecsruntime:
-            break
-    else:
-        norecs = 0
-        wait = waitdef
-
-    print totaldest, " recommendations removed. Removing", totalrecs, "more."
-    driver.execute_script("window.scrollTo(0, 0)")
-    for i in xrange(totalrecs):
-        destroyrec[i].click()
-        totaldest += 1
-        time.sleep(1)
-
-driver.close()
-print "Removed", totaldest, "recommendations"
-print "Congarts, you have defeated Youtube and Google"
-print
-print "Current date and time:"
-print str(datetime.datetime.now())
-
-import sendmail
-msg = "\r\n".join([
-  "From: notuberecs@gmail.com",
-  "To: supratik.dnit@gmail.com",
-  "Subject: Removed %d recommendations" % totaldest,
-  "",
-  "Removed %d recommendations" % totaldest,
-  "Congarts, you have defeated Youtube and Google",
-  ])
-
-sendmail.sendamail('supratik.dnit@gmail.com', msg)
+    sendmail.sendamail('supratik.dnit@gmail.com', msg)

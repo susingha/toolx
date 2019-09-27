@@ -1,4 +1,24 @@
+"""
+import heapq
+import shuffle
+
+from drawtree import draw_level_order
+from drawtree import draw_bst
+from drawtree import drawtree
+
+
+
 print "do nothing"
+li = [55, 30, 10, 5, 2, 20, 15, 25, 40, 35, 70, 60, 80, 75, 95]
+shuffle.shuffle(li, 100)
+heapq.heapify(li)
+print li
+
+draw_bst(li)
+# draw_level_order(li)
+
+exit(1)
+"""
 
 arr = range(5)
 print arr
@@ -54,13 +74,13 @@ xlist = range(10, 0, -1)
 print xlist
 
 print
-for j in xrange(30):
+for j in xrange(10):
     print j,
     j += 2
 print
 
 print
-arr = "supratik"
+arr = "sup"
 print arr
 print arr[:]
 print arr[:-1]
@@ -72,12 +92,12 @@ print arr[::2]
 print arr[-2]
 print len(arr)
 print list(enumerate(arr))
-for i, j in enumerate(arr):
-    print i, j
+for i, val in enumerate(arr):
+    print i, val
 
 ### STRING PARSING, USE OF str.split() ###
 print
-document = "Practice makes perfect. you'll only get Perfect by practice. just practice!"
+document = "Practice, makes. perfect "
 xlist = document.split(' ')
 print xlist
 

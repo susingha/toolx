@@ -1,4 +1,6 @@
-# maximum sum subsequence
+# maximum sum subsequence of a circular array
+# find max sum subsequence
+# find min sum subsequence
 
 arr = [8, 1, -2, 3, 4]
 arr = [2, 3, 4, -100, 1000]

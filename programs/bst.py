@@ -1,5 +1,9 @@
 import random
 
+"""
+All Binary Seart Tree Operatons
+"""
+
 class node:
     def __init__(self, val):
         self.left = None
