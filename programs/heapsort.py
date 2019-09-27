@@ -1,4 +1,8 @@
 # Implement heapsort
+# Heapsort()
+#   buildheap() This can be iterative (starting from the last child) or recursive on both children (starting from root)
+#     heapify() This can be bubble down or bubble up
+#   swap() Extract the root, replace with last child. heapify the new root
 
 arr = [30, 91, 15, 72, 61, 41, 10, 37, 98, 41]
 lenarr = len(arr)
@@ -19,6 +23,7 @@ def leftchild(i):
 def rightchild(i):
     return 2*i + 2
 
+# Heapify: Bubble down the root
 def maxheapify_itr(i, lent):
     max = -1
 
@@ -54,10 +59,12 @@ def maxheapify(i, lent):
         arr[i], arr[max] = arr[max], arr[i]
         maxheapify(max, lent)
 
-
+    
+# Buid Heap: Takes a broken heap and fixes it to a heap
 for i in xrange(lenarr):
     maxheapify_itr(lenarr-1-i, lenarr)
 
+# Swap() and Heapify the root()
 for i in xrange(lenarr):
     maxheapify_itr(0, lenarr-i)
     arr[0], arr[lenarr-1-i] = arr[lenarr-1-i], arr[0]

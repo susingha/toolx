@@ -1,15 +1,17 @@
 import random
+import drawtree
 
-class node:
-    def __init__(self, val):
+'''
+class TreeNode(object):
+    def __init__(self, val, left=None, right=None):
         self.val = val
-        self.left = None
-        self.right = None
-
+        self.left = left
+        self.right = right
+'''
 
 def insert(head, val):
 
-    new = node(val)
+    new = drawtree.TreeNode(val)
 
     prev = None
     this = head
@@ -121,9 +123,12 @@ print nthlargest(head, 3)
 arr.sort()
 print arr[-3]
 
+drawtree.drawtree(head)
+
 print
 display(head)
 print
 display_itr(head)
 print
 display_morris(head)
+

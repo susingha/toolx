@@ -1,6 +1,4 @@
 
-
-
 arr = "racecarannakayakc"
 
 lenarr = len(arr)
