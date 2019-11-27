@@ -2,7 +2,7 @@ import smtplib
 
 def sendamail(toaddrs):
     username = 'notuberecs@gmail.com'
-    password = 'harjagah12'
+    password = 'welcomE12'
     fromaddr = username
 
     server_ssl = smtplib.SMTP_SSL('smtp.gmail.com', 465)
