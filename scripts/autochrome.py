@@ -74,6 +74,8 @@ scrollpause = 3
 scrollerjs = "document.body.scrollHeight || document.documentElement.scrollHeight"
 
 try:
+    i = 2
+    print i[1]
     while True:
         print "Current date and time:"
         print str(datetime.datetime.now())
@@ -152,7 +154,7 @@ finally:
     print str(datetime.datetime.now())
 
     import sendmail
-    msg = "\r\n".join([
+    m = "\r\n".join([
       "From: notuberecs@gmail.com",
       "To: supratik.dnit@gmail.com",
       "Subject: Removed %d recommendations" % totaldest,
@@ -161,4 +163,5 @@ finally:
       "Congarts, you have defeated Youtube and Google",
       ])
 
-    sendmail.sendamail('supratik.dnit@gmail.com', msg)
+    print "Sending email"
+    sendmail.sendamail('supratik.dnit@gmail.com', m)
