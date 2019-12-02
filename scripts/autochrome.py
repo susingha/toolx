@@ -18,18 +18,18 @@ wedriverurl = "C:/Users/supratik/bin/chromedriver.exe"
 norecsruntime = 1000
 waitdef = 60 # seconds
 
+# used on dev pc #
+chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
+wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
+norecsruntime = 1000 # 50
+waitdef = 60 # 3  # seconds
+
 # used on deployment server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 wedriverurl = "/home/susingha/bin/chromedriver"
 norecsruntime = 1000
 waitdef = 60 # seconds
 
-
-# used on dev pc #
-chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
-norecsruntime = 1000 # 50
-waitdef = 60 # 3  # seconds
 
 
 print (sys.version)
@@ -74,8 +74,6 @@ scrollpause = 3
 scrollerjs = "document.body.scrollHeight || document.documentElement.scrollHeight"
 
 try:
-    i = 2
-    print i[1]
     while True:
         print "Current date and time:"
         print str(datetime.datetime.now())
