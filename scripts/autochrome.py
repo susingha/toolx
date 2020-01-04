@@ -2,6 +2,7 @@
 
 from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.common.exceptions import NoSuchElementException
 
 import pickle
 import time
@@ -27,13 +28,14 @@ waitdef = 60 # 3  # seconds
 # used on deployment server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 wedriverurl = "/home/susingha/bin/chromedriver"
-norecsruntime = 1000
-waitdef = 60 # seconds
+norecsruntime = 50
+waitdef = 3 # seconds
 
 
 
 print (sys.version)
 options = webdriver.ChromeOptions()
+#ptions.add_argument("--headless") # not needed
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
 options.add_argument("user-data-dir=selenium")
@@ -119,7 +121,15 @@ try:
         print "Killin", totalrecs, "recomendations"
         for i in xrange(totalrecs):
             recoitem = recovids[i]
-            clicker  = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
+            ActionChains(driver).move_to_element(recoitem).perform()
+            try:
+                #licker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
+                #licker = recoitem.find_element_by_xpath(".//yt-icon-button[@id='button' and @class='dropdown-trigger style-scope ytd-menu-renderer']")
+                clicker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
+            except NoSuchElementException:
+                print "No Such Element Exception Caught. Inspect the element", i, "now."
+                time.sleep(1)
+                continue
 
             # Show the menu
             ActionChains(driver).move_to_element(clicker).click().perform()
@@ -137,13 +147,12 @@ try:
                 dropoptions = dropdown[0].find_elements_by_xpath(".//ytd-menu-service-item-renderer[@class='style-scope ytd-menu-popup-renderer']")
                 clicker = dropoptions[NOT_INTERESTED]
                 ActionChains(driver).move_to_element(clicker).click().perform()
-
-            totaldest += 1
-            time.sleep(1)
+                totaldest += 1
+                time.sleep(1)
         print "Killed", totalrecs, "recomendations"
         print "Killed", totaldest, "recommendations in total"
 
-finally:
+except:
     driver.close()
     print "Removed", totaldest, "recommendations"
     print "Congarts, you have defeated Youtube and Google"
