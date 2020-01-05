@@ -15,44 +15,51 @@ DEMO_MODE = False
 
 # used on Cisco deployment server windows #
 chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-wedriverurl = "C:/Users/supratik/bin/chromedriver.exe"
+webdriverurl = "C:/Users/supratik/bin/chromedriver.exe"
 norecsruntime = 1000
 waitdef = 60 # seconds
 
 # used on dev pc #
 chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
-wedriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
+webdriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 norecsruntime = 1000 # 50
 waitdef = 60 # 3  # seconds
 
 # used on deployment server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
-wedriverurl = "/home/susingha/bin/chromedriver"
+webdriverurl = "/home/susingha/bin/chromedriver"
 norecsruntime = 50
 waitdef = 3 # seconds
 
+# used on garage server ubuntu #
+chromebin = "/usr/bin/google-chrome-stable"
+webdriverurl = "/home/cisco/bin/chromedriver"
+norecsruntime = 1000
+waitdef = 60 # seconds
 
 
 print (sys.version)
 options = webdriver.ChromeOptions()
+options.add_argument("user-data-dir=selenium")
 #ptions.add_argument("--headless") # not needed
 options.add_argument('--ignore-certificate-errors')
 options.add_argument("--test-type")
-options.add_argument("user-data-dir=selenium")
 options.binary_location = chromebin
-driver = webdriver.Chrome(wedriverurl)
+driver = webdriver.Chrome(webdriverurl, chrome_options=options)
 driver.get('https://www.youtube.com')
 
-
 print "Loading cookies"
-COOKIE_FILE = "cookiesforyoutube.pkl"
+COOKIE_FILE = "cookies.nochekin.pkl"
 open(COOKIE_FILE, "ab").close()
+
+"""
 cookiefd = open(COOKIE_FILE, "rb")
 cookies = pickle.load(cookiefd)
 for cookie in cookies:
     driver.add_cookie(cookie)
 cookiefd.close()
 print "Loaded ", len(cookies), "cookies"
+"""
 
 driver.refresh()
 print "Make sure browser is logged into desired account. If not, login manually using username and password"
@@ -122,11 +129,12 @@ try:
         for i in xrange(totalrecs):
             recoitem = recovids[i]
             ActionChains(driver).move_to_element(recoitem).perform()
-            try:
-                #licker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
+
+            if True:                    # try:
+                clicker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
                 #licker = recoitem.find_element_by_xpath(".//yt-icon-button[@id='button' and @class='dropdown-trigger style-scope ytd-menu-renderer']")
-                clicker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
-            except NoSuchElementException:
+                #licker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
+            else:                       # except NoSuchElementException:
                 print "No Such Element Exception Caught. Inspect the element", i, "now."
                 time.sleep(1)
                 continue
