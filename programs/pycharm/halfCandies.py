@@ -2,10 +2,6 @@ arr = [80, 81, 82, 100000, 80, 80, 80, 232342]
 arr = [80, 80, 80, 100000, 80, 80, 80, 232342]
 
 
-alen = len(arr)
-print alen
-
-
 """
 arr list of types of chocolates
 80 is a type of chocolate
@@ -37,7 +33,6 @@ if given >= arrlen/2:
 
 diff = arrlen/2 - given
 print (len(counts) - diff)
-
 
 
 
