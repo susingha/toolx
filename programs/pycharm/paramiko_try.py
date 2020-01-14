@@ -8,6 +8,7 @@ passwd = "aerohive"
 import base64
 import paramiko
 
+# the base64 is the host key of the ssh server as found in the known hosts file of the client
 key = paramiko.ECDSAKey(data=base64.b64decode(b'AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD7CedKyt5CqadgHv6CyfiNBeRY5suIz7smsrI93caNY/ciCOlrWrGT3o4KDHrVhg3YiiptloE8OXbfb1J9DcvM='))
 #ey = paramiko.RSAKey(data=base64.b64decode(b'AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBD7CedKyt5CqadgHv6CyfiNBeRY5suIz7smsrI93caNY/ciCOlrWrGT3o4KDHrVhg3YiiptloE8OXbfb1J9DcvM='))
 
