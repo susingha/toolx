@@ -31,7 +31,7 @@ if [ -z "$1" ]; then
 
 	# list available devices
 	echo "Available devices:"
-	devices="$(./adb devices)"
+	devices="$(adb devices)"
 
 	export IFS=$'\n'
 
@@ -52,31 +52,31 @@ if [ -z "$1" ]; then
 	# chosen device id
 	device=${devicemap[choice]}
 
-	devicename="$(./adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
-	devicemodel="$(./adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
+	devicename="$(adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
+	devicemodel="$(adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
 
 	echo "Connecting to device $device $devicename $devicemodel..."
 
 	# restart adb in tcpip mode for the device
-	./adb -s $device tcpip 5555
+	adb -s $device tcpip 5555
 
 	# wait for adb to restart
 	# note: this may change depending on the computer
 	sleep 5s
 
 	# find out the wlan0 ip of the device by running ifconfig in device's shell
-	ip="$(./adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
+	ip="$(adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
 	echo "Connecting to $ip..."
 
 	# connect to the device
-	./adb connect $ip:5555
+	adb connect $ip:5555
 
 # connect to all available devices
 elif [ $1 == "-a" ]; then
 
 	# list available devices
 	echo "Connecting to all available devices..."
-	devices="$(./adb devices)"
+	devices="$(adb devices)"
 
 	export IFS=$'\n'
 
@@ -95,24 +95,24 @@ elif [ $1 == "-a" ]; then
 
 			echo "---"
 
-			devicename="$(./adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
-			devicemodel="$(./adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
+			devicename="$(adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
+			devicemodel="$(adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
 
 			echo "Connecting to device $device $devicename $devicemodel..."
 
 			# restart adb in tcpip mode for the device
-			./adb -s $device tcpip 5555
+			adb -s $device tcpip 5555
 
 			# wait for adb to restart
 			# note: this may change depending on the machine
 			sleep 5s
 
 			# find out the wlan ip of the device by running ifconfig in device's shell
-			ip="$(./adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
+			ip="$(adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
 			echo "Connecting to $ip..."
 
 			# connect to the device
-			./adb connect $ip:5555
+			adb connect $ip:5555
 
 		fi
 
@@ -129,24 +129,24 @@ elif [ $1 == "-d" ]; then
 
 	device="$2"
 
-	devicename="$(./adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
-	devicemodel="$(./adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
+	devicename="$(adb devices -l | grep $device | awk '{print $4}' | cut -d: -f2)"
+	devicemodel="$(adb devices -l | grep $device | awk '{print $5}' | cut -d: -f2)"
 
 	echo "Connecting to device $device $devicename $devicemodel..."
 
 	# restart adb in tcpip mode for the device
-	./adb -s $device tcpip 5555
+	adb -s $device tcpip 5555
 
 	# wait for adb to restart
 	# note: this may change depending on the machine
 	sleep 5s
 
 	# find out the wlan ip of the device by running ifconfig in device's shell
-	ip="$(./adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
+	ip="$(adb -s $device shell ip addr show wlan0 | grep 'inet\b' | awk '{print $2}' | cut -d/ -f1)"
 	echo "Connecting to $ip..."
 
 	# connect to the device
-	./adb connect $ip:5555
+	adb connect $ip:5555
 
 else
 	echo "Flag '$1' is not supported!"
