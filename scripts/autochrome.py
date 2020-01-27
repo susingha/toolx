@@ -130,11 +130,11 @@ try:
             recoitem = recovids[i]
             ActionChains(driver).move_to_element(recoitem).perform()
 
-            if True:                    # try:
+            try:
                 clicker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
                 #licker = recoitem.find_element_by_xpath(".//yt-icon-button[@id='button' and @class='dropdown-trigger style-scope ytd-menu-renderer']")
                 #licker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
-            else:                       # except NoSuchElementException:
+            except NoSuchElementException:
                 print "No Such Element Exception Caught. Inspect the element", i, "now."
                 time.sleep(1)
                 continue
