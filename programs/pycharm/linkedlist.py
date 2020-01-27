@@ -1,29 +1,75 @@
+import random
+
 class node:
-    def __init__(self, val):
-        self.val = val
-        self.next = None
+    def __init__(self, val, next):
+        self.val = val;
+        self.next = next;
 
-def insert(head, val):
-    this = head
 
-    if this == None:
-        this = node(val)
-        return this
+def display(headi):
+    this = headi;
+    while this:
+        print this.val, ",",;
+        this = this.next;
+    print;
 
-    while this.next:
-        this = this.next
-    this.next = node(val)
-    return head
 
-def display(head):
-    this = head
-    while(this):
-        print this.val,
-        this = this.next
-    print
+def reverse(headi):
+    # prep
+    prev = None;
+    this = headi;
+    # loop
+    while this:
+        # save
+        next = this.next;
+        # do
+        this.next = prev;
+        # prep
+        prev = this;
+        this = next;
 
+    return prev;
+
+
+
+
+
+################### main #############################################
+
+random.seed(1000);
+
+#### init section ####
 head = None
-head = insert(head, 4)
-head = insert(head, 5)
-display(head)
+this = head
+MAX = 10;
+
+#### prep section #####
+next = None
+
+#### main loop #####
+for i in range(MAX):
+
+    ##### do section #####
+    x = random.randint(1, 101);
+    new = node(x, next);
+    head = new;
+
+    ##### prep section ####
+    next = new;
+
+
+display(head);
+
+newhead = reverse(head);
+head = newhead;
+
+display(head);
+
+
+
+
+
+
+
+
 
