@@ -1,0 +1,18 @@
+users="susingha"
+hosts="134.141.50.33"
+files="/home/susingha/Perforce/susingha_0114_Nantucket/build_AP250/images/AP250-10-0-8.img"
+
+userd="cisco"
+hostd="192.168.0.16"
+filed="/tftpboot/image.img"
+
+echo "copying SRC:" "$hosts:$files"
+echo "copying DST:" "$hostd:$filed"
+
+echo "save image tftp://192.168.0.16:image.img"
+
+ssh $users@$hosts "md5sum $files"
+scp -3 $users@$hosts:$files  $userd@$hostd:$filed
+ssh $userd@$hostd "md5sum $filed"
+
+
