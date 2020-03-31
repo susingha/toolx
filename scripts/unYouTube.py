@@ -16,25 +16,25 @@ DEMO_MODE = False
 # used on Cisco deployment server windows #
 chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 webdriverurl = "C:/Users/supratik/bin/chromedriver.exe"
-norecsruntime = 1000
+nokillsruntime = 1000
 waitdef = 60 # seconds
 
 # used on dev pc #
 chromebin = "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"
 webdriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
-norecsruntime = 1000 # 50
+nokillsruntime = 1000 # 50
 waitdef = 60 # 3  # seconds
 
 # used on deployment server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 webdriverurl = "/home/susingha/bin/chromedriver"
-norecsruntime = 50
+nokillsruntime = 50
 waitdef = 3 # seconds
 
 # used on garage server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 webdriverurl = "/home/cisco/bin/chromedriver"
-norecsruntime = 1000
+nokillsruntime = 1000
 waitdef = 60 # seconds
 
 
@@ -76,7 +76,7 @@ cookiefd.close()
 
 totaldest = 0
 totalrecs = 0
-norecs = 0
+nokills = 0
 wait = waitdef
 
 scrollpause = 3
@@ -111,36 +111,28 @@ try:
         recovids = driver.find_elements_by_xpath("//ytd-rich-item-renderer[@class='style-scope ytd-rich-grid-renderer']")
         totalrecs = len(recovids)
 
-        if totalrecs == 0:
-            print "No recommendations found"
-            norecs += 1
-            wait += 5
-            if norecs >= norecsruntime:
-                break
-        else:
-            norecs = 0
-            wait = waitdef
 
         print "Found", totalrecs, "new recommendations"
         driver.execute_script("window.scrollTo(0, 0)")
 
 
+        currndest = 0
         print "Killin", totalrecs, "recomendations"
         for i in xrange(totalrecs):
             recoitem = recovids[i]
             ActionChains(driver).move_to_element(recoitem).perform()
 
-            if True: # try:
-                clicker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
-                #licker = recoitem.find_element_by_xpath(".//yt-icon-button[@id='button' and @class='dropdown-trigger style-scope ytd-menu-renderer']")
-                #licker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
-            else: # except NoSuchElementException:
+            try:
+                menudots_clicker = recoitem.find_element_by_xpath(".//button[@id='button' and @class='style-scope yt-icon-button' and @aria-label='Action menu']")
+                #enudots_clicker = recoitem.find_element_by_xpath(".//yt-icon-button[@id='button' and @class='dropdown-trigger style-scope ytd-menu-renderer']")
+                #enudots_clicker = recoitem.find_element_by_xpath(".//ytd-menu-renderer[@class='style-scope ytd-rich-grid-video-renderer']")
+            except NoSuchElementException:
                 print "No Such Element Exception Caught. Inspect the element", i, "now."
                 time.sleep(1)
                 continue
 
             # Show the menu
-            ActionChains(driver).move_to_element(clicker).click().perform()
+            ActionChains(driver).move_to_element(menudots_clicker).click().perform()
             time.sleep(1)
 
             NOT_INTERESTED = 3
@@ -148,17 +140,33 @@ try:
 
             if DEMO_MODE:
                 print "click 1. menu off"
-                ActionChains(driver).move_to_element(clicker).click().perform()
+                ActionChains(driver).move_to_element(menudots_clicker).click().perform()
             else:
                 # Kill the reco
                 dropdown = driver.find_elements_by_xpath("//ytd-popup-container[@class='style-scope ytd-app']")
                 dropoptions = dropdown[0].find_elements_by_xpath(".//ytd-menu-service-item-renderer[@class='style-scope ytd-menu-popup-renderer']")
-                clicker = dropoptions[NOT_INTERESTED]
-                ActionChains(driver).move_to_element(clicker).click().perform()
+                if len(dropoptions) == 1:
+                    # this is music reco. dont kill. menu off
+                    ActionChains(driver).move_to_element(menudots_clicker).click().perform()
+                    continue
+                killswitch_clicker = dropoptions[NOT_INTERESTED].find_element_by_xpath(".//yt-formatted-string[@class='style-scope ytd-menu-service-item-renderer']")
+                ActionChains(driver).move_to_element(killswitch_clicker).click().perform()
+                currndest += 1
                 totaldest += 1
                 time.sleep(1)
-        print "Killed", totalrecs, "recomendations"
+        print "Killed", currndest, "recomendations"
         print "Killed", totaldest, "recommendations in total"
+
+        if currndest == 0:
+            print "No recommendations killed"
+            nokills += 1
+            wait += 5
+            if nokills >= nokillsruntime:
+                break
+        else:
+            nokills = 0
+            wait = waitdef
+
 
 except:
     driver.close()
