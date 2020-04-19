@@ -1,0 +1,527 @@
+
++ uname -r
+make -C /lib/modules/4.15.0-88-generic/build M=/home/susingha/Checkout/toolx/projects/chardev modules
++ make -C /lib/modules/4.15.0-88-generic/build M=/home/susingha/Checkout/toolx/projects/chardev modules
+make[1]: Entering directory '/usr/src/linux-headers-4.15.0-88-generic'
++ uname -m
++ sed -e s/i.86/x86/ -e s/x86_64/x86/ -e s/sun4u/sparc64/ -e 's/arm.*/arm/' -e s/sa110/arm/ -e s/s390x/s390/ -e s/parisc64/parisc/ -e 's/ppc.*/powerpc/' -e 's/mips.*/mips/' -e 's/sh[234].*/sh/' -e 's/aarch64.*/arm64/' -e 's/riscv.*/riscv/'
++ '[' -x /bin/sh ']'
++ echo /bin/sh
++ getconf LFS_CFLAGS
++ getconf LFS_LDFLAGS
++ getconf LFS_LIBS
++ gcc -v
++ grep -q 'clang version'
++ echo gcc
++ echo '__cached_gcc_-v_2>&1_|_grep_-q_"clang_version"_&&_echo_clang_||_echo_gcc := gcc'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11130.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11130.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11130.tmp /home/susingha/Checkout/toolx/projects/chardev/.11130.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-mretpoline-external-thunk_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mretpoline-external-thunk";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11134.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11134.o
++ echo '-mindirect-branch=thunk-extern -mindirect-branch-register'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11134.tmp /home/susingha/Checkout/toolx/projects/chardev/.11134.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-mindirect-branch_thunk-extern_-mindirect-branch-register_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mindirect-branch_thunk-extern_-mindirect-branch-register";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mindirect-branch=thunk-extern -mindirect-branch-register'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11140.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11140.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11140.tmp /home/susingha/Checkout/toolx/projects/chardev/.11140.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-mretpoline_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mretpoline";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11144.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11144.o
++ echo '-mindirect-branch=thunk-inline -mindirect-branch-register'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11144.tmp /home/susingha/Checkout/toolx/projects/chardev/.11144.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-mindirect-branch_thunk-inline_-mindirect-branch-register_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mindirect-branch_thunk-inline_-mindirect-branch-register";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mindirect-branch=thunk-inline -mindirect-branch-register'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11150.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11150.o
++ echo -fno-PIE
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11150.tmp /home/susingha/Checkout/toolx/projects/chardev/.11150.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-PIE";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-PIE'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11156.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11156.o
++ echo -fno-PIE
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11156.tmp /home/susingha/Checkout/toolx/projects/chardev/.11156.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-fno-PIE_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-PIE";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-PIE'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11162.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11162.o
++ echo -Wno-maybe-uninitialized
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11162.tmp /home/susingha/Checkout/toolx/projects/chardev/.11162.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-Wmaybe-uninitialized_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-maybe-uninitialized";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wno-maybe-uninitialized'
++ uname -m
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11169.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11169.o
++ echo ' -mpreferred-stack-boundary=4'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11169.tmp /home/susingha/Checkout/toolx/projects/chardev/.11169.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE__-mpreferred-stack-boundary_4_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-mpreferred-stack-boundary_4";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mpreferred-stack-boundary=4'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11175.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11175.o
++ echo ' -m16'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11175.tmp /home/susingha/Checkout/toolx/projects/chardev/.11175.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE__-m16_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-m16";_else_echo_"_-m32_-Wa_./arch/x86/boot/code16gcc.h";_fi;_rm_-f_"_TMP"_"_TMPO" := -m16'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11181.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11181.o
++ echo ' -ffreestanding'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11181.tmp /home/susingha/Checkout/toolx/projects/chardev/.11181.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-m16_-g_-Os_-D__KERNEL___-DDISABLE_BRANCH_PROFILING_-Wall_-Wstrict-prototypes_-march_i386_-mregparm_3_-fno-strict-aliasing_-fomit-frame-pointer_-fno-pic_-mno-mmx_-mno-sse__-ffreestanding_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-ffreestanding";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -ffreestanding'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11187.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11187.o
++ echo ' -fno-stack-protector'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11187.tmp /home/susingha/Checkout/toolx/projects/chardev/.11187.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-m16_-g_-Os_-D__KERNEL___-DDISABLE_BRANCH_PROFILING_-Wall_-Wstrict-prototypes_-march_i386_-mregparm_3_-fno-strict-aliasing_-fomit-frame-pointer_-fno-pic_-mno-mmx_-mno-sse_-ffreestanding__-fno-stack-protector_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-fno-stack-protector";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-stack-protector'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11193.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11193.o
++ echo ' -Wno-address-of-packed-member'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11193.tmp /home/susingha/Checkout/toolx/projects/chardev/.11193.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-m16_-g_-Os_-D__KERNEL___-DDISABLE_BRANCH_PROFILING_-Wall_-Wstrict-prototypes_-march_i386_-mregparm_3_-fno-strict-aliasing_-fomit-frame-pointer_-fno-pic_-mno-mmx_-mno-sse_-ffreestanding_-fno-stack-protector__-Wno-address-of-packed-member_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-Wno-address-of-packed-member";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wno-address-of-packed-member'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11199.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11199.o
++ echo ' -mpreferred-stack-boundary=2'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11199.tmp /home/susingha/Checkout/toolx/projects/chardev/.11199.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-m16_-g_-Os_-D__KERNEL___-DDISABLE_BRANCH_PROFILING_-Wall_-Wstrict-prototypes_-march_i386_-mregparm_3_-fno-strict-aliasing_-fomit-frame-pointer_-fno-pic_-mno-mmx_-mno-sse_-ffreestanding_-fno-stack-protector_-Wno-address-of-packed-member__-mpreferred-stack-boundary_2_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-mpreferred-stack-boundary_2";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mpreferred-stack-boundary=2'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11205.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11205.o
++ echo -mno-avx
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11205.tmp /home/susingha/Checkout/toolx/projects/chardev/.11205.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mno-avx";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mno-avx'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11211.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11211.o
++ echo -falign-jumps=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11211.tmp /home/susingha/Checkout/toolx/projects/chardev/.11211.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-falign-jumps_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -falign-jumps=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11217.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11217.o
++ echo -falign-loops=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11217.tmp /home/susingha/Checkout/toolx/projects/chardev/.11217.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-falign-loops_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -falign-loops=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11223.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11223.o
++ echo -mno-80387
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11223.tmp /home/susingha/Checkout/toolx/projects/chardev/.11223.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mno-80387";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mno-80387'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11229.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11229.o
++ echo -mno-fp-ret-in-387
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11229.tmp /home/susingha/Checkout/toolx/projects/chardev/.11229.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mno-fp-ret-in-387";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mno-fp-ret-in-387'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11235.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11235.o
++ echo -mpreferred-stack-boundary=3
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11235.tmp /home/susingha/Checkout/toolx/projects/chardev/.11235.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mpreferred-stack-boundary_3";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mpreferred-stack-boundary=3'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11241.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11241.o
++ echo -mskip-rax-setup
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11241.tmp /home/susingha/Checkout/toolx/projects/chardev/.11241.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mskip-rax-setup";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mskip-rax-setup'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11247.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11247.o
++ echo -mtune=generic
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11247.tmp /home/susingha/Checkout/toolx/projects/chardev/.11247.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-mtune_generic";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mtune=generic'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11253.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11253.o
++ echo -funit-at-a-time
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11253.tmp /home/susingha/Checkout/toolx/projects/chardev/.11253.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-funit-at-a-time";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -funit-at-a-time'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11259.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11259.o
++ echo y
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11259.tmp /home/susingha/Checkout/toolx/projects/chardev/.11259.o
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11267.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11267.o
++ echo y
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11267.tmp /home/susingha/Checkout/toolx/projects/chardev/.11267.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI__-mfentry_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"y";_else_echo_"n";_fi;_rm_-f_"_TMP"_"_TMPO" := y'
++ /bin/sh ./scripts/gcc-version.sh -p gcc
++ echo '__cached_/bin/sh_./scripts/gcc-version.sh_-p_gcc := 050400'
++ '[' 050400 -lt 040502 ']'
++ echo
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11291.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11291.o
++ echo -DCONFIG_AS_CFI=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11291.tmp /home/susingha/Checkout/toolx/projects/chardev/.11291.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_".cfi_startproc_n.cfi_rel_offset_rsp_0_n.cfi_endproc"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_CFI_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_CFI=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11298.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11298.o
++ echo -DCONFIG_AS_CFI_SIGNAL_FRAME=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11298.tmp /home/susingha/Checkout/toolx/projects/chardev/.11298.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_".cfi_startproc_n.cfi_signal_frame_n.cfi_endproc"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_CFI_SIGNAL_FRAME_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_CFI_SIGNAL_FRAME=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11305.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11305.o
++ echo -DCONFIG_AS_CFI_SECTIONS=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11305.tmp /home/susingha/Checkout/toolx/projects/chardev/.11305.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_".cfi_sections_.debug_frame"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_CFI_SECTIONS_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_CFI_SECTIONS=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11312.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11312.o
++ echo -DCONFIG_AS_FXSAVEQ=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11312.tmp /home/susingha/Checkout/toolx/projects/chardev/.11312.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"fxsaveq__%rax_"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_FXSAVEQ_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_FXSAVEQ=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11319.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11319.o
++ echo -DCONFIG_AS_SSSE3=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11319.tmp /home/susingha/Checkout/toolx/projects/chardev/.11319.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"pshufb_%xmm0_%xmm0"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_SSSE3_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_SSSE3=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11326.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11326.o
++ echo -DCONFIG_AS_CRC32=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11326.tmp /home/susingha/Checkout/toolx/projects/chardev/.11326.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"crc32l_%eax_%eax"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_CRC32_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_CRC32=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11333.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11333.o
++ echo -DCONFIG_AS_AVX=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11333.tmp /home/susingha/Checkout/toolx/projects/chardev/.11333.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"vxorps_%ymm0_%ymm1_%ymm2"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_AVX_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_AVX=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11340.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11340.o
++ echo -DCONFIG_AS_AVX2=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11340.tmp /home/susingha/Checkout/toolx/projects/chardev/.11340.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"vpbroadcastb_%xmm0_%ymm1"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_AVX2_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_AVX2=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11347.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11347.o
++ echo -DCONFIG_AS_AVX512=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11347.tmp /home/susingha/Checkout/toolx/projects/chardev/.11347.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"vpmovm2b_%k1_%zmm5"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_AVX512_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_AVX512=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11354.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11354.o
++ echo -DCONFIG_AS_SHA1_NI=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11354.tmp /home/susingha/Checkout/toolx/projects/chardev/.11354.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"sha1msg1_%xmm0_%xmm1"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_SHA1_NI_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_SHA1_NI=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11361.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11361.o
++ echo -DCONFIG_AS_SHA256_NI=1
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11361.tmp /home/susingha/Checkout/toolx/projects/chardev/.11361.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___printf_"%b_n"_"sha256msg1_%xmm0_%xmm1"_|_gcc_-D__ASSEMBLY___-fno-PIE_-m64_-DCONFIG_X86_X32_ABI_-c_-x_assembler_-o_"_TMP"_-__>/dev/null_2>&1;_then_echo_"-DCONFIG_AS_SHA256_NI_1";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -DCONFIG_AS_SHA256_NI=1'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11368.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11368.o
++ echo ' -z max-page-size=0x200000'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11368.tmp /home/susingha/Checkout/toolx/projects/chardev/.11368.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___ld_-m_elf_x86_64__-z_max-page-size_0x200000_-v__>/dev/null_2>&1;_then_echo_"_-z_max-page-size_0x200000";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -z max-page-size=0x200000'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11372.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11372.o
++ echo -fno-jump-tables
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11372.tmp /home/susingha/Checkout/toolx/projects/chardev/.11372.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-jump-tables";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-jump-tables'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11378.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11378.o
++ echo -fno-delete-null-pointer-checks
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11378.tmp /home/susingha/Checkout/toolx/projects/chardev/.11378.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-delete-null-pointer-checks";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-delete-null-pointer-checks'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11384.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11384.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11384.tmp /home/susingha/Checkout/toolx/projects/chardev/.11384.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Wframe-address_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-frame-address";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11388.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11388.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11388.tmp /home/susingha/Checkout/toolx/projects/chardev/.11388.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Wformat-truncation_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-format-truncation";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11392.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11392.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11392.tmp /home/susingha/Checkout/toolx/projects/chardev/.11392.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Wformat-overflow_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-format-overflow";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11396.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11396.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11396.tmp /home/susingha/Checkout/toolx/projects/chardev/.11396.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Wint-in-bool-context_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-int-in-bool-context";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11400.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11400.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11400.tmp /home/susingha/Checkout/toolx/projects/chardev/.11400.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Waddress-of-packed-member_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-address-of-packed-member";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11404.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11404.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11404.tmp /home/susingha/Checkout/toolx/projects/chardev/.11404.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-Wattribute-alias_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-attribute-alias";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11408.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11408.o
++ echo -Wno-maybe-uninitialized
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11408.tmp /home/susingha/Checkout/toolx/projects/chardev/.11408.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_-Wmaybe-uninitialized_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-maybe-uninitialized";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wno-maybe-uninitialized'
++ /bin/sh ./scripts/gcc-version.sh gcc
++ echo '__cached_/bin/sh_./scripts/gcc-version.sh_gcc := 0504'
++ '[' 0504 -lt 0409 ']'
++ echo
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11427.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11427.o
++ echo --param=allow-store-data-races=0
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11427.tmp /home/susingha/Checkout/toolx/projects/chardev/.11427.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"--param_allow-store-data-races_0";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := --param=allow-store-data-races=0'
++ /bin/sh ./scripts/gcc-goto.sh gcc -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0
++ echo '__cached_/bin/sh_./scripts/gcc-goto.sh_gcc_-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_______-O2__--param_allow-store-data-races_0 := y'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11439.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11439.o
++ echo -Wframe-larger-than=1024
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11439.tmp /home/susingha/Checkout/toolx/projects/chardev/.11439.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wframe-larger-than_1024";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wframe-larger-than=1024'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11445.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11445.o
++ echo -Wno-unused-but-set-variable
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11445.tmp /home/susingha/Checkout/toolx/projects/chardev/.11445.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wunused-but-set-variable_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-unused-but-set-variable";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wno-unused-but-set-variable'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11451.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11451.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11451.tmp /home/susingha/Checkout/toolx/projects/chardev/.11451.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-Wunused-const-variable_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-unused-const-variable";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11455.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11455.o
++ echo ' -fno-var-tracking-assignments'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11455.tmp /home/susingha/Checkout/toolx/projects/chardev/.11455.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls__-fno-var-tracking-assignments_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-fno-var-tracking-assignments";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-var-tracking-assignments'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11461.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11461.o
++ echo ' -mfentry -DCC_USING_FENTRY'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11461.tmp /home/susingha/Checkout/toolx/projects/chardev/.11461.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments__-mfentry_-DCC_USING_FENTRY_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-mfentry_-DCC_USING_FENTRY";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -mfentry -DCC_USING_FENTRY'
++ gcc -print-file-name=include
++ echo '__cached_gcc_-print-file-name_include := /usr/lib/gcc/x86_64-linux-gnu/5/include'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11469.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11469.o
++ echo -Wdeclaration-after-statement
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11469.tmp /home/susingha/Checkout/toolx/projects/chardev/.11469.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wdeclaration-after-statement";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wdeclaration-after-statement'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11475.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11475.o
++ echo -Wno-pointer-sign
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11475.tmp /home/susingha/Checkout/toolx/projects/chardev/.11475.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wpointer-sign_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-pointer-sign";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wno-pointer-sign'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11481.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11481.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11481.tmp /home/susingha/Checkout/toolx/projects/chardev/.11481.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-Wstringop-truncation_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-stringop-truncation";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11485.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11485.o
++ echo -fno-strict-overflow
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11485.tmp /home/susingha/Checkout/toolx/projects/chardev/.11485.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-strict-overflow";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-strict-overflow'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11491.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11491.o
++ echo -fno-merge-all-constants
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11491.tmp /home/susingha/Checkout/toolx/projects/chardev/.11491.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-merge-all-constants";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-merge-all-constants'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11497.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11497.o
++ echo -fmerge-constants
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11497.tmp /home/susingha/Checkout/toolx/projects/chardev/.11497.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fmerge-constants";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fmerge-constants'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11503.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11503.o
++ echo -fno-stack-check
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11503.tmp /home/susingha/Checkout/toolx/projects/chardev/.11503.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fno-stack-check";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fno-stack-check'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11509.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11509.o
++ echo -fconserve-stack
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11509.tmp /home/susingha/Checkout/toolx/projects/chardev/.11509.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fconserve-stack";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -fconserve-stack'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11515.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11515.o
++ echo -Werror=implicit-int
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11515.tmp /home/susingha/Checkout/toolx/projects/chardev/.11515.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Werror_implicit-int";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Werror=implicit-int'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11521.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11521.o
++ echo -Werror=strict-prototypes
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11521.tmp /home/susingha/Checkout/toolx/projects/chardev/.11521.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Werror_strict-prototypes";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Werror=strict-prototypes'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11527.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11527.o
++ echo -Werror=date-time
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11527.tmp /home/susingha/Checkout/toolx/projects/chardev/.11527.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Werror_date-time";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Werror=date-time'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11533.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11533.o
++ echo -Werror=incompatible-pointer-types
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11533.tmp /home/susingha/Checkout/toolx/projects/chardev/.11533.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Werror_incompatible-pointer-types";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Werror=incompatible-pointer-types'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11539.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11539.o
++ echo -Werror=designated-init
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11539.tmp /home/susingha/Checkout/toolx/projects/chardev/.11539.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-Werror_designated-init_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Werror_designated-init";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Werror=designated-init'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11545.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11545.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11545.tmp /home/susingha/Checkout/toolx/projects/chardev/.11545.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-Werror_designated-init_-fcf-protection_none_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fcf-protection_none";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11549.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11549.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11549.tmp /home/susingha/Checkout/toolx/projects/chardev/.11549.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if____gcc_-Werror__-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-Werror_designated-init_-fmacro-prefix-map_./__-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-fmacro-prefix-map_./_";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11553.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11553.o
++ echo D
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11553.tmp /home/susingha/Checkout/toolx/projects/chardev/.11553.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___ar_rcD_"_TMP"__>/dev/null_2>&1;_then_echo_"D";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := D'
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11557.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11557.o
++ echo ''
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11557.tmp /home/susingha/Checkout/toolx/projects/chardev/.11557.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc_-Werror_-D__KERNEL___-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-Werror_designated-init_-Wpacked-not-aligned_-c_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"-Wno-packed-not-aligned";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := '
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11561.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11561.o
++ echo ' -Wl,--build-id'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11561.tmp /home/susingha/Checkout/toolx/projects/chardev/.11561.o
++ echo '__cached_set_-e;_TMP_"/home/susingha/Checkout/toolx/projects/chardev/.__.tmp";_TMPO_"/home/susingha/Checkout/toolx/projects/chardev/.__.o";_if___gcc__-Wl_--build-id_-D__KERNEL_____-Wall_-Wundef_-Wstrict-prototypes_-Wno-trigraphs_-fno-strict-aliasing_-fno-common_-fshort-wchar_-Werror-implicit-function-declaration_-Wno-format-security_-std_gnu89_-fno-PIE_-mno-sse_-mno-mmx_-mno-sse2_-mno-3dnow_-mno-avx_-m64_-falign-jumps_1_-falign-loops_1_-mno-80387_-mno-fp-ret-in-387_-mpreferred-stack-boundary_3_-mskip-rax-setup_-mtune_generic_-mno-red-zone_-mcmodel_kernel_-funit-at-a-time_-DCONFIG_X86_X32_ABI_-DCONFIG_AS_CFI_1_-DCONFIG_AS_CFI_SIGNAL_FRAME_1_-DCONFIG_AS_CFI_SECTIONS_1_-DCONFIG_AS_FXSAVEQ_1_-DCONFIG_AS_SSSE3_1_-DCONFIG_AS_CRC32_1_-DCONFIG_AS_AVX_1_-DCONFIG_AS_AVX2_1_-DCONFIG_AS_AVX512_1_-DCONFIG_AS_SHA1_NI_1_-DCONFIG_AS_SHA256_NI_1_-pipe_-Wno-sign-compare_-fno-asynchronous-unwind-tables_-mindirect-branch_thunk-extern_-mindirect-branch-register_-fno-jump-tables_-fno-delete-null-pointer-checks_-O2_--param_allow-store-data-races_0_-DCC_HAVE_ASM_GOTO_-Wframe-larger-than_1024_-fstack-protector-strong_-Wno-unused-but-set-variable_-fno-omit-frame-pointer_-fno-optimize-sibling-calls_-fno-var-tracking-assignments_-pg_-mfentry_-DCC_USING_FENTRY_-Wdeclaration-after-statement_-Wno-pointer-sign_-fno-strict-overflow_-fno-merge-all-constants_-fmerge-constants_-fno-stack-check_-fconserve-stack_-Werror_implicit-int_-Werror_strict-prototypes_-Werror_date-time_-Werror_incompatible-pointer-types_-Werror_designated-init_-nostdlib_-x_c_/dev/null_-o_"_TMP"__>/dev/null_2>&1;_then_echo_"_-Wl_--build-id";_else_echo_"";_fi;_rm_-f_"_TMP"_"_TMPO" := -Wl,--build-id'
++ pkg-config libelf --libs
++ echo -lelf
++ set -e
++ TMP=/home/susingha/Checkout/toolx/projects/chardev/.11571.tmp
++ TMPO=/home/susingha/Checkout/toolx/projects/chardev/.11571.o
++ echo 0
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.11571.tmp /home/susingha/Checkout/toolx/projects/chardev/.11571.o
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ test -e include/generated/autoconf.h -a -e include/config/auto.conf
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ mkdir -p /home/susingha/Checkout/toolx/projects/chardev/.tmp_versions
++ rm -f '/home/susingha/Checkout/toolx/projects/chardev/.tmp_versions/*'
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ test -e ./Module.symvers
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ make -f ./scripts/Makefile.build obj=/home/susingha/Checkout/toolx/projects/chardev
++ set -e
++ echo '  CC [M]  /home/susingha/Checkout/toolx/projects/chardev/hworld.o'
+  CC [M]  /home/susingha/Checkout/toolx/projects/chardev/hworld.o
++ gcc -Wp,-MD,/home/susingha/Checkout/toolx/projects/chardev/.hworld.o.d -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init -DMODULE '-DKBUILD_BASENAME="hworld"' '-DKBUILD_MODNAME="hworld"' -c -o /home/susingha/Checkout/toolx/projects/chardev/hworld.o /home/susingha/Checkout/toolx/projects/chardev/hworld.c
++ scripts/basic/fixdep /home/susingha/Checkout/toolx/projects/chardev/.hworld.o.d /home/susingha/Checkout/toolx/projects/chardev/hworld.o 'gcc -Wp,-MD,/home/susingha/Checkout/toolx/projects/chardev/.hworld.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DMODULE  -DKBUILD_BASENAME='\''"hworld"'\''  -DKBUILD_MODNAME='\''"hworld"'\'' -c -o /home/susingha/Checkout/toolx/projects/chardev/hworld.o /home/susingha/Checkout/toolx/projects/chardev/hworld.c'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.hworld.o.d
++ mv -f /home/susingha/Checkout/toolx/projects/chardev/.hworld.o.tmp /home/susingha/Checkout/toolx/projects/chardev/.hworld.o.cmd
++ /bin/sh ./scripts/ubuntu-retpoline-extract-one /home/susingha/Checkout/toolx/projects/chardev/hworld.o /home/susingha/Checkout/toolx/projects/chardev/hworld.c ''
++ '[' -pg = -pg ']'
++ '[' /home/susingha/Checkout/toolx/projects/chardev/hworld.o '!=' scripts/mod/empty.o ']'
++ ./scripts/recordmcount /home/susingha/Checkout/toolx/projects/chardev/hworld.o
++ echo /home/susingha/Checkout/toolx/projects/chardev/hworld.ko
++ echo /home/susingha/Checkout/toolx/projects/chardev/hworld.o
++ echo
++ cat /dev/null
++ echo kernel//home/susingha/Checkout/toolx/projects/chardev/hworld.ko
++ :
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ cat include/config/kernel.release
++ echo '  Building modules, stage 2.'
+  Building modules, stage 2.
++ make -f ./scripts/Makefile.modpost
++ find /home/susingha/Checkout/toolx/projects/chardev/.tmp_versions -name '*.mod'
++ sort -u
++ xargs -r grep -h '\.ko$'
++ echo '  MODPOST 1 modules'
+  MODPOST 1 modules
++ find /home/susingha/Checkout/toolx/projects/chardev/.tmp_versions -name '*.mod'
++ xargs -r grep -h '\.ko$'
++ sort -u
++ sed 's/\.ko$/.o/'
++ scripts/mod/modpost -a -i ./Module.symvers -I /home/susingha/Checkout/toolx/projects/chardev/Module.symvers -o /home/susingha/Checkout/toolx/projects/chardev/Module.symvers -S -w -s -T -
++ set -e
++ echo '  CC      /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o'
+  CC      /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o
++ gcc -Wp,-MD,/home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.d -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include -I./arch/x86/include -I./arch/x86/include/generated -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init '-DKBUILD_BASENAME="hworld.mod"' '-DKBUILD_MODNAME="hworld"' -DMODULE -c -o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.c
++ scripts/basic/fixdep /home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.d /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o 'gcc -Wp,-MD,/home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.d  -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/5/include  -I./arch/x86/include -I./arch/x86/include/generated  -I./include -I./arch/x86/include/uapi -I./arch/x86/include/generated/uapi -I./include/uapi -I./include/generated/uapi -include ./include/linux/kconfig.h -Iubuntu/include  -D__KERNEL__ -Wall -Wundef -Wstrict-prototypes -Wno-trigraphs -fno-strict-aliasing -fno-common -fshort-wchar -Werror-implicit-function-declaration -Wno-format-security -std=gnu89 -fno-PIE -mno-sse -mno-mmx -mno-sse2 -mno-3dnow -mno-avx -m64 -falign-jumps=1 -falign-loops=1 -mno-80387 -mno-fp-ret-in-387 -mpreferred-stack-boundary=3 -mskip-rax-setup -mtune=generic -mno-red-zone -mcmodel=kernel -funit-at-a-time -DCONFIG_X86_X32_ABI -DCONFIG_AS_CFI=1 -DCONFIG_AS_CFI_SIGNAL_FRAME=1 -DCONFIG_AS_CFI_SECTIONS=1 -DCONFIG_AS_FXSAVEQ=1 -DCONFIG_AS_SSSE3=1 -DCONFIG_AS_CRC32=1 -DCONFIG_AS_AVX=1 -DCONFIG_AS_AVX2=1 -DCONFIG_AS_AVX512=1 -DCONFIG_AS_SHA1_NI=1 -DCONFIG_AS_SHA256_NI=1 -pipe -Wno-sign-compare -fno-asynchronous-unwind-tables -mindirect-branch=thunk-extern -mindirect-branch-register -fno-jump-tables -fno-delete-null-pointer-checks -O2 --param=allow-store-data-races=0 -DCC_HAVE_ASM_GOTO -Wframe-larger-than=1024 -fstack-protector-strong -Wno-unused-but-set-variable -fno-omit-frame-pointer -fno-optimize-sibling-calls -fno-var-tracking-assignments -pg -mfentry -DCC_USING_FENTRY -Wdeclaration-after-statement -Wno-pointer-sign -fno-strict-overflow -fno-merge-all-constants -fmerge-constants -fno-stack-check -fconserve-stack -Werror=implicit-int -Werror=strict-prototypes -Werror=date-time -Werror=incompatible-pointer-types -Werror=designated-init  -DKBUILD_BASENAME='\''"hworld.mod"'\''  -DKBUILD_MODNAME='\''"hworld"'\'' -DMODULE  -c -o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.c'
++ rm -f /home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.d
++ mv -f /home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.tmp /home/susingha/Checkout/toolx/projects/chardev/.hworld.mod.o.cmd
++ set -e
++ echo '  LD [M]  /home/susingha/Checkout/toolx/projects/chardev/hworld.ko'
+  LD [M]  /home/susingha/Checkout/toolx/projects/chardev/hworld.ko
++ ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id -o /home/susingha/Checkout/toolx/projects/chardev/hworld.ko /home/susingha/Checkout/toolx/projects/chardev/hworld.o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o
++ true
++ printf '%s\n' 'cmd_/home/susingha/Checkout/toolx/projects/chardev/hworld.ko := ld -r -m elf_x86_64 -z max-page-size=0x200000 -T ./scripts/module-common.lds --build-id  -o /home/susingha/Checkout/toolx/projects/chardev/hworld.ko /home/susingha/Checkout/toolx/projects/chardev/hworld.o /home/susingha/Checkout/toolx/projects/chardev/hworld.mod.o ;  true'
+make[1]: Leaving directory '/usr/src/linux-headers-4.15.0-88-generic'
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
+[01;32msusingha@susingha-ubu[00m:[01;34m~/Checkout/toolx/projects/chardev[00m$ 
