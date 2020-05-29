@@ -51,5 +51,27 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 nnoremap <c-]> g<c-]>
 vnoremap <c-]> g<c-]>
 
+" The following is from Aerohive NUUC
+" let g:MultipleSearchMaxColors=10
+":Search ab
+":Search cd
+":Search ef
+":Search gh
+":Search ij
+":Search kl
+":Search mn
+":Search op
+":Search qr
+":Search st
+":Search uv
+":Search wx
+":Search yz
+":Search 01
+":Search 23
+":Search 45
+":Search 67
+":Search 89
+
+:nmap <F10> :set invnumber<CR>
 
 

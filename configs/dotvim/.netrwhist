@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/tmp'
+let g:netrw_dirhist_2='/home/susingha/Perforce/devenv_ci/devenv/DevEnv/latest_hiveagent/hiveagent_pr'
+let g:netrw_dirhist_3='/home/susingha/Perforce/devenv_ci/devenv/DevEnv/latest_hiveagent/hiveagent'
+let g:netrw_dirhist_4='/home/susingha/Perforce/devenv_ci/devenv/DevEnv/latest_hiveagent'
+let g:netrw_dirhist_5='/home/susingha/Perforce/susingha_MMDD/app/dcd'
+let g:netrw_dirhist_6='/home/susingha/Perforce/devenv/DevEnv/latest_hiveagent/hiveagent_pr'
+let g:netrw_dirhist_7='/home/susingha/Perforce/susingha_0114_Nantucket/build_AP250/kernel/linux-3.16/include/config'
+let g:netrw_dirhist_8='/home/susingha/Checkout/toolx/projects/flowcontext/fcon'
