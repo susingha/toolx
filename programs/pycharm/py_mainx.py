@@ -149,3 +149,28 @@ flt = 5/float(2)
 print flt
 flt = float(5)/2
 print flt
+
+if not None:
+    print True # <-
+else:
+    print False
+
+if not '':
+    print True # <-
+else:
+    print False
+
+if not False:
+    print True # <-
+else:
+    print False
+
+if not 0:
+    print True # <-
+else:
+    print False
+
+if not -1:
+    print True
+else:
+    print False # <-
