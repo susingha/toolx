@@ -1,10 +1,10 @@
 #!/bin/bash
 
 
-find . -name "*.c" > fcon/_fcon_filelist
-cat fcon/_fcon_filelist | xargs p4 edit
-cat fcon/_fcon_filelist | xargs touch 
-cat fcon/_fcon_filelist | xargs -n1 fcon/landmine.py
+ls       *.c *.h **/*.c **/*.h > _fcon_filelist
+p4 edit  *.c *.h **/*.c **/*.h
+touch    *.c *.h **/*.c **/*.h
+cat _fcon_filelist | xargs -n1 landmine.py
 
 
 # revert

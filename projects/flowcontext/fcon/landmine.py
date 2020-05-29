@@ -3,8 +3,9 @@ import os
 import sys
 import shutil
 
-IMPORTLINE = '#include "flowcontext.h"          // sup:gen\n'
+IMPORTLINE = '#include "fcontext.h"          // sup:gen\n'
 LOGGERLINE = 'PRINTFLOWCONTEXT();               // sup:gen\n'
+FUNCATTRIB = 'noinline'
 
 
 if len(sys.argv) < 2:
@@ -69,7 +70,7 @@ def lookback_word(f, pos):
         f.seek(p)
         c = f.read(1)
     if not isalnum_(c):
-        return None
+        return None, -1
     end = p
 
     while p > 0 and isalnum_(c):
@@ -80,20 +81,23 @@ def lookback_word(f, pos):
 
     l = end - beg + 1
     f.seek(beg)
-    return f.read(l)
+    return f.read(l), beg
 
 def lookback_if(f, pos):
-    if lookback_word(f, pos) == 'if':
+    kword, beg = lookback_word(f, pos)
+    if kword == 'if':
         return True
     return False
 
 def lookback_for(f, pos):
-    if lookback_word(f, pos) == 'for':
+    kword, beg = lookback_word(f, pos)
+    if kword == 'for':
         return True
     return False
 
 def lookback_while(f, pos):
-    if lookback_word(f, pos) == 'while':
+    kword, beg = lookback_word(f, pos)
+    if kword == 'while':
         return True
     return False
 
@@ -138,14 +142,19 @@ def landminefile(filenamesrc, filenamedst):
 
         # its not a hashdefine
 
-        if lookback_if(filesrc, postback):
-            continue
-        if lookback_for(filesrc, postback):
-            continue
-        if lookback_while(filesrc, postback):
-            continue
+        log_if    = False
+        log_for   = False
+        log_while = False
+	if lookback_if(filesrc, postback) and log_if == False:
+	    continue
+	if lookback_for(filesrc, postback) and log_for == False:
+	    continue
+	if lookback_while(filesrc, postback) and log_while == False:
+	    continue
 
         # its not a if / for / while loop
+
+	funcname, beg = lookback_word(filesrc, postback)
 
         # it is a function definition. Copy to postahead
         copybeg = copyend + 1
@@ -157,8 +166,9 @@ def landminefile(filenamesrc, filenamedst):
             filedst.write(filesrc.read(1))
 
         # paste newline, paste log
-        filedst.write('\n')
-        filedst.write(LOGGERLINE)
+	if LOGGERLINE:
+	    filedst.write('\n')
+            filedst.write(LOGGERLINE)
 
     copybeg = copyend + 1
     copyend = filesrc.tell()
@@ -174,7 +184,10 @@ def landminefile(filenamesrc, filenamedst):
     # overwrite file src with the dst
 
 
-filebak = os.path.dirname(filename)+'/_fcon_bak_'+os.path.basename(filename)
+dirname = os.path.dirname(filename)
+if dirname == "":
+    dirname = '.'
+filebak = dirname+'/_fcon_bak_'+os.path.basename(filename)
 filesrc = filebak
 filedst = filename
 shutil.copy(filename, filesrc)
