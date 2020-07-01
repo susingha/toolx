@@ -8,6 +8,7 @@ alias l="ls -l; pwd"
 alias l.='ls -d .* --color=tty'
 alias ls='ls --color=tty'
 alias ll='ls -nrt --color=tty'
+alias la='ls -nrtla'
 alias rl='ls -l > /tmp/l ; cat /tmp/l'
 alias sc="screen -x ci"
 alias csc="cscope -dp5"
