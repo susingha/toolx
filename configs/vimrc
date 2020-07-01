@@ -3,12 +3,7 @@
 " I want to add comments on each line explaining functionality
 
 " ------------- < cscope> -------------------
-let AUTOLOADCSCOPE = $HOME . "/.autoload_cscope.vim"
-if filereadable(AUTOLOADCSCOPE)
-	exec 'source ' . AUTOLOADCSCOPE
-else
-	echo AUTOLOADCSCOPE . " not found, or unreadable"
-endif
+" autoload_cscope.vim has been moved to .vim/plugin
 " ------------- </cscope> -------------------
 
 " execute pathogen#infect()
