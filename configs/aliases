@@ -13,6 +13,9 @@ alias sc="screen -x ci"
 alias csc="cscope -dp5"
 alias p4o="p4 opened | cut -d '#' -f 1"
 
+# git
+alias diff="git diff --no-prefix"
+
 function genscope() { # Generates cscope
 
 rm cscope.files cscope.out
@@ -28,13 +31,13 @@ cscope -bR
 }
 
 
-cdo()
+function cdo()
 {
-    a=$SF_PREFIX/../ims/
-    b=$SF_PREFIX/../ims/src/third-party/nse
-    c=$SF_PREFIX/../ims/src/libraries/daq-modules
-    d=$SF_PREFIX/../ims/src/binaries/sfrna/
-    e=$SF_PREFIX/
+    a=controller/lcp/ovs/mh/
+    b=controller/lcp/vdpi/
+
+    y=$SF_PREFIX/../ims/
+    z=$SF_PREFIX/../ims/src/third-party/nse
 
     printf "\
 	1. $a\n\
