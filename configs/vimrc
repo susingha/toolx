@@ -68,5 +68,3 @@ vnoremap <c-]> g<c-]>
 ":Search 89
 
 :nmap <F10> :set invnumber<CR>
-
-

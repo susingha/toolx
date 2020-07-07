@@ -8,6 +8,10 @@ echo "installing screen"
  apt-get install -y screen
 echo "installing sshpass"
  apt-get install -y sshpass
+echo "installing cscope"
+ apt-get install -y cscope
+echo "installing gnu-global for gtags"
+ apt-get install -y global
 
 echo "skipping apache2"
 #apt-get install -y apache2
