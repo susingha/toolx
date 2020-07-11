@@ -13,22 +13,24 @@ alias sc="screen -x ci"
 alias csc="cscope -dp5"
 alias p4o="p4 opened | cut -d '#' -f 1"
 
-function genscope() { # Generates cscope
+####################
+# Generates cscope #
+####################
+function genscope() {
 
-rm cscope.files cscope.out
+    rm cscope.files cscope.out
 
-find . -name '*.cpp' > cscope.files
-find . -name '*.cc' >> cscope.files
-find . -name '*.c'  >> cscope.files
-find . -name '*.h'  >> cscope.files
-find . -name '*.regc'  >> cscope.files
-find . -name '*.regh'  >> cscope.files
-cscope -bR
-
+    find . -name '*.cpp' > cscope.files
+    find . -name '*.cc' >> cscope.files
+    find . -name '*.c'  >> cscope.files
+    find . -name '*.h'  >> cscope.files
+    find . -name '*.regc'  >> cscope.files
+    find . -name '*.regh'  >> cscope.files
+    cscope -bR
 }
 
 
-cdo()
+function cdo()
 {
     a=$SF_PREFIX/../ims/
     b=$SF_PREFIX/../ims/src/third-party/nse
