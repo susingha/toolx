@@ -18,6 +18,7 @@ alias p4o="p4 opened | cut -d '#' -f 1"
 # git
 alias diff="git diff --no-prefix"
 alias gits="git status"
+alias gitb="git branch"
 
 
 function genscope_gtags() { # Generates gtags
