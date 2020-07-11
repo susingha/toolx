@@ -2,7 +2,6 @@
 #include <linux/kernel.h>    // included for KERN_INFO
 #include <linux/init.h>      // included for __init and __exit macros
 
-
 void fun5(void) {
     printk(KERN_INFO "sup: running %s\n", __func__);
 }
@@ -31,7 +30,10 @@ static void __exit hello_cleanup(void)
 
 static int __init hello_init(void)
 {
-    printk(KERN_INFO "Hello world!\n");
+    printk(KERN_INFO "Hello world! %*c %sok\n", 10, 'M', __func__);
+    printk(KERN_INFO "Hello world! %*c %sok\n", 20, 'K', __func__);
+    // printk(KERN_ERR  "sup:1 %_*c %s ok\n", 10, 'K', __func__);
+    printk(KERN_INFO "%*c\n", 20, 'A');
     fun1();
     return 0;    // Non-zero return means that the module couldn't be loaded.
 }
