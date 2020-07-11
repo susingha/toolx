@@ -8,35 +8,60 @@ alias l="ls -l; pwd"
 alias l.='ls -d .* --color=tty'
 alias ls='ls --color=tty'
 alias ll='ls -nrt --color=tty'
+alias la='ls -nrtla'
 alias rl='ls -l > /tmp/l ; cat /tmp/l'
-alias sc="screen -x ci"
+alias sc="screen -x"
 alias csc="cscope -dp5"
+alias csc="gtags-cscope -dp5"
 alias p4o="p4 opened | cut -d '#' -f 1"
 
-####################
-# Generates cscope #
-####################
-function genscope() {
+# git
+alias diff="git diff --no-prefix"
+alias gits="git status"
 
-    rm cscope.files cscope.out
 
-    find . -name '*.cpp' > cscope.files
-    find . -name '*.cc' >> cscope.files
-    find . -name '*.c'  >> cscope.files
-    find . -name '*.h'  >> cscope.files
-    find . -name '*.regc'  >> cscope.files
-    find . -name '*.regh'  >> cscope.files
-    cscope -bR
+function genscope_gtags() { # Generates gtags
+
+rm GPATH   GRTAGS  GTAGS  GFILES
+
+find . -name '*.cpp'    > GFILES
+find . -name '*.cc'    >> GFILES
+find . -name '*.c'     >> GFILES
+find . -name '*.h'     >> GFILES
+find . -name '*.hh'    >> GFILES
+find . -name '*.regc'  >> GFILES
+find . -name '*.regh'  >> GFILES
+gtags --file GFILES
+
 }
 
+function genscope_cscope() { # Generates cscope
+
+rm cscope.files cscope.out
+
+find . -name '*.cpp'    > cscope.files
+find . -name '*.cc'    >> cscope.files
+find . -name '*.c'     >> cscope.files
+find . -name '*.h'     >> cscope.files
+find . -name '*.hh'    >> cscope.files
+find . -name '*.regc'  >> cscope.files 
+find . -name '*.regh'  >> cscope.files 
+cscope -bR
+
+}
+
+function genscope() { # Generates gtags
+ genscope_gtags
+#genscope_cscope
+}
 
 function cdo()
 {
-    a=$SF_PREFIX/../ims/
-    b=$SF_PREFIX/../ims/src/third-party/nse
-    c=$SF_PREFIX/../ims/src/libraries/daq-modules
-    d=$SF_PREFIX/../ims/src/binaries/sfrna/
-    e=$SF_PREFIX/
+    a=controller/lcp/ovs/mh/
+    b=controller/lcp/vdpi/
+
+    y=$SF_PREFIX/../ims/
+    z=$SF_PREFIX/../ims/src/third-party/nse
 
     printf "\
 	1. $a\n\
