@@ -12,7 +12,7 @@
 " au BufWinLeave ?* mkview
 " au BufWinEnter ?* silent loadview
 
-set colorcolumn=80     " set cc=80
+" set colorcolumn=80     " set cc=80
 " set fdo-=search
 
 set ruler

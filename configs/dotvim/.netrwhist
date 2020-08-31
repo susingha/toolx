@@ -1,5 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/ssingha/.vim'
 let g:netrw_dirhist_2='/home/ssingha/Checkout/toolx/configs/dotvim/autoload'
 let g:netrw_dirhist_3='/home/ssingha/.vim'
+let g:netrw_dirhist_4='/home/ssingha/logs/10-158-121-213-2020-07-23T22-33-38.395760/commands'
+let g:netrw_dirhist_5='/home/ssingha/bug_icmp_1_2610542/10-158-121-213-2020-07-23T22-33-38.395760'
+let g:netrw_dirhist_6='/home/ssingha/bug_icmp_1_2610542'
