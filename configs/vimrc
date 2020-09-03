@@ -26,6 +26,7 @@ set nu
 set ic
 set wrap
 set linebreak
+set sidescroll=1
 set wildmode=list:longest
 set textwidth=0
 set incsearch
