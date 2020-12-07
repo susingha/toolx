@@ -29,7 +29,7 @@ static ssize_t device_write(struct file *, const char *, size_t, loff_t *);
 
 #define SUCCESS 0
 #define DEVICE_NAME "chardev"
-#define BUF_LEN 80
+#define BUF_LEN 800
 
 /*
  * Global variables are declared as static, so are global within the file.
@@ -96,8 +96,10 @@ static int device_open(struct inode *inode, struct file *filp)
     return -EBUSY;
 
   Device_Open++;
-  sprintf(msg, "I already told you %d times Hello world! printk: %p\n", counter++, printk);
-  printk(KERN_INFO "address of printk: %p\n", printk);
+  sprintf(msg, "I already told you %d times Hello world! printk: %p and frame: %p - %pF\n",
+          counter++, printk, __builtin_return_address(0), __builtin_return_address(0));
+  printk(KERN_INFO "address of printk: %p and frame: %p - %pF\n",
+                     printk, __builtin_return_address(0), __builtin_return_address(0));
   msg_Ptr = msg;
   /*
    * TODO: comment out the line below to have some fun!

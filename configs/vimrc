@@ -12,7 +12,7 @@
 " au BufWinLeave ?* mkview
 " au BufWinEnter ?* silent loadview
 
-set colorcolumn=80     " set cc=80
+" set colorcolumn=80     " set cc=80
 " set fdo-=search
 
 set ruler
@@ -26,6 +26,7 @@ set nu
 set ic
 set wrap
 set linebreak
+set sidescroll=1
 set wildmode=list:longest
 set textwidth=0
 set incsearch
