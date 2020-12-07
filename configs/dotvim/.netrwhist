@@ -1,5 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/home/ssingha/.vim'
-let g:netrw_dirhist_2='/home/ssingha/Checkout/toolx/configs/dotvim/autoload'
-let g:netrw_dirhist_3='/home/ssingha/.vim'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/ssingha/Workspace/nsx-impactor/common/nestdb/src/cpp/compiler'
+let g:netrw_dirhist_2='/home/ssingha/Workspace/nsx-impactor/common/nestdb/src/cpp'
+let g:netrw_dirhist_3='/home/ssingha/Workspace/nsx-impactor/common/nestdb/src/cpp/compiler'
+let g:netrw_dirhist_4='/home/ssingha/Workspace/nsx-impactor/common/nestdb/src/cpp'
+let g:netrw_dirhist_5='/home/ssingha/Workspace/nsx-impactor/common/nestdb/src/cpp/compiler'

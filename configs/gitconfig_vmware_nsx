@@ -1,0 +1,35 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	editor = vim
+[diff]
+	noprefix = true
+[remote "origin"]
+	url = ssh://git@git.eng.vmware.com/nsx.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[user]
+	email = ssingha@vmware.com
+	name = supratik
+[alias]
+	stat = "! git branch; git status"
+	logs = log --name-only --oneline
+	update = pull --rebase 
+	addreview = "! git remote add review ssh://ssingha@gitreview.eng.vmware.com:29418/$(git config --get remote.origin.url | sed 's#.*/##')"
+	pushreview = "! git push ssh://ssingha@gitreview.eng.vmware.com:29418/$(git config --get remote.origin.url | sed 's#.*/##; s#.git$##')  HEAD:refs/for/$(git rev-parse --abbrev-ref HEAD)"
+[remote "review"]
+	url = ssh://ssingha@gitreview.eng.vmware.com:29418/nsx
+	fetch = +refs/heads/*:refs/remotes/review/*
+[branch "nsx-highline"]
+	remote = origin
+	merge = refs/heads/nsx-highline
+[branch "nsx-grindcore"]
+	remote = origin
+	merge = refs/heads/nsx-grindcore
+[branch "nsx-impactor"]
+	remote = origin
+	merge = refs/heads/nsx-impactor
+[branch "master"]
+	remote = origin
+	merge = refs/heads/master
