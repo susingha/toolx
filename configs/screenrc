@@ -20,6 +20,8 @@ vbell off
 startup_message off
 set term=ansi 
 defscrollback   10000            # default: 100
+defdynamictitle   off            # dont let ssh target PROMPT_COMMAND to change the title global
+#  dynamictitle   off            # dont let ssh target PROMPT_COMMAND to change the title per window. WARN: this crashes `screen -S new`
 termcapinfo xterm* ti@:te@
 
 # bind ctrl-a h to hardcopy -h instead of hardcopy
