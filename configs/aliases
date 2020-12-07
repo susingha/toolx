@@ -1,5 +1,7 @@
 PATH=$HOME/bin:$PATH
 
+PATH=~/bin:$PATH
+
 alias x="exit 0"
 alias vi=vim
 alias vr='vim -R'
@@ -13,13 +15,35 @@ alias la='ls -nrtla'
 alias rl='ls -l > /tmp/l ; cat /tmp/l'
 alias sc="screen -x"
 alias csc="cscope -dp5"
-alias csc="gtags-cscope -dp5"
+alias csc="gtags-cscope -dp7"
 alias p4o="p4 opened | cut -d '#' -f 1"
 
 # git
 alias diff="git diff --no-prefix"
-alias gits="git status"
+alias gits="git stat"
 alias gitb="git branch"
+
+function gitx() {
+    git status
+    git branch
+}
+
+
+function genscope_gtags_links() { # Generates gtags
+
+rm GPATH   GRTAGS  GTAGS  GFILES
+
+find -L . -name '*.cpp'    > GFILES
+find -L . -name '*.cc'    >> GFILES
+find -L . -name '*.c'     >> GFILES
+find -L . -name '*.h'     >> GFILES
+find -L . -name '*.hh'    >> GFILES
+find -L . -name '*.regc'  >> GFILES
+find -L . -name '*.regh'  >> GFILES
+find -L . -name '*.proto'  >> GFILES
+gtags --file GFILES
+
+}
 
 
 function genscope_gtags() { # Generates gtags
@@ -33,6 +57,7 @@ find . -name '*.h'     >> GFILES
 find . -name '*.hh'    >> GFILES
 find . -name '*.regc'  >> GFILES
 find . -name '*.regh'  >> GFILES
+find . -name '*.proto'  >> GFILES
 gtags --file GFILES
 
 }
@@ -60,7 +85,8 @@ function genscope() { # Generates gtags
 function cdo()
 {
     a=controller/lcp/ovs/mh/
-    b=controller/lcp/vdpi/
+    b=controller/lcp/ovs/mh/src/cpp
+    c=proto_oh
 
     y=$SF_PREFIX/../ims/
     z=$SF_PREFIX/../ims/src/third-party/nse
