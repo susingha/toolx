@@ -9,8 +9,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Timeout in minutes
-tallow=30
-tblock=30
+tallow=60
+tblock=15
 
 
 # Use this loop for debugging
@@ -23,9 +23,11 @@ do
     sleep 1
 done
 
-
 while [ : ]
 do
+    # ./dnsAllowYouTube
+    cp -v /etc/hosts_unblocked /etc/hosts
+    # ascript -e 'display notification "ALLOWED"'
     echo "["`date`"]" sleep $tallow
     sleep $(($tallow*60))
 
@@ -36,15 +38,20 @@ do
 
     echo "["`date`"]" Kill Chrome YouTube Tabs
     YTTabs=`chrome-cli list tabs | grep YouTube | grep -v "YouTube Music"`
-    echo "["`date`"]" $YTTabs | awk 'NR > 1 {print $1}' RS=':' FS=']' | xargs -n1 chrome-cli close -t
+    echo $YTTabs | awk 'NR > 1 {print $1}' RS=':' FS=']' # | xargs -n1 chrome-cli close -t
     echo "["`date`"]" Killed:
     echo "["`date`"]" $YTTabs
 
     echo "["`date`"]" sleep $tblock
-    sleep $(($tblock*60))
-
-    # ./dnsAllowYouTube
-    cp -v /etc/hosts_unblocked /etc/hosts
-    # ascript -e 'display notification "ALLOWED"'
+    tremain=$((tblock*60))
+    ttravel=5
+    echo
+    while [ $tremain -gt 0 ]
+    do
+        echo -ne "\rYouTube back in $((tremain/60)) minutes $((tremain%60)) seconds  "
+        sleep $ttravel
+        tremain=$((tremain-ttravel))
+    done
+    echo
 
 done
