@@ -86,7 +86,8 @@ function cdo()
 {
     a=controller/lcp/ovs/mh/
     b=controller/lcp/ovs/mh/src/cpp
-    c=proto_oh
+    c=controller/lcp/ovs/mh/itest/colibri/vmware/integration_suite
+    d=proto_oh
 
     y=$SF_PREFIX/../ims/
     z=$SF_PREFIX/../ims/src/third-party/nse
