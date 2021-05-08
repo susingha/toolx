@@ -28,6 +28,9 @@
 [branch "nsx-impactor"]
 	remote = origin
 	merge = refs/heads/nsx-impactor
+[branch "nsx-impactor-ufo"]
+	remote = origin
+	merge = refs/heads/nsx-impactor-ufo
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
