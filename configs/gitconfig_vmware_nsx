@@ -4,8 +4,6 @@
 	bare = false
 	logallrefupdates = true
 	editor = vim
-[diffs]
-	noprefix = true
 [remote "origin"]
 	url = ssh://git@git.eng.vmware.com/nsx.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
