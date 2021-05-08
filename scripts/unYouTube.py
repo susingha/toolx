@@ -25,17 +25,24 @@ webdriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 nokillsruntime = 1000 # 50
 waitdef = 60 # 3  # seconds
 
+# used on garage server ubuntu #
+chromebin = "/usr/bin/google-chrome-stable"
+webdriverurl = "/home/cisco/bin/chromedriver"
+nokillsruntime = 1000
+waitdef = 60 # seconds
+
 # used on deployment server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 webdriverurl = "/home/susingha/bin/chromedriver"
 nokillsruntime = 50
 waitdef = 3 # seconds
 
-# used on garage server ubuntu #
+# used on deployment server ubuntu vmware # 
 chromebin = "/usr/bin/google-chrome-stable"
-webdriverurl = "/home/cisco/bin/chromedriver"
-nokillsruntime = 1000
-waitdef = 60 # seconds
+webdriverurl = "/home/ssingha/bin/chromedriver"
+nokillsruntime = 50
+waitdef = 3 # seconds
+
 
 
 print (sys.version)

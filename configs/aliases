@@ -3,6 +3,7 @@ PATH=$HOME/bin:$PATH
 PATH=~/bin:$PATH
 
 alias x="exit 0"
+alias f="find . -name"
 alias vi=vim
 alias vr='vim -R'
 alias ..="cd .."
@@ -86,8 +87,9 @@ function cdo()
 {
     a=controller/lcp/ovs/mh/
     b=controller/lcp/ovs/mh/src/cpp
-    c=controller/lcp/ovs/mh/itest/colibri/vmware/integration_suite
-    d=proto_oh
+    c=mpa/clients/opsAgent/
+    d=controller/lcp/ovs/mh/itest/colibri/vmware/integration_suite
+    e=proto_oh
 
     y=$SF_PREFIX/../ims/
     z=$SF_PREFIX/../ims/src/third-party/nse

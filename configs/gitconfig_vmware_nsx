@@ -4,8 +4,6 @@
 	bare = false
 	logallrefupdates = true
 	editor = vim
-[diffs]
-	noprefix = true
 [remote "origin"]
 	url = ssh://git@git.eng.vmware.com/nsx.git
 	fetch = +refs/heads/*:refs/remotes/origin/*
@@ -30,6 +28,9 @@
 [branch "nsx-impactor"]
 	remote = origin
 	merge = refs/heads/nsx-impactor
+[branch "nsx-impactor-ufo"]
+	remote = origin
+	merge = refs/heads/nsx-impactor-ufo
 [branch "master"]
 	remote = origin
 	merge = refs/heads/master
