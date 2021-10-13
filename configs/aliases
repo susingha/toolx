@@ -24,6 +24,10 @@ alias diff="git diff --no-prefix"
 alias gits="git stat"
 alias gitb="git branch"
 
+# shopt
+shopt -s direxpand
+
+
 function gitx() {
     git status
     git branch
