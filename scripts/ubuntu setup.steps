@@ -1,5 +1,7 @@
+  sudo apt-get update
   sudo apt-get install -y net-tools
   sudo apt-get install -y openssl-server
+  sudo apt-get install -y sshpass
   
   ifconfig
   sudo ls
@@ -18,7 +20,7 @@
   cd
   ln -s  ~/checkout/toolx/configs/screenrc ~/.screenrc
   ln -s  ~/checkout/toolx/configs/vimrc    ~/.vimrc
-  ln -s  ~/checkout/toolx/configs/vim      ~/.vim
+  ln -s  ~/checkout/toolx/configs/dotvim   ~/.vim
   ln -s  ~/checkout/toolx/configs/aliases  ~/
   ln -s                           aliases  ~/.bash_aliases
   
