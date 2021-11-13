@@ -25,25 +25,35 @@ webdriverurl = "C:/Users/Marlinspike/bin/chromedriver.exe"
 nokillsruntime = 1000 # 50
 waitdef = 60 # 3  # seconds
 
-# used on deployment server ubuntu #
-chromebin = "/usr/bin/google-chrome-stable"
-webdriverurl = "/home/susingha/bin/chromedriver"
-nokillsruntime = 50
-waitdef = 3 # seconds
-
 # used on garage server ubuntu #
 chromebin = "/usr/bin/google-chrome-stable"
 webdriverurl = "/home/cisco/bin/chromedriver"
 nokillsruntime = 1000
 waitdef = 60 # seconds
 
+# used on deployment server ubuntu #
+chromebin = "/usr/bin/google-chrome-stable"
+webdriverurl = "/home/susingha/bin/chromedriver"
+nokillsruntime = 50
+waitdef = 3 # seconds
+
+# used on deployment server ubuntu vmware # 
+chromebin = "/usr/bin/google-chrome-stable"
+webdriverurl = "/home/ssingha/bin/chromedriver"
+nokillsruntime = 50
+waitdef = 3 # seconds
+
+
 
 print (sys.version)
 options = webdriver.ChromeOptions()
+options.headless = False
 options.add_argument("user-data-dir=selenium")
 #ptions.add_argument("--headless") # not needed
-options.add_argument('--ignore-certificate-errors')
-options.add_argument("--test-type")
+#options.add_argument('--disable-web-security')
+#options.add_argument('--allow-running-insecure-content')
+#options.add_argument('--ignore-certificate-errors')
+#options.add_argument("--test-type")
 options.binary_location = chromebin
 driver = webdriver.Chrome(webdriverurl, chrome_options=options)
 driver.get('https://www.youtube.com')
