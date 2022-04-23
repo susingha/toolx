@@ -11,6 +11,7 @@
   sudo apt-get install -y screen
 # sudo apt-get install -y apache2
 # sudo apt-get install -y wireshark
+# sudo apt-get install -y build-essential
 
   cd
   mkdir checkout
@@ -26,3 +27,6 @@
   
   mkdir ~/bin
   echo "StrictHostKeyChecking no" >> ~/.ssh/config
+
+# change screensaver, sleep, hibernate settings
+# change hostname in setting and in /etc/hosts and reboot
