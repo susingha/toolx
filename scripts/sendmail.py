@@ -5,7 +5,7 @@ import datetime
 from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail
 
-sendgrid_api_key = 'add-your-key'
+sendgrid_api_key = 'add-your-key'    # find key in gmail. do not checkin
 
 sup_to       = 'email@gmail.com'
 sup_from     = 'email@gmail.com'
