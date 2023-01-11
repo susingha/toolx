@@ -68,3 +68,25 @@ vnoremap <c-]> g<c-]>
 ":Search 89
 
 :nmap <F10> :set invnumber<CR>
+
+
+:map <C-l> 20zl " Scroll 20 characters to the right
+:map <C-h> 20zh " Scroll 20 characters to the left
+
+"               Scroll Quick Cheat
+"        +--------------------------------+
+"        ^                                |
+"        | c-U (half screen up)           |
+"        | c-e (keep cursor)              |
+"        | H(igh)             zt (top)    |
+"        |                    ^           |
+"        |            ze      |      zs   |
+"        | M(iddle)  zh/zH <--zz--> zl/zL |
+"        |                    |           |
+"        |                    v           |
+"        | L(ow)              zb (bottom) |
+"        | c-y (keep cursor)              |
+"        | c-D (half screen down)         |
+"        v                                |
+"        +--------------------------------+
+"
