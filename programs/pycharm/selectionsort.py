@@ -1,37 +1,25 @@
 #!/usr/bin/python
 
 import random
-
-def swapindex(array, index1, index2):
-	temp = array[index1]
-	array[index1] = array[index2]
-	array[index2] = temp
-
-def printarray(array, total):
-	for i in range(0, total - 1):
-		print "[%d], " % (arr[i]),
-	print ""
-
-total = 10
 arr = []
-
-for i in range(0, total - 1):
+for i in range(10):
 	num = random.randint(1,101)
 	arr.append(num)
-
-printarray(arr, total)
-
-for ins in range(0, total - 1):
-	min = arr[ins]
-	minindex = ins
-	for j in range(ins + 1, total - 1):
-		if arr[j] < min:
-			min = arr[j]
-			minindex = j
-	swapindex(arr, ins, minindex)
+print arr
 
 
-printarray(arr, total)
-
+arrlen = len(arr)
+for i in range(arrlen):
 	
+	min = 999999
+	mini = -1
+	for j in range(i, arrlen):
+		if min >= arr[j]:
+			min = arr[j]
+			mini = j
+
+	arr[i], arr[mini] = arr[mini], arr[i]
+	
+print arr
+
 

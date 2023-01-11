@@ -22,6 +22,8 @@ exit(1)
 
 arr = range(5)
 print arr
+exit(0)
+
 arr.insert(5, 5)
 print arr
 arr.insert(100, 6)

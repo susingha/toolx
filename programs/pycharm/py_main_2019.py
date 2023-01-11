@@ -1,3 +1,7 @@
+print
+print
+print "============================="
+
 arr = range(5)
 print arr
 arr.insert(5, 5)
