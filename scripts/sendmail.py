@@ -1,27 +1,38 @@
-import smtplib
+# using SendGrid's Python Library
+# https://github.com/sendgrid/sendgrid-python
+import os
+import datetime
+from sendgrid import SendGridAPIClient
+from sendgrid.helpers.mail import Mail
 
-def sendamail(toaddrs, msg):
-    username = 'notuberecs@gmail.com'
-    password = 'welcomE12'
-    fromaddr = username
+sendgrid_api_key = 'add-your-key'
 
-    server_ssl = smtplib.SMTP_SSL('smtp.gmail.com', 465)
-    server_ssl.ehlo()
-    server_ssl.login(username, password)
-    server_ssl.sendmail(fromaddr, toaddrs, msg)
-    server_ssl.close()
+sup_to       = 'email@gmail.com'
+sup_from     = 'email@gmail.com'
+sup_subject  = 'sup: python email alert'
+sup_content  = """
+    <h1>Heading One</h1>
+    <h2>Heading Two</h2>
+    <body>Normal Body</body>
+              """
 
-def sendamail_test():
-    toaddrs  = 'supratik.dnit@gmail.com'
-    m = "\r\n".join([
-      "From: notuberecs@gmail.com",
-      "To: supratik.dnit@gmail.com",
-      "Subject: Just a message",
-      "",
-      "Why, oh why"
-      ])
 
-    sendamail(toaddrs, m)
+def sendamail(_to      = sup_to,
+              _from    = sup_from,
+              _subject = sup_subject,
+              _content = sup_content):
+    message = Mail(
+        from_email   = _from,
+        to_emails    = _to,
+        subject      = _subject + ' ' + str(datetime.datetime.now()),
+        html_content = _content)
+    try:
+        sg = SendGridAPIClient(sendgrid_api_key)
+        response = sg.send(message)
+        print(response.status_code)
+        print(response.body)
+        print(response.headers)
+    except Exception as e:
+        print(e.message)
 
-# sendamail_test()
-
+sendamail(_subject='sup: Attractions script exit')

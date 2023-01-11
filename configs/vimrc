@@ -12,7 +12,7 @@
 " au BufWinLeave ?* mkview
 " au BufWinEnter ?* silent loadview
 
-set colorcolumn=80     " set cc=80
+" set colorcolumn=80     " set cc=80
 " set fdo-=search
 
 set ruler
@@ -26,15 +26,20 @@ set nu
 set ic
 set wrap
 set linebreak
+set sidescroll=1
+" :map <C-l> 20zl " Scroll 20 characters to the right
+" :map <C-h> 20zh " Scroll 20 characters to the left
+
 set wildmode=list:longest
 set textwidth=0
 set incsearch
 set hlsearch
 set bg=dark
 set cindent
+set expandtab  " expand tabshift as spaces
 set splitright
 set splitbelow
-set paste
+" set paste
 set nowrap
 " set lines=60 columns=150 " Needed for givm on windows
 set guifont=-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-KOI8-R

@@ -1,0 +1,13 @@
+
+# StrictHostKeyChecking no
+
+Host devlocal
+        HostName ssingha-virtual-machine.local
+        User ssingha
+        StrictHostKeyChecking no
+
+
+Host devvmware
+        HostName 10.172.203.240
+        User ssingha
+        StrictHostKeyChecking no
