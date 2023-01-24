@@ -18,6 +18,10 @@ alias sc="screen -x"
 alias csc="cscope -dp5"
 alias csc="gtags-cscope -dp7"
 alias p4o="p4 opened | cut -d '#' -f 1"
+alias watch='watch '
+
+alias k=kubectl
+alias kk='kubectl config get-contexts'
 
 # git
 alias diff="git diff --no-prefix"
@@ -28,9 +32,10 @@ alias gitb="git branch"
 shopt -s direxpand
 
 
-function gitx() {
+function gt() {
     git status
     git branch
+    git remote -v
 }
 
 

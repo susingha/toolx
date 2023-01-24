@@ -36,7 +36,11 @@ set incsearch
 set hlsearch
 set bg=dark
 set cindent
-set expandtab  " expand tabshift as spaces
+
+set list                     " shows tabs markers
+set listchars=tab:·\          " shows tabs markers as ..
+" set expandtab              " expand tabshift as spaces
+
 set splitright
 set splitbelow
 " set paste
