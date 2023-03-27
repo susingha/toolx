@@ -41,9 +41,13 @@ set list                     " shows tabs markers
 set listchars=tab:·\          " shows tabs markers as ..
 " set expandtab              " expand tabshift as spaces
 
+set list                     " shows tabs markers
+set listchars=tab:·\          " shows tabs markers as ..
+" set expandtab              " expand tabshift as spaces
+
 set splitright
 set splitbelow
-" set paste
+set paste
 set nowrap
 " set lines=60 columns=150 " Needed for givm on windows
 set guifont=-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-KOI8-R

@@ -1,6 +1,6 @@
 PATH=$HOME/bin:$PATH
 
-PATH=~/bin:$PATH
+export HELM_EXPERIMENTAL_OCI=1
 
 alias x="exit 0"
 alias f="find . -name"
@@ -19,6 +19,8 @@ alias csc="cscope -dp5"
 alias csc="gtags-cscope -dp7"
 alias p4o="p4 opened | cut -d '#' -f 1"
 alias watch='watch '
+alias g=grep
+alias gg="git grep "
 
 alias k=kubectl
 alias kk='kubectl config get-contexts'
