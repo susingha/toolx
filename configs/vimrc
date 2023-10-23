@@ -15,8 +15,6 @@
 " set colorcolumn=80     " set cc=80
 " set fdo-=search
 
-set ruler
-set rulerformat=%50(%f\ %5l,%-6(%c%V%)\ %P%)
 set backspace=2
 set nocompatible
 set shiftwidth=4
@@ -25,8 +23,11 @@ set sm
 set nu
 set ic
 set wrap
+" set nowrap
+set cursorline
 set linebreak
-set sidescroll=1
+set sidescroll=1         " This give smooth horizontal scroll
+set sidescrolloff=999    " This keeps cursor in middle while horizontal scrolling
 " :map <C-l> 20zl " Scroll 20 characters to the right
 " :map <C-h> 20zh " Scroll 20 characters to the left
 
@@ -47,12 +48,14 @@ set listchars=tab:·\          " shows tabs markers as ..
 
 set splitright
 set splitbelow
-set paste
-set nowrap
+" set paste
 " set lines=60 columns=150 " Needed for givm on windows
 set guifont=-Misc-Fixed-Medium-R-SemiCondensed--13-120-75-75-C-60-KOI8-R
 " set spell spelllang=en_us
 syntax on
+
+set ruler
+" set rulerformat=%50(%f\ %5l,%-6(%c%V%)\ %P%)
 
 " restore last cursor position for individual files
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
