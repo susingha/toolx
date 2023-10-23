@@ -35,9 +35,10 @@ shopt -s direxpand
 
 
 function gt() {
+    git log --oneline | head -3
+    git remote -v
     git status
     git branch
-    git remote -v
 }
 
 
