@@ -14,15 +14,15 @@
 # sudo apt-get install -y build-essential
 
   cd
-  mkdir checkout
+  mkdir Checkout
   cd !$
   git clone https://github.com/susingha/toolx.git
   
   cd
-  ln -s  ~/checkout/toolx/configs/screenrc ~/.screenrc
-  ln -s  ~/checkout/toolx/configs/vimrc    ~/.vimrc
-  ln -s  ~/checkout/toolx/configs/dotvim   ~/.vim
-  ln -s  ~/checkout/toolx/configs/aliases  ~/
+  ln -s  ~/Checkout/toolx/configs/screenrc ~/.screenrc
+  ln -s  ~/Checkout/toolx/configs/vimrc    ~/.vimrc
+  ln -s  ~/Checkout/toolx/configs/dotvim   ~/.vim
+  ln -s  ~/Checkout/toolx/configs/aliases  ~/
   ln -s                           aliases  ~/.bash_aliases
   
   mkdir ~/bin
