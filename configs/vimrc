@@ -35,6 +35,12 @@ set wildmode=list:longest
 set textwidth=0
 set incsearch
 set hlsearch
+
+" searches visually selected text - useful for logfile browsing
+" vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+" use mouse to visual select and scroll
+" set mouse=a
+
 set bg=dark
 set cindent
 
