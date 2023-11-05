@@ -1,3 +1,4 @@
+
 """
 import heapq
 import shuffle
@@ -20,9 +21,14 @@ draw_bst(li)
 exit(1)
 """
 
+print range(0, 5)
+print range(4,-1, -1)
+
+exit(0)                                             # sup: exit here
+
+
 arr = range(5)
 print arr
-exit(0)
 
 arr.insert(5, 5)
 print arr
@@ -33,6 +39,7 @@ print arr
 print
 for i in range(len(arr)):
     print(arr[i]),
+
 
 print
 for i in reversed(range(len(arr))):

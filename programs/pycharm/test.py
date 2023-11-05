@@ -1,63 +1,46 @@
-import boto3
-import csv
+   #count
 
-def lambda_handler(event, context):
-    region='ap-south-1'
-    try: 
-        # get a handle on s3
-        session = boto3.Session(region_name=region)
-        s3 = session.resource('s3')
-        dyndb = boto3.client('dynamodb', region_name=region)
-        bucket = s3.Bucket('trips-csv-database-store') 
-        obj = bucket.Object(key='Trips.csv') 
-        # get the object
-        response = obj.get()
-        # read the contents of the file
-        lines = response['Body'].read().decode('utf-8').splitlines()
- 
-        firstrecord=True
-        csv_reader = csv.reader(lines, delimiter=',', quotechar='"')
-        for row in csv_reader:
-            if (firstrecord):
-                firstrecord=False
-                continue
+class MyCircularQueue:
+    def __init__(self,k):
+        self.size = k
+        self.array = [None] * k
+        self.b = 0
+        self.count = 0
 
-            _id          = row[0]
-            _code        = row[1]
-            _lat         = row[2]
-            _lon         = row[3]
-            _latlon      = row[4]
-            _place       = row[5]
-            _state       = row[6]
-            _image       = row[7]
-            _months      = row[8]
-            _category    = row[9]
-            _mindays     = row[10]
-            _maxdays     = row[11]
-            _description = row[12]
+        
+    def enQueue(self, value):
+        if self.count == self.size:
+            return False
+        
+        self.array[self.b] = value
+        if self.b == self.size-1:
+            self.b = 0
+        else:
+            self.b += 1
 
-            response = dyndb.put_item(
-                TableName='Trips-o3r6fcfzh5dytmorch7ztpq66u-dev',
-                Item={
-                # 'S' for type String, 'N' for Number.
-                'id'         : {'S':str(_id)},
-                'code'       : {'S':str(_code)},
-                'lat'        : {'N':float(_lat)},
-                'lon'        : {'N':float(_lon)},
-                'latlon'     : {'S':str(_latlon)},
-                'place'      : {'S':str(_place)},
-                'state'      : {'S':str(_state)},
-                'image'      : {'S':str(_image)},
-                'months'     : {'S':str(_months)},
-                'category'   : {'S':str(_category)},
-                'mindays'    : {'N':int(_mindays)},
-                'maxdays'    : {'N':int(_maxdays)},
-                'description': {'S':str(_description)},                
-                }
-            )
-        result = 'Put succeeded:'
-    except Exception as err:
-        result = format(err)
-    return {
-        'body': result
-    }
+        self.count += 1
+        return True
+
+    def deQueue(self):
+        if self.count == 0:
+            return False
+        self.count -= 1
+        return True
+
+
+q = MyCircularQueue(3)
+print q.deQueue()
+print q.enQueue(1)
+print q.enQueue(1)
+print '=========='
+print q.deQueue()
+print q.deQueue()
+print q.deQueue()
+print '=========='
+print q.enQueue(1)
+print q.deQueue()
+print q.deQueue()
+print q.enQueue(1)
+print q.enQueue(1)
+print q.enQueue(1)
+print q.enQueue(1)

@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 int perm_rec(char * A, int len, char * str, int count);
@@ -73,41 +74,29 @@ void assert(int i, int j) {
 
 int perm_itr(char * A, int len)
 {
-    int done = FALSE;
-    int curr = len;
-    int i, j = 0;
-
-    int rcount[len+1];
-
-    for (i = 0; i < len + 1; i++) {
-	rcount[i] = 0;
+    int i = 0, count = 0;
+    int * monitor = (int *)malloc(len);
+    for(i = 0; i < len; i++) {
+	monitor[i] = len-i;
     }
 
-    while (!done) {
-	if (curr > 1) {
-	    if (rcount[curr] < curr) {
-		rcount[curr]++;
-		rotate(A + (len - curr), curr);
-		curr--;
-		rcount[curr] = 0;
+    i = 0;
+    while (i >= 0) {
+	if (monitor[i] != 0) {
+	    rotate(A + i, len - i);
+	    monitor[i]--;
+	    if (i == len-1) {
+		printf("%3d. %s\n", ++count, A);
 	    } else {
-		assert(rcount[curr], curr);
-		if (curr == len)
-		    done = TRUE;
-		else
-		    curr = curr + 1;
-
+		i++;
 	    }
-	} else {
-	    assert(curr, 1);
-	    j++;
-	    printf("%3d. %s\n", j, A);
-	    curr = curr + 1;
+	}
+	if (monitor[i] == 0) {
+	    monitor[i] = len-i;
+	    i--;
 	}
     }
-
-    return j;
-
+    return count;
 }
 
 
