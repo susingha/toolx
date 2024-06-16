@@ -1,0 +1,9 @@
+[diff]
+	noprefix = true
+	relative = true
+
+[includeIf "gitdir:~/Checkout/"]
+    path = ~/gitconfig-ssingha
+
+[includeIf "gitdir:~/Workspace/"]
+    path = ~/gitconfig-work

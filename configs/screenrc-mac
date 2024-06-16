@@ -1,0 +1,50 @@
+#hardstatus alwayslastline "%w"
+# Color table:
+# 0 Black             .    leave color unchanged
+# 1 Red               b    blue
+# 2 Green             c    cyan
+# 3 Brown / yellow    d    default color
+# 4 Blue              g    green           b    bold
+# 5 Purple            k    blacK           B    blinking
+# 6 Cyan              m    magenta         d    dim
+# 7 White             r    red             r    reverse
+# 8 unused/illegal    w    white           s    standout
+# 9 transparent       y    yellow          u    underline
+
+# Reset the color to black at the end to ensure that the terminal color
+# remains black.
+hardstatus alwayslastline "%{= KW}%{= Kw}%{-} %-w%{= bW}%n %t%{-}%+w %=%m/%d %c"
+
+## not needed in mac #### terminfo xterm 'AF=\E[3%p1%dm:AB=\E[4%p1%dm'
+## not needed in mac #### 
+## not needed in mac #### vbell off
+## not needed in mac #### startup_message off
+## not needed in mac #### set term=ansi 
+## not needed in mac #### defscrollback   10000            # default: 100
+## not needed in mac #### defdynamictitle   off            # dont let ssh target PROMPT_COMMAND to change the title global
+## not needed in mac #### #  dynamictitle   off            # dont let ssh target PROMPT_COMMAND to change the title per window. WARN: this crashes `screen -S new`
+## not needed in mac #### termcapinfo xterm* ti@:te@
+## not needed in mac #### 
+## not needed in mac #### # bind ctrl-a h to hardcopy -h instead of hardcopy
+## not needed in mac #### # we want to paste the entire scrollback buffer. not just whats visible
+## not needed in mac #### bind h hardcopy -h
+## not needed in mac #### 
+## not needed in mac #### bindkey -k F1 prev
+## not needed in mac #### bindkey -k F2 next
+## not needed in mac #### 
+## not needed in mac #### bindkey ^[^[[D prev
+## not needed in mac #### bindkey ^[^[[C next
+## not needed in mac #### 
+
+bindkey ^[[1;5D prev
+bindkey ^[[1;5C next
+
+## not needed in mac #### 
+## not needed in mac #### # bindkey ^[[1;2D prev
+## not needed in mac #### # bindkey ^[[1;2C next
+## not needed in mac #### 
+altscreen on
+## not needed in mac #### 
+## not needed in mac #### # allow the use of the Home/End keys
+## not needed in mac #### # "\e[1~": beginning-of-line
+## not needed in mac #### # "\e[4~": end-of-line
