@@ -1,8 +1,0 @@
-
-# StrictHostKeyChecking no
-
-Host dev
-	HostName ssingha-virtual-machine.local
-	User ssingha
-	StrictHostKeyChecking no
-	
