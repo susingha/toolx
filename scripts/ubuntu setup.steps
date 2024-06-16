@@ -19,11 +19,12 @@
   git clone https://github.com/susingha/toolx.git
   
   cd
-  ln -s  ~/Checkout/toolx/configs/screenrc ~/.screenrc
-  ln -s  ~/Checkout/toolx/configs/vimrc    ~/.vimrc
-  ln -s  ~/Checkout/toolx/configs/dotvim   ~/.vim
-  ln -s  ~/Checkout/toolx/configs/aliases  ~/
-  ln -s                           aliases  ~/.bash_aliases
+  ln -s  ~/Checkout/toolx/configs/gitconfig  ~/.gitconfig
+  ln -s  ~/Checkout/toolx/configs/screenrc   ~/.screenrc
+  ln -s  ~/Checkout/toolx/configs/vimrc      ~/.vimrc
+  ln -s  ~/Checkout/toolx/configs/dotvim     ~/.vim
+  ln -s  ~/Checkout/toolx/configs/aliases    ~/
+  ln -s                           aliases    ~/.bash_aliases
   
   mkdir ~/bin
   echo "StrictHostKeyChecking no" >> ~/.ssh/config
