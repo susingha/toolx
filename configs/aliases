@@ -1,38 +1,37 @@
-PATH=$HOME/bin:$PATH
+# sup: aliases
 
+export PATH=$HOME/bin:$PATH
 export HELM_EXPERIMENTAL_OCI=1
 
-alias x="exit 0"
-alias f="find . -name"
-alias vi=vim
-alias vr='vim -R'
-alias ..="cd .."
-alias ...="cd ../.."
-alias l="ls -l; pwd"
-alias l.='ls -d .* --color=tty'
-alias ls='ls --color=tty'
-alias ll='ls -nrt --color=tty'
-alias la='ls -nrtla'
-alias rl='ls -l > /tmp/l ; cat /tmp/l'
-alias sc="screen -x"
-alias csc="cscope -dp5"
-alias csc="gtags-cscope -dp7"
-alias p4o="p4 opened | cut -d '#' -f 1"
-alias watch='watch '
-alias g=grep
-alias gg="git grep "
+alias    vi=vim
+alias    vr='vim -R'
+alias    ..="cd .."
+alias   ...="cd ../.."
+alias     l="ls -l; pwd"
+alias    l.='ls -d .* --color=tty'
+alias    ls='ls --color=tty'
+alias    ll='ls -nrt --color=tty'
+alias    la='ls -nrtla'
 
-alias k=kubectl
-alias kk='kubectl config get-contexts'
+alias    sc="screen -x"
+alias   gsc="gtags-cscope -dp7"
+alias   csc="cscope -dp5"
+
+alias   p4o="p4 opened | cut -d '#' -f 1"
+
+alias watch='watch '
+alias     f="find . -name"
+alias     g=grep
+alias    gg="git grep "
+
+alias     k=kubectl
+alias    kk='kubectl config get-contexts'
 
 # git
-alias diff="git diff --no-prefix"
-alias gits="git stat"
-alias gitb="git branch"
+alias  diff="git diff --no-prefix --relative"
 
 # shopt
-shopt -s direxpand
-
+# shopt -s direxpand
 
 function gt() {
     git log --oneline | head -3
@@ -40,24 +39,6 @@ function gt() {
     git status
     git branch
 }
-
-
-function genscope_gtags_links() { # Generates gtags
-
-rm GPATH   GRTAGS  GTAGS  GFILES
-
-find -L . -name '*.cpp'    > GFILES
-find -L . -name '*.cc'    >> GFILES
-find -L . -name '*.c'     >> GFILES
-find -L . -name '*.h'     >> GFILES
-find -L . -name '*.hh'    >> GFILES
-find -L . -name '*.regc'  >> GFILES
-find -L . -name '*.regh'  >> GFILES
-find -L . -name '*.proto'  >> GFILES
-gtags --file GFILES
-
-}
-
 
 function genscope_gtags() { # Generates gtags
 
@@ -86,13 +67,14 @@ find . -name '*.h'     >> cscope.files
 find . -name '*.hh'    >> cscope.files
 find . -name '*.regc'  >> cscope.files 
 find . -name '*.regh'  >> cscope.files 
-cscope -bR
+find . -name '*.proto'  >> GFILES
+cscope -qbR
 
 }
 
 function genscope() { # Generates gtags
- genscope_gtags
-#genscope_cscope
+#   genscope_gtags
+    genscope_cscope
 }
 
 function cdo()
