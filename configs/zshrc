@@ -1,0 +1,20 @@
+# sup: created this file manually on mac
+
+echo sup: copied from .bash_profile
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
+echo sup: fix screen prompt
+export CLICOLOR=1
+#xport LSCOLORS=exfxcxdxbxegedabagacad    # use geoff.greer.fm/lscolors
+#xport LSCOLORS=GxFxCxDxBxegedabagaced
+export LSCOLORS=gxfxCxDxbxegedabagaced
+export PS1="%n@mac:%F{cyan}%2~%f[%?]$ "
+
+setopt histignoredups
+setopt histignorespace
+
+bindkey "^[[H" beginning-of-line
+bindkey "^[[F" end-of-line
+
+echo sup: sourcing aliases
+source ~/aliases
